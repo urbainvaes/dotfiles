@@ -6,8 +6,8 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 ""  Plugins
-Plugin 'gmarik/Vundle'
-Plugin 'LaTeX-Box-Team/LaTeX-Box'
+Plugin 'gmarik/vundle'
+Plugin 'LaTeX-Box-Team/latex-box'
 Plugin 'fugitive.vim'
 Plugin 'UltiSnips'
 Plugin 'kien/ctrlp.vim'
@@ -91,6 +91,7 @@ set colorcolumn=0
 set scrolloff=3
 set t_Co=256
 set guitablabel=%N\ %t\ %M
+set background=dark
 
 "  Layout text
 set wrap
@@ -98,6 +99,7 @@ set linebreak
 set textwidth=0
 set conceallevel=2
 set guifont=Monaco\ 11
+try | colorscheme solarized | catch | endtry
 
 "  Case and spell
 set nospell
@@ -168,19 +170,11 @@ command! LatexEvinceSearch call LatexEvinceSearch()
 autocmd FileType tex map <F6> :silent LatexEvinceSearch <Return>
 autocmd Filetype tex call SetTexOptions()
 
-""  Layout  
-if has("gui_running")
-    set background=dark
-    colorscheme solarized
-else
-    set background=dark
-    colorscheme solarized
-end
-
+"  Layout
 hi Cursor guifg=white guibg=blue
 hi iCursor guifg=black guibg=green
 hi! link conceal normal
-hi! link folded normal
+" hi! link folded error
 
 ""  Functions  
 function! Tex_ForwardSearchLaTeX()
