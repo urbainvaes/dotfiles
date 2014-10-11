@@ -1,4 +1,3 @@
-
 ""  Required by Vundle
 set nocompatible
 filetype off
@@ -13,17 +12,12 @@ Plugin 'UltiSnips'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'scrooloose/nerdtree'
-"Plugin 'OmniCppComplete'
 Plugin 'tommcdo/vim-exchange'
-"Plugin 'vim-scripts/Colour-Sampler-Pack'
-" Plugin 'EasyMotion'
 Plugin 'unimpaired.vim'
 Plugin 'Tabular'
 Plugin 'tComment'
 Plugin 'Gundo'
 Plugin 'altercation/vim-colors-solarized'
-"Plugin 'xolox/vim-misc'
-"Bundle 'xolox/vim-colorscheme-switcher'
 
 filetype plugin indent on
 
@@ -51,6 +45,12 @@ let NERDTreeIgnore=['\.pdf$', '\~$','\.toc$',
             \ '\.fls$','\.bbl$','\.blg$',
             \ '\.out$', '\.log$','\.aux$','\.sty$',
             \ '\.fdb_latexmk$', '\.synctex.gz$','\.latexmain$']
+
+"  CTRL-P
+
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_by_filename = 1
+let g:ctrlp_working_path_mode = 'w'
 
 ""  Options  
 
@@ -121,6 +121,8 @@ let maplocalleader = "+"
 
 "  Leader maps
 nmap <Space> <Leader>
+nmap <Leader>p <c-p> 
+nmap <Leader>t <c-w>
 nnoremap <Leader>h :set hlsearch!<cr>
 nnoremap <Leader>n :set relativenumber!<cr>
 nnoremap <Leader>q :q!<cr>
