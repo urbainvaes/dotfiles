@@ -1,8 +1,8 @@
 #!/bin/bash
 
-dir=~/dotfiles                    # dotfiles directory
-olddir=~/dotfiles_old             # old dotfiles backup directory
-files="bashrc vimrc vim zshrc xmodmap"    # list of files/folders to symlink in homedir
+dir=~/dotfiles
+olddir=~/dotfiles_old
+files="bashrc vimrc zshrc muttrc vim xmodmap"
 
 mkdir -p $olddir
 cd $dir

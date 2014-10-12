@@ -18,6 +18,7 @@ Plugin 'Tabular'
 Plugin 'tComment'
 Plugin 'Gundo'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'honza/vim-snippets'
 
 filetype plugin indent on
 
@@ -50,7 +51,8 @@ let NERDTreeIgnore=['\.pdf$', '\~$','\.toc$',
 
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_by_filename = 1
-let g:ctrlp_working_path_mode = 'w'
+let g:ctrlp_working_path_mode = ''
+let g:ctrlp_show_hidden = 1
 
 ""  Options  
 
@@ -89,9 +91,14 @@ set fillchars=fold:\ ,vert:\ ,
 set showbreak=...
 set colorcolumn=0
 set scrolloff=3
-set t_Co=256
+if has('gui_running')
+    set t_Co=256
+else
+    set t_Co=16
+endif
 set guitablabel=%N\ %t\ %M
 set background=dark
+set showcmd
 
 "  Layout text
 set wrap
@@ -176,7 +183,7 @@ autocmd Filetype tex call SetTexOptions()
 hi Cursor guifg=white guibg=blue
 hi iCursor guifg=black guibg=green
 hi! link conceal normal
-" hi! link folded error
+hi! link folded normal
 
 ""  Functions  
 function! Tex_ForwardSearchLaTeX()
