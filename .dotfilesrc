@@ -1,0 +1,38 @@
+#!/bin/bash
+
+dir=~/dotfiles
+olddir=~/dotfiles_old
+
+# Files: bash, vim, zsh, mutt, vim, xmodmap, notes, fetchmail, maildrop, installation file.
+files="bashrc vimrc zshrc muttrc vim xmodmap mynotes mailfilter dotfilesrc"
+
+rm -rf $olddir
+mkdir -p $olddir
+
+cd $dir
+for file in $files; do
+    echo $file
+    mv ~/.$file $olddir
+    ln -s $dir/.$file ~
+done
+
+# Fetchmailrc (protect sensitive information)
+echo Enter fetchmail password
+read password
+mv ~/.fetchmailrc $olddir
+cp $dir/.fetchmailrc ~
+sed -i 's/xx_change_me_xx/'$password'/g' ~/.fetchmailrc
+
+# SSMTP config
+echo ssmtp.conf
+sudo mv /etc/ssmtp/ssmtp.conf $olddir
+sudo ln -s $dir/ssmtp.conf /etc/ssmtp/
+
+# Permissions
+sudo chmod 600 ~/.fetchmailrc
+sudo chmod 600 $dir/.mailfilter
+
+sudo rm -rf .vim/bundle
+mkdir .vim/bundle
+git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+vim +PluginInstall +qall

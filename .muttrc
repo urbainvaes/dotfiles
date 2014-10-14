@@ -1,0 +1,19 @@
+set from             = "chabog91@hotmail.com"
+set realname         = "Charles Bogosse"
+set use_from         = yes
+set envelope_from    = "yes"
+
+set spoolfile        = /var/spool/mail/urbain
+set folder           = "~/Mail"
+set record           = "+sent"
+set postponed        = "+postponed"
+set move             = no
+
+set header_cache     = ~/.mutt/cache/headers
+set message_cachedir = ~/.mutt/cache/bodies
+set certificate_file = ~/.mutt/certificates
+
+set editor="vim"
+set edit_headers
+
+set sendmail="/usr/sbin/ssmtp"

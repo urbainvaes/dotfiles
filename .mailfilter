@@ -1,0 +1,3 @@
+HOME=/home/urbain
+DEFAULT=/var/spool/mail/urbain
+logfile "$HOME/.maillog"
