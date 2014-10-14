@@ -1,3 +1,6 @@
 HOME=/home/urbain
 DEFAULT=/var/spool/mail/urbain
+SPAM=/var/spool/spamdrop/
 logfile "$HOME/.maillog"
+
+
