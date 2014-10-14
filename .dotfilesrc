@@ -4,7 +4,7 @@ dir=~/dotfiles
 olddir=~/dotfiles_old
 
 # Files: bash, vim, zsh, mutt, vim, xmodmap, notes, fetchmail, maildrop, installation file.
-files="bashrc vimrc zshrc muttrc vim xmodmap mynotes mailfilter dotfilesrc"
+files="bashrc vimrc zshrc muttrc vim xmodmap mynotes mailfilter krystle dotfilesrc"
 
 rm -rf $olddir
 mkdir -p $olddir

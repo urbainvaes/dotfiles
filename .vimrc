@@ -94,7 +94,7 @@ set scrolloff=3
 if has('gui_running')
     set t_Co=256
 else
-    set t_Co=16
+    set t_Co=256
 endif
 set guitablabel=%N\ %t\ %M
 set background=dark

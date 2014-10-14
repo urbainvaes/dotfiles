@@ -17,3 +17,13 @@ set editor="vim"
 set edit_headers
 
 set sendmail="/usr/sbin/ssmtp"
+set sort = reverse-date-received
+set allow_ansi = yes
+
+source ~/mutt-colors-solarized/mutt-colors-solarized-dark-16.muttrc
+
+alias krystle Krystle Acquah <krystle.acquah-arhin13@imperial.ac.uk>
+alias khoi Binh-Khoi Nguyen <khoi@member.fsf.org>
+alias me Urbain Vaes <urbainvaes90@gmail.com>
+alias amanda \"Diez Fernandez, Amanda\" <amanda.diez10@imperial.ac.uk>
+alias vaes Christophe & Nathalie Vaes Van den Bogaert <vaesvdb@gmail.com>

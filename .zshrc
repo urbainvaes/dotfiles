@@ -1,3 +1,9 @@
+# Key remapping
+# todo: add vim support
+#
+~/xcape/xcape -e 'Shift_L=Escape'
+xmodmap ~/.xmodmap
+
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
@@ -6,8 +12,6 @@ export ZSH=$HOME/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="eastwood"
-
-xmodmap ~/.xmodmap
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
