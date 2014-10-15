@@ -2,7 +2,7 @@
 # todo: add vim support
 #
 ~/xcape/xcape -e 'Shift_L=Escape'
-xmodmap ~/.xmodmap
+xmodmap -quiet ~/.xmodmap
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -76,3 +76,12 @@ export EDITOR=/usr/bin/vim
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+alias -s vim=vim
+alias -s cpp=vim
+alias -s c=vim
+alias -s tex=vim
+
+alias tmux="TERM=screen-256color-bce tmux"
+
+bindkey -v

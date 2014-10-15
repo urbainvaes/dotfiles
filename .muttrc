@@ -3,8 +3,8 @@ set realname         = "Charles Bogosse"
 set use_from         = yes
 set envelope_from    = "yes"
 
-set spoolfile        = /var/spool/mail/urbain
 set folder           = "~/Mail"
+set spoolfile        = /home/urbain/.mail
 set record           = "+sent"
 set postponed        = "+postponed"
 set move             = no
@@ -16,11 +16,16 @@ set certificate_file = ~/.mutt/certificates
 set editor="vim"
 set edit_headers
 
-set sendmail="/usr/sbin/ssmtp"
-set sort = reverse-date-received
-set allow_ansi = yes
+set include=yes
 
-source ~/mutt-colors-solarized/mutt-colors-solarized-dark-16.muttrc
+set sendmail="/usr/sbin/ssmtp"
+
+set sort         = threads
+set sort_aux     = reverse-last-date-received
+set sort_browser = reverse-date
+set allow_ansi   = yes
+
+source ~/mutt-colors-solarized/mutt-colors-solarized-light-16.muttrc
 
 alias krystle Krystle Acquah <krystle.acquah-arhin13@imperial.ac.uk>
 alias khoi Binh-Khoi Nguyen <khoi@member.fsf.org>

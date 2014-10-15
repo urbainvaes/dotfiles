@@ -97,7 +97,6 @@ else
     set t_Co=256
 endif
 set guitablabel=%N\ %t\ %M
-set background=dark
 set showcmd
 
 "  Layout text
@@ -105,8 +104,19 @@ set wrap
 set linebreak
 set textwidth=0
 set conceallevel=2
-set guifont=Monaco\ 11
+set guifont=Monaco\ 12
+
+"  Colorscheme
+function! UpdateColorscheme()
+    if strftime("%H") >= 9 && strftime("%H") < 19
+        set background=light
+    else
+        set background=dark
+    endif
+endfunction
 try | colorscheme solarized | catch | endtry
+call UpdateColorscheme()
+autocmd! BufNewFile,BufRead,BufWrite * :call UpdateColorscheme()
 
 "  Case and spell
 set nospell
