@@ -4,7 +4,7 @@ dir=~/dotfiles
 olddir=~/dotfiles_old
 
 # Files: bash, vim, zsh, mutt, vim, xmodmap, notes, fetchmail, maildrop, installation file.
-files="bashrc vimrc zshrc muttrc vim xmodmap mynotes mailfilter krystle tmux.conf dotfilesrc"
+files="bashrc vimrc zshrc muttrc colormutt vim xmodmap mynotes mailfilter krystle tmux.conf zathurarc dotfilesrc"
 
 rm -rf $olddir
 mkdir -p $olddir
@@ -17,11 +17,11 @@ for file in $files; do
 done
 
 # Fetchmailrc (protect sensitive information)
-echo Enter fetchmail password
-read password
 mv ~/.fetchmailrc $olddir
-cp $dir/.fetchmailrc ~
-sed -i 's/xx_change_me_xx/'$password'/g' ~/.fetchmailrc
+# cp $dir/.fetchmailrc ~
+# vim ~/.fetchmailrc
+# read password
+# sed -i 's/xx_change_me_xx/'$password'/g' ~/.fetchmailrc
 
 # SSMTP config
 echo ssmtp.conf
@@ -29,7 +29,7 @@ sudo mv /etc/ssmtp/ssmtp.conf $olddir
 sudo ln -s $dir/ssmtp.conf /etc/ssmtp/
 
 # Permissions
-sudo chmod 600 ~/.fetchmailrc
+# sudo chmod 600 ~/.fetchmailrc
 sudo chmod 600 $dir/.mailfilter
 
 sudo rm -rf .vim/bundle

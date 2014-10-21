@@ -83,7 +83,7 @@ set undofile
 set undodir=/home/urbain/.vimundo/
 
 "  Layout window
-set number
+set nonumber
 set ruler
 set showcmd
 set listchars=tab:▸\ ,eol:¬
@@ -104,11 +104,11 @@ set wrap
 set linebreak
 set textwidth=0
 set conceallevel=2
-set guifont=Monaco\ 12
+set guifont=Monaco\ 11
 
 "  Colorscheme
 function! UpdateColorscheme()
-    if strftime("%H") >= 9 && strftime("%H") < 19
+    if strftime("%H") >= 9 && strftime("%H") < 18
         set background=light
     else
         set background=dark

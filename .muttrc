@@ -1,5 +1,5 @@
-set from             = "chabog91@hotmail.com"
-set realname         = "Charles Bogosse"
+set from             = "u.vaes13@imperial.ac.uk"
+set realname         = "Urbain Vaes"
 set use_from         = yes
 set envelope_from    = "yes"
 
@@ -15,20 +15,30 @@ set certificate_file = ~/.mutt/certificates
 
 set editor="vim"
 set edit_headers
+my_hdr Return-Receipt-To: urbainvaes90@gmail.com
 
 set include=yes
 
 set sendmail="/usr/sbin/ssmtp"
 
+# Sorting options
 set sort         = threads
 set sort_aux     = reverse-last-date-received
 set sort_browser = reverse-date
-set allow_ansi   = yes
 
-source ~/mutt-colors-solarized/mutt-colors-solarized-light-16.muttrc
+# Colorscheme for inside mutt
+source `sh /home/urbain/.colormutt`
 
+# macro index G "|fetchmail\n"
+macro index G "!fetchmail \n"
+
+# HTML messages
+auto_view text/html
+
+set reverse_alias
 alias krystle Krystle Acquah <krystle.acquah-arhin13@imperial.ac.uk>
-alias khoi Binh-Khoi Nguyen <khoi@member.fsf.org>
+alias khoi Khoi Nguyen <khoi@member.fsf.org>
 alias me Urbain Vaes <urbainvaes90@gmail.com>
-alias amanda \"Diez Fernandez, Amanda\" <amanda.diez10@imperial.ac.uk>
-alias vaes Christophe & Nathalie Vaes Van den Bogaert <vaesvdb@gmail.com>
+alias amanda Amanda Diez <amanda.diez10@imperial.ac.uk>
+alias vaes Christophe & Nathalies Vaes  <vaesvdb@gmail.com>
+alias greg Supervisor <g.pavliotis@imperial.ac.uk>

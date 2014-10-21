@@ -3,9 +3,13 @@ keycode 94 = backslash asciicircum
 
 ! Make caps lock a modifier
 clear Lock
-keycode 66  = Mode_switch
+keycode 66 = Control_L
+add Control = Control_L
 
-! Numbers
+
+keycode 94 = Mode_switch
+
+!Numbers
 keycode 43 = d D 0
 keycode 58 = m M 1
 keycode 59 = w W 2

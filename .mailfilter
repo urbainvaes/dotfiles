@@ -2,4 +2,7 @@ HOME=/home/urbain
 DEFAULT=/home/urbain/.mail
 logfile "$HOME/.maillog"
 
-
+# if (/^To:.*.ac.uk/)
+# {
+#     to .mail/imperial
+# }

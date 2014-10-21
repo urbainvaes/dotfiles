@@ -1,0 +1,12 @@
+#!/bin/bash
+h=`date +%H`
+
+if [ $h -lt 9 ]; then
+    theme=dark
+elif [ $h -lt 18 ]; then
+    theme=light
+else
+    theme=dark
+fi
+
+echo "/home/urbain/mutt-colors-solarized/mutt-colors-solarized-"$theme"-16.muttrc"

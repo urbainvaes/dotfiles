@@ -1,8 +1,4 @@
 # Key remapping
-# todo: add vim support
-#
-~/xcape/xcape -e 'Shift_L=Escape'
-xmodmap -quiet ~/.xmodmap
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -29,10 +25,10 @@ ZSH_THEME="eastwood"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -81,7 +77,31 @@ alias -s vim=vim
 alias -s cpp=vim
 alias -s c=vim
 alias -s tex=vim
-
+alias -s pdf=zathura
 alias tmux="TERM=screen-256color-bce tmux"
+alias g='git'
+alias v=$EDITOR
+alias u='cd ~/phd'
+alias up='cd ~/phd/programs'
+alias ul='cd ~/phd/literature'
+alias ur='cd ~/phd/reports'
+alias mutt='fetchmail -s & mutt'
 
-bindkey -v
+# Fix smart search history
+bindkey "^[[A" history-beginning-search-backward
+bindkey "^[[B" history-beginning-search-forward
+
+sleep 1
+h=`date +%H`
+if [ $h -lt 9 ]; then
+    xdotool key Alt+t p Down Return
+elif [ $h -lt 18 ]; then
+    xdotool key Alt+t p Down Down Return
+else
+    xdotool key Alt+t p Down Return
+fi
+
+# setxkbmap -option ctrl:swapcaps
+xmodmap ~/.xmodmap
+~/xcape/xcape -e 'Shift_L=Escape'
+# ~/xcape/xcape -e 'Shift_R=Tab'
