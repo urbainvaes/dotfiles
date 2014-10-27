@@ -82,7 +82,8 @@ alias tmux="TERM=screen-256color-bce tmux"
 alias g='git'
 alias v=$EDITOR
 alias u='cd ~/Dropbox/phd'
-alias up='cd ~/Dropbox/phd/programs'
+alias uc='cd ~/Dropbox/phd/programs'
+alias up='cd ~/Dropbox/phd/presentations'
 alias ul='cd ~/Dropbox/phd/literature'
 alias ur='cd ~/Dropbox/phd/reports'
 alias m='mutt'
