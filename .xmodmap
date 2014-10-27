@@ -10,9 +10,13 @@ add Control = Control_L
 keycode 94 = Mode_switch
 
 !Numbers
+keycode 65 = space space 0
 keycode 43 = d D 0
+keycode 39 = o O 1
 keycode 58 = m M 1
+keycode 40 = e E 2
 keycode 59 = w W 2
+keycode 41 = u U 3
 keycode 60 = v V 3
 keycode 44 = h H 4
 keycode 45 = t T 5

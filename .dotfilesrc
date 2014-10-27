@@ -18,8 +18,8 @@ done
 
 # Fetchmailrc (protect sensitive information)
 mv ~/.fetchmailrc $olddir
-# cp $dir/.fetchmailrc ~
-# vim ~/.fetchmailrc
+cp $dir/.fetchmailrc ~
+vim ~/.fetchmailrc
 # read password
 # sed -i 's/xx_change_me_xx/'$password'/g' ~/.fetchmailrc
 
@@ -29,7 +29,7 @@ sudo mv /etc/ssmtp/ssmtp.conf $olddir
 sudo ln -s $dir/ssmtp.conf /etc/ssmtp/
 
 # Permissions
-# sudo chmod 600 ~/.fetchmailrc
+sudo chmod 600 ~/.fetchmailrc
 sudo chmod 600 $dir/.mailfilter
 
 sudo rm -rf .vim/bundle

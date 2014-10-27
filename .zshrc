@@ -81,11 +81,12 @@ alias -s pdf=zathura
 alias tmux="TERM=screen-256color-bce tmux"
 alias g='git'
 alias v=$EDITOR
-alias u='cd ~/phd'
-alias up='cd ~/phd/programs'
-alias ul='cd ~/phd/literature'
-alias ur='cd ~/phd/reports'
-alias mutt='fetchmail -s & mutt'
+alias u='cd ~/Dropbox/phd'
+alias up='cd ~/Dropbox/phd/programs'
+alias ul='cd ~/Dropbox/phd/literature'
+alias ur='cd ~/Dropbox/phd/reports'
+alias m='mutt'
+alias f='fetchmail'
 
 # Fix smart search history
 bindkey "^[[A" history-beginning-search-backward
@@ -103,5 +104,5 @@ fi
 
 # setxkbmap -option ctrl:swapcaps
 xmodmap ~/.xmodmap
-~/xcape/xcape -e 'Shift_L=Escape'
+# ~/xcape/xcape -e 'Shift_L=Escape'
 # ~/xcape/xcape -e 'Shift_R=Tab'
