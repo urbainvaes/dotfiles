@@ -30,6 +30,7 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsEditSplit="horizontal"
 let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
+let g:ctrlp_open_new_file = 't'
 noremap <c-tab> :UltiSnipsEdit<Return>
 
 "  Latex-Box
@@ -144,7 +145,7 @@ nnoremap <Leader>h :set hlsearch!<cr>
 nnoremap <Leader>n :set relativenumber!<cr>
 nnoremap <Leader>q :q!<cr>
 nnoremap <Leader>sv :source ~/.vimrc<cr>
-nnoremap <Leader>sc ;source %
+nnoremap <Leader>sc :source %
 nnoremap <Leader>w :w<cr>
 nnoremap <Leader>te :tabedit 
 nnoremap <Leader>tn :tabnew<cr>
@@ -175,6 +176,13 @@ vnoremap gj j
 vnoremap gk k
 vnoremap g$ $
 vnoremap g^ ^
+
+"  Convenient maps
+" nnoremap e j
+" nnoremap u k
+" nnoremap j e
+" nnoremap k u
+
 ""  Latex  
 nmap <buffer> <F2> <Plug>LatexChangeEnv
 let g:tex_fast="" 
@@ -193,7 +201,7 @@ autocmd Filetype tex call SetTexOptions()
 hi Cursor guifg=white guibg=blue
 hi iCursor guifg=black guibg=green
 hi! link conceal normal
-hi! link folded normal
+hi! link folded comment
 
 ""  Functions  
 function! Tex_ForwardSearchLaTeX()

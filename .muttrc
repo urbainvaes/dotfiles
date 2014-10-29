@@ -1,3 +1,11 @@
+source /usr/share/doc/mutt/examples/gpg.rc
+set pgp_use_gpg_agent = yes
+set pgp_sign_as = 08AC6A48
+set pgp_timeout = 3600
+set crypt_autosign = no
+set crypt_replyencrypt = yes
+set fcc_clear = yes
+
 set from             = "u.vaes13@imperial.ac.uk"
 set realname         = "Urbain Vaes"
 set use_from         = yes
@@ -15,7 +23,6 @@ set certificate_file = ~/.mutt/certificates
 
 set editor="vim"
 set edit_headers
-my_hdr Return-Receipt-To: urbainvaes90@gmail.com
 
 set include=yes
 

@@ -47,7 +47,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(vi-mode git)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -78,6 +78,7 @@ alias -s cpp=vim
 alias -s c=vim
 alias -s tex=vim
 alias -s pdf=zathura
+
 alias tmux="TERM=screen-256color-bce tmux"
 alias g='git'
 alias v=$EDITOR
@@ -104,6 +105,6 @@ else
 fi
 
 # setxkbmap -option ctrl:swapcaps
-xmodmap ~/.xmodmap
+sh ~/.xmodmap
 # ~/xcape/xcape -e 'Shift_L=Escape'
 # ~/xcape/xcape -e 'Shift_R=Tab'
