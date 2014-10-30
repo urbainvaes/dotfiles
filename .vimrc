@@ -201,7 +201,6 @@ autocmd Filetype tex call SetTexOptions()
 hi Cursor guifg=white guibg=blue
 hi iCursor guifg=black guibg=green
 hi! link conceal normal
-hi! link folded comment
 
 ""  Functions  
 function! Tex_ForwardSearchLaTeX()
