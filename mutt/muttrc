@@ -1,3 +1,10 @@
+# IMAP: offlineimap
+set folder = "~/.mail"
+source ~/.mutt/mailboxes
+set spoolfile = "+account/INBOX"
+set record = "+account/Sent\ Items"
+set postponed = "+account/Drafts"
+
 source /usr/share/doc/mutt/examples/gpg.rc
 set pgp_use_gpg_agent = yes
 set pgp_sign_as = 08AC6A48
@@ -11,11 +18,11 @@ set realname         = "Urbain Vaes"
 set use_from         = yes
 set envelope_from    = "yes"
 
-set folder           = "~/Mail"
-set spoolfile        = /home/urbain/.mail
-set record           = "+sent"
-set postponed        = "+postponed"
-set move             = no
+# set folder           = "~/Mail"
+# set spoolfile        = /home/urbain/.mail
+# set record           = "+sent"
+# set postponed        = "+postponed"
+# set move             = no
 
 set header_cache     = ~/.mutt/cache/headers
 set message_cachedir = ~/.mutt/cache/bodies
@@ -23,9 +30,7 @@ set certificate_file = ~/.mutt/certificates
 
 set editor="vim"
 set edit_headers
-
 set include=yes
-
 set sendmail="/usr/sbin/ssmtp"
 
 # Sorting options
@@ -34,7 +39,7 @@ set sort_aux     = reverse-last-date-received
 set sort_browser = reverse-date
 
 # Colorscheme for inside mutt
-source `sh /home/urbain/.colormutt`
+source `sh /home/urbain/.mutt/colormutt`
 
 # macro index G "|fetchmail\n"
 macro index G "!fetchmail \n"

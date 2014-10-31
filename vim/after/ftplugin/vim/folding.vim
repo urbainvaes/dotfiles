@@ -23,4 +23,3 @@ endfunction
 setlocal foldmethod=expr
 setlocal foldexpr=VimFolds()
 setlocal foldtext=VimFoldText()
-hi link folded comment

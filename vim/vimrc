@@ -28,10 +28,12 @@ filetype plugin indent on
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsListSnippets="<c-l>"
 let g:UltiSnipsEditSplit="horizontal"
-let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"
+let g:UltiSnipsSnippetsDir="~/.vim/mySnippets"
+let g:UltiSnipsSnippetDirectories=['UltiSnips', 'mySnippets']
 let g:ctrlp_open_new_file = 't'
-noremap <c-tab> :UltiSnipsEdit<Return>
+noremap <c-h> :UltiSnipsEdit<Return>
 
 "  Latex-Box
 let g:tex_flavor='latex'
@@ -91,7 +93,7 @@ set listchars=tab:▸\ ,eol:¬
 set fillchars=fold:\ ,vert:\ ,
 set showbreak=...
 set colorcolumn=0
-set scrolloff=3
+set scrolloff=0
 if has('gui_running')
     set t_Co=256
 else
@@ -107,17 +109,6 @@ set textwidth=0
 set conceallevel=2
 set guifont=Monaco\ 11
 
-"  Colorscheme
-function! UpdateColorscheme()
-    if strftime("%H") >= 9 && strftime("%H") < 18
-        set background=light
-    else
-        set background=dark
-    endif
-endfunction
-try | colorscheme solarized | catch | endtry
-call UpdateColorscheme()
-autocmd! BufNewFile,BufRead,BufWrite * :call UpdateColorscheme()
 
 "  Case and spell
 set nospell
@@ -130,6 +121,23 @@ set wildmenu
 set cpoptions+=I
 set encoding=utf-8
 
+""  Colorscheme
+function! UpdateColorscheme()
+    try | colorscheme solarized | catch | endtry
+    if strftime("%H") >= 9 && strftime("%H") < 18
+        set background=light
+    else
+        set background=dark
+    endif
+
+    echom
+
+    hi Cursor guifg=white guibg=blue
+    hi iCursor guifg=black guibg=green
+    hi! link conceal normal
+    hi! link folded comment
+endfunction
+autocmd! BufNewFile,BufRead,BufWrite * :call UpdateColorscheme()
 
 ""  Custom mappings
 
@@ -197,10 +205,6 @@ command! LatexEvinceSearch call LatexEvinceSearch()
 autocmd FileType tex map <F6> :silent LatexEvinceSearch <Return>
 autocmd Filetype tex call SetTexOptions()
 
-"  Layout
-hi Cursor guifg=white guibg=blue
-hi iCursor guifg=black guibg=green
-hi! link conceal normal
 
 ""  Functions  
 function! Tex_ForwardSearchLaTeX()

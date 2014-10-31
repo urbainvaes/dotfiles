@@ -78,6 +78,7 @@ alias -s cpp=vim
 alias -s c=vim
 alias -s tex=vim
 alias -s pdf=zathura
+alias -s py=vim
 
 alias tmux="TERM=screen-256color-bce tmux"
 alias g='git'
@@ -89,6 +90,17 @@ alias ul='cd ~/Dropbox/phd/literature'
 alias ur='cd ~/Dropbox/phd/reports'
 alias m='mutt'
 alias f='fetchmail'
+alias a='vifm'
+alias mn='vim .mynotes'
+
+# Configuration
+alias zconf='vim ~/.zshrc'
+alias mconf='vim ~/.mutt/muttrc'
+alias vconf='vim ~/.vim/vimrc'
+alias zaconf='vim ~/.zathurarc'
+alias tconf='vim ~/.tmux.conf'
+alias viconf='vim ~/.vifm/vifmrc'
+alias oconf='vim ~/.offlineimaprc'
 
 # Fix smart search history
 bindkey "^[[A" history-beginning-search-backward
