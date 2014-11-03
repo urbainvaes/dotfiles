@@ -89,9 +89,10 @@ alias up='cd ~/Dropbox/phd/presentations'
 alias ul='cd ~/Dropbox/phd/literature'
 alias ur='cd ~/Dropbox/phd/reports'
 alias m='mutt'
-alias f='fetchmail'
 alias a='vifm'
 alias mn='vim .mynotes'
+alias x='sh ~/.xmodmap'
+alias mail='offlineimap'
 
 # Configuration
 alias zconf='vim ~/.zshrc'
@@ -101,12 +102,13 @@ alias zaconf='vim ~/.zathurarc'
 alias tconf='vim ~/.tmux.conf'
 alias viconf='vim ~/.vifm/vifmrc'
 alias oconf='vim ~/.offlineimaprc'
+alias xconf='vim ~/.xmodmap'
 
 # Fix smart search history
 bindkey "^[[A" history-beginning-search-backward
 bindkey "^[[B" history-beginning-search-forward
 
-sleep 1
+sleep 2
 h=`date +%H`
 if [ $h -lt 9 ]; then
     xdotool key Alt+t p Down Return
@@ -117,6 +119,6 @@ else
 fi
 
 # setxkbmap -option ctrl:swapcaps
-sh ~/.xmodmap
+# sh ~/.xmodmap
 # ~/xcape/xcape -e 'Shift_L=Escape'
 # ~/xcape/xcape -e 'Shift_R=Tab'

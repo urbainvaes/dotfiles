@@ -1,10 +1,45 @@
-# IMAP: offlineimap
-set folder = "~/.mail"
-source ~/.mutt/mailboxes
-set spoolfile = "+account/INBOX"
-set record = "+account/Sent\ Items"
-set postponed = "+account/Drafts"
+# General information
+set from             = "urbain.p.vaes@gmail.com"
+set realname         = "Urbain Vaes"
+set use_from         = yes
+set envelope_from    = "yes"
 
+# Folders
+set folder = "~/.mail"
+set folder           = ~/.mail
+set alias_file       = ~/.mutt/alias
+set header_cache     = ~/.mutt/cache/headers
+set message_cachedir = ~/.mutt/cache/bodies
+set certificate_file = ~/.mutt/certificates
+set mailcap_path     = ~/.mutt/mailcap
+set tmpdir           = ~/.mutt/temp
+set signature        = ~/.mutt/sig
+
+# Maildirs
+set spoolfile = "+Main/Main"
+set record    = "+Main/Sent"
+set postponed = "+Main/Drafts"
+
+# Status Bar
+set status_chars  = " *%A"
+set status_format = "───( Folder: %f )───(%r%m messages%?n? (%n new)?%?d?\
+                     (%d to delete)?%?t? (%t tagged)? )───%>─%?p?( %p postponed )?───"
+
+# Headers
+ignore *
+unignore from: to: cc: date: subject:
+unhdr_order *
+hdr_order from: to: cc: date: subject:
+
+# Mailboxes
+mailboxes +Main/Main \
+          +Imperial/Imperial \
+          +Hotmail/Hotmail \
+          +Gmail/Gmail \
+          +Main/Sent \
+          +Main/Drafts \
+
+# Encryption
 source /usr/share/doc/mutt/examples/gpg.rc
 set pgp_use_gpg_agent = yes
 set pgp_sign_as = 08AC6A48
@@ -13,24 +48,22 @@ set crypt_autosign = no
 set crypt_replyencrypt = yes
 set fcc_clear = yes
 
-set from             = "u.vaes13@imperial.ac.uk"
-set realname         = "Urbain Vaes"
-set use_from         = yes
-set envelope_from    = "yes"
+# Pager
+set pager_index_lines = 10 # number of index lines to show
+set pager_context = 3      # number of context lines to show
+set pager_stop             # don't go to next message automatically
+set menu_scroll            # scroll in menus
+set tilde                  # show tildes like in vim
+unset markers              # no ugly plus signs
+set quote_regexp = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
+alternative_order text/plain text/enriched text/html
 
-# set folder           = "~/Mail"
-# set spoolfile        = /home/urbain/.mail
-# set record           = "+sent"
-# set postponed        = "+postponed"
-# set move             = no
-
-set header_cache     = ~/.mutt/cache/headers
-set message_cachedir = ~/.mutt/cache/bodies
-set certificate_file = ~/.mutt/certificates
-
+# Email editing
 set editor="vim"
 set edit_headers
 set include=yes
+
+# Mail out
 set sendmail="/usr/sbin/ssmtp"
 
 # Sorting options
@@ -41,11 +74,61 @@ set sort_browser = reverse-date
 # Colorscheme for inside mutt
 source `sh /home/urbain/.mutt/colormutt`
 
-# macro index G "|fetchmail\n"
-macro index G "!fetchmail \n"
-
 # HTML messages
 auto_view text/html
+
+# Key bindings
+bind generic l select-entry
+
+bind index,browser g top-page
+bind index,browser GG bottom-page
+bind pager,index,browser \Cb previous-page
+bind pager,index,browser \Cf next-page
+
+bind index gg first-entry
+bind index G last-entry
+
+## Bindings
+# Generic
+bind generic l select-entry
+bind generic <right> select-entry
+
+# Index
+bind index l display-message
+bind index h change-folder
+bind index <right> display-message
+bind index <left> change-folder
+bind index H display-toggle-weed
+macro index , '<change-folder>!^M'
+macro index I '<tag-pattern>~N^M<tag-prefix><toggle-new><tag-prefix><tag-entry>'
+
+#       Pager
+bind    pager   j         next-line
+bind    pager   k         previous-line
+bind    pager   h         exit
+bind    pager   l         view-attachments
+bind    pager   <down>    next-line
+bind    pager   <up>      previous-line
+bind    pager   <left>    exit
+bind    pager   <right>   view-attachments
+bind    pager   H         display-toggle-weed
+macro   pager   ,         '<change-folder>!^M'
+
+# Attach 
+bind   attach   l         view-attach
+bind   attach   <right>   view-attach
+bind   attach   h         exit
+bind   attach   <left>    exit
+bind   attach   H         display-toggle-weed
+
+# Compose
+bind   compose   l         view-attach
+bind   compose   <right>   view-attach
+
+# Sidebar Navigation ---------------------------------
+bind   index,pager J sidebar-next
+bind   index,pager K sidebar-prev
+bind   index,pager O sidebar-open
 
 set reverse_alias
 alias krystle Krystle Acquah <krystle.acquah-arhin13@imperial.ac.uk>
