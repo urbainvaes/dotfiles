@@ -105,8 +105,8 @@ alias oconf='vim ~/.offlineimaprc'
 alias xconf='vim ~/.xmodmap'
 
 # Fix smart search history
-bindkey "^[[A" history-beginning-search-backward
-bindkey "^[[B" history-beginning-search-forward
+bindkey -a 'k' history-beginning-search-backward
+bindkey -a 'j' history-beginning-search-forward
 
 sleep 2
 h=`date +%H`
@@ -117,8 +117,3 @@ elif [ $h -lt 18 ]; then
 else
     xdotool key Alt+t p Down Return
 fi
-
-# setxkbmap -option ctrl:swapcaps
-# sh ~/.xmodmap
-# ~/xcape/xcape -e 'Shift_L=Escape'
-# ~/xcape/xcape -e 'Shift_R=Tab'

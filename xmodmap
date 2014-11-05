@@ -6,7 +6,7 @@ xmodmap -e "clear Lock"
 xmodmap -e "keycode 66 = Control_L"
 xmodmap -e "add Control = Control_L"
 
-
+# New mode switch
 xmodmap -e "keycode 94 = Mode_switch"
 
 # Numbers
@@ -29,3 +29,4 @@ xmodmap -e "keycode 32 = r R 9"
 xmodmap -e "keycode 47 = s S dollar"
 
 /home/urbain/xcape/xcape -e 'Control_L=Escape'
+/home/urbain/xcape/xcape -e 'Shift_L=Escape'
