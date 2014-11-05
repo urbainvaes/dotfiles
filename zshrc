@@ -88,7 +88,7 @@ alias uc='cd ~/Dropbox/phd/programs'
 alias up='cd ~/Dropbox/phd/presentations'
 alias ul='cd ~/Dropbox/phd/literature'
 alias ur='cd ~/Dropbox/phd/reports'
-alias m='offlineimap -u quiet & mutt'
+alias m='mutt'
 alias a='vifm'
 alias mn='vim .mynotes'
 alias x='sh ~/.xmodmap'
@@ -108,14 +108,19 @@ alias xconf='vim ~/.xmodmap'
 bindkey -a 'k' history-beginning-search-backward
 bindkey -a 'j' history-beginning-search-forward
 
+# Colorscheme
 sleep 2
 h=`date +%H`
 if [ $h -lt 9 ]; then
     xdotool key Alt+t p Down Return
-elif [ $h -lt 18 ]; then
+    eval `dircolors ~/dircolors-solarized/dircolors.ansi-dark`
+elif [ $h -lt 17 ]; then
     xdotool key Alt+t p Down Down Return
+    eval `dircolors ~/dircolors-solarized/dircolors.ansi-light`
 else
     xdotool key Alt+t p Down Return
+    eval `dircolors ~/dircolors-solarized/dircolors.ansi-dark`
 fi
 
-crontab ~/.crontab
+# Crontab jobs
+crontab ~/dotfiles/crontab
