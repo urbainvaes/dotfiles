@@ -4,7 +4,7 @@ dir=~/dotfiles
 olddir=~/dotfiles_old
 
 # Files to sync
-files="vim mutt vifm bashrc zshrc xmodmap mynotes tmux.conf zathurarc offlineimaprc"
+files="vim mutt vifm bashrc zshrc xmodmap mynotes tmux.conf zathurarc offlineimaprc inputrc"
 
 rm -rf $olddir
 mkdir -p $olddir
