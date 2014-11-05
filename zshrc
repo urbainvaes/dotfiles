@@ -117,3 +117,5 @@ elif [ $h -lt 18 ]; then
 else
     xdotool key Alt+t p Down Return
 fi
+
+crontab ~/.crontab
