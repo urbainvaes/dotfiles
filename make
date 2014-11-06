@@ -4,7 +4,7 @@ dir=~/dotfiles
 olddir=~/dotfiles_old
 
 # Files to sync
-files="vim mutt vifm bashrc zshrc xmodmap mynotes tmux.conf zathurarc offlineimaprc inputrc crontab"
+files="vim mutt vifm bashrc zshrc xmodmap mynotes tmux.conf zathurarc offlineimaprc inputrc crontab krystle"
 
 rm -rf $olddir
 mkdir -p $olddir
@@ -16,22 +16,19 @@ for file in $files; do
     ln -s $dir/$file ~/.$file
 done
 
-# Fetchmailrc (protect sensitive information)
-# mv ~/.fetchmailrc $olddir
-# cp $dir/.fetchmailrc ~
-# vim ~/.fetchmailrc
-# read password
-# sed -i 's/xx_change_me_xx/'$password'/g' ~/.fetchmailrc
-
 # SSMTP config
 echo ssmtp.conf
 sudo mv /etc/ssmtp/ssmtp.conf $olddir
 sudo ln -s $dir/ssmtp.conf /etc/ssmtp/
 
-# Permissions
+# Solarized
 cd
-sudo chmod 600 ~/.fetchmailrc
-sudo chmod 600 $dir/.mailfilter
+rm -rf .solarized
+mkdir .solarized
+cd .solarized
+git clone https://github.com/altercation/mutt-colors-solarized
+git clone https://github.com/Anthony25/gnome-terminal-colors-solarized/
+git clone https://github.com/seebi/dircolors-solarized
 
 sudo rm -rf .vim/bundle
 mkdir .vim/bundle

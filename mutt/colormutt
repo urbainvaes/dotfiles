@@ -9,4 +9,4 @@ else
     theme=dark
 fi
 
-echo "/home/urbain/.mutt/mutt-colors-solarized/mutt-colors-solarized-"$theme"-16.muttrc"
+echo "/home/urbain/.solarized/mutt-colors-solarized/mutt-colors-solarized-"$theme"-16.muttrc"
