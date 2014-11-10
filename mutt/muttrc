@@ -78,57 +78,44 @@ source `sh /home/urbain/.mutt/colormutt`
 auto_view text/html
 
 # Key bindings
-bind generic l select-entry
-
-bind index,browser g top-page
-bind index,browser GG bottom-page
-bind pager,index,browser \Cb previous-page
-bind pager,index,browser \Cf next-page
-
-bind index gg first-entry
-bind index G last-entry
+bind   index   gg    first-entry
+bind   index   G     last-entry
+bind   index   \Cf   next-page
+bind   index   \Cb   previous-page
 
 ## Bindings
-# Generic
-bind generic l select-entry
-bind generic <right> select-entry
 
 # Index
-bind index l display-message
-bind index h change-folder
-bind index <right> display-message
-bind index <left> change-folder
-bind index H display-toggle-weed
-macro index , '<change-folder>!^M'
-macro index I '<tag-pattern>~N^M<tag-prefix><toggle-new><tag-prefix><tag-entry>'
+bind   index   l   display-message
+bind   index   h   quit
+bind   index   q   change-folder
+bind   index   G   group-reply
 
-#       Pager
-bind    pager   j         next-line
-bind    pager   k         previous-line
-bind    pager   h         exit
-bind    pager   l         view-attachments
-bind    pager   <down>    next-line
-bind    pager   <up>      previous-line
-bind    pager   <left>    exit
-bind    pager   <right>   view-attachments
-bind    pager   H         display-toggle-weed
-macro   pager   ,         '<change-folder>!^M'
+# Attach
+bind   attach   h   exit
 
-# Attach 
-bind   attach   l         view-attach
-bind   attach   <right>   view-attach
-bind   attach   h         exit
-bind   attach   <left>    exit
-bind   attach   H         display-toggle-weed
+# Pager
+bind   pager   j    next-line
+bind   pager   k    previous-line
+bind   pager   "}"  next-entry
+bind   pager   "{"  previous-entry
+bind   pager   h    exit
+bind   pager   N    search-opposite
+bind   pager   R    group-reply
+bind   pager   gg   top
+bind   pager   G    bottom
+macro  index c "<change-folder>?<toggle-mailboxes>" "change folder"
 
-# Compose
-bind   compose   l         view-attach
-bind   compose   <right>   view-attach
-
-# Sidebar Navigation ---------------------------------
+# Sidebar Navigation
 bind   index,pager J sidebar-next
 bind   index,pager K sidebar-prev
 bind   index,pager O sidebar-open
+
+# Compose
+bind compose p postpone-message
+
+
+##  Aliases
 
 set reverse_alias
 alias krystle Krystle Acquah <krystle.acquah-arhin13@imperial.ac.uk>

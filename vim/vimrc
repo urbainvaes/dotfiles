@@ -125,7 +125,7 @@ set encoding=utf-8
 ""  Colorscheme
 function! UpdateColorscheme()
     try | colorscheme solarized | catch | endtry
-    if strftime("%H") >= 9 && strftime("%H") < 18
+    if strftime("%H") >= 9 && strftime("%H") < 17
         set background=light
     else
         set background=dark

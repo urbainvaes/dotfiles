@@ -3,7 +3,7 @@ h=`date +%H`
 
 if [ $h -lt 9 ]; then
     theme=dark
-elif [ $h -lt 18 ]; then
+elif [ $h -lt 17 ]; then
     theme=light
 else
     theme=dark
