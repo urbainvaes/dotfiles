@@ -30,7 +30,8 @@ git clone https://github.com/altercation/mutt-colors-solarized
 git clone https://github.com/Anthony25/gnome-terminal-colors-solarized/
 git clone https://github.com/seebi/dircolors-solarized
 
-sudo rm -rf .vim/bundle
+cd
+rm -rf .vim/bundle
 mkdir .vim/bundle
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 vim +PluginInstall +qall
