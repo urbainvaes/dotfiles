@@ -80,15 +80,19 @@ alias -s tex=vim
 alias -s pdf=zathura
 alias -s py=vim
 
-alias tmux="TERM=screen-256color-bce tmux"
-alias g='git'
-alias v=$EDITOR
+# Easy access to directories
 alias u='cd ~/Dropbox/phd'
 alias uc='cd ~/Dropbox/phd/programs'
 alias up='cd ~/Dropbox/phd/presentations'
 alias ul='cd ~/Dropbox/phd/literature'
 alias ur='cd ~/Dropbox/phd/reports'
 alias cdd='cd ~/dotfiles'
+
+# Easy access to programs
+alias tmux="TERM=screen-256color-bce tmux"
+alias g='git'
+alias v='vim'
+alias vs="vim --servername SYNCTEX"
 alias c='clear'
 alias m='mutt'
 alias a='vifm'
