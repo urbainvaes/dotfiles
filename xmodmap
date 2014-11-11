@@ -8,6 +8,7 @@ xmodmap -e "add Control = Control_L"
 
 # New mode switch
 xmodmap -e "keycode 94 = Mode_switch"
+xmodmap -e "keycode 64 = Alt_L"
 
 # Numbers
 xmodmap -e "keycode 65 = space space 0"
