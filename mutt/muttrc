@@ -27,9 +27,9 @@ set status_format = "───( Folder: %f )───(%r%m messages%?n? (%n new)
 
 # Headers
 ignore *
-unignore from: to: cc: date: subject:
-unhdr_order *
-hdr_order from: to: cc: date: subject:
+# unignore from: to: cc: date: subject:
+# unhdr_order *
+# hdr_order from: to: cc: date: subject:
 
 # Mailboxes
 mailboxes +Main/Main \
