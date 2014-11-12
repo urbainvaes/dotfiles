@@ -49,12 +49,12 @@ set crypt_replyencrypt = yes
 set fcc_clear = yes
 
 # Pager
-set pager_index_lines = 10 # number of index lines to show
-set pager_context = 3      # number of context lines to show
+set pager_index_lines = 10
+set pager_context = 0      # number of context lines to show
 set pager_stop             # don't go to next message automatically
 set menu_scroll            # scroll in menus
 set tilde                  # show tildes like in vim
-unset markers              # no ugly plus signs
+unset markers
 set quote_regexp = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
 alternative_order text/plain text/enriched text/html
 
@@ -65,6 +65,8 @@ set include=yes
 
 # Mail out
 set sendmail="/usr/sbin/ssmtp"
+
+set beep_new
 
 # Sorting options
 set sort         = threads
@@ -86,10 +88,10 @@ bind   index   \Cb   previous-page
 ## Bindings
 
 # Index
-bind   index   l   display-message
+# bind   index   l   display-message
 bind   index   h   quit
 bind   index   q   change-folder
-bind   index   G   group-reply
+bind   index   R   group-reply
 
 # Attach
 bind   attach   h   exit
@@ -97,8 +99,8 @@ bind   attach   h   exit
 # Pager
 bind   pager   j    next-line
 bind   pager   k    previous-line
-bind   pager   "}"  next-entry
-bind   pager   "{"  previous-entry
+bind   pager   "J"  next-entry
+bind   pager   "K"  previous-entry
 bind   pager   h    exit
 bind   pager   N    search-opposite
 bind   pager   R    group-reply
@@ -107,12 +109,16 @@ bind   pager   G    bottom
 macro  index c "<change-folder>?<toggle-mailboxes>" "change folder"
 
 # Sidebar Navigation
-bind   index,pager J sidebar-next
-bind   index,pager K sidebar-prev
+bind   index,pager "}" sidebar-next
+bind   index,pager "{" sidebar-prev
 bind   index,pager O sidebar-open
 
 # Compose
 bind compose p postpone-message
+
+
+## Hooks
+mbox-hook .* "+Main/Main"
 
 
 ##  Aliases
