@@ -48,6 +48,10 @@ alias cdd='cd ~/dotfiles'
 alias tmux="TERM=screen-256color-bce tmux"
 alias g='git'
 alias v=$EDITOR
+alias tmux="TERM=screen-256color-bce tmux"
+alias g='git'
+alias v='vim'
+alias vs="vim --servername SYNCTEX"
 alias c='clear'
 alias m='mutt'
 alias a='vifm'

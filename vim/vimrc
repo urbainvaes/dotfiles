@@ -53,15 +53,26 @@ function! SynctexShow()
         exec execline
     end
 endfunction
-nnoremap <Leader>lv :call SynctexShow()<CR><CR>
-nnoremap <Leader>lc :Latexmk<CR>
-nnoremap <Leader>ls :LatexmkStop<CR>:LatexmkClean<CR>
+
+" Access
+nnoremap <LocalLeader>a :call SynctexShow()<CR><CR>
+
+" Initiate
+nnoremap <LocalLeader>i :Latexmk<CR>
+
+" Open
+nnoremap <LocalLeader>o :LatexView<CR>
+
+" Kill
+nnoremap <LocalLeader>k :LatexmkStop<CR>:LatexmkClean<CR>
 
 "  Gundo
 nnoremap <F5> :GundoToggle<cr>
 
 "  Nerdtree
 nnoremap <F3> :NERDTreeToggle<cr>
+
+
 let NERDTreeIgnore=['\.pdf$', '\~$','\.toc$',
             \ '\.fls$','\.bbl$','\.blg$',
             \ '\.out$', '\.log$','\.aux$','\.sty$',
