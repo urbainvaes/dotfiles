@@ -39,6 +39,10 @@ mailboxes +Main/Main \
           +Main/Sent \
           +Main/Drafts \
 
+# Prompts
+set delete = yes
+set quit = yes
+
 # Encryption
 source /usr/share/doc/mutt/examples/gpg.rc
 set pgp_use_gpg_agent = yes
