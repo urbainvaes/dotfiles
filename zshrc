@@ -58,7 +58,7 @@ alias a='vifm'
 alias mn='vim ~/.mynotes'
 alias x='sh ~/.xmodmap'
 alias mail='offlineimap'
-# alias clear='print "\ec"'
+alias ca='printf "\ec"'
 
 # Configuration
 alias ez='vim ~/.zshrc'
