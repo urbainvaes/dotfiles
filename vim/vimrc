@@ -18,7 +18,7 @@ Plugin 'Tabular'
 Plugin 'tComment'
 Plugin 'Gundo'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'klen/python-mode'
+" Plugin 'klen/python-mode'
 Plugin 'honza/vim-snippets'
 
 filetype plugin indent on
@@ -109,7 +109,7 @@ set incsearch
 set noswapfile
 set nowritebackup
 set undofile
-set undodir=/home/urbain/.vimundo/
+set undodir=/home/urbain/.vim/vimundo/
 
 "  Layout window
 set nonumber
@@ -167,23 +167,21 @@ autocmd! BufNewFile,BufRead,BufWrite * :call UpdateColorscheme()
 
 ""  Custom mappings
 
-"  Definition of leader and localleader
+"  Leader maps
 let mapleader = "\\"
 let maplocalleader = "-"
-
-"  Leader maps
 nmap <Space> <Leader>
-nmap <Leader>p <c-p> 
-nmap <Leader>t <c-w>
-nnoremap <Leader>h :set hlsearch!<cr>
-nnoremap <Leader>n :set relativenumber!<cr>
-nnoremap <Leader>q :q!<cr>
-nnoremap <Leader>sv :source ~/.vim/vimrc<cr>
-nnoremap <Leader>sc :source %
-nnoremap <Leader>w :w<cr>
+
+" General
 nnoremap <Leader>te :tabedit 
 nnoremap <Leader>tn :tabnew<cr>
 nnoremap <Leader>to :tabonly<cr>
+nnoremap <Leader>w :w<cr>
+nnoremap <Leader>q :q!<cr>
+nnoremap <Leader>h :set hlsearch!<cr>
+nnoremap <Leader>n :set relativenumber!<cr>
+nnoremap <Leader>sv :source ~/.vim/vimrc<cr>
+nnoremap <Leader>sc :source %
 
 "  Other maps
 nnoremap <Return> o<Esc>
