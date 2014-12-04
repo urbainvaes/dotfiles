@@ -18,7 +18,7 @@ Plugin 'Tabular'
 Plugin 'tComment'
 Plugin 'Gundo'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'klen/python-mode'
+" Plugin 'klen/python-mode'
 Plugin 'honza/vim-snippets'
 
 filetype plugin indent on
@@ -279,4 +279,3 @@ augroup autorelead_vimrc
     au! 
     au BufWritePost ~/.vim/vimrc source ~/.vim/vimrc
 augroup END
-
