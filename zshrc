@@ -80,13 +80,13 @@ bindkey -a 'j' history-beginning-search-forward
 sleep 2
 h=`date +%H`
 if [ $h -lt 9 ]; then
-    xdotool key Alt+t p Down Return
+    xdotool key Alt+t p Down Right Return
     eval `dircolors ~/.solarized/dircolors-solarized/dircolors.ansi-dark`
 elif [ $h -lt 17 ]; then
-    xdotool key Alt+t p Down Down Return
+    xdotool key Alt+t p Down Down Right Return
     eval `dircolors ~/.solarized/dircolors-solarized/dircolors.ansi-light`
 else
-    xdotool key Alt+t p Down Return
+    xdotool key Alt+t p Down Right Return
     eval `dircolors ~/.solarized/dircolors-solarized/dircolors.ansi-dark`
 fi
 

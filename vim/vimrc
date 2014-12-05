@@ -18,7 +18,7 @@ Plugin 'Tabular'
 Plugin 'tComment'
 Plugin 'Gundo'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'klen/python-mode'
+" Plugin 'klen/python-mode'
 Plugin 'honza/vim-snippets'
 
 filetype plugin indent on
@@ -71,8 +71,6 @@ nnoremap <F5> :GundoToggle<cr>
 
 "  Nerdtree
 nnoremap <F3> :NERDTreeToggle<cr>
-
-
 let NERDTreeIgnore=['\.pdf$', '\~$','\.toc$',
             \ '\.fls$','\.bbl$','\.blg$',
             \ '\.out$', '\.log$','\.aux$','\.sty$',
@@ -117,7 +115,7 @@ set undodir=/home/urbain/.vim/vimundo/
 set nonumber
 set ruler
 set showcmd
-set listchars=tab:▸\ ,eol:¬
+set listchars=tab:▸\ ,eol:¬,trail:-
 set fillchars=fold:\ ,vert:\ ,
 set showbreak=...
 set colorcolumn=0
@@ -219,7 +217,7 @@ vnoremap g^ ^
 
 ""  Latex  
 nmap <buffer> <F2> <Plug>LatexChangeEnv
-let g:tex_fast="" 
+let g:tex_fast=""
 
 "  Synctex 
 function! LatexEvinceSearch()
@@ -232,7 +230,7 @@ autocmd FileType tex map <F6> :silent LatexEvinceSearch <Return>
 autocmd Filetype tex call SetTexOptions()
 
 
-""  Functions  
+""  Functions
 function! Tex_ForwardSearchLaTeX()
     let cmd = 'evince_forward_search ' . fnamemodify(LatexBox_GetMainTexFile(), ":p:r") .  '.pdf ' . line(".") . ' ' . expand("%:p")
     let output = system(cmd)
@@ -274,8 +272,8 @@ function! SetTexOptions()
 
 endfunction
 
-""  Autocommands  
+""  Autocommands
 augroup autorelead_vimrc
-    au! 
+    au!
     au BufWritePost ~/.vim/vimrc source ~/.vim/vimrc
 augroup END
