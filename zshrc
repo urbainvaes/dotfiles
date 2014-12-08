@@ -59,6 +59,8 @@ alias mn='vim ~/.mynotes'
 alias x='sh ~/.xmodmap'
 alias mail='offlineimap'
 alias ca='printf "\ec"'
+alias update='sudo apt-get update'
+alias upgrade='sudo apt-get upgrade'
 
 # Configuration
 alias ez='vim ~/.zshrc'
