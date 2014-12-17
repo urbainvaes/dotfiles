@@ -22,6 +22,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'honza/vim-snippets'
 
 filetype plugin indent on
+syntax on
 
 ""  Configuration  
 
@@ -93,6 +94,7 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set autoindent
+set breakindent
 " set cindent
 
 "  Folds
@@ -166,7 +168,6 @@ endfunction
 autocmd! BufNewFile,BufRead,BufWrite * :call UpdateColorscheme()
 
 ""  Custom mappings
-
 "  Leader maps
 let mapleader = "\\"
 let maplocalleader = "-"
@@ -187,7 +188,7 @@ nnoremap <Leader>sc :source %
 nnoremap <Return> o<Esc>
 nnoremap <s-Return> O<Esc>
 nnoremap J mzJ`z
-nnoremap - za
+" nnoremap - za
 nnoremap <c-y> 3<c-y>
 nnoremap <c-e> 3<c-e>
 
