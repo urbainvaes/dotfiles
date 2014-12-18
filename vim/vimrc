@@ -26,6 +26,11 @@ filetype plugin indent on
 
 ""  Configuration  
 
+"  Leader maps
+let mapleader = "\\"
+let maplocalleader = "-"
+nmap <Space> <Leader>
+
 "  UltiSnips
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
@@ -168,10 +173,6 @@ autocmd! BufNewFile,BufRead,BufWrite * :call UpdateColorscheme()
 
 ""  Custom mappings
 
-"  Leader maps
-let mapleader = "\\"
-let maplocalleader = "-"
-nmap <Space> <Leader>
 
 " General
 nnoremap <Leader>te :tabedit 
