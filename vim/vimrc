@@ -53,7 +53,7 @@ let g:LatexBox_quickfix=2
 function! SynctexShow()
     let synctex = glob("*.synctex.gz")
     if strlen(synctex) == 0
-        echo "no synctex file found"
+        echom "no synctex file found"
     else
         let pdffile = substitute(synctex,"synctex.gz","pdf","")
         let execline = printf(":!zathura --synctex-forward %d:%d:%s %s", line('.'), col('.'), shellescape(bufname("%")), shellescape(pdffile))
@@ -100,7 +100,7 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set autoindent
-set breakindent
+" set breakindent
 " set cindent
 
 "  Folds
@@ -143,7 +143,6 @@ set textwidth=0
 set conceallevel=2
 set guifont=Monaco\ 11
 
-
 "  Case and spell
 set nospell
 set smartcase
@@ -163,8 +162,6 @@ function! UpdateColorscheme()
     else
         set background=dark
     endif
-
-    echom
 
     hi Cursor guifg=white guibg=blue
     hi iCursor guifg=black guibg=green
@@ -222,22 +219,7 @@ vnoremap g^ ^
 nmap <buffer> <F2> <Plug>LatexChangeEnv
 let g:tex_fast=""
 
-"  Synctex 
-function! LatexEvinceSearch()
-    execute "!cd " . LatexBox_GetTexRoot() . '; evince_vim_dbus.py EVINCE "`basename ' . LatexBox_GetOutputFile(). '`" ' . line('.') . ' "%:p"'
-endfun
-
-command! LatexEvinceSearch call LatexEvinceSearch()
-
-autocmd FileType tex map <F6> :silent LatexEvinceSearch <Return>
 autocmd Filetype tex call SetTexOptions()
-
-
-""  Functions
-function! Tex_ForwardSearchLaTeX()
-    let cmd = 'evince_forward_search ' . fnamemodify(LatexBox_GetMainTexFile(), ":p:r") .  '.pdf ' . line(".") . ' ' . expand("%:p")
-    let output = system(cmd)
-endfunction
 
 function! SetTexOptions()
 

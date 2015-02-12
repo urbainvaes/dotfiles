@@ -39,9 +39,10 @@ alias -s py=vim
 # Directories
 alias u='cd ~/Dropbox/phd'
 alias uc='cd ~/Dropbox/phd/programs'
-alias up='cd ~/Dropbox/phd/presentations'
+alias up='cd ~/Dropbox/phd/papers'
 alias ul='cd ~/Dropbox/phd/literature'
 alias ur='cd ~/Dropbox/phd/reports'
+alias us='cd ~/Dropbox/phd/presentations'
 alias cdd='cd ~/dotfiles'
 
 # Commands
@@ -77,18 +78,18 @@ bindkey -a 'k' history-beginning-search-backward
 bindkey -a 'j' history-beginning-search-forward
 
 # Colorscheme
-sleep 2
-h=`date +%H`
-if [ $h -lt 9 ]; then
-    xdotool key Alt+t p Down Right Return
-    eval `dircolors ~/.solarized/dircolors-solarized/dircolors.ansi-dark`
-elif [ $h -lt 17 ]; then
-    xdotool key Alt+t p Down Down Right Return
-    eval `dircolors ~/.solarized/dircolors-solarized/dircolors.ansi-light`
-else
-    xdotool key Alt+t p Down Right Return
-    eval `dircolors ~/.solarized/dircolors-solarized/dircolors.ansi-dark`
-fi
+# sleep 2
+# h=`date +%H`
+# if [ $h -lt 9 ]; then
+#     xdotool key Alt+t p Down Right Return
+#     eval `dircolors ~/.solarized/dircolors-solarized/dircolors.ansi-dark`
+# elif [ $h -lt 17 ]; then
+#     xdotool key Alt+t p Down Down Right Return
+#     eval `dircolors ~/.solarized/dircolors-solarized/dircolors.ansi-light`
+# else
+#     xdotool key Alt+t p Down Right Return
+#     eval `dircolors ~/.solarized/dircolors-solarized/dircolors.ansi-dark`
+# fi
 
 # Crontab jobs
 crontab ~/dotfiles/crontab
