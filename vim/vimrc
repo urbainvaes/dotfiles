@@ -61,16 +61,10 @@ function! SynctexShow()
     end
 endfunction
 
-" Access
 nnoremap <LocalLeader>a :call SynctexShow()<CR><CR>
-
-" Initiate
 nnoremap <LocalLeader>i :Latexmk<CR>
-
-" Open
+nnoremap <LocalLeader>e :LatexErrors<CR>
 nnoremap <LocalLeader>o :LatexView<CR>
-
-" Kill
 nnoremap <LocalLeader>k :LatexmkStop<CR>:LatexmkClean<CR>
 
 "  Gundo
@@ -157,7 +151,7 @@ set encoding=utf-8
 ""  Colorscheme
 function! UpdateColorscheme()
     try | colorscheme solarized | catch | endtry
-    if strftime("%H") >= 9 && strftime("%H") < 17
+    if strftime("%H") >= 9 && strftime("%H") < 18
         set background=light
     else
         set background=dark
@@ -187,6 +181,8 @@ nnoremap <Leader>sc :source %
 nnoremap <Return> o<Esc>
 nnoremap <s-Return> O<Esc>
 nnoremap J mzJ`z
+nnoremap Y y$
+
 " nnoremap - za
 nnoremap <c-y> 3<c-y>
 nnoremap <c-e> 3<c-e>
