@@ -3,3 +3,5 @@ vim/bundle/
 vifm/Trash/
 mutt/mutt-colors-solarized/
 mutt/temp/
+passwords
+mutt/cache/
