@@ -39,10 +39,10 @@ alias -s py=vim
 # Directories
 alias u='cd ~/Dropbox/phd'
 alias uc='cd ~/Dropbox/phd/programs'
-alias up='cd ~/Dropbox/phd/papers'
 alias ul='cd ~/Dropbox/phd/literature'
 alias ur='cd ~/Dropbox/phd/reports'
-alias us='cd ~/Dropbox/phd/presentations'
+alias up='cd ~/Dropbox/phd/presentations'
+alias papers='cd ~/Dropbox/phd/papers'
 alias cdd='cd ~/dotfiles'
 
 # Commands
