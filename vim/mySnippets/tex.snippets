@@ -1,11 +1,19 @@
-snippet sumi "Sum over index set" i
-\sum_{${1:i} \in ${2:I}} $0
+snippet test "Test functions" i
+\test{${1:\real^n}} $0
 endsnippet
 
-snippet ip "Inner product" i
-\left \langle $1, $2 \right \rangle $0
+snippet lp "Flat Lp space" i
+\lp{${1:2}}{${2:\real^n}} $0
 endsnippet
 
-snippet real "Real numbers" i
-\mathbb R
+snippet lpw "Weighted Lp space" i
+\wlp{${1:2}}{${2:\real^n}}{${3: \rho}} $0
+endsnippet
+
+snippet sob "Flat Sobolev space" i
+\sobolev{${1:s}}{${2:\real^n}} $0
+endsnippet
+
+snippet sobw "Weighted Sobolev space" i
+\wsobolev{${1:s}}{${2:\real^n}}{${3:\rho}} $0
 endsnippet
