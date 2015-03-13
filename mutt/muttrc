@@ -77,8 +77,9 @@ set sort         = threads
 set sort_aux     = reverse-last-date-received
 set sort_browser = reverse-date
 
-# Colorscheme for inside mutt
+# Files to source
 source `sh /home/urbain/.mutt/colormutt`
+source ~/.mutt/alias
 
 # HTML messages
 auto_view text/html
