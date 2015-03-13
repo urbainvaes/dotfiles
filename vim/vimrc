@@ -221,15 +221,6 @@ vnoremap g^ ^
 ""  Latex  
 nmap <buffer> <F2> <Plug>LatexChangeEnv
 let g:tex_fast=""
-
-"  Synctex 
-function! LatexEvinceSearch()
-    execute "!cd " . LatexBox_GetTexRoot() . '; evince_vim_dbus.py EVINCE "`basename ' . LatexBox_GetOutputFile(). '`" ' . line('.') . ' "%:p"'
-endfun
-
-command! LatexEvinceSearch call LatexEvinceSearch()
-
-autocmd FileType tex map <F6> :silent LatexEvinceSearch <Return>
 autocmd Filetype tex call SetTexOptions()
 
 

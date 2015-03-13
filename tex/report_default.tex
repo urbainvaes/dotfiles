@@ -1,0 +1,121 @@
+\documentclass[10pt,twoside]{report} 
+
+% Files to include
+\includeonly{
+    preamble/title,
+    preamble/authorship,
+    preamble/abstract,
+    preamble/acknowledgements,
+    chapters/introduction,
+    chapters/chap1,
+    chapters/chap2,
+    chapters/chap3,
+    chapters/conclusion,
+}
+
+% Boolean variables
+\newif \ifcontents \contentsfalse
+\newif \ifbib \bibtrue
+\newif \iflong \longtrue
+
+% Packages
+\usepackage[utf8]{inputenx} 
+\usepackage[english]{babel}
+\usepackage{microtype}
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{appendix}
+\usepackage{vmargin}
+\usepackage{setspace}
+\usepackage{mathenv}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amscd}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{subfigure}
+\usepackage{color}
+
+% Packages with options
+\usepackage[labelfont=sc]{caption}
+\usepackage[square, numbers, comma, sort&compress]{natbib}
+
+% Layout options
+\setlength{\parskip}{6pt}
+
+% Compilation options
+\synctex=1
+
+% Setting for the table of contents
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+% Macros
+\definecolor{darkred}{rgb}{.7,0,0}
+\newcommand{\real}[0]{\mathbf R} 
+\newcommand{\nat}[0]{\mathbf N} 
+\newcommand{\op}[0]{\mathcal} 
+\newcommand{\grad}[0]{\,\nabla\,}
+\newcommand{\dive}[0] {\,\nabla\,\cdot\,} 
+\newcommand{\ip}[2]{\left \langle #1,#2 \right\rangle} 
+\newcommand{\norm}[1]{\,\| #1 \|\,} 
+\newcommand{\pard}[2]{\partial_{#2} #1} 
+\newcommand{\pardl}[2]{\frac{\partial #1}{\partial #2}} 
+\newcommand{\pardd}[2]{\partial_{#2}^2 #1} 
+\newcommand{\parddl}[2]{\frac{\partial^2 #1}{\partial #2^2}} 
+\newcommand{\dx}[0]{\mathrm d}
+\newcommand{\hermite}[0]{\mathcal}
+\newcommand{\gaussian}[1]{g_{#1}} 
+\newcommand{\stdgaussian}[0]{g} 
+\newcommand{\test}[1]{C^\infty_c(#1)} 
+\newcommand{\flp}[2]{L^{#1}(#2)}
+\newcommand{\wlp}[3]{L^{#1}(#2, #3)}
+\newcommand{\sobolev}[2]{H^{#1}(#2)}
+\newcommand{\wsobolev}[3]{H^{#1}(#2, #3)}
+\newcommand{\red}[1]{\textcolor{darkred}{#1}}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+% Theorems
+\theoremstyle{plain}
+\newtheorem{assumption}{Assumption}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{axiom}[theorem]{Axiom}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\begin{document}
+
+\pagestyle{empty}
+
+\setstretch{1.3} 
+\include{preamble/title} \cleardoublepage
+\include{preamble/authorship} \cleardoublepage
+\include{preamble/abstract} \cleardoublepage
+\include{preamble/acknowledgements} \cleardoublepage
+\ifcontents \tableofcontents \fi
+
+\pagestyle{plain}
+
+
+\include{chapters/introduction} \cleardoublepage
+\include{chapters/chap1} \cleardoublepage
+\include{chapters/chap2} \cleardoublepage
+\include{chapters/chap3} \cleardoublepage
+\include{chapters/conclusion} \cleardoublepage
+
+\nocite*
+\bibliographystyle{unsrtnat} 
+\bibliography{Bibliography} 
+
+\end{document}
+
