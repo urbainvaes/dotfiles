@@ -1,1 +1,2 @@
 */10 * * * * /usr/bin/offlineimap -u quiet
+*/5 * * * * sh ~/.xmodmap

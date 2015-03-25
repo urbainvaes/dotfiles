@@ -49,7 +49,6 @@ alias cdd='cd ~/dotfiles'
 alias tmux="TERM=screen-256color-bce tmux"
 alias g='git'
 alias v=$EDITOR
-alias tmux="TERM=screen-256color-bce tmux"
 alias g='git'
 alias v='vim'
 alias vs="vim --servername SYNCTEX"
@@ -62,6 +61,7 @@ alias mail='offlineimap'
 alias ca='printf "\ec"'
 alias update='sudo apt-get update'
 alias upgrade='sudo apt-get upgrade'
+alias install='sudo apt-get install'
 
 # Configuration
 alias ez='vim ~/.zshrc'

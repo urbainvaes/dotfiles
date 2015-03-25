@@ -66,6 +66,7 @@ nnoremap <LocalLeader>i :Latexmk<CR>
 nnoremap <LocalLeader>e :LatexErrors<CR>
 nnoremap <LocalLeader>o :LatexView<CR>
 nnoremap <LocalLeader>k :LatexmkStop<CR>:LatexmkClean<CR>
+nnoremap <LocalLeader>h :split header.sty<CR>
 
 "  Gundo
 nnoremap <F5> :GundoToggle<cr>

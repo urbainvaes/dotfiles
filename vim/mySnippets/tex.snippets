@@ -11,7 +11,7 @@ snippet div "Divergence" i
 endsnippet
 
 snippet new "New command" b
-\newcommand{$1}[$2] {$3} $0
+\newcommand{$1}[$2]{$3}$0
 endsnippet
 
 snippet op "Operator style" i
@@ -19,11 +19,11 @@ snippet op "Operator style" i
 endsnippet
 
 snippet pard "Partial derivative" i
-\pard{$1}{$2} $0
+\pard{$1}{$2}$0
 endsnippet
 
 snippet pardd "Double partial derivative" i
-\pardd{$1}{$2} $0
+\pardd{$1}{$2}$0
 endsnippet
 
 snippet herm "Hermite polynomials" i
@@ -31,37 +31,41 @@ snippet herm "Hermite polynomials" i
 endsnippet
 
 snippet red "Red text" i
-\red{$1} $0
+\red{$1}$0
 endsnippet
 
 snippet sumi "Sum over index set" i
-\sum_{${1:i} \in ${2:I}} $0
+\sum_{${1:i} \in ${2:I}}$0
 endsnippet
 
 snippet ip "Inner product" i
-\ip{$1}{$2} $0
+\ip{$1}{$2}$0
 endsnippet
 
 snippet norm "Norm" i
-\norm{$1} $0
+\norm{$1}$0
 endsnippet
 
 snippet test "Test functions" i
-\test{${1:\real^n}} $0
+\test{${1:\real^n}}$0
 endsnippet
 
 snippet lp "Flat Lp space" i
-\lp{${1:2}}{${2:\real^n}} $0
+\lp{${1:2}}{${2:\real^n}}$0
 endsnippet
 
 snippet lpw "Weighted Lp space" i
-\wlp{${1:2}}{${2:\real^n}}{${3: \rho}} $0
+\wlp{${1:2}}{${2:\real^n}}{${3:\rho}}$0
 endsnippet
 
 snippet sob "Flat Sobolev space" i
-\sobolev{${1:s}}{${2:\real^n}} $0
+\sobolev{${1:s}}{${2:\real^n}}$0
 endsnippet
 
 snippet sobw "Weighted Sobolev space" i
-\wsobolev{${1:s}}{${2:\real^n}}{${3:\rho}} $0
+\wsobolev{${1:s}}{${2:\real^n}}{${3:\rho}}$0
+endsnippet
+
+snippet cont "Continuous function" i
+\cont{$1}{$2}$0
 endsnippet
