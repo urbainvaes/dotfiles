@@ -51,7 +51,7 @@ alias g='git'
 alias v=$EDITOR
 alias g='git'
 alias v='vim'
-alias vs="vim --servername SYNCTEX"
+alias vs="vim --servername SYNC"
 alias c='clear'
 alias m='mutt'
 alias a='vifm'
@@ -62,6 +62,8 @@ alias ca='printf "\ec"'
 alias update='sudo apt-get update'
 alias upgrade='sudo apt-get upgrade'
 alias install='sudo apt-get install'
+alias remove='sudo apt-get autoremove'
+alias purge='sudo apt-get purge'
 
 # Configuration
 alias ez='vim ~/.zshrc'
