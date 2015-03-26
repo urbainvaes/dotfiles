@@ -1,8 +1,7 @@
-# Plugins managed by Vundle
+mutt/cache/headers
 vim/bundle/
 vifm/Trash/
 mutt/mutt-colors-solarized/
 mutt/temp/
 passwords
 mutt/cache/
-mutt/cache/headers
