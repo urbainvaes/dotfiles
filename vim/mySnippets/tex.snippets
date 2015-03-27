@@ -19,11 +19,11 @@ snippet op "Operator style" i
 endsnippet
 
 snippet pard "Partial derivative" i
-\pard{$1}{$2}$0
+\pardl{$1}{$2}$0
 endsnippet
 
 snippet pardd "Double partial derivative" i
-\pardd{$1}{$2}$0
+\parddl{$1}{$2}$0
 endsnippet
 
 snippet herm "Hermite polynomials" i
@@ -36,6 +36,10 @@ endsnippet
 
 snippet sumi "Sum over index set" i
 \sum_{${1:i} \in ${2:I}}$0
+endsnippet
+
+snippet int "Integral" i
+\int_{$1} 
 endsnippet
 
 snippet ip "Inner product" i
@@ -84,4 +88,12 @@ endsnippet
 
 snippet sum "Sum" i
 \sum_{${1:i=1}}^{${2:n}}
+endsnippet
+
+snippet smooth "Smooth function" i
+\smooth{${1:\real^n}} $0
+endsnippet
+
+snippet cont "Continuous function" i
+\cont{$1}{$2} $0
 endsnippet

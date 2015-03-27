@@ -43,6 +43,7 @@ alias ul='cd ~/Dropbox/phd/literature'
 alias ur='cd ~/Dropbox/phd/reports'
 alias up='cd ~/Dropbox/phd/presentations'
 alias papers='cd ~/Dropbox/phd/papers'
+alias books='cd ~/Dropbox/phd/books'
 alias cdd='cd ~/dotfiles'
 
 # Commands
