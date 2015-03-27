@@ -1,8 +1,7 @@
-mutt/cache/headers
-mutt/mailboxes
+mutt/cache/*
+mutt/mailboxes/*
 vim/bundle/
 vifm/Trash/
 mutt/mutt-colors-solarized/
 mutt/temp/
 passwords
-mutt/cache/*
