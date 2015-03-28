@@ -1,7 +1,7 @@
 #!/bin/bash
 
-dir=~/dotfiles
-olddir=~/dotfiles_old
+dir=~/Dropbox/dotfiles
+olddir=~/Dropbox/dotfiles_old
 
 # Files to sync
 files="vim mutt vifm bashrc zshrc xmodmap mynotes tmux.conf zathurarc offlineimaprc inputrc latexmkrc crontab krystle"
