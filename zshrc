@@ -44,7 +44,7 @@ alias ur='cd ~/Dropbox/phd/reports'
 alias up='cd ~/Dropbox/phd/presentations'
 alias papers='cd ~/Dropbox/phd/papers'
 alias books='cd ~/Dropbox/phd/books'
-alias cdd='cd ~/dotfiles'
+alias cdd='cd ~/Dropbox/dotfiles'
 
 # Commands
 alias tmux="TERM=screen-256color-bce tmux"
@@ -96,4 +96,4 @@ bindkey -a 'j' history-beginning-search-forward
 # fi
 
 # Crontab jobs
-crontab ~/dotfiles/crontab
+crontab ~/.crontab
