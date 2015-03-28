@@ -63,6 +63,9 @@ alias mail='offlineimap'
 alias ca='printf "\ec"'
 alias update='sudo apt-get update'
 alias upgrade='sudo apt-get upgrade'
+alias push='git push origin master'
+alias pull='git pull origin master'
+alias commit='git commit -a -m "auto-commit"'
 
 # Configuration
 alias ez='vim ~/.zshrc'
