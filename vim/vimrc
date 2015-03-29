@@ -9,6 +9,7 @@ call vundle#rc()
 Plugin 'gmarik/vundle'
 Plugin 'LaTeX-Box-Team/latex-box'
 Plugin 'fugitive.vim'
+Plugin 'gregsexton/gitv'
 Plugin 'UltiSnips'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-surround'
