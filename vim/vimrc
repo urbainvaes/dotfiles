@@ -20,7 +20,6 @@ Plugin 'Tabular'
 Plugin 'tComment'
 Plugin 'Gundo'
 Plugin 'altercation/vim-colors-solarized'
-" Plugin 'klen/python-mode'
 Plugin 'honza/vim-snippets'
 
 filetype plugin indent on
@@ -83,8 +82,6 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set autoindent
-" set breakindent
-" set cindent
 
 "  Folds
 set foldcolumn=0
@@ -197,52 +194,9 @@ vnoremap gk k
 vnoremap g$ $
 vnoremap g^ ^
 
-"  Convenient maps
-" nnoremap e j
-" nnoremap u k
-" nnoremap j e
-" nnoremap k u
-
 ""  Latex  
 nmap <buffer> <F2> <Plug>LatexChangeEnv
 let g:tex_fast=""
-autocmd Filetype tex call SetTexOptions()
-
-function! SetTexOptions()
-
-    inoremap (( \left(
-    inoremap )) \right)
-    inoremap {{ \left\{
-    inoremap }} \right\}
-    inoremap [[ \left[
-    inoremap ]] \right]
-    inoremap == \,=\,
-    inoremap >> \,\geq\,
-    inoremap << \,\leq\,
-    inoremap ++ \,+\,
-    inoremap -- \,-\,
-
-    imap `a \alpha
-    imap `b \beta
-    imap `g \gamma
-    imap `d \delta
-    imap `e \varepsilon
-    imap `z \zeta
-    imap `h \eta
-    imap `t \theta
-    imap `i \iota
-    imap `k \kappa
-    imap `l \lambda
-    imap `m \mu
-    imap `n \nu
-    imap `x \xi
-    imap `r \rho
-    imap `s \sigma
-    imap `f \phi
-    imap `p \pi
-    imap `w \omega
-
-endfunction
 
 ""  Autocommands
 augroup autorelead_vimrc
