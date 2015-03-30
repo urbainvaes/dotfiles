@@ -7,7 +7,7 @@ call vundle#rc()
 
 ""  Plugins
 Plugin 'gmarik/vundle'
-Plugin 'lervag/vimtex'
+Plugin 'LaTeX-Box-Team/latex-box'
 Plugin 'fugitive.vim'
 Plugin 'gregsexton/gitv'
 Plugin 'UltiSnips'
@@ -43,11 +43,30 @@ let g:UltiSnipsSnippetDirectories=['UltiSnips', 'mySnippets']
 let g:ctrlp_open_new_file = 't'
 noremap <c-h> :UltiSnipsEdit<Return>
 
-" Vimtex
-let g:vimtex_fold_enabled=0
-let g:vimtex_view_method='zathura'
-let g:vimtex_latexmk_continuous=1
-let g:vimtex_quickfix_mode=0
+"  Latex-Box
+let g:tex_flavor='latex'
+let g:tex_conceal= 'adgm'
+let g:LatexBox_Folding=0
+let g:LatexBox_viewer='zathura'
+let g:LatexBox_latexmk_preview_continuously=1
+let g:LatexBox_quickfix=2
+function! SynctexShow()
+    let synctex = glob("*.synctex.gz")
+    if strlen(synctex) == 0
+        echom "no synctex file found"
+    else
+        let pdffile = substitute(synctex,"synctex.gz","pdf","")
+        let execline = printf(":!zathura --synctex-forward %d:%d:%s %s", line('.'), col('.'), shellescape(bufname("%")), shellescape(pdffile))
+        exec execline
+    end
+endfunction
+
+nnoremap <LocalLeader>a :call SynctexShow()<CR><CR>
+nnoremap <LocalLeader>i :Latexmk<CR>
+nnoremap <LocalLeader>e :LatexErrors<CR>
+nnoremap <LocalLeader>o :LatexView<CR>
+nnoremap <LocalLeader>k :LatexmkStop<CR>:LatexmkClean<CR>
+nnoremap <LocalLeader>h :split header.sty<CR>
 
 "  Gundo
 nnoremap <F5> :GundoToggle<cr>
@@ -116,9 +135,6 @@ set linebreak
 set textwidth=0
 set conceallevel=2
 set guifont=Monaco\ 11
-set lazyredraw
-highlight diffAdded guifg=#00bf00
-highlight diffRemoved guifg=#bf0000
 
 "  Case and spell
 set nospell

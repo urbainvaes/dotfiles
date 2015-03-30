@@ -30,9 +30,9 @@ inoremap <buffer> `f \phi
 inoremap <buffer> `p \pi
 inoremap <buffer> `w \omega
 
-nnoremap <buffer> <LocalLeader>i :VimtexCompile<CR>
-nnoremap <buffer> <LocalLeader>e :VimtexErrors<CR>
-nnoremap <buffer> <LocalLeader>o :VimtexView<CR>
-nnoremap <buffer> <LocalLeader>k :VimtexStop<CR>:VimtexClean<CR>
-nnoremap <buffer> <LocalLeader>t :VimtexTocToggle<CR>
+nnoremap <buffer> <LocalLeader>a :call SynctexShow()<CR><CR>
+nnoremap <buffer> <LocalLeader>i :Latexmk<CR>
+nnoremap <buffer> <LocalLeader>e :LatexErrors<CR>
+nnoremap <buffer> <LocalLeader>o :LatexView<CR>
+nnoremap <buffer> <LocalLeader>k :LatexmkStop<CR>:LatexmkClean<CR>
 nnoremap <buffer> <LocalLeader>h :split header.sty<CR>
