@@ -195,7 +195,6 @@ vnoremap g$ $
 vnoremap g^ ^
 
 ""  Latex  
-nmap <buffer> <F2> <Plug>LatexChangeEnv
 let g:tex_fast=""
 
 ""  Autocommands

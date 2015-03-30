@@ -29,3 +29,10 @@ inoremap <buffer> `s \sigma
 inoremap <buffer> `f \phi
 inoremap <buffer> `p \pi
 inoremap <buffer> `w \omega
+
+nnoremap <buffer> <LocalLeader>i :VimtexCompile<CR>
+nnoremap <buffer> <LocalLeader>e :VimtexErrors<CR>
+nnoremap <buffer> <LocalLeader>o :VimtexView<CR>
+nnoremap <buffer> <LocalLeader>k :VimtexStop<CR>:VimtexClean<CR>
+nnoremap <buffer> <LocalLeader>t :VimtexTocToggle<CR>
+nnoremap <buffer> <LocalLeader>h :split header.sty<CR>
