@@ -10,9 +10,6 @@ ENABLE_CORRECTION="true"
 # Dots for completion
 COMPLETION_WAITING_DOTS="true"
 
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
 # Plugins
 plugins=(vi-mode git)
 
@@ -44,7 +41,7 @@ alias ur='cd ~/Dropbox/phd/reports'
 alias up='cd ~/Dropbox/phd/presentations'
 alias papers='cd ~/Dropbox/phd/papers'
 alias books='cd ~/Dropbox/phd/books'
-alias cdd='cd ~/dotfiles'
+alias cdd='cd ~/Dropbox/dotfiles'
 
 # Commands
 alias tmux="TERM=screen-256color-bce tmux"
@@ -65,6 +62,9 @@ alias upgrade='sudo apt-get upgrade'
 alias install='sudo apt-get install'
 alias remove='sudo apt-get autoremove'
 alias purge='sudo apt-get purge'
+alias push='git push origin master'
+alias pull='git pull origin master'
+alias commit='git commit -a -m "auto-commit"'
 
 # Configuration
 alias ez='vim ~/.zshrc'
@@ -80,19 +80,5 @@ alias ex='vim ~/.xmodmap'
 bindkey -a 'k' history-beginning-search-backward
 bindkey -a 'j' history-beginning-search-forward
 
-# Colorscheme
-# sleep 2
-# h=`date +%H`
-# if [ $h -lt 9 ]; then
-#     xdotool key Alt+t p Down Right Return
-#     eval `dircolors ~/.solarized/dircolors-solarized/dircolors.ansi-dark`
-# elif [ $h -lt 17 ]; then
-#     xdotool key Alt+t p Down Down Right Return
-#     eval `dircolors ~/.solarized/dircolors-solarized/dircolors.ansi-light`
-# else
-#     xdotool key Alt+t p Down Right Return
-#     eval `dircolors ~/.solarized/dircolors-solarized/dircolors.ansi-dark`
-# fi
-
 # Crontab jobs
-crontab ~/dotfiles/crontab
+crontab ~/.crontab
