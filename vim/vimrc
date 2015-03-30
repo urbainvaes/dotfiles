@@ -43,17 +43,11 @@ let g:UltiSnipsSnippetDirectories=['UltiSnips', 'mySnippets']
 let g:ctrlp_open_new_file = 't'
 noremap <c-h> :UltiSnipsEdit<Return>
 
+" Vimtex
 let g:vimtex_fold_enabled=0
 let g:vimtex_view_method='zathura'
 let g:vimtex_latexmk_continuous=1
-let g:vimtex_quickfix_mode=2
-
-nnoremap <LocalLeader>i :VimtexCompile<CR>
-nnoremap <LocalLeader>e :VimtexErrors<CR>
-nnoremap <LocalLeader>v :VimtexView<CR>
-nnoremap <LocalLeader>k :VimtexStop<CR>:VimtexClean<CR>
-nnoremap <LocalLeader>t :VimtexTocToggle<CR>
-nnoremap <LocalLeader>h :split header.sty<CR>
+let g:vimtex_quickfix_mode=0
 
 "  Gundo
 nnoremap <F5> :GundoToggle<cr>
