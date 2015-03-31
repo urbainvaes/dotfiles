@@ -61,13 +61,6 @@ function! SynctexShow()
     end
 endfunction
 
-nnoremap <LocalLeader>a :call SynctexShow()<CR><CR>
-nnoremap <LocalLeader>i :Latexmk<CR>
-nnoremap <LocalLeader>e :LatexErrors<CR>
-nnoremap <LocalLeader>o :LatexView<CR>
-nnoremap <LocalLeader>k :LatexmkStop<CR>:LatexmkClean<CR>
-nnoremap <LocalLeader>h :split header.sty<CR>
-
 "  Gundo
 nnoremap <F5> :GundoToggle<cr>
 
@@ -135,6 +128,9 @@ set linebreak
 set textwidth=0
 set conceallevel=2
 set guifont=Monaco\ 11
+set lazyredraw
+highlight diffAdded guifg=#00bf00
+highlight diffRemoved guifg=#bf0000
 
 "  Case and spell
 set nospell
