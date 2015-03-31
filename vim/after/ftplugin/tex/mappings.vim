@@ -36,3 +36,5 @@ nnoremap <buffer> <LocalLeader>e :LatexErrors<CR>
 nnoremap <buffer> <LocalLeader>o :LatexView<CR>
 nnoremap <buffer> <LocalLeader>k :LatexmkStop<CR>:LatexmkClean<CR>
 nnoremap <buffer> <LocalLeader>h :split header.sty<CR>
+
+iabbrev <buffer> dd \d
