@@ -50,6 +50,12 @@ alias v=$EDITOR
 alias g='git'
 alias v='vim'
 alias vs="vim --servername SYNC"
+alias va="vim --servername SYNC main.tex \
+                                sections/introduction.tex \
+                                sections/sec1.tex \
+                                sections/sec2.tex \
+                                sections/sec3.tex \
+                                sections/conclusion.tex"
 alias c='clear'
 alias m='mutt'
 alias a='vifm'
