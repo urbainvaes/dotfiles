@@ -41,7 +41,7 @@ alias ur='cd ~/Dropbox/phd/reports'
 alias up='cd ~/Dropbox/phd/presentations'
 alias papers='cd ~/Dropbox/phd/papers'
 alias books='cd ~/Dropbox/phd/books'
-alias cdd='cd ~/Dropbox/dotfiles'
+alias cdd='cd ~/dotfiles'
 
 # Commands
 alias tmux="TERM=screen-256color-bce tmux"
