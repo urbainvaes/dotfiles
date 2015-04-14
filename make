@@ -35,3 +35,13 @@ rm -rf .vim/bundle
 mkdir .vim/bundle
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 vim +PluginInstall +qall
+
+cd $dir
+cd mutt
+mkdir temp
+
+# Tmux
+cd 
+rm -rf .tmux
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+tmux source-file ~/.tmux.conf
