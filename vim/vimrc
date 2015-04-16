@@ -13,6 +13,9 @@ Plugin 'gregsexton/gitv'
 Plugin 'UltiSnips'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-obsession'
+Plugin 'tpope/vim-sensible'
+Plugin 'tpope/vim-scriptease'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tommcdo/vim-exchange'
 Plugin 'unimpaired.vim'
@@ -82,12 +85,10 @@ let g:ctrlp_show_hidden = 1
 
 "  Tabs and indent
 set smartindent
-set nosmarttab
 set expandtab
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-set autoindent
 
 "  Folds
 set foldcolumn=0
@@ -97,7 +98,6 @@ set foldlevel=0
 
 "  Search
 set hlsearch
-set incsearch
 
 "  Back up files
 set noswapfile
@@ -107,8 +107,6 @@ set undodir=/home/urbain/.vim/vimundo/
 
 "  Layout window
 set nonumber
-set ruler
-set showcmd
 set listchars=tab:▸\ ,eol:¬,trail:-
 set fillchars=fold:\ ,vert:\ ,
 set showbreak=\ \ \ \ \ \ ...
@@ -139,14 +137,13 @@ set ignorecase
 
 "  General
 set noautochdir
-set wildmenu
 set cpoptions+=I
 set encoding=utf-8
 
 ""  Colorscheme
 function! UpdateColorscheme()
     try | colorscheme solarized | catch | endtry
-    if strftime("%H") >= 8 && strftime("%H") < 20
+    if strftime("%H") >= 8 && strftime("%H") < 21
         set background=light
     else
         set background=dark
