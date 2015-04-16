@@ -111,7 +111,7 @@ set ruler
 set showcmd
 set listchars=tab:▸\ ,eol:¬,trail:-
 set fillchars=fold:\ ,vert:\ ,
-set showbreak=...
+set showbreak=\ \ \ \ \ \ ...
 set colorcolumn=0
 set scrolloff=0
 if has('gui_running')
