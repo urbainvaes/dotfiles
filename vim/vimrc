@@ -6,11 +6,6 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 ""  Plugins
-Plugin 'gmarik/vundle'
-Plugin 'LaTeX-Box-Team/latex-box'
-Plugin 'gregsexton/gitv'
-Plugin 'UltiSnips'
-Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-obsession'
@@ -18,6 +13,11 @@ Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-scriptease'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-commentary'
+Plugin 'gmarik/vundle'
+Plugin 'LaTeX-Box-Team/latex-box'
+Plugin 'gregsexton/gitv'
+Plugin 'UltiSnips'
+Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tommcdo/vim-exchange'
 Plugin 'unimpaired.vim'
