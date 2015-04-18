@@ -175,27 +175,12 @@ nnoremap <s-Return> O<Esc>
 nnoremap J mzJ`z
 nnoremap Y y$
 
-" nnoremap - za
 nnoremap <c-y> 3<c-y>
 nnoremap <c-e> 3<c-e>
 
-nnoremap j gj
-nnoremap k gk
-nnoremap $ g$
-nnoremap ^ g^
-nnoremap gj j
-nnoremap gk k
-nnoremap g$ $
-nnoremap g^ ^
-
-vnoremap j gj
-vnoremap k gk
-vnoremap $ g$
-vnoremap ^ g^
-vnoremap gj j
-vnoremap gk k
-vnoremap g$ $
-vnoremap g^ ^
+" Dvorak specific
+nnoremap : ,
+nnoremap , :
 
 ""  Latex  
 let g:tex_fast=""
