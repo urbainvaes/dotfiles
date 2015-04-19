@@ -25,6 +25,7 @@ Plugin 'Tabular'
 Plugin 'Gundo'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'honza/vim-snippets'
+Plugin 'Valloric/YouCompleteMe'
 
 filetype plugin indent on
 syntax on
@@ -36,7 +37,13 @@ let mapleader = "\\"
 let maplocalleader = "-"
 nmap <Space> <Leader>
 
-"  UltiSnips
+"  Plugins options
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_by_filename = 1
+let g:ctrlp_working_path_mode = ''
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_open_new_file = 't'
+
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
@@ -44,10 +51,7 @@ let g:UltiSnipsListSnippets="<c-l>"
 let g:UltiSnipsEditSplit="horizontal"
 let g:UltiSnipsSnippetsDir="~/.vim/mySnippets"
 let g:UltiSnipsSnippetDirectories=['UltiSnips', 'mySnippets']
-let g:ctrlp_open_new_file = 't'
-noremap <c-h> :UltiSnipsEdit<Return>
 
-"  Latex-Box
 let g:tex_flavor='latex'
 let g:tex_conceal= 'adgm'
 let g:LatexBox_Folding=0
@@ -77,10 +81,6 @@ let NERDTreeIgnore=['\.pdf$', '\~$','\.toc$',
 
 "  CTRL-P
 
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_by_filename = 1
-let g:ctrlp_working_path_mode = ''
-let g:ctrlp_show_hidden = 1
 
 ""  Options  
 
@@ -113,11 +113,7 @@ set fillchars=fold:\ ,vert:\ ,
 set showbreak=\ \ \ \ \ \ ...
 set colorcolumn=0
 set scrolloff=0
-if has('gui_running')
-    set t_Co=256
-else
-    set t_Co=256
-endif
+set t_Co=256
 set guitablabel=%N\ %t\ %M
 set showcmd
 
@@ -169,6 +165,7 @@ nnoremap <Leader>h :set hlsearch!<cr>
 nnoremap <Leader>n :set relativenumber!<cr>
 nnoremap <Leader>sv :source ~/.vim/vimrc<cr>
 nnoremap <Leader>sc :source %<cr>
+nnoremap <Leader>es :UltiSnipsEdit<Return>
 
 "  Other maps
 nnoremap <Return> o<Esc>
