@@ -5,7 +5,6 @@ set use_from         = yes
 set envelope_from    = "yes"
 
 # Folders
-set folder = "~/.mail"
 set folder           = ~/.mail
 set alias_file       = ~/.mutt/alias
 set header_cache     = ~/.mutt/cache/headers
@@ -68,7 +67,7 @@ set edit_headers
 set include=yes
 
 # Mail out
-set sendmail="/usr/sbin/ssmtp"
+set sendmail="/usr/bin/msmtp"
 
 set beep_new
 

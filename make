@@ -4,12 +4,13 @@ dir=~/dotfiles
 olddir=~/dotfiles_old
 
 # Files to sync
-files="vim mutt passwords vifm bashrc zshrc xmodmap mynotes tmux.conf zathurarc offlineimaprc offlineimap.py inputrc latexmkrc crontab gitconfig"
+files="vim mutt passwords vifm msmtprc bashrc zshrc xmodmap mynotes tmux.conf zathurarc offlineimaprc offlineimap.py inputrc latexmkrc crontab gitconfig"
 
 rm -rf $olddir
 mkdir -p $olddir
 
 cd $dir
+chmod 600 msmtprc
 for file in $files; do
     echo $file
     mv ~/.$file $olddir
