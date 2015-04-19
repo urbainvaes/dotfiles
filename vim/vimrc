@@ -30,8 +30,6 @@ Plugin 'Valloric/YouCompleteMe'
 filetype plugin indent on
 syntax on
 
-""  Configuration  
-
 "  Leader maps
 let mapleader = "\\"
 let maplocalleader = "-"
@@ -40,9 +38,10 @@ nmap <Space> <Leader>
 "  Plugins options
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_by_filename = 1
-let g:ctrlp_working_path_mode = ''
+let g:ctrlp_working_path_mode = 'r'
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_open_new_file = 't'
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
@@ -78,9 +77,6 @@ let NERDTreeIgnore=['\.pdf$', '\~$','\.toc$',
             \ '\.fls$','\.bbl$','\.blg$',
             \ '\.out$', '\.log$','\.aux$','\.sty$',
             \ '\.fdb_latexmk$', '\.synctex.gz$','\.latexmain$']
-
-"  CTRL-P
-
 
 ""  Options  
 
