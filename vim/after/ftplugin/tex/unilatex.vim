@@ -668,3 +668,8 @@ nnoremap <buffer> <LocalLeader>cu :call LaTeXtoUTF8()<CR>
 command! Convert2Latex :call UTF8toLaTeX()
 command! Convert2UTF8 :call LaTeXtoUTF8()
 
+" augroup LaTeX
+"     au!
+"     autocmd BufWritePre *.tex :Convert2Latex
+"     autocmd BufWritePost *.tex :Convert2UTF8
+" augroup END
