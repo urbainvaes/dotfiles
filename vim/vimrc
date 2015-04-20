@@ -6,11 +6,11 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 ""  Plugins
+Plugin 'gmarik/vundle'
 Plugin 'LaTeX-Box-Team/latex-box'
 Plugin 'SirVer/ultisnips'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'gmarik/vundle'
 Plugin 'godlygeek/tabular'
 Plugin 'gregsexton/gitv'
 Plugin 'honza/vim-snippets'
@@ -30,14 +30,19 @@ Plugin 'tpope/vim-unimpaired'
 filetype plugin indent on
 syntax on
 
-""  Configuration  
-
 "  Leader maps
 let mapleader = "\\"
 let maplocalleader = "-"
 nmap <Space> <Leader>
 
-"  UltiSnips
+"  Plugins options
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_by_filename = 1
+let g:ctrlp_working_path_mode = 'r'
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_open_new_file = 't'
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
@@ -45,10 +50,7 @@ let g:UltiSnipsListSnippets="<c-l>"
 let g:UltiSnipsEditSplit="horizontal"
 let g:UltiSnipsSnippetsDir="~/.vim/mySnippets"
 let g:UltiSnipsSnippetDirectories=['UltiSnips', 'mySnippets']
-let g:ctrlp_open_new_file = 't'
-noremap <c-h> :UltiSnipsEdit<Return>
 
-"  Latex-Box
 let g:tex_flavor='latex'
 let g:tex_conceal= 'adgm'
 let g:LatexBox_Folding=0
@@ -75,13 +77,6 @@ let NERDTreeIgnore=['\.pdf$', '\~$','\.toc$',
             \ '\.fls$','\.bbl$','\.blg$',
             \ '\.out$', '\.log$','\.aux$','\.sty$',
             \ '\.fdb_latexmk$', '\.synctex.gz$','\.latexmain$']
-
-"  CTRL-P
-
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_by_filename = 1
-let g:ctrlp_working_path_mode = ''
-let g:ctrlp_show_hidden = 1
 
 ""  Options  
 
@@ -114,11 +109,7 @@ set fillchars=fold:\ ,vert:\ ,
 set showbreak=...
 set colorcolumn=0
 set scrolloff=0
-if has('gui_running')
-    set t_Co=256
-else
-    set t_Co=256
-endif
+set t_Co=256
 set guitablabel=%N\ %t\ %M
 set showcmd
 
@@ -172,6 +163,7 @@ nnoremap <Leader>n :set relativenumber!<cr>
 nnoremap <Leader>sp :set paste!
 nnoremap <Leader>sv :source ~/.vim/vimrc<cr>
 nnoremap <Leader>sc :source %<cr>
+nnoremap <Leader>es :UltiSnipsEdit<Return>
 
 "  Other maps
 nnoremap <Return> o<Esc>
@@ -179,27 +171,12 @@ nnoremap <s-Return> O<Esc>
 nnoremap J mzJ`z
 nnoremap Y y$
 
-" nnoremap - za
 nnoremap <c-y> 3<c-y>
 nnoremap <c-e> 3<c-e>
 
-nnoremap j gj
-nnoremap k gk
-nnoremap $ g$
-nnoremap ^ g^
-nnoremap gj j
-nnoremap gk k
-nnoremap g$ $
-nnoremap g^ ^
-
-vnoremap j gj
-vnoremap k gk
-vnoremap $ g$
-vnoremap ^ g^
-vnoremap gj j
-vnoremap gk k
-vnoremap g$ $
-vnoremap g^ ^
+" Dvorak specific
+nnoremap : ,
+nnoremap , :
 
 ""  Latex  
 let g:tex_fast=""
