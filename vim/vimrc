@@ -6,25 +6,26 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 ""  Plugins
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-obsession'
-Plugin 'tpope/vim-sensible'
-Plugin 'tpope/vim-scriptease'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-commentary'
-Plugin 'gmarik/vundle'
 Plugin 'LaTeX-Box-Team/latex-box'
+Plugin 'SirVer/ultisnips'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'gmarik/vundle'
+Plugin 'godlygeek/tabular'
 Plugin 'gregsexton/gitv'
-Plugin 'UltiSnips'
+Plugin 'honza/vim-snippets'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'sjl/Gundo.vim'
 Plugin 'tommcdo/vim-exchange'
-Plugin 'unimpaired.vim'
-Plugin 'Tabular'
-Plugin 'Gundo'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'honza/vim-snippets'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-obsession'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-scriptease'
+Plugin 'tpope/vim-sensible'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-unimpaired'
 
 filetype plugin indent on
 syntax on
@@ -98,7 +99,7 @@ set foldmethod=expr
 set foldlevel=0
 
 "  Search
-set hlsearch
+set nohlsearch
 
 "  Back up files
 set noswapfile
@@ -140,6 +141,7 @@ set ignorecase
 set noautochdir
 set cpoptions+=I
 set encoding=utf-8
+set mouse=a
 
 ""  Colorscheme
 function! UpdateColorscheme()
@@ -167,6 +169,7 @@ nnoremap <Leader>w :w<cr>
 nnoremap <Leader>q :q!<cr>
 nnoremap <Leader>h :set hlsearch!<cr>
 nnoremap <Leader>n :set relativenumber!<cr>
+nnoremap <Leader>sp :set paste!
 nnoremap <Leader>sv :source ~/.vim/vimrc<cr>
 nnoremap <Leader>sc :source %<cr>
 
