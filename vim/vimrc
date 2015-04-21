@@ -134,20 +134,20 @@ set cpoptions+=I
 set encoding=utf-8
 
 ""  Colorscheme
-function! UpdateColorscheme()
-    try | colorscheme solarized | catch | endtry
-    if strftime("%H") >= 8 && strftime("%H") < 21
-        set background=light
-    else
-        set background=dark
-    endif
+try | colorscheme solarized | catch | endtry
+" function! UpdateColorscheme()
+"     if strftime("%H") >= 8 && strftime("%H") < 21
+"         set background=light
+"     else
+"         set background=dark
+"     endif
 
-    hi Cursor guifg=white guibg=blue
-    hi iCursor guifg=black guibg=green
-    hi! link conceal normal
-    hi! link folded comment
-endfunction
-autocmd! BufNewFile,BufRead,BufWrite * :call UpdateColorscheme()
+"     hi Cursor guifg=white guibg=blue
+"     hi iCursor guifg=black guibg=green
+"     hi! link conceal normal
+"     hi! link folded comment
+" endfunction
+" autocmd! BufNewFile,BufRead,BufWrite * :call UpdateColorscheme()
 
 ""  Custom mappings
 
