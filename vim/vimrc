@@ -160,10 +160,11 @@ nnoremap <Leader>w :w<cr>
 nnoremap <Leader>q :q!<cr>
 nnoremap <Leader>h :set hlsearch!<cr>
 nnoremap <Leader>n :set relativenumber!<cr>
-nnoremap <Leader>sp :set paste!
+nnoremap <Leader>sp :set paste!<cr>
 nnoremap <Leader>sv :source ~/.vim/vimrc<cr>
 nnoremap <Leader>sc :source %<cr>
 nnoremap <Leader>es :UltiSnipsEdit<Return>
+nnoremap <Leader>i mxgg=G'x
 
 "  Other maps
 nnoremap <Return> o<Esc>
