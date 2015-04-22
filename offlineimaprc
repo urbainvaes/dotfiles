@@ -92,7 +92,6 @@ nametrans      = lambda folder: {'INBOX' : 'Gmail'}.get(folder, folder)
 folderfilter   = lambda folder: folder in ['INBOX']
 sslcacertfile  = /etc/ssl/certs/ca-certificates.crt
 
-
 [mbnames]
 enabled  = yes
 filename = ~/.mutt/mailboxes
