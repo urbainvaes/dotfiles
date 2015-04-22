@@ -151,6 +151,7 @@ nnoremap <Leader>sv :source ~/.vim/vimrc<cr>
 nnoremap <Leader>sc :source %<cr>
 nnoremap <Leader>es :UltiSnipsEdit<Return>
 nnoremap <Leader>i mxgg=G'x
+nnoremap <tab> <C-^>
 
 
 "  Other maps
