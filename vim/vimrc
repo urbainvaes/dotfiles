@@ -37,6 +37,7 @@ nmap <Space> <Leader>
 
 "  Plugins options
 let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlPBuffer'
 let g:ctrlp_by_filename = 1
 let g:ctrlp_working_path_mode = 'r'
 let g:ctrlp_show_hidden = 1
@@ -150,6 +151,7 @@ nnoremap <Leader>sv :source ~/.vim/vimrc<cr>
 nnoremap <Leader>sc :source %<cr>
 nnoremap <Leader>es :UltiSnipsEdit<Return>
 nnoremap <Leader>i mxgg=G'x
+
 
 "  Other maps
 nnoremap <Return> o<Esc>
