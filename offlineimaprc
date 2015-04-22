@@ -1,0 +1,102 @@
+[general]
+ui         = ttyui
+pythonfile = /home/urbain/.offlineimap.py
+accounts   = Imperial, Main, Hotmail, Gmail
+maxsyncaccounts = 4
+
+[Account Imperial]
+localrepository  = Imperial-Local
+remoterepository = Imperial-Remote
+autorefresh      = 10
+
+[Repository Imperial-Local]
+type           = Maildir
+localfolders   = ~/.mail/Imperial
+status_backend = sqlite
+nametrans      = lambda folder : {'Imperial' : 'INBOX'}.get(folder, folder)
+
+[Repository Imperial-Remote]
+type           = IMAP
+remotehost     = exchange.imperial.ac.uk
+remoteuser     = uv113
+remotepasseval = mailpasswd("imperial")
+ssl            = yes
+nametrans      = lambda folder : {'INBOX' : 'Imperial'}.get(folder, folder)
+folderfilter   = lambda folder: folder in ['INBOX']
+Sslcacertfile  = /etc/ssl/certs/ca-certificates.crt
+
+[Account Main]
+localrepository  = Main-Local
+remoterepository = Main-Remote
+autorefresh      = 10
+
+[Repository Main-Local]
+type           = Maildir
+localfolders   = ~/.mail/Main
+status_backend = sqlite
+nametrans      = lambda folder : {'Main' : 'INBOX', 'Sent' : '[Gmail]/Sent Mail', 'Drafts' : '[Gmail]/Drafts'}.get(folder, folder)
+
+[Repository Main-Remote]
+type           = Gmail
+remoteuser     = urbain.p.vaes
+remotepasseval = mailpasswd("main")
+realdelete     = no
+maxconnections = 3
+nametrans      = lambda folder : {'INBOX' : 'Main', '[Gmail]/Sent Mail' : 'Sent', '[Gmail]/Drafts' : 'Drafts'}.get(folder, folder)
+folderfilter   = lambda folder: folder in ['INBOX', '[Gmail]/Sent Mail', '[Gmail]/Drafts']
+sslcacertfile  = /etc/ssl/certs/ca-certificates.crt
+
+
+[Account Hotmail]
+localrepository  = Hotmail-Local
+remoterepository = Hotmail-Remote
+autorefresh      = 10
+
+[Repository Hotmail-Local]
+type           = Maildir
+localfolders   = ~/.mail/Hotmail
+status_backend = sqlite
+nametrans      = lambda folder : {'Hotmail' : 'Inbox'}.get(folder, folder)
+
+[Repository Hotmail-Remote]
+type           = IMAP
+ssl            = yes
+remotehost     = imap-mail.outlook.com
+remoteport     = 993
+remoteuser     = urbainvaes@hotmail.com
+remotepasseval = mailpasswd("hotmail")
+realdelete     = no
+maxconnections = 3
+nametrans      = lambda folder : {'Inbox' : 'Hotmail'}.get(folder, folder)
+folderfilter   = lambda folder: folder in ['Inbox']
+sslcacertfile  = /etc/ssl/certs/ca-certificates.crt
+
+[Account Gmail]
+localrepository  = Gmail-Local
+remoterepository = Gmail-Remote
+autorefresh      = 10
+
+[Repository Gmail-Local]
+type           = Maildir
+localfolders   = ~/.mail/Gmail
+status_backend = sqlite
+nametrans      = lambda folder : {'Gmail' : 'INBOX'}.get(folder, folder)
+
+[Repository Gmail-Remote]
+type           = Gmail
+remoteuser     = urbainvaes90
+remotepasseval = mailpasswd("gmail")
+realdelete     = no
+maxconnections = 3
+nametrans      = lambda folder: {'INBOX' : 'Gmail'}.get(folder, folder)
+folderfilter   = lambda folder: folder in ['INBOX']
+sslcacertfile  = /etc/ssl/certs/ca-certificates.crt
+
+
+[mbnames]
+enabled  = yes
+filename = ~/.mutt/mailboxes
+header   = "mailboxes "
+peritem  = "+%(accountname)s/%(foldername)s"
+sep      = " "
+footer   = "\n"
