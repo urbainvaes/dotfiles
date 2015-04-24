@@ -17,10 +17,9 @@ for file in $files; do
     ln -s $dir/$file ~/.$file
 done
 
-# SSMTP config
-echo ssmtp.conf
-sudo mv /etc/ssmtp/ssmtp.conf $olddir
-sudo ln -s $dir/ssmtp.conf /etc/ssmtp/
+# Symlink for neovim
+ln -s $dir/vim ~/.nvim
+ln -s $dir/vim/vimrc ~/.nvim/nvimrc
 
 # Solarized
 cd
