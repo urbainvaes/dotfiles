@@ -50,6 +50,7 @@ alias v=$EDITOR
 alias g='git'
 alias v='vim'
 alias vs="vim --servername SYNC"
+alias vsess="vim -S Session.vim"
 alias va="vim --servername SYNC main.tex \
                                 sections/introduction.tex \
                                 sections/sec1.tex \
