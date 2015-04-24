@@ -1,24 +1,48 @@
 # You can edit this file by hand, but it's recommended not to do that.
 
 # Bookmarks:
+'k
+	/home/urbain/Dropbox/phd/papers
+	texput.log
+1429873258
+'m
+	/home/urbain/Dropbox/phd/papers/spectral
+	code/
+1429873263
+'p
+	/home/urbain/Dropbox/phd/papers/spectral
+	code/
+1429873265
 'H
 	/home/urbain
 	../
 -1
-'m
-	/home/urbain/Dropbox/phd/literature/October\ 14
-	Shear_viscosity.pdf
--1
-'p
-	/home/urbain/Dropbox/phd
-	../
--1
 
 # Command line history (oldest to newest):
+:colorscheme solarized
+:colorscheme desert
+:colorscheme g80
+:colorscheme zenburn
+:colorscheme zenburn_1
+:colorscheme solarized-dark
+:colorscheme matrix
+:h nmap
+:h map
+:nmap m 'm
+:nmap m m
+:nmap p 'p
+:marks
+:map <space>q :q
+:map tab space
+:map <tab> space
+:map <tab> <space>
+:h
 :set number
 :q
 
 # Search history (oldest to newest):
+/col
+/colorschem
 
 # Prompt history (oldest to newest):
 

@@ -58,7 +58,7 @@ set noiec
 
 " Selected color scheme
 
-colorscheme Default
+colorscheme matrix
 
 " The FUSE_HOME directory will be used as a root dir for all FUSE mounts.
 " Unless it exists with write/exec permissions set, vifm will attempt to
@@ -74,11 +74,6 @@ set timefmt=\ %m/%d\ %H:%M
 
 " :mark mark /full/directory/path [filename]
 
-" mark H /home/urbain ../
-" mark m /home/urbain/Dropbox/phd/literature/October\ 14 Shear_viscosity.pdf
-" mark p /home/urbain/Dropbox/phd ../
-" mark z /home/urbain/.vifm ../
-
 " :com[mand] command_name action
 " The following macros can be used in a command
 " %a is replaced with the user arguments.
@@ -90,7 +85,6 @@ set timefmt=\ %m/%d\ %H:%M
 " %d the current directory name.
 " %D the other window directory name.
 " %m run the command in a menu window
-
 
 " The file type is for the default programs to be used with
 " a file extension.
@@ -123,3 +117,9 @@ set timefmt=\ %m/%d\ %H:%M
 " set vifminfo=options,filetypes,commands,bookmarks,tui,state,cs,chistory,shistory,dirstack,registers,phistory
 " Like in vi
 set vifminfo=bookmarks,chistory,shistory,phistory
+
+" Personal additions
+map , :
+map <tab> space
+map <space>q :q<cr>
+filetype *.pdf,*.dvi zathura
