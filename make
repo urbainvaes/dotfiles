@@ -4,7 +4,7 @@ dir=~/dotfiles
 olddir=~/dotfiles_old
 
 # Files to sync
-files="vim mutt passwords vifm msmtprc bashrc zshrc xmodmap mynotes tmux.conf zathurarc offlineimaprc offlineimap.py inputrc latexmkrc crontab gitconfig"
+files="vim vimrc mutt passwords vifm msmtprc bashrc zshrc xmodmap mynotes tmux.conf zathurarc offlineimaprc offlineimap.py inputrc latexmkrc crontab gitconfig"
 
 rm -rf $olddir
 mkdir -p $olddir
@@ -17,10 +17,9 @@ for file in $files; do
     ln -s $dir/$file ~/.$file
 done
 
-# SSMTP config
-echo ssmtp.conf
-sudo mv /etc/ssmtp/ssmtp.conf $olddir
-sudo ln -s $dir/ssmtp.conf /etc/ssmtp/
+# Symlink for neovim
+ln -s $dir/vim ~/.nvim
+ln -s $dir/vimrc ~/.nvimrc
 
 # Solarized
 cd

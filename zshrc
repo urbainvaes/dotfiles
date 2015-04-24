@@ -49,6 +49,7 @@ alias g='git'
 alias v=$EDITOR
 alias g='git'
 alias v='vim'
+alias n='nvim'
 alias vs="vim --servername SYNC"
 alias vsess="vim -S Session.vim"
 alias va="vim --servername SYNC main.tex \
