@@ -39,6 +39,7 @@
 :h
 :set number
 :q
+:e 
 
 # Search history (oldest to newest):
 /col

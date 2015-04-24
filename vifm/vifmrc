@@ -123,3 +123,4 @@ map , :
 map <tab> space
 map <space>q :q<cr>
 filetype *.pdf,*.dvi zathura
+set number
