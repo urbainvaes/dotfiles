@@ -135,6 +135,7 @@ set noautochdir
 set cpoptions+=I
 set encoding=utf-8
 set mouse=a
+set clipboard=unnamedplus
 
 ""  Colorscheme
 try | colorscheme solarized | catch | endtry
@@ -176,3 +177,8 @@ augroup autorelead_vimrc
     au!
     au BufWritePost ~/.vim/vimrc source ~/.vim/vimrc
 augroup END
+
+"" Neovim specific
+if has('nvim')
+    tmap jk <C-\><C-n>
+endif

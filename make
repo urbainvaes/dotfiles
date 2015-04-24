@@ -4,7 +4,7 @@ dir=~/dotfiles
 olddir=~/dotfiles_old
 
 # Files to sync
-files="vim mutt passwords vifm msmtprc bashrc zshrc xmodmap mynotes tmux.conf zathurarc offlineimaprc offlineimap.py inputrc latexmkrc crontab gitconfig"
+files="vim vimrc mutt passwords vifm msmtprc bashrc zshrc xmodmap mynotes tmux.conf zathurarc offlineimaprc offlineimap.py inputrc latexmkrc crontab gitconfig"
 
 rm -rf $olddir
 mkdir -p $olddir
@@ -19,7 +19,7 @@ done
 
 # Symlink for neovim
 ln -s $dir/vim ~/.nvim
-ln -s $dir/vim/vimrc ~/.nvim/nvimrc
+ln -s $dir/vimrc ~/.nvimrc
 
 # Solarized
 cd
