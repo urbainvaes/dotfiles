@@ -1,5 +1,3 @@
-""  Required by Vundle
-
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/vundle/
@@ -27,6 +25,9 @@ Plugin 'tpope/vim-scriptease'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'bling/vim-airline'
+Plugin 'bling/vim-bufferline'
+Plugin 'edkolev/tmuxline.vim'
 
 filetype plugin indent on
 syntax on
@@ -80,7 +81,7 @@ let NERDTreeIgnore=['\.pdf$', '\~$','\.toc$',
             \ '\.out$', '\.log$','\.aux$','\.sty$',
             \ '\.fdb_latexmk$', '\.synctex.gz$','\.latexmain$']
 
-""  Options  
+""  Options
 
 "  Tabs and indent
 set smartindent
@@ -141,7 +142,7 @@ set clipboard=unnamedplus
 try | colorscheme solarized | catch | endtry
 
 " General
-nnoremap <Leader>te :tabedit 
+nnoremap <Leader>te :tabedit
 nnoremap <Leader>tn :tabnew<cr>
 nnoremap <Leader>to :tabonly<cr>
 nnoremap <Leader>w :w<cr>
@@ -149,10 +150,11 @@ nnoremap <Leader>q :q!<cr>
 nnoremap <Leader>h :set hlsearch!<cr>
 nnoremap <Leader>n :set relativenumber!<cr>
 nnoremap <Leader>sp :set paste!<cr>
-nnoremap <Leader>sv :source ~/.vim/vimrc<cr>
+nnoremap <Leader>sv :source ~/.vimrc<cr>
 nnoremap <Leader>sc :source %<cr>
 nnoremap <Leader>es :UltiSnipsEdit<Return>
 nnoremap <Leader>i mxgg=G'x
+nnoremap <Leader>sw :%s/\s\+$//<cr>
 nnoremap <tab> <C-^>
 
 
@@ -167,9 +169,11 @@ nnoremap <c-e> 3<c-e>
 
 " Dvorak specific
 nnoremap : ,
+vnoremap : ,
 nnoremap , :
+vnoremap , :
 
-""  Latex  
+""  Latex
 let g:tex_fast=""
 
 ""  Autocommands
@@ -182,3 +186,12 @@ augroup END
 if has('nvim')
     tmap jk <C-\><C-n>
 endif
+
+let g:airline_section_x = ''
+let g:airline_section_y = ''
+let g:airline_theme='solarized'
+let g:tmuxline_theme='airline'
+let g:airline_right_sep=''
+let g:airline_left_sep=''
+let g:tmuxline_preset = {'a':'#H','b':'#S','win':'#W','cwin':'#W','x':'%R','y':'%a','z':'%Y'}
+let g:tmuxline_separators = {'left':'','left_alt':'>','right':'','right_alt':'<','space':' '}

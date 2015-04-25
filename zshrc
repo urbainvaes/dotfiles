@@ -78,7 +78,7 @@ alias gco='git checkout'
 # Configuration
 alias ez='vim ~/.zshrc'
 alias em='vim ~/.mutt/muttrc'
-alias ev='vim ~/.vim/vimrc'
+alias ev='vim ~/.vimrc'
 alias eza='vim ~/.zathurarc'
 alias et='vim ~/.tmux.conf'
 alias evi='vim ~/.vifm/vifmrc'
