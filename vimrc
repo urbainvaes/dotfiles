@@ -15,6 +15,7 @@ Plugin 'gregsexton/gitv'
 Plugin 'honza/vim-snippets'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
 Plugin 'sjl/Gundo.vim'
 Plugin 'tommcdo/vim-exchange'
 Plugin 'tpope/vim-commentary'
@@ -53,6 +54,22 @@ let g:UltiSnipsListSnippets="<c-l>"
 let g:UltiSnipsEditSplit="horizontal"
 let g:UltiSnipsSnippetsDir="~/.vim/mySnippets"
 let g:UltiSnipsSnippetDirectories=['UltiSnips', 'mySnippets']
+
+let g:bufferline_echo = 0
+let g:bufferline_active_buffer_left = '['
+let g:bufferline_active_buffer_right = ']'
+let g:bufferline_modified = '+'
+let g:bufferline_rotate = 1
+
+let g:airline_section_x = ''
+let g:airline_section_y = ''
+let g:airline_theme='solarized'
+let g:airline_right_sep=''
+let g:airline_left_sep=''
+
+let g:tmuxline_theme='airline'
+let g:tmuxline_preset = {'a':'#H','b':'#S','win':'#W','cwin':'#W','x':'%R','y':'%a','z':'%Y'}
+let g:tmuxline_separators = {'left':'','left_alt':'>','right':'','right_alt':'<','space':' '}
 
 let g:tex_flavor='latex'
 let g:tex_conceal= 'adgm'
@@ -187,11 +204,3 @@ if has('nvim')
     tmap jk <C-\><C-n>
 endif
 
-let g:airline_section_x = ''
-let g:airline_section_y = ''
-let g:airline_theme='solarized'
-let g:tmuxline_theme='airline'
-let g:airline_right_sep=''
-let g:airline_left_sep=''
-let g:tmuxline_preset = {'a':'#H','b':'#S','win':'#W','cwin':'#W','x':'%R','y':'%a','z':'%Y'}
-let g:tmuxline_separators = {'left':'','left_alt':'>','right':'','right_alt':'<','space':' '}
