@@ -10,25 +10,37 @@ inoremap <buffer> << \,\leq\,
 inoremap <buffer> ++ \,+\,
 inoremap <buffer> -- \,-\,
 
-inoremap <buffer> `a \alpha
-inoremap <buffer> `b \beta
-inoremap <buffer> `g \gamma
-inoremap <buffer> `d \delta
-inoremap <buffer> `e \varepsilon
-inoremap <buffer> `z \zeta
-inoremap <buffer> `h \eta
-inoremap <buffer> `t \theta
-inoremap <buffer> `i \iota
-inoremap <buffer> `k \kappa
-inoremap <buffer> `l \lambda
-inoremap <buffer> `m \mu
-inoremap <buffer> `n \nu
-inoremap <buffer> `x \xi
-inoremap <buffer> `r \rho
-inoremap <buffer> `s \sigma
-inoremap <buffer> `f \phi
-inoremap <buffer> `p \pi
-inoremap <buffer> `w \omega
+iabbrev <buffer> ga \alpha
+iabbrev <buffer> gb \beta
+iabbrev <buffer> gg \gamma
+iabbrev <buffer> gd \delta
+iabbrev <buffer> ge \varepsilon
+iabbrev <buffer> gz \zeta
+iabbrev <buffer> gh \eta
+iabbrev <buffer> gt \theta
+iabbrev <buffer> gi \iota
+iabbrev <buffer> gk \kappa
+iabbrev <buffer> gl \lambda
+iabbrev <buffer> gm \mu
+iabbrev <buffer> gn \nu
+iabbrev <buffer> gx \xi
+iabbrev <buffer> gr \rho
+iabbrev <buffer> gs \sigma
+iabbrev <buffer> gf \phi
+iabbrev <buffer> gp \pi
+iabbrev <buffer> gw \omega
+iabbrev <buffer> dd \d
+
+function! SynctexShow()
+    let synctex = glob("*.synctex.gz")
+    if strlen(synctex) == 0
+        echom "no synctex file found"
+    else
+        let pdffile = substitute(synctex,"synctex.gz","pdf","")
+        let execline = printf(":!zathura --synctex-forward %d:%d:%s %s", line('.'), col('.'), shellescape(bufname("%")), shellescape(pdffile))
+        exec execline
+    end
+endfunction
 
 nnoremap <buffer> <LocalLeader>a :call SynctexShow()<CR><CR>
 nnoremap <buffer> <LocalLeader>i :Latexmk<CR>
@@ -36,5 +48,3 @@ nnoremap <buffer> <LocalLeader>e :LatexErrors<CR>
 nnoremap <buffer> <LocalLeader>o :LatexView<CR>
 nnoremap <buffer> <LocalLeader>k :LatexmkStop<CR>:LatexmkClean<CR>
 nnoremap <buffer> <LocalLeader>h :split header.sty<CR>
-
-iabbrev <buffer> dd \d

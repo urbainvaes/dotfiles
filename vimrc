@@ -39,54 +39,51 @@ let maplocalleader = "-"
 nmap <Space> <Leader>
 
 "  Plugins options
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlPBuffer'
-let g:ctrlp_by_filename = 1
-let g:ctrlp_working_path_mode = 'r'
-let g:ctrlp_show_hidden = 1
-let g:ctrlp_open_new_file = 't'
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-let g:UltiSnipsListSnippets="<c-l>"
-let g:UltiSnipsEditSplit="horizontal"
-let g:UltiSnipsSnippetsDir="~/.vim/mySnippets"
-let g:UltiSnipsSnippetDirectories=['UltiSnips', 'mySnippets']
-
-let g:bufferline_echo = 0
-let g:bufferline_active_buffer_left = '['
-let g:bufferline_active_buffer_right = ']'
-let g:bufferline_modified = '+'
-let g:bufferline_rotate = 1
-
-let g:airline_section_x = ''
-let g:airline_section_y = ''
-let g:airline_theme='solarized'
-let g:airline_right_sep=''
-let g:airline_left_sep=''
-
-let g:tmuxline_theme='airline'
-let g:tmuxline_preset = {'a':'#H','b':'#S','win':'#W','cwin':'#W','x':'%R','y':'%a','z':'%Y'}
-let g:tmuxline_separators = {'left':'','left_alt':'>','right':'','right_alt':'<','space':' '}
-
-let g:tex_flavor='latex'
-let g:tex_conceal= 'adgm'
 let g:LatexBox_Folding=0
-let g:LatexBox_viewer='zathura'
 let g:LatexBox_latexmk_preview_continuously=1
 let g:LatexBox_quickfix=2
-function! SynctexShow()
-    let synctex = glob("*.synctex.gz")
-    if strlen(synctex) == 0
-        echom "no synctex file found"
-    else
-        let pdffile = substitute(synctex,"synctex.gz","pdf","")
-        let execline = printf(":!zathura --synctex-forward %d:%d:%s %s", line('.'), col('.'), shellescape(bufname("%")), shellescape(pdffile))
-        exec execline
-    end
-endfunction
+let g:LatexBox_viewer='zathura'
+
+let g:UltiSnipsEditSplit="horizontal"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsListSnippets="<c-l>"
+let g:UltiSnipsSnippetDirectories=['UltiSnips', 'mySnippets']
+let g:UltiSnipsSnippetsDir="~/.vim/mySnippets"
+
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+let g:airline_section_x = ''
+let g:airline_section_y = ''
+let g:airline_section_z = '%3p%%|%3l|%3c'
+let g:airline_theme='solarized'
+
+let g:bufferline_active_buffer_left = ''
+let g:bufferline_active_buffer_right = ''
+let g:bufferline_echo = 0
+let g:bufferline_modified = '+'
+let g:bufferline_rotate = 0
+
+let g:ctrlp_by_filename = 1
+let g:ctrlp_cmd = 'CtrlPBuffer'
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_open_new_file = 't'
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+let g:ctrlp_working_path_mode = 'r'
+
+let g:syntastic_cpp_compiler = 'clang++'
+let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
+
+let g:tex_conceal= 'adgm'
+let g:tex_flavor='latex'
+let g:tex_fast=""
+
+let g:tmuxline_preset = {'a':'#H','b':'#S','win':'#W','cwin':'#W','x':'%R','y':'%a','z':'%Y'}
+let g:tmuxline_separators = {'left':'','left_alt':'>','right':'','right_alt':'<','space':' '}
+let g:tmuxline_theme='airline'
 
 "  Gundo
 nnoremap <F5> :GundoToggle<cr>
@@ -155,10 +152,8 @@ set encoding=utf-8
 set mouse=a
 set clipboard=unnamedplus
 
-""  Colorscheme
-try | colorscheme solarized | catch | endtry
 
-" General
+" Leader-maps
 nnoremap <Leader>te :tabedit
 nnoremap <Leader>tn :tabnew<cr>
 nnoremap <Leader>to :tabonly<cr>
@@ -174,8 +169,6 @@ nnoremap <Leader>i mxgg=G'x
 nnoremap <Leader>sw :%s/\s\+$//<cr>
 nnoremap <tab> <C-^>
 
-
-"  Other maps
 nnoremap <Return> o<Esc>
 nnoremap <s-Return> O<Esc>
 nnoremap J mzJ`z
@@ -190,17 +183,10 @@ vnoremap : ,
 nnoremap , :
 vnoremap , :
 
-""  Latex
-let g:tex_fast=""
-
-""  Autocommands
-augroup autorelead_vimrc
-    au!
-    au BufWritePost ~/.vim/vimrc source ~/.vim/vimrc
-augroup END
-
 "" Neovim specific
 if has('nvim')
     tmap jk <C-\><C-n>
 endif
 
+""  Colorscheme
+try | colorscheme solarized | catch | endtry
