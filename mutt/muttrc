@@ -25,7 +25,7 @@ set status_format = "───( Folder: %f )───(%r%m messages%?n? (%n new)
                      (%d to delete)?%?t? (%t tagged)? )───%>─%?p?( %p postponed )?───"
 
 # Headers
-ignore *
+# ignore *
 # unignore from: to: cc: date: subject:
 # unhdr_order *
 # hdr_order from: to: cc: date: subject:
