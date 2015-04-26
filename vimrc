@@ -27,7 +27,7 @@ Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'bling/vim-airline'
-Plugin 'bling/vim-bufferline'
+" Plugin 'bling/vim-bufferline'
 Plugin 'edkolev/tmuxline.vim'
 
 filetype plugin indent on
@@ -55,11 +55,12 @@ let g:UltiSnipsSnippetsDir="~/.vim/mySnippets"
 
 let g:airline_left_sep=''
 let g:airline_right_sep=''
+let g:airline_section_c = ''
 let g:airline_section_x = ''
-let g:airline_section_y = ''
+let g:airline_section_y = '%f'
 let g:airline_section_z = '%3p%%|%3l|%3c'
 let g:airline_theme='solarized'
-let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 0
 
 let g:bufferline_active_buffer_left = ''
 let g:bufferline_active_buffer_right = ''
