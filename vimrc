@@ -75,6 +75,11 @@ let g:ctrlp_open_new_file = 't'
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 let g:ctrlp_working_path_mode = 'r'
+let g:ctrlp_prompt_mappings = {
+\ 'PrtSelectMove("j")':   ['<c-n>'],
+\ 'PrtSelectMove("k")':   ['<c-p>'],
+\ 'PrtHistory(-1)':       ['<down>'],
+\ 'PrtHistory(1)':        ['<up>'],}
 
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
