@@ -131,6 +131,7 @@ set nonumber
 set listchars=tab:▸\ ,eol:¬,trail:-
 set fillchars=fold:\ ,vert:\ ,
 set showbreak=...
+set breakindent
 set colorcolumn=0
 set scrolloff=0
 set t_Co=256
