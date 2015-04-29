@@ -5,11 +5,12 @@ call vundle#rc()
 
 ""  Plugins
 Plugin 'gmarik/vundle'
-Plugin 'istib/vifm.vim'
 Plugin 'LaTeX-Box-Team/latex-box'
 Plugin 'SirVer/ultisnips'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'bling/vim-airline'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'edkolev/tmuxline.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'gregsexton/gitv'
 Plugin 'honza/vim-snippets'
@@ -26,9 +27,6 @@ Plugin 'tpope/vim-scriptease'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
-Plugin 'bling/vim-airline'
-" Plugin 'bling/vim-bufferline'
-Plugin 'edkolev/tmuxline.vim'
 
 filetype plugin indent on
 syntax on
@@ -57,7 +55,7 @@ let g:airline_left_sep=''
 let g:airline_right_sep=''
 let g:airline_section_c = ''
 let g:airline_section_x = ''
-let g:airline_section_y = '%f'
+let g:airline_section_y = '%f%m'
 let g:airline_section_z = '%3p%%|%3l|%3c'
 let g:airline_theme='solarized'
 let g:airline#extensions#tabline#enabled = 0
@@ -75,11 +73,6 @@ let g:ctrlp_open_new_file = 't'
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 let g:ctrlp_working_path_mode = 'r'
-let g:ctrlp_prompt_mappings = {
-\ 'PrtSelectMove("j")':   ['<c-n>'],
-\ 'PrtSelectMove("k")':   ['<c-p>'],
-\ 'PrtHistory(-1)':       ['<down>'],
-\ 'PrtHistory(1)':        ['<up>'],}
 
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
@@ -91,6 +84,9 @@ let g:tex_fast=""
 let g:tmuxline_preset = {'a':'#H','b':'#S','win':'#W','cwin':'#W','x':'%R','y':'%a','z':'%Y'}
 let g:tmuxline_separators = {'left':'','left_alt':'>','right':'','right_alt':'<','space':' '}
 let g:tmuxline_theme='airline'
+
+" let g:ycm_key_list_select_completion=[]
+" let g:ycm_key_list_previous_completion=[]
 
 "  Gundo
 nnoremap <F5> :GundoToggle<cr>
@@ -176,6 +172,8 @@ nnoremap <Leader>es :UltiSnipsEdit<Return>
 nnoremap <Leader>i mxgg=G'x
 nnoremap <Leader>sw :%s/\s\+$//<cr>
 nnoremap <tab> <C-^>
+
+nnoremap <LocalLeader>h :e %:p:s,.hpp$,.X123X,:s,.cpp$,.hpp,:s,.X123X$,.cpp,<CR>
 
 nnoremap <Return> o<Esc>
 nnoremap <s-Return> O<Esc>

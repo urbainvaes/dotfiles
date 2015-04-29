@@ -59,6 +59,7 @@ alias va="vim --servername SYNC main.tex \
                                 sections/sec3.tex \
                                 sections/conclusion.tex"
 alias c='clear'
+alias mc='make clean'
 alias m='mutt'
 alias a='vifm'
 alias mn='vim ~/.mynotes'
