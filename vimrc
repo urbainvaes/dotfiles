@@ -7,6 +7,7 @@ call vundle#rc()
 Plugin 'gmarik/vundle'
 Plugin 'LaTeX-Box-Team/latex-box'
 Plugin 'SirVer/ultisnips'
+Plugin 'airblade/vim-gitgutter'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
 Plugin 'christoomey/vim-tmux-navigator'
@@ -19,6 +20,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'sjl/Gundo.vim'
 Plugin 'tommcdo/vim-exchange'
+Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-commentary'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-obsession'
@@ -88,11 +90,6 @@ let g:tmuxline_theme='airline'
 " let g:ycm_key_list_select_completion=[]
 " let g:ycm_key_list_previous_completion=[]
 
-"  Gundo
-nnoremap <F5> :GundoToggle<cr>
-
-"  Nerdtree
-nnoremap <F3> :NERDTreeToggle<cr>
 let NERDTreeIgnore=['\.pdf$', '\~$','\.toc$',
             \ '\.fls$','\.bbl$','\.blg$',
             \ '\.out$', '\.log$','\.aux$','\.sty$',
@@ -158,17 +155,35 @@ set clipboard=unnamedplus
 
 
 " Leader-maps
-nnoremap <Leader>te :tabedit
-nnoremap <Leader>tn :tabnew<cr>
-nnoremap <Leader>to :tabonly<cr>
-nnoremap <Leader>w :w<cr>
-nnoremap <Leader>q :q!<cr>
-nnoremap <Leader>h :set hlsearch!<cr>
-nnoremap <Leader>n :set relativenumber!<cr>
-nnoremap <Leader>sp :set paste!<cr>
+
+" Tabs
+nnoremap <Leader>we :tabedit
+nnoremap <Leader>wn :tabnew<cr>
+nnoremap <Leader>wo :tabonly<cr>
+
+" Toggles
+nnoremap <Leader>th :set hlsearch!<cr>
+nnoremap <Leader>tr :set relativenumber!<cr>
+nnoremap <Leader>tn :set number!<cr>
+nnoremap <Leader>tp :set paste!<cr>
+nnoremap <Leader>tb :set bg!<cr>
+nnoremap <Leader>tg :GitGutterToggle<cr>
+nnoremap <Leader>tt :NERDTreeToggle<cr>
+nnoremap <Leader>tu :GundoToggle<cr>
+nnoremap <Leader>tb :ToggleBG<cr>
+
+" Sourcing
 nnoremap <Leader>sv :source ~/.vimrc<cr>
 nnoremap <Leader>sc :source %<cr>
+
+" File edits
 nnoremap <Leader>es :UltiSnipsEdit<Return>
+nnoremap <Leader>ev :e ~/.vimrc <Return>
+nnoremap <Leader>ez :e ~/.zshrc <Return>
+
+" Misc
+nnoremap <Leader>w :w<cr>
+nnoremap <Leader>q :q!<cr>
 nnoremap <Leader>i mxgg=G'x
 nnoremap <Leader>sw :%s/\s\+$//<cr>
 nnoremap <tab> <C-^>
