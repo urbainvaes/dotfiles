@@ -4,7 +4,7 @@ dir=~/dotfiles
 olddir=~/dotfiles_old
 
 # Files to sync
-files="vim vimrc mutt passwords vifm msmtprc bashrc zshrc xmodmap mynotes tmux.conf zathurarc offlineimaprc offlineimap.py inputrc latexmkrc crontab gitconfig tmuxlinerc"
+files="vim vimrc mutt passwords vifm msmtprc bashrc zshrc xmodmap mynotes tmux.conf zathurarc offlineimaprc offlineimap.py inputrc latexmkrc crontab gitconfig git_template tmuxlinerc"
 
 rm -rf $olddir
 mkdir -p $olddir
@@ -41,7 +41,7 @@ cd mutt
 mkdir temp
 
 # Tmux
-cd 
+cd
 rm -rf .tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 tmux source-file ~/.tmux.conf

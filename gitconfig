@@ -1,3 +1,7 @@
 [user]
 	name = Urbain Vaes
 	email = u.vaes13@imperial.ac.uk
+[init]
+	templatedir = ~/.git_template
+[alias]
+	ctags = !.git/hooks/ctags

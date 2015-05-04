@@ -136,22 +136,21 @@ set nowrap
 set linebreak
 set textwidth=0
 set conceallevel=2
+set formatprg=par\ w70
 set guifont=Monaco\ 11
-set lazyredraw
-highlight diffAdded guifg=#00bf00
-highlight diffRemoved guifg=#bf0000
 
 "  Case and spell
 set nospell
 set smartcase
 set ignorecase
 
-"  General
+"  Misc
 set noautochdir
 set cpoptions+=I
 set encoding=utf-8
 set mouse=a
 set clipboard=unnamedplus
+set lazyredraw
 
 
 " Leader-maps
