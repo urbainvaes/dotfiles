@@ -165,11 +165,10 @@ nnoremap <Leader>th :set hlsearch!<cr>
 nnoremap <Leader>tr :set relativenumber!<cr>
 nnoremap <Leader>tn :set number!<cr>
 nnoremap <Leader>tp :set paste!<cr>
-nnoremap <Leader>tb :set bg!<cr>
 nnoremap <Leader>tg :GitGutterToggle<cr>
 nnoremap <Leader>tt :NERDTreeToggle<cr>
 nnoremap <Leader>tu :GundoToggle<cr>
-nnoremap <Leader>tb :ToggleBG<cr>
+nnoremap <Leader>tb :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 
 " Sourcing
 nnoremap <Leader>sv :source ~/.vimrc<cr>
@@ -182,8 +181,8 @@ nnoremap <Leader>ez :e ~/.zshrc <Return>
 
 " Misc
 nnoremap <Leader>w :w<cr>
-nnoremap <Leader>q :q!<cr>
-nnoremap <Leader>i mxgg=G'x
+nnoremap <Leader>q :bd!<cr>
+nnoremap <Leader>i zzmxgg=G'x
 nnoremap <Leader>sw :%s/\s\+$//<cr>
 nnoremap <tab> <C-^>
 
