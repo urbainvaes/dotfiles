@@ -174,16 +174,24 @@ nnoremap <Leader>tb :let &background = ( &background == "dark"? "light" : "dark"
 nnoremap <Leader>sv :source ~/.vimrc<cr>
 nnoremap <Leader>sc :source %<cr>
 
+" Plugin Management
+nnoremap <Leader>pi :PluginUpdate<cr>
+nnoremap <Leader>pu :PluginUpdate<cr>
+nnoremap <Leader>pc :PluginClean<cr>
+
 " File edits
-nnoremap <Leader>es :UltiSnipsEdit<Return>
-nnoremap <Leader>ev :e ~/.vimrc <Return>
-nnoremap <Leader>ez :e ~/.zshrc <Return>
+nnoremap <Leader>es :UltiSnipsEdit<cr>
+nnoremap <Leader>ev :e ~/.vimrc<cr>
+nnoremap <Leader>ez :e ~/.zshrc<cr>
+nnoremap <Leader>et :e ~/.tmux.conf<cr>
+
+" Formatting
+nnoremap <Leader>fw :%s/\s\+$//<cr>
+nnoremap <Leader>fi zzmxgg=G'x
 
 " Misc
-nnoremap <Leader>w :w<cr>
+nnoremap <Leader><cr> :w<cr>
 nnoremap <Leader>q :bd!<cr>
-nnoremap <Leader>i zzmxgg=G'x
-nnoremap <Leader>sw :%s/\s\+$//<cr>
 nnoremap <tab> <C-^>
 
 nnoremap <LocalLeader>h :e %:p:s,.hpp$,.X123X,:s,.cpp$,.hpp,:s,.X123X$,.cpp,<CR>
