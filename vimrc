@@ -190,9 +190,10 @@ nnoremap <Leader>fw :%s/\s\+$//<cr>
 nnoremap <Leader>fi zzmxgg=G'x
 
 " Misc
-nnoremap <Leader><cr> :w<cr>
-nnoremap <Leader>q :bd!<cr>
 nnoremap <tab> <C-^>
+nnoremap Q :bd!<cr>
+nnoremap _ :w<cr>
+nnoremap <Leader>q :q!<cr>
 
 nnoremap <LocalLeader>h :e %:p:s,.hpp$,.X123X,:s,.cpp$,.hpp,:s,.X123X$,.cpp,<CR>
 
