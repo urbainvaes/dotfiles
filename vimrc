@@ -15,6 +15,7 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'edkolev/tmuxline.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'gregsexton/gitv'
+Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'honza/vim-snippets'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdtree'
@@ -35,6 +36,9 @@ filetype plugin indent on
 syntax on
 
 "" Plugins options
+let g:buffergator_display_regime='bufname'
+let g:buffergator_vsplit_size=30
+
 let g:LatexBox_Folding=0
 let g:LatexBox_latexmk_preview_continuously=1
 let g:LatexBox_quickfix=2
@@ -151,10 +155,10 @@ let mapleader = "\\"
 let maplocalleader = "-"
 nmap <Space> <Leader>
 
-" Tabs
-nnoremap <Leader>we :tabedit
-nnoremap <Leader>wn :tabnew<cr>
-nnoremap <Leader>wo :tabonly<cr>
+" New pages
+nnoremap <Leader>pe :tabedit
+nnoremap <Leader>pn :tabnew<cr>
+nnoremap <Leader>po :tabonly<cr>
 
 " Toggles
 nnoremap <Leader>tb :let &background = ( &background == "dark"? "light" : "dark" )<CR>
@@ -172,7 +176,7 @@ nnoremap <Leader>sv :source ~/.vimrc<cr>
 nnoremap <Leader>sc :source %<cr>
 
 " Plugin Management
-nnoremap <Leader>pi :PluginUpdate<cr>
+nnoremap <Leader>pi :PluginInstall<cr>
 nnoremap <Leader>pu :PluginUpdate<cr>
 nnoremap <Leader>pc :PluginClean<cr>
 
@@ -195,7 +199,7 @@ nnoremap <s-Return> O<Esc>
 " Misc
 nnoremap <tab> <C-^>
 nnoremap Q :bd!<cr>
-nnoremap _ :w<cr>
+nnoremap <Leader>w :w<cr>
 nnoremap <Leader>q :q!<cr>
 nnoremap <LocalLeader>h :e %:p:s,.hpp$,.X123X,:s,.cpp$,.hpp,:s,.X123X$,.cpp,<CR>
 nnoremap J mzJ`z
