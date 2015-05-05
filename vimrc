@@ -1,9 +1,10 @@
+"" Required by vundle
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-""  Plugins
+"" Plugins
 Plugin 'gmarik/vundle'
 Plugin 'LaTeX-Box-Team/latex-box'
 Plugin 'SirVer/ultisnips'
@@ -33,13 +34,7 @@ Plugin 'tpope/vim-unimpaired'
 filetype plugin indent on
 syntax on
 
-"  Leader maps
-let mapleader = "\\"
-let maplocalleader = "-"
-nmap <Space> <Leader>
-
-"  Plugins options
-
+"" Plugins options
 let g:LatexBox_Folding=0
 let g:LatexBox_latexmk_preview_continuously=1
 let g:LatexBox_quickfix=2
@@ -87,43 +82,37 @@ let g:tmuxline_preset = {'a':'#H','b':'#S','win':'#W','cwin':'#W','x':'%R','y':'
 let g:tmuxline_separators = {'left':'','left_alt':'>','right':'','right_alt':'<','space':' '}
 let g:tmuxline_theme='airline'
 
-" let g:ycm_key_list_select_completion=[]
-" let g:ycm_key_list_previous_completion=[]
-
 let NERDTreeIgnore=['\.pdf$', '\~$','\.toc$',
             \ '\.fls$','\.bbl$','\.blg$',
             \ '\.out$', '\.log$','\.aux$','\.sty$',
             \ '\.fdb_latexmk$', '\.synctex.gz$','\.latexmain$']
 
-""  Options
+"" Vim options
 
-"  Tabs and indent
+" Tabs and indent
 set smartindent
 set expandtab
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 
-"  Folds
+" Folds
 set foldcolumn=0
 set foldenable
 set foldmethod=expr
 set foldlevel=0
 
-"  Search
-set nohlsearch
-
-"  Back up files
+" Back up files
 set noswapfile
 set nowritebackup
 set undofile
 set undodir=/home/urbain/.vim/vimundo/
 
-"  Layout window
+" Layout window
 set nonumber
 set listchars=tab:▸\ ,eol:¬,trail:-
 set fillchars=fold:\ ,vert:\ ,
-set showbreak=...
+set showbreak=--▸\ ,
 set breakindent
 set colorcolumn=0
 set scrolloff=0
@@ -131,7 +120,7 @@ set t_Co=256
 set guitablabel=%N\ %t\ %M
 set showcmd
 
-"  Layout text
+" Layout text
 set nowrap
 set linebreak
 set textwidth=0
@@ -139,21 +128,28 @@ set conceallevel=2
 set formatprg=par\ w70
 set guifont=Monaco\ 11
 
-"  Case and spell
+" Case and spell
 set nospell
 set smartcase
 set ignorecase
 
-"  Misc
+" Misc
 set noautochdir
-set cpoptions+=I
+set cpoptions+=Iq
 set encoding=utf-8
 set mouse=a
 set clipboard=unnamedplus
 set lazyredraw
 
+" Colorscheme
+try | colorscheme solarized | catch | endtry
 
-" Leader-maps
+"" Maps
+
+" Definition of leaders
+let mapleader = "\\"
+let maplocalleader = "-"
+nmap <Space> <Leader>
 
 " Tabs
 nnoremap <Leader>we :tabedit
@@ -161,14 +157,15 @@ nnoremap <Leader>wn :tabnew<cr>
 nnoremap <Leader>wo :tabonly<cr>
 
 " Toggles
+nnoremap <Leader>tb :let &background = ( &background == "dark"? "light" : "dark" )<CR>
+nnoremap <Leader>tg :GitGutterToggle<cr>
 nnoremap <Leader>th :set hlsearch!<cr>
-nnoremap <Leader>tr :set relativenumber!<cr>
+nnoremap <Leader>tl :set list!<cr>
 nnoremap <Leader>tn :set number!<cr>
 nnoremap <Leader>tp :set paste!<cr>
-nnoremap <Leader>tg :GitGutterToggle<cr>
+nnoremap <Leader>tr :set relativenumber!<cr>
 nnoremap <Leader>tt :NERDTreeToggle<cr>
 nnoremap <Leader>tu :GundoToggle<cr>
-nnoremap <Leader>tb :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 
 " Sourcing
 nnoremap <Leader>sv :source ~/.vimrc<cr>
@@ -189,21 +186,21 @@ nnoremap <Leader>et :e ~/.tmux.conf<cr>
 nnoremap <Leader>fw :%s/\s\+$//<cr>
 nnoremap <Leader>fi zzmxgg=G'x
 
+" Navigation
+nnoremap <c-y> 3<c-y>
+nnoremap <c-e> 3<c-e>
+nnoremap <Return> o<Esc>
+nnoremap <s-Return> O<Esc>
+
 " Misc
 nnoremap <tab> <C-^>
 nnoremap Q :bd!<cr>
 nnoremap _ :w<cr>
 nnoremap <Leader>q :q!<cr>
-
 nnoremap <LocalLeader>h :e %:p:s,.hpp$,.X123X,:s,.cpp$,.hpp,:s,.X123X$,.cpp,<CR>
-
-nnoremap <Return> o<Esc>
-nnoremap <s-Return> O<Esc>
 nnoremap J mzJ`z
 nnoremap Y y$
-
-nnoremap <c-y> 3<c-y>
-nnoremap <c-e> 3<c-e>
+nnoremap + za
 
 " Dvorak specific
 nnoremap : ,
@@ -215,6 +212,3 @@ vnoremap , :
 if has('nvim')
     tmap jk <C-\><C-n>
 endif
-
-""  Colorscheme
-try | colorscheme solarized | catch | endtry
