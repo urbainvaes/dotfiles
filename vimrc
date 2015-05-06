@@ -31,7 +31,6 @@ Plugin 'tpope/vim-scriptease'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
-
 filetype plugin indent on
 syntax on
 
@@ -134,6 +133,7 @@ set guifont=Monaco\ 11
 
 " Case and spell
 set nospell
+set spellfile="/home/urbain/.vim/spell/en.utf-8.add"
 set smartcase
 set ignorecase
 
@@ -160,6 +160,11 @@ nnoremap <Leader>pe :tabedit
 nnoremap <Leader>pn :tabnew<cr>
 nnoremap <Leader>po :tabonly<cr>
 
+" Plugin Management
+nnoremap <Leader>pi :PluginInstall<cr>
+nnoremap <Leader>pu :PluginUpdate<cr>
+nnoremap <Leader>pc :PluginClean<cr>
+
 " Toggles
 nnoremap <Leader>tb :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 nnoremap <Leader>tg :GitGutterToggle<cr>
@@ -168,17 +173,13 @@ nnoremap <Leader>tl :set list!<cr>
 nnoremap <Leader>tn :set number!<cr>
 nnoremap <Leader>tp :set paste!<cr>
 nnoremap <Leader>tr :set relativenumber!<cr>
+nnoremap <Leader>ts :set spell!<cr>
 nnoremap <Leader>tt :NERDTreeToggle<cr>
 nnoremap <Leader>tu :GundoToggle<cr>
 
 " Sourcing
 nnoremap <Leader>sv :source ~/.vimrc<cr>
 nnoremap <Leader>sc :source %<cr>
-
-" Plugin Management
-nnoremap <Leader>pi :PluginInstall<cr>
-nnoremap <Leader>pu :PluginUpdate<cr>
-nnoremap <Leader>pc :PluginClean<cr>
 
 " File edits
 nnoremap <Leader>es :UltiSnipsEdit<cr>
@@ -195,6 +196,11 @@ nnoremap <c-y> 3<c-y>
 nnoremap <c-e> 3<c-e>
 nnoremap <Return> o<Esc>
 nnoremap <s-Return> O<Esc>
+
+" Git
+nnoremap <Leader>gs :Gstatus<cr>
+nnoremap <Leader>gr :Gread<cr>
+nnoremap <Leader>gd :Gdiff<cr>
 
 " Misc
 nnoremap <tab> <C-^>
