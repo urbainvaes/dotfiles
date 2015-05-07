@@ -166,16 +166,11 @@ nnoremap <Leader>po :tabonly<cr>
 nnoremap <Leader>pi :PluginInstall<cr>
 nnoremap <Leader>pu :PluginUpdate<cr>
 nnoremap <Leader>pc :PluginClean<cr>
+nnoremap <Leader>ps :PluginSearch<cr>
 
 " Toggles
-nnoremap <Leader>tb :let &background = ( &background == "dark"? "light" : "dark" )<CR>
+nnoremap cop :set paste!<cr>
 nnoremap <Leader>tg :GitGutterToggle<cr>
-nnoremap <Leader>th :set hlsearch!<cr>
-nnoremap <Leader>tl :set list!<cr>
-nnoremap <Leader>tn :set number!<cr>
-nnoremap <Leader>tp :set paste!<cr>
-nnoremap <Leader>tr :set relativenumber!<cr>
-nnoremap <Leader>ts :set spell!<cr>
 nnoremap <Leader>tt :NERDTreeToggle<cr>
 nnoremap <Leader>tu :GundoToggle<cr>
 
