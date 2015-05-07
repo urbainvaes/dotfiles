@@ -18,30 +18,49 @@ for file in $files; do
 done
 
 # Symlink for neovim
+rm ~/.nvim ~/.nvimrc
 ln -s $dir/vim ~/.nvim
 ln -s $dir/vimrc ~/.nvimrc
 
 # Solarized
-cd
-rm -rf .solarized
-mkdir .solarized
-cd .solarized
-git clone https://github.com/altercation/mutt-colors-solarized
-git clone https://github.com/Anthony25/gnome-terminal-colors-solarized/
-git clone https://github.com/seebi/dircolors-solarized
+mkdir -p ~/.solarized
+cd ~/.solarized
 
-cd
-rm -rf .vim/bundle
-mkdir .vim/bundle
-git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-vim +PluginInstall +qall
+if [ ! -d ~/.solarized/mutt-colors-solarized ]; then
+    git clone https://github.com/altercation/mutt-colors-solarized/
+else
+    cd mutt-colors-solarized
+    git pull origin master
+fi
 
-cd $dir
-cd mutt
-mkdir temp
+if [ ! -d ~/.solarized/gnome-terminal-colors-solarized ]; then
+    git clone https://github.com/Anthony25/gnome-terminal-colors-solarized/
+else
+    cd ~/.solarized/gnome-terminal-colors-solarized
+    git pull origin master
+fi
 
-# Tmux
-cd
-rm -rf .tmux
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-tmux source-file ~/.tmux.conf
+if [ ! -d ~/.solarized/dircolors-solarized ]; then
+    git clone https://github.com/seebi/dircolors-solarized/
+else
+    cd ~/.solarized/dircolors-solarized
+    git pull origin master
+fi
+
+if [ ! -d ~/.vim/bundle ]; then
+    mkdir -p ~/.vim/bundle
+    git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+else
+    cd ~/.vim/bundle/vundle
+    git pull origin master
+fi
+
+if [ ! -d ~/.tmux/plugins/tpm ]; then
+    mkdir -p ~/.tmux/plugins
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+else
+    cd ~/.tmux/plugins/tpm
+    git pull origin master
+fi
+
+mkdir -p $dir/mutt/temp
