@@ -6,11 +6,17 @@ olddir=~/dotfiles_old
 rm -rf $olddir
 mkdir -p $olddir
 
+echo -e "\n*** Symlinking files *** \n"
+
 cd $dir
 for file in `ls --ignore="make" --ignore="tex"`; do
-    echo "Symlinking $file"
-    mv ~/.$file $olddir
+    if [ -e ~/.$file ]; then
+        mv ~/.$file $olddir
+        printf '~/.%-15s exists. ' $file
+        echo -n "Moving it to $olddir. "
+    fi
     ln -s $dir/$file ~/.$file
+    echo "(Re)-creating symbolic link of $file."
 done
 
 # Symlink for neovim
@@ -18,45 +24,28 @@ rm ~/.nvim ~/.nvimrc
 ln -s $dir/vim ~/.nvim
 ln -s $dir/vimrc ~/.nvimrc
 
-# Solarized
-mkdir -p ~/.solarized
-cd ~/.solarized
 
-if [ ! -d ~/.solarized/mutt-colors-solarized ]; then
-    git clone https://github.com/altercation/mutt-colors-solarized/
-else
-    cd mutt-colors-solarized
-    git pull origin master
-fi
+echo -e "\n*** Updating/Creating git repositories *** \n"
 
-if [ ! -d ~/.solarized/gnome-terminal-colors-solarized ]; then
-    git clone https://github.com/Anthony25/gnome-terminal-colors-solarized/
-else
-    cd ~/.solarized/gnome-terminal-colors-solarized
-    git pull origin master
-fi
+declare -A repos
+repos[altercation]=/home/urbain/.solarized/mutt-colors-solarized
+repos[Anthony25]=/home/urbain/.solarized/gnome-terminal-colors-solarized
+repos[seebi]=/home/urbain/.solarized/dircolors-solarized
+repos[gmarik]=/home/urbain/.vim/bundle/vundle
+repos[tmux-plugins]=/home/urbain/.tmux/plugins/tpm
 
-if [ ! -d ~/.solarized/dircolors-solarized ]; then
-    git clone https://github.com/seebi/dircolors-solarized/
-else
-    cd ~/.solarized/dircolors-solarized
-    git pull origin master
-fi
+for author in "${!repos[@]}"; do
+    thisDir=${repos[$author]}
+    if [ ! -d $thisDir ]; then
+        parentDir=`echo $thisDir | sed 's/\/[^\/]\+$//g'`
+        githubDir=https://github.com/$author`echo $thisDir | sed 's/.*\(\/[^\/]\+\)$/\1/g'`
+        echo $githubDir
+        mkdir -p $parentDir; cd $parentDir
+        git clone $githubDir
+    else
+        cd $thisDir
+        git pull origin master
+    fi
+done
 
-if [ ! -d ~/.vim/bundle ]; then
-    mkdir -p ~/.vim/bundle
-    git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-else
-    cd ~/.vim/bundle/vundle
-    git pull origin master
-fi
-
-if [ ! -d ~/.tmux/plugins/tpm ]; then
-    mkdir -p ~/.tmux/plugins
-    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-else
-    cd ~/.tmux/plugins/tpm
-    git pull origin master
-fi
-
-mkdir -p $dir/mutt/temp
+echo -e "\n*** Installation successful *** \n"
