@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 dir=~/dotfiles
 olddir=~/dotfiles_old
 
@@ -8,8 +9,14 @@ mkdir -p $olddir
 
 echo -e "\n*** Symlinking files *** \n"
 
+if [ $# -eq 0 ]; then
+    listFiles=`ls --ignore="make" --ignore="tex"`
+else
+    listFiles=$@
+fi
+
 cd $dir
-for file in `ls --ignore="make" --ignore="tex"`; do
+for file in $listFiles; do
     if [ -e ~/.$file ]; then
         mv ~/.$file $olddir
         printf '~/.%-15s exists. ' $file
@@ -19,11 +26,14 @@ for file in `ls --ignore="make" --ignore="tex"`; do
     echo "(Re)-creating symbolic link of $file."
 done
 
+if [ $# -ne 0 ]; then
+    exit
+fi
+
 # Symlink for neovim
 rm ~/.nvim ~/.nvimrc
 ln -s $dir/vim ~/.nvim
 ln -s $dir/vimrc ~/.nvimrc
-
 
 echo -e "\n*** Updating/Creating git repositories *** \n"
 
