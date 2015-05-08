@@ -3,16 +3,12 @@
 dir=~/dotfiles
 olddir=~/dotfiles_old
 
-# Files to sync
-files="vim vimrc mutt passwords vifm msmtprc bashrc zshrc xmodmap mynotes tmux.conf zathurarc offlineimaprc offlineimap.py inputrc latexmkrc crontab gitconfig git_template tmuxlinerc"
-
 rm -rf $olddir
 mkdir -p $olddir
 
 cd $dir
-chmod 600 msmtprc
-for file in $files; do
-    echo $file
+for file in `ls --ignore="make" --ignore="tex"`; do
+    echo "Symlinking $file"
     mv ~/.$file $olddir
     ln -s $dir/$file ~/.$file
 done
