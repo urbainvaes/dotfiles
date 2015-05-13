@@ -21,6 +21,7 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'kien/ctrlp.vim'
+Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'sjl/Gundo.vim'
@@ -38,8 +39,6 @@ filetype plugin indent on
 syntax on
 
 "" Plugins options
-let g:buffergator_display_regime='bufname'
-let g:buffergator_vsplit_size=30
 
 let g:LatexBox_Folding=0
 let g:LatexBox_latexmk_preview_continuously=1
@@ -63,6 +62,9 @@ let g:airline_section_z = '%3p%%|%3l|%3c'
 let g:airline_theme='solarized'
 let g:airline#extensions#tabline#enabled = 0
 
+let g:buffergator_display_regime='bufname'
+let g:buffergator_vsplit_size=30
+
 let g:bufferline_active_buffer_left = ''
 let g:bufferline_active_buffer_right = ''
 let g:bufferline_echo = 0
@@ -77,8 +79,11 @@ let g:ctrlp_show_hidden = 1
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 let g:ctrlp_working_path_mode = 'r'
 
-let g:syntastic_cpp_compiler = 'clang++'
-let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
+let g:syntastic_cpp_compiler = "g++"
+let g:syntastic_cpp_compiler_options = "-std=c++11 -Wall -Wextra -Wpedantic"
+
+let g:tagbar_width = 30
+let g:tagbar_show_linenumbers=1
 
 let g:tex_conceal= 'adgm'
 let g:tex_flavor='latex'
@@ -171,8 +176,10 @@ nnoremap <Leader>ps :PluginSearch<cr>
 
 " Toggles
 nnoremap cop :set paste!<cr>
+nnoremap <Leader>tb :BuffergatorToggle<cr>
 nnoremap <Leader>tg :GitGutterToggle<cr>
-nnoremap <Leader>tt :NERDTreeToggle<cr>
+nnoremap <Leader>tn :NERDTreeToggle<cr>
+nnoremap <Leader>tt :TagbarToggle<cr>
 nnoremap <Leader>tu :GundoToggle<cr>
 
 " Sourcing
@@ -181,6 +188,7 @@ nnoremap <Leader>sc :source %<cr>
 
 " File edits
 nnoremap <Leader>es :UltiSnipsEdit<cr>
+nnoremap <Leader>em :e ~/.mutt/muttrc<cr>
 nnoremap <Leader>ev :e ~/.vimrc<cr>
 nnoremap <Leader>ez :e ~/.zshrc<cr>
 nnoremap <Leader>et :e ~/.tmux.conf<cr>
@@ -216,7 +224,15 @@ vnoremap : ,
 nnoremap , :
 vnoremap , :
 
-"" Neovim specific
+"" Experimental
+augroup cursorPosition
+    au!
+    autocmd BufReadPost *
+                \ if line("'\"") > 1 && line("'\"") <= line("$") |
+                \   exe "normal! g`\"" |
+                \ endif
+augroup END
+
 if has('nvim')
     tmap jk <C-\><C-n>
 endif

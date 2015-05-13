@@ -34,7 +34,7 @@ alias -s pdf=zathura
 alias -s py=vim
 
 # Directories
-alias u='cd ~/Dropbox/phd'
+alias u='cd ~/Dropbox/phd/papers/spectral/code/finite'
 alias uc='cd ~/Dropbox/phd/programs'
 alias ul='cd ~/Dropbox/phd/literature'
 alias ur='cd ~/Dropbox/phd/reports'
