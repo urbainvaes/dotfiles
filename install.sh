@@ -3,6 +3,7 @@
 
 dir=~/dotfiles
 olddir=~/dotfiles_old
+home=/home/urbain
 
 rm -rf $olddir
 mkdir -p $olddir
@@ -10,7 +11,7 @@ mkdir -p $olddir
 echo -e "\n*** Symlinking files *** \n"
 
 if [ $# -eq 0 ]; then
-    listFiles=`ls --ignore="make" --ignore="tex"`
+    listFiles=`ls --ignore="make" --ignore="tex" --ignore="README.md"`
 else
     listFiles=$@
 fi
@@ -31,18 +32,19 @@ if [ $# -ne 0 ]; then
 fi
 
 # Symlink for neovim
-rm ~/.nvim ~/.nvimrc
-ln -s $dir/vim ~/.nvim
-ln -s $dir/vimrc ~/.nvimrc
+# rm ~/.nvim ~/.nvimrc
+# ln -s $dir/vim ~/.nvim
+# ln -s $dir/vimrc ~/.nvimrc
 
 echo -e "\n*** Updating/Creating git repositories *** \n"
 
 declare -A repos
-repos[altercation]=/home/urbain/.solarized/mutt-colors-solarized
-repos[Anthony25]=/home/urbain/.solarized/gnome-terminal-colors-solarized
-repos[seebi]=/home/urbain/.solarized/dircolors-solarized
-repos[gmarik]=/home/urbain/.vim/bundle/vundle
-repos[tmux-plugins]=/home/urbain/.tmux/plugins/tpm
+repos[junegunn]=$home/.nvim/vim-plug
+repos[altercation]=$home/.solarized/mutt-colors-solarized
+repos[Anthony25]=$home/.solarized/gnome-terminal-colors-solarized
+repos[seebi]=$home/.solarized/dircolors-solarized
+repos[gmarik]=$home/.vim/bundle/vundle
+repos[tmux-plugins]=$home/.tmux/plugins/tpm
 
 for author in "${!repos[@]}"; do
     thisDir=${repos[$author]}
@@ -57,5 +59,9 @@ for author in "${!repos[@]}"; do
         git pull origin master
     fi
 done
+
+cd $dir/nvim
+mkdir -p autoload
+ln -s $dir/nvim/vim-plug/plug.vim $dir/nvim/autoload/plug.vim
 
 echo -e "\n*** Installation successful *** \n"
