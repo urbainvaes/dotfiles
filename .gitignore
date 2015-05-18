@@ -4,6 +4,7 @@ vim/vimundo/*
 vim/bundle/
 nvim/plugged/
 nvim/vim-plug/
+nvim/autoload/
 nvim/vimundo/
 vifm/Trash
 vifm/vimfiles

@@ -39,11 +39,11 @@ fi
 echo -e "\n*** Updating/Creating git repositories *** \n"
 
 declare -A repos
-repos[junegunn]=$home/.nvim/vim-plug
 repos[altercation]=$home/.solarized/mutt-colors-solarized
 repos[Anthony25]=$home/.solarized/gnome-terminal-colors-solarized
 repos[seebi]=$home/.solarized/dircolors-solarized
 repos[gmarik]=$home/.vim/bundle/vundle
+repos[junegunn]=$home/.nvim/vim-plug
 repos[tmux-plugins]=$home/.tmux/plugins/tpm
 
 for author in "${!repos[@]}"; do
@@ -61,6 +61,9 @@ for author in "${!repos[@]}"; do
 done
 
 cd $dir/nvim
+if [ -e autoload ]; then
+    rm -rf autoload
+fi
 mkdir -p autoload
 ln -s $dir/nvim/vim-plug/plug.vim $dir/nvim/autoload/plug.vim
 
