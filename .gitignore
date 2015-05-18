@@ -2,6 +2,9 @@ mutt/cache/
 mutt/mailboxes/
 vim/vimundo/*
 vim/bundle/
+nvim/plugged/
+nvim/vim-plug/
+nvim/vimundo/
 vifm/Trash
 vifm/vimfiles
 vifm/vifminfo

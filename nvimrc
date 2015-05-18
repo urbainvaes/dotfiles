@@ -108,7 +108,7 @@ set foldlevel=0
 set noswapfile
 set nowritebackup
 set undofile
-set undodir=/home/urbain/.vim/vimundo/
+set undodir=/home/urbain/.nvim/vimundo/
 
 " Layout window
 set nonumber

@@ -1,0 +1,25 @@
+global !p
+def make_comment():
+	b, e = vim.eval("&commentstring").split( '%s' )
+	return b, e
+endglobal
+
+snippet todo "A universal TODO reminder" b
+`!p
+comment = make_comment()
+snip.rv = comment[ 0 ]
+` TODO: ${1:desc} (`!v $USER`, `!v strftime("%c")`) `!p
+comment = make_comment()
+snip.rv = comment[ 1 ]`
+$0
+endsnippet
+
+snippet fix "A universal FIXME reminder" b
+`!p
+comment = make_comment()
+snip.rv = comment[ 0 ]
+` FIXME: ${1:desc} (`!v $USER`, `!v strftime("%c")`) `!p
+comment = make_comment()
+snip.rv = comment[ 1 ]`
+$0
+endsnippet
