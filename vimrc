@@ -55,11 +55,10 @@ let g:UltiSnipsSnippetsDir="~/.vim/mySnippets"
 
 let g:airline_left_sep=''
 let g:airline_right_sep=''
-let g:airline_section_c = ''
-let g:airline_section_x = ''
-let g:airline_section_y = '%f%m'
+let g:airline_section_c = '%f%m'
+let g:airline_section_y = ''
 let g:airline_section_z = '%3p%%|%3l|%3c'
-let g:airline_theme='solarized'
+let g:airline_theme='base16'
 let g:airline#extensions#tabline#enabled = 0
 
 let g:buffergator_display_regime='bufname'
