@@ -203,8 +203,8 @@ nnoremap <Leader>gd :Gdiff<cr>
 
 " Commands
 nnoremap ym :Neomake!<cr>
-nnoremap ys :mksession! tmp.vim<cr>
-nnoremap yr :source tmp.vim<cr>
+nnoremap <c-w>o :mksession! ~/tmp.vim<cr><c-w>o
+nnoremap <c-w>r :source ~/tmp.vim<cr>
 
 " Misc
 nnoremap <tab> <C-^>
@@ -225,7 +225,6 @@ vnoremap , :
 " Neovim specific
 tmap <C-_> <C-\><C-n><C-^>
 nnoremap <C-_> :b term<cr>i
-" nnoremap <C-_> <C-^>i
 inoremap <C-_> <Esc><C-^>i
 
 "" Restore cursor position
@@ -235,4 +234,5 @@ augroup cursorPosition
                 \ if line("'\"") > 1 && line("'\"") <= line("$") |
                 \   exe "normal! g`\"" |
                 \ endif
+    autocmd! BufWritePost *.cpp Neomake!
 augroup END
