@@ -20,18 +20,18 @@ source $ZSH/oh-my-zsh.sh
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 
 # Editor
-export EDITOR=/usr/bin/vim
+export EDITOR=/usr/bin/nvim
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 # Apps for filetypes
-alias -s vim=vim
-alias -s cpp=vim
-alias -s c=vim
-alias -s tex=vim
+alias -s vim=$EDITOR
+alias -s cpp=$EDITOR
+alias -s c=$EDITOR
+alias -s tex=$EDITOR
 alias -s pdf=zathura
-alias -s py=vim
+alias -s py=$EDITOR
 
 # Directories
 alias u='cd ~/Dropbox/phd/papers/spectral/code/finite'
@@ -46,13 +46,12 @@ alias cdd='cd ~/dotfiles'
 # Commands
 alias tmux="TERM=screen-256color-bce tmux"
 alias g='git'
-alias v=$EDITOR
-alias g='git'
 alias v='vim'
 alias n='nvim'
-alias vs="vim --servername SYNC"
-alias vsess="vim -S Session.vim"
-alias va="vim --servername SYNC main.tex \
+alias e=$EDITOR
+alias vs="$EDITOR --servername SYNC"
+alias vsess="$EDITOR -S Session.vim"
+alias va="$EDITOR --servername SYNC main.tex \
                                 sections/introduction.tex \
                                 sections/sec1.tex \
                                 sections/sec2.tex \
@@ -62,7 +61,7 @@ alias c='clear'
 alias mc='make clean'
 alias m='mutt'
 alias a='vifm'
-alias mn='vim ~/.mynotes'
+alias mn="$EDITOR ~/.mynotes"
 alias x='sh ~/.xmodmap'
 alias mail='offlineimap -u quiet &'
 alias ca='printf "\ec"'
@@ -77,14 +76,14 @@ alias commit='git commit -a -m'
 alias gco='git checkout'
 
 # Configuration
-alias ez='vim ~/.zshrc'
-alias em='vim ~/.mutt/muttrc'
-alias ev='vim ~/.vimrc'
-alias eza='vim ~/.zathurarc'
-alias et='vim ~/.tmux.conf'
-alias evi='vim ~/.vifm/vifmrc'
-alias eo='vim ~/.offlineimaprc'
-alias ex='vim ~/.xmodmap'
+alias ez="$EDITOR ~/.zshrc"
+alias em="$EDITOR ~/.mutt/muttrc"
+alias ev="$EDITOR ~/.vimrc"
+alias eza="$EDITOR ~/.zathurarc"
+alias et="$EDITOR ~/.tmux.conf"
+alias evi="$EDITOR ~/.vifm/vifmrc"
+alias eo="$EDITOR ~/.offlineimaprc"
+alias ex="$EDITOR ~/.xmodmap"
 
 # Fix smart search history
 bindkey -a 'k' history-beginning-search-backward
@@ -92,3 +91,5 @@ bindkey -a 'j' history-beginning-search-forward
 
 # Crontab jobs
 crontab ~/.crontab
+
+TERM=xterm-256color

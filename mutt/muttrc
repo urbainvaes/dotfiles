@@ -119,9 +119,4 @@ bind   index,pager O sidebar-open
 
 # Compose
 bind compose p postpone-message
-
-
-## Hooks
-mbox-hook .* "+Main/Main"
-
 set reverse_alias

@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 dir=~/dotfiles
 olddir=~/dotfiles_old
 home=/home/urbain
@@ -60,11 +59,16 @@ for author in "${!repos[@]}"; do
     fi
 done
 
+# Installing autoload package manager 
 cd $dir/nvim
 if [ -e autoload ]; then
     rm -rf autoload
 fi
 mkdir -p autoload
 ln -s $dir/nvim/vim-plug/plug.vim $dir/nvim/autoload/plug.vim
+
+# Creating temporary file for mutt
+cd $dir
+mkdir -p mutt/temp
 
 echo -e "\n*** Installation successful *** \n"

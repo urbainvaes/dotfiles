@@ -1,9 +1,11 @@
 "" Plugins
 call plug#begin('~/.nvim/plugged')
+Plug 'AndrewRadev/splitjoin.vim'
 Plug 'LaTeX-Box-Team/latex-box'
 Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
+Plug 'benekastah/neomake'
 Plug 'bling/vim-airline'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'edkolev/tmuxline.vim'
@@ -11,14 +13,13 @@ Plug 'godlygeek/tabular'
 Plug 'gregsexton/gitv'
 Plug 'honza/vim-snippets'
 Plug 'jamessan/vim-gnupg'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'jeetsukumaran/vim-buffergator'
-Plug 'AndrewRadev/splitjoin.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
 Plug 'sjl/Gundo.vim'
+Plug 'terryma/vim-multiple-cursors'
 Plug 'tommcdo/vim-exchange'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
@@ -180,6 +181,7 @@ nnoremap <Leader>sc :source %<cr>
 " File edits
 nnoremap <Leader>es :UltiSnipsEdit<cr>
 nnoremap <Leader>em :e ~/.mutt/muttrc<cr>
+nnoremap <Leader>en :e ~/.nvimrc<cr>
 nnoremap <Leader>ev :e ~/.vimrc<cr>
 nnoremap <Leader>ez :e ~/.zshrc<cr>
 nnoremap <Leader>et :e ~/.tmux.conf<cr>
@@ -199,6 +201,11 @@ nnoremap <Leader>gs :Gstatus<cr>
 nnoremap <Leader>gr :Gread<cr>
 nnoremap <Leader>gd :Gdiff<cr>
 
+" Commands
+nnoremap ym :Neomake!<cr>
+nnoremap ys :mksession! tmp.vim<cr>
+nnoremap yr :source tmp.vim<cr>
+
 " Misc
 nnoremap <tab> <C-^>
 nnoremap Q :bd!<cr>
@@ -216,7 +223,10 @@ nnoremap , :
 vnoremap , :
 
 " Neovim specific
-tmap <Esc> <C-\><C-n>
+tmap <C-_> <C-\><C-n><C-^>
+nnoremap <C-_> :b term<cr>i
+" nnoremap <C-_> <C-^>i
+inoremap <C-_> <Esc><C-^>i
 
 "" Restore cursor position
 augroup cursorPosition
@@ -226,4 +236,3 @@ augroup cursorPosition
                 \   exe "normal! g`\"" |
                 \ endif
 augroup END
-
