@@ -70,6 +70,7 @@ let g:ctrlp_open_new_file = 't'
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 let g:ctrlp_working_path_mode = 'r'
+nnoremap <a-p> :CtrlPMRUFiles<cr>
 
 let g:syntastic_cpp_compiler = "g++"
 let g:syntastic_cpp_compiler_options = "-std=c++11 -Wall -Wextra -Wpedantic"
@@ -144,9 +145,13 @@ set encoding=utf-8
 set mouse=a
 set clipboard=unnamedplus
 set lazyredraw
+set hidden
 
 " Colorscheme
 try | colorscheme solarized | catch | endtry
+highlight Comment cterm=italic
+set t_ZH=[3m
+set t_ZR=[23m
 
 "" Maps
 
@@ -228,11 +233,10 @@ nnoremap <C-_> :b term<cr>i
 inoremap <C-_> <Esc><C-^>i
 
 "" Restore cursor position
-augroup cursorPosition
-    au!
+augroup autocommands
+    autocmd BufWritePost *.cpp Neomake!
     autocmd BufReadPost *
                 \ if line("'\"") > 1 && line("'\"") <= line("$") |
                 \   exe "normal! g`\"" |
                 \ endif
-    autocmd! BufWritePost *.cpp Neomake!
 augroup END
