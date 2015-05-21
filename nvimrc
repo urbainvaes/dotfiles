@@ -230,10 +230,11 @@ vnoremap , :
 " Neovim specific
 tmap <C-_> <C-\><C-n><C-^>
 nnoremap <C-_> :b term<cr>i
-inoremap <C-_> <Esc><C-^>i
+inoremap <C-_> <Esc>:b term<cr>i
 
 "" Restore cursor position
 augroup autocommands
+    au!
     autocmd BufWritePost *.cpp Neomake!
     autocmd BufReadPost *
                 \ if line("'\"") > 1 && line("'\"") <= line("$") |

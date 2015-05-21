@@ -67,8 +67,10 @@ fi
 mkdir -p autoload
 ln -s $dir/nvim/vim-plug/plug.vim $dir/nvim/autoload/plug.vim
 
-# Creating temporary file for mutt
+# Creating auxiliary files for mutt
 cd $dir
 mkdir -p mutt/temp
+mkdir -p mutt/cache
+mkdir -p mutt/cache/bodies
 
 echo -e "\n*** Installation successful *** \n"
