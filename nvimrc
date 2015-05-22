@@ -34,7 +34,7 @@ Plug 'tpope/vim-scriptease'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'Valloric/YouCompleteMe' , { 'for' : 'cpp' }
+Plug 'Valloric/YouCompleteMe'
 call plug#end()
 
 "" Plugins options
