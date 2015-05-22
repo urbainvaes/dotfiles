@@ -1,10 +1,8 @@
 "" Plugins
 call plug#begin('~/.nvim/plugged')
-Plug 'AndrewRadev/splitjoin.vim'
-Plug 'LaTeX-Box-Team/latex-box'
-Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
+Plug 'AndrewRadev/splitjoin.vim'
 Plug 'benekastah/neomake'
 Plug 'bling/vim-airline'
 Plug 'christoomey/vim-tmux-navigator'
@@ -17,10 +15,14 @@ Plug 'jamessan/vim-gnupg'
 Plug 'jeetsukumaran/vim-buffergator'
 Plug 'junegunn/seoul256.vim'
 Plug 'kien/ctrlp.vim'
+Plug 'LaTeX-Box-Team/latex-box'
 Plug 'majutsushi/tagbar'
+Plug 'rdnetto/YCM-Generator', { 'branch' : 'stable' }
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
+Plug 'SirVer/ultisnips'
 Plug 'sjl/Gundo.vim'
+Plug 'szw/vim-ctrlspace'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tomasr/molokai'
 Plug 'tommcdo/vim-exchange'
@@ -33,9 +35,8 @@ Plug 'tpope/vim-scriptease'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-
-Plug 'szw/vim-ctrlspace'
 Plug 'troydm/zoomwintab.vim'
+Plug 'Valloric/YouCompleteMe'
 call plug#end()
 
 "" Plugins options
@@ -101,6 +102,10 @@ let NERDTreeIgnore=['\.pdf$', '\~$','\.toc$',
             \ '\.fls$','\.bbl$','\.blg$',
             \ '\.out$', '\.log$','\.aux$','\.sty$',
             \ '\.fdb_latexmk$', '\.synctex.gz$','\.latexmain$']
+
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:ycm_auto_trigger = 1
 
 "" Vim options
 
@@ -181,6 +186,7 @@ nnoremap <Leader>pi :PlugInstall<cr>
 nnoremap <Leader>pu :PlugUpdate<cr>
 nnoremap <Leader>pc :PlugClean<cr>
 nnoremap <Leader>pd :PlugDiff<cr>
+nnoremap <Leader>ps :PlugStatus<cr>
 
 " Toggles
 nnoremap cop :set paste!<cr>
@@ -252,4 +258,3 @@ augroup autocommands
                 \   exe "normal! g`\"" |
                 \ endif
 augroup END
-
