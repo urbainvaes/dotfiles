@@ -33,6 +33,9 @@ Plug 'tpope/vim-scriptease'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+
+Plug 'szw/vim-ctrlspace'
+Plug 'troydm/zoomwintab.vim'
 call plug#end()
 
 "" Plugins options
@@ -66,6 +69,7 @@ let g:bufferline_echo = 0
 let g:bufferline_modified = '+'
 let g:bufferline_rotate = 0
 
+nnoremap <a-p> :CtrlPMRUFiles<cr>
 let g:ctrlp_by_filename = 1
 let g:ctrlp_cmd = 'CtrlPBuffer'
 let g:ctrlp_map = '<c-p>'
@@ -73,7 +77,11 @@ let g:ctrlp_open_new_file = 't'
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 let g:ctrlp_working_path_mode = 'r'
-nnoremap <a-p> :CtrlPMRUFiles<cr>
+let g:ctrlp_prompt_mappings = {
+    \ 'PrtSelectMove("j")':   ['<c-n>'],
+    \ 'PrtSelectMove("k")':   ['<c-p>'],
+    \ 'PrtHistory(-1)':       ['<c-j>'],
+    \ 'PrtHistory(1)':        ['<c-k>'],}
 
 let g:syntastic_cpp_compiler = "g++"
 let g:syntastic_cpp_compiler_options = "-std=c++11 -Wall -Wextra -Wpedantic"
@@ -188,11 +196,11 @@ nnoremap <Leader>sc :source %<cr>
 
 " File edits
 nnoremap <Leader>es :UltiSnipsEdit<cr>
-nnoremap <Leader>em :e ~/.mutt/muttrc<cr>
-nnoremap <Leader>en :e ~/.nvimrc<cr>
-nnoremap <Leader>ev :e ~/.vimrc<cr>
-nnoremap <Leader>ez :e ~/.zshrc<cr>
-nnoremap <Leader>et :e ~/.tmux.conf<cr>
+nnoremap <Leader>em :e ~/dotfiles/mutt/muttrc<cr>
+nnoremap <Leader>en :e ~/dotfiles/nvimrc<cr>
+nnoremap <Leader>ev :e ~/dotfiles/vimrc<cr>
+nnoremap <Leader>ez :e ~/dotfiles/zshrc<cr>
+nnoremap <Leader>et :e ~/dotfiles/tmux.conf<cr>
 
 " Formatting
 nnoremap <Leader>fw :%s/\s\+$//<cr>
@@ -244,3 +252,4 @@ augroup autocommands
                 \   exe "normal! g`\"" |
                 \ endif
 augroup END
+
