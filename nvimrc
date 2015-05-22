@@ -96,6 +96,10 @@ let NERDTreeIgnore=['\.pdf$', '\~$','\.toc$',
             \ '\.out$', '\.log$','\.aux$','\.sty$',
             \ '\.fdb_latexmk$', '\.synctex.gz$','\.latexmain$']
 
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:ycm_auto_trigger = 1
+
 "" Vim options
 
 " Tabs and indent
