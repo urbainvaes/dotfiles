@@ -59,16 +59,18 @@ for author in "${!repos[@]}"; do
     fi
 done
 
-# Installing autoload package manager 
+# Installing vim-plug vim package manager
 cd $dir/nvim
 if [ -e autoload ]; then
     rm -rf autoload
 fi
 mkdir -p autoload
 ln -s $dir/nvim/vim-plug/plug.vim $dir/nvim/autoload/plug.vim
+sudo pip install neovim
 
 # Creating temporary file for mutt
 cd $dir
+mkdir -p nvim/vimundo
 mkdir -p mutt/temp
 
 echo -e "\n*** Installation successful *** \n"

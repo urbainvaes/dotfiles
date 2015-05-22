@@ -31,7 +31,6 @@ alias -s cpp=$EDITOR
 alias -s c=$EDITOR
 alias -s tex=$EDITOR
 alias -s pdf=zathura
-alias -s py=$EDITOR
 
 # Directories
 alias u='cd ~/Dropbox/phd/papers/spectral/code/finite'
