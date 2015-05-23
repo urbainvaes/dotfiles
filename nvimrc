@@ -12,7 +12,6 @@ Plug 'godlygeek/tabular'
 Plug 'gregsexton/gitv'
 Plug 'honza/vim-snippets'
 Plug 'jamessan/vim-gnupg'
-Plug 'jeetsukumaran/vim-buffergator'
 Plug 'junegunn/seoul256.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'LaTeX-Box-Team/latex-box'
@@ -26,6 +25,7 @@ Plug 'szw/vim-ctrlspace'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tomasr/molokai'
 Plug 'tommcdo/vim-exchange'
+Plug 'ton/vim-bufsurf'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
@@ -60,9 +60,6 @@ let g:airline_section_y = ''
 let g:airline_section_z = '%3p%%|%3l|%3c'
 let g:airline_theme='base16'
 let g:airline#extensions#tabline#enabled = 0
-
-let g:buffergator_display_regime='bufname'
-let g:buffergator_vsplit_size=30
 
 let g:bufferline_active_buffer_left = ''
 let g:bufferline_active_buffer_right = ''
@@ -190,7 +187,6 @@ nnoremap <Leader>ps :PlugStatus<cr>
 
 " Toggles
 nnoremap cop :set paste!<cr>
-nnoremap <Leader>tb :BuffergatorToggle<cr>
 nnoremap <Leader>tg :GitGutterToggle<cr>
 nnoremap <Leader>tn :NERDTreeToggle<cr>
 nnoremap <Leader>tt :TagbarToggle<cr>
@@ -213,6 +209,8 @@ nnoremap <Leader>fw :%s/\s\+$//<cr>
 nnoremap <Leader>fi zzmxgg=G'x
 
 " Navigation
+nnoremap [[ :BufSurfBack<CR>
+nnoremap ]] :BufSurfForward<CR>
 nnoremap <c-y> 3<c-y>
 nnoremap <c-e> 3<c-e>
 nnoremap <Return> o<Esc>
