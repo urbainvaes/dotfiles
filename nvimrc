@@ -12,8 +12,13 @@ Plug 'godlygeek/tabular'
 Plug 'gregsexton/gitv', { 'on' : 'Gitv' }
 Plug 'honza/vim-snippets'
 Plug 'jamessan/vim-gnupg', { 'for' : 'asc' }
+Plug 'junegunn/fzf', { 'on' : 'FZF' }
 Plug 'junegunn/seoul256.vim'
-Plug 'junegunn/fzf' , { 'on' : 'FZF' }
+Plug 'junegunn/goyo.vim', { 'on' : 'Goyo' }
+Plug 'junegunn/limelight.vim', { 'on' : 'Limelight' }
+Plug 'junegunn/vim-pseudocl'
+Plug 'junegunn/vim-oblique'
+Plug 'junegunn/vim-peekaboo'
 Plug 'kien/ctrlp.vim'
 Plug 'LaTeX-Box-Team/latex-box', { 'for' : 'tex' }
 Plug 'majutsushi/tagbar'
@@ -83,6 +88,9 @@ let g:ctrlp_prompt_mappings = {
     \ 'PrtSelectMove("k")':   ['<c-p>'],
     \ 'PrtHistory(-1)':       ['<c-j>'],
     \ 'PrtHistory(1)':        ['<c-k>'],}
+
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_ctermfg = 240
 
 let g:syntastic_cpp_compiler = "g++"
 let g:syntastic_cpp_compiler_options = "-std=c++11 -Wall -Wextra -Wpedantic"
