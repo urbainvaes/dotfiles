@@ -92,3 +92,4 @@ bindkey -a 'j' history-beginning-search-forward
 crontab ~/.crontab
 
 TERM=xterm-256color
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

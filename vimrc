@@ -35,7 +35,6 @@ Plugin 'tpope/vim-scriptease'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
-Plugin 'rdnetto/YCM-Generator'
 filetype plugin indent on
 syntax on
 
@@ -145,7 +144,7 @@ set spellfile="/home/urbain/.vim/spell/en.utf-8.add"
 set smartcase
 set ignorecase
 
-" Misc
+
 set noautochdir
 set cpoptions+=Iq
 set encoding=utf-8

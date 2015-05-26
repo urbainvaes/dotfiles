@@ -1,6 +1,6 @@
 "" Plugins
 call plug#begin('~/.nvim/plugged')
-Plug 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter', { 'on' : 'GitGutterToggle' }
 Plug 'altercation/vim-colors-solarized'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'benekastah/neomake'
@@ -9,25 +9,26 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'edkolev/tmuxline.vim'
 Plug 'freeo/vim-kalisi'
 Plug 'godlygeek/tabular'
-Plug 'gregsexton/gitv'
+Plug 'gregsexton/gitv', { 'on' : 'Gitv' }
 Plug 'honza/vim-snippets'
-Plug 'jamessan/vim-gnupg'
-Plug 'jeetsukumaran/vim-buffergator'
+Plug 'jamessan/vim-gnupg', { 'for' : 'asc' }
 Plug 'junegunn/seoul256.vim'
+Plug 'junegunn/fzf' , { 'on' : 'FZF' }
 Plug 'kien/ctrlp.vim'
-Plug 'LaTeX-Box-Team/latex-box'
+Plug 'LaTeX-Box-Team/latex-box', { 'for' : 'tex' }
 Plug 'majutsushi/tagbar'
 Plug 'mileszs/ack.vim'
 Plug 'rdnetto/YCM-Generator', { 'branch' : 'stable' }
-Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'scrooloose/syntastic'
 Plug 'SirVer/ultisnips'
-Plug 'sjl/Gundo.vim'
+Plug 'sjl/Gundo.vim', { 'on' : 'GundoToggle' }
 Plug 'szw/vim-ctrlspace'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tomasr/molokai'
 Plug 'tommcdo/vim-exchange'
-Plug 'tpope/vim-abolish'
+Plug 'ton/vim-bufsurf'
+Plug 'tpope/vim-abolish', { 'for' : 'tex' }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
@@ -52,7 +53,7 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsListSnippets="<c-l>"
 let g:UltiSnipsSnippetDirectories=['UltiSnips', 'mySnippets']
-let g:UltiSnipsSnippetsDir="~/.vim/mySnippets"
+let g:UltiSnipsSnippetsDir="~/.nvim/mySnippets"
 
 let g:airline_left_sep=''
 let g:airline_right_sep=''
@@ -62,9 +63,6 @@ let g:airline_section_z = '%3p%%|%3l|%3c'
 let g:airline_theme='base16'
 let g:airline#extensions#tabline#enabled = 0
 let g:airline_exclude_preview = 0
-
-let g:buffergator_display_regime='bufname'
-let g:buffergator_vsplit_size=30
 
 let g:bufferline_active_buffer_left = ''
 let g:bufferline_active_buffer_right = ''
@@ -193,7 +191,6 @@ nnoremap <Leader>ps :PlugStatus<cr>
 
 " Toggles
 nnoremap cop :set paste!<cr>
-nnoremap <Leader>tb :BuffergatorToggle<cr>
 nnoremap <Leader>tg :GitGutterToggle<cr>
 nnoremap <Leader>tn :NERDTreeToggle<cr>
 nnoremap <Leader>tt :TagbarToggle<cr>
@@ -216,6 +213,8 @@ nnoremap <Leader>fw :%s/\s\+$//<cr>
 nnoremap <Leader>fi zzmxgg=G'x
 
 " Navigation
+nnoremap (( :BufSurfBack<CR>
+nnoremap )) :BufSurfForward<CR>
 nnoremap <c-y> 3<c-y>
 nnoremap <c-e> 3<c-e>
 nnoremap <Return> o<Esc>
@@ -246,8 +245,8 @@ nnoremap , :
 vnoremap , :
 
 " Neovim specific
-tmap <C-_> <C-\><C-n><C-^>
-nnoremap <C-_> :b term<cr>i
+tnoremap <C-_> <C-\><C-n><C-^>:ZoomWinTabOut<cr>
+nnoremap <C-_> :ZoomWinTabIn<cr>:b term<cr>i
 inoremap <C-_> <Esc>:b term<cr>i
 
 "" Restore cursor position
