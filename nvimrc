@@ -17,6 +17,7 @@ Plug 'junegunn/seoul256.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'LaTeX-Box-Team/latex-box'
 Plug 'majutsushi/tagbar'
+Plug 'mileszs/ack.vim'
 Plug 'rdnetto/YCM-Generator', { 'branch' : 'stable' }
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
@@ -36,7 +37,7 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'troydm/zoomwintab.vim'
-Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe', { 'do' : './install.sh --clang-completer' }
 call plug#end()
 
 "" Plugins options
@@ -60,6 +61,7 @@ let g:airline_section_y = ''
 let g:airline_section_z = '%3p%%|%3l|%3c'
 let g:airline_theme='base16'
 let g:airline#extensions#tabline#enabled = 0
+let g:airline_exclude_preview = 0
 
 let g:buffergator_display_regime='bufname'
 let g:buffergator_vsplit_size=30
@@ -106,6 +108,7 @@ let NERDTreeIgnore=['\.pdf$', '\~$','\.toc$',
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:ycm_auto_trigger = 1
+let g:ycm_confirm_extra_conf = 1
 
 "" Vim options
 
@@ -225,8 +228,6 @@ nnoremap <Leader>gd :Gdiff<cr>
 
 " Commands
 nnoremap ym :Neomake!<cr>
-nnoremap <c-w>o :mksession! ~/tmp.vim<cr><c-w>o
-nnoremap <c-w>r :source ~/tmp.vim<cr>
 
 " Misc
 nnoremap <tab> <C-^>
