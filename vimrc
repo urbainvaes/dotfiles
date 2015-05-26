@@ -144,7 +144,7 @@ set spellfile="/home/urbain/.vim/spell/en.utf-8.add"
 set smartcase
 set ignorecase
 
-" Misc
+
 set noautochdir
 set cpoptions+=Iq
 set encoding=utf-8

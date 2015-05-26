@@ -1,0 +1,10 @@
+snippet print_mat "Print matrix" b
+for (unsigned int iii = 0; iii < ${0:mat}.size(); ++iii) {
+	cout << setw(12) << mat[iii][0];
+	for (unsigned int jjj = 1; jjj < mat.size(); ++jjj) {
+		cout << ", ";
+		cout << setw(12) << mat[iii][jjj];
+	}
+	cout << endl;
+}
+endsnippet
