@@ -1,4 +1,4 @@
-"" Plugins
+" Plugins
 call plug#begin('~/.nvim/plugged')
 Plug 'airblade/vim-gitgutter', { 'on' : 'GitGutterToggle' }
 Plug 'altercation/vim-colors-solarized'
@@ -13,18 +13,19 @@ Plug 'gregsexton/gitv', { 'on' : 'Gitv' }
 Plug 'honza/vim-snippets'
 Plug 'jamessan/vim-gnupg', { 'for' : 'asc' }
 Plug 'junegunn/fzf', { 'on' : 'FZF' }
-Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/goyo.vim', { 'on' : 'Goyo' }
 Plug 'junegunn/limelight.vim', { 'on' : 'Limelight' }
-Plug 'junegunn/vim-pseudocl'
+Plug 'junegunn/seoul256.vim'
+Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-oblique'
 Plug 'junegunn/vim-peekaboo'
+Plug 'junegunn/vim-pseudocl'
 Plug 'kien/ctrlp.vim'
 Plug 'LaTeX-Box-Team/latex-box', { 'for' : 'tex' }
 Plug 'majutsushi/tagbar'
 Plug 'mileszs/ack.vim'
 Plug 'rdnetto/YCM-Generator', { 'branch' : 'stable' }
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/syntastic'
 Plug 'SirVer/ultisnips'
 Plug 'sjl/Gundo.vim', { 'on' : 'GundoToggle' }
@@ -113,8 +114,9 @@ let NERDTreeIgnore=['\.pdf$', '\~$','\.toc$',
 
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:ycm_auto_trigger = 1
+let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_confirm_extra_conf = 1
+let g:ycm_auto_trigger = 1
 
 "" Vim options
 
@@ -139,6 +141,7 @@ set undodir=/home/urbain/.nvim/vimundo/
 
 " Layout window
 set nonumber
+set diffopt=filler,vertical
 set listchars=tab:▸\ ,eol:¬,trail:-
 set fillchars=fold:\ ,vert:\ ,
 set showbreak=--▸\ ,
@@ -200,6 +203,7 @@ nnoremap <Leader>ps :PlugStatus<cr>
 " Toggles
 nnoremap cop :set paste!<cr>
 nnoremap <Leader>tg :GitGutterToggle<cr>
+nnoremap <Leader>tl :Limelight!!<cr>
 nnoremap <Leader>tn :NERDTreeToggle<cr>
 nnoremap <Leader>tt :TagbarToggle<cr>
 nnoremap <Leader>tu :GundoToggle<cr>
@@ -227,6 +231,7 @@ nnoremap <c-y> 3<c-y>
 nnoremap <c-e> 3<c-e>
 nnoremap <Return> o<Esc>
 nnoremap <s-Return> O<Esc>
+nnoremap >f :FZF ~ <cr>
 
 " Git
 nnoremap <Leader>gs :Gstatus<cr>
@@ -254,12 +259,14 @@ vnoremap , :
 
 " Neovim specific
 tnoremap <C-_> <C-\><C-n><C-^>:ZoomWinTabOut<cr>
+tnoremap <C-p> <C-\><C-n>:CtrlPMRUFiles<cr>
 nnoremap <C-_> :ZoomWinTabIn<cr>:b term<cr>i
 inoremap <C-_> <Esc>:b term<cr>i
 
 "" Restore cursor position
-augroup autocommands
+augroup nvimrc
     au!
+    autocmd BufWritePost *vimrc source %
     autocmd BufWritePost *.cpp Neomake!
     autocmd BufReadPost *
                 \ if line("'\"") > 1 && line("'\"") <= line("$") |
