@@ -43,41 +43,36 @@ alias books='cd ~/Dropbox/phd/books'
 alias cdd='cd ~/dotfiles'
 
 # Commands
-alias tmux="TERM=screen-256color-bce tmux"
-alias g='git'
-alias v='vim'
-alias n='nvim'
-alias e=$EDITOR
-alias vs="$EDITOR --servername SYNC"
-alias vsess="$EDITOR -S Session.vim"
-alias va="$EDITOR --servername SYNC main.tex \
-                                sections/introduction.tex \
-                                sections/sec1.tex \
-                                sections/sec2.tex \
-                                sections/sec3.tex \
-                                sections/conclusion.tex"
-alias c='clear'
-alias mc='make clean'
-alias m='mutt'
 alias a='vifm'
-alias mn="$EDITOR ~/.mynotes"
-alias x='sh ~/.xmodmap'
-alias mail='offlineimap -u quiet &'
+alias c='clear'
 alias ca='printf "\ec"'
-alias update='sudo apt-get update'
-alias upgrade='sudo apt-get upgrade'
+alias commit='git commit -a -m'
+alias e=$EDITOR
+alias g='git'
+alias gco='git checkout'
 alias install='sudo apt-get install'
-alias remove='sudo apt-get autoremove'
+alias m='mutt'
+alias mail='offlineimap -u quiet &'
+alias mc='make clean'
+alias mn="$EDITOR ~/.mynotes"
+alias n='nvim'
+alias ns="$EDITOR --servername SYNC"
+alias nsess="$EDITOR -S Session.vim"
+alias pull='git pull origin master'
 alias purge='sudo apt-get purge'
 alias push='git push origin master'
-alias pull='git pull origin master'
-alias commit='git commit -a -m'
-alias gco='git checkout'
+alias remove='sudo apt-get autoremove'
+alias tmux="TERM=screen-256color-bce tmux"
+alias update='sudo apt-get update'
+alias upgrade='sudo apt-get upgrade'
+alias v='vim'
+alias x='sh ~/.xmodmap'
 
 # Configuration
 alias ez="$EDITOR ~/.zshrc"
 alias em="$EDITOR ~/.mutt/muttrc"
 alias ev="$EDITOR ~/.vimrc"
+alias en="$EDITOR ~/.nvimrc"
 alias eza="$EDITOR ~/.zathurarc"
 alias et="$EDITOR ~/.tmux.conf"
 alias evi="$EDITOR ~/.vifm/vifmrc"

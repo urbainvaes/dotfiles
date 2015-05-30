@@ -18,6 +18,14 @@ for (unsigned int iii = 0; iii < ${1:mat}.size(); ++iii) {
 $0
 endsnippet
 
+snippet forij "Matrix iteration" b
+for (int ${2:i} = 0; $2 < ${1:count}; $2++) {
+	for (int ${4:j} = 0; $4 < $1; $4++) {
+		${5}
+	}
+}
+endsnippet
+
 snippet vec "vector" i
 vector<${1:double}> $0
 endsnippet
