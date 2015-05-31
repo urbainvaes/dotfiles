@@ -20,8 +20,10 @@ Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-oblique'
 Plug 'junegunn/vim-peekaboo'
 Plug 'junegunn/vim-pseudocl'
+Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'kien/ctrlp.vim'
 Plug 'LaTeX-Box-Team/latex-box', { 'for' : 'tex' }
+Plug 'lervag/vimtex'
 Plug 'majutsushi/tagbar'
 Plug 'mileszs/ack.vim'
 Plug 'rdnetto/YCM-Generator', { 'branch' : 'stable' }
@@ -45,6 +47,8 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'troydm/zoomwintab.vim'
 Plug 'Valloric/YouCompleteMe', { 'do' : './install.sh --clang-completer' }
+Plug 'xolox/vim-misc', { 'on' : 'Note' }
+Plug 'xolox/vim-notes', { 'on' : 'Note' }
 call plug#end()
 
 "" Plugins options
