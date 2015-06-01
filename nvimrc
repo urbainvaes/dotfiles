@@ -1,4 +1,4 @@
-" Plugins
+"" Plugins
 call plug#begin('~/.nvim/plugged')
 Plug 'airblade/vim-gitgutter', { 'on' : 'GitGutterToggle' }
 Plug 'altercation/vim-colors-solarized'
@@ -8,7 +8,7 @@ Plug 'bling/vim-airline'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'edkolev/tmuxline.vim'
 Plug 'freeo/vim-kalisi'
-Plug 'godlygeek/tabular'
+Plug 'godlygeek/tabular' , { 'on' : 'Tab' }
 Plug 'gregsexton/gitv', { 'on' : 'Gitv' }
 Plug 'honza/vim-snippets'
 Plug 'jamessan/vim-gnupg', { 'for' : 'asc' }
@@ -180,10 +180,10 @@ set lazyredraw
 set hidden
 
 " Colorscheme
-try | colorscheme solarized | catch | endtry
+silent! colo solarized
 highlight Comment cterm=italic
 set t_ZH=[3m
-set t_ZR=[23m
+set t_ZR=[23m
 
 "" Maps
 
@@ -277,3 +277,6 @@ augroup nvimrc
                 \   exe "normal! g`\"" |
                 \ endif
 augroup END
+
+"" Experimental
+let g:notes_directories = ['~/dotfiles/notes']

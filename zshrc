@@ -33,14 +33,15 @@ alias -s tex=$EDITOR
 alias -s pdf=zathura
 
 # Directories
+alias books='cd ~/Dropbox/phd/books'
+alias cdd='cd ~/dotfiles'
+alias papers='cd ~/Dropbox/phd/papers'
+alias report='cd ~/Dropbox/phd/reports/9\ months'
 alias u='cd ~/Dropbox/phd/papers/spectral/code/finite'
 alias uc='cd ~/Dropbox/phd/programs'
 alias ul='cd ~/Dropbox/phd/literature'
-alias ur='cd ~/Dropbox/phd/reports'
 alias up='cd ~/Dropbox/phd/presentations'
-alias papers='cd ~/Dropbox/phd/papers'
-alias books='cd ~/Dropbox/phd/books'
-alias cdd='cd ~/dotfiles'
+alias ur='cd ~/Dropbox/phd/reports'
 
 # Commands
 alias a='vifm'
@@ -69,15 +70,15 @@ alias v='vim'
 alias x='sh ~/.xmodmap'
 
 # Configuration
-alias ez="$EDITOR ~/.zshrc"
 alias em="$EDITOR ~/.mutt/muttrc"
-alias ev="$EDITOR ~/.vimrc"
 alias en="$EDITOR ~/.nvimrc"
-alias eza="$EDITOR ~/.zathurarc"
-alias et="$EDITOR ~/.tmux.conf"
-alias evi="$EDITOR ~/.vifm/vifmrc"
 alias eo="$EDITOR ~/.offlineimaprc"
+alias et="$EDITOR ~/.tmux.conf"
+alias ev="$EDITOR ~/.vimrc"
+alias evi="$EDITOR ~/.vifm/vifmrc"
 alias ex="$EDITOR ~/.xmodmap"
+alias ez="$EDITOR ~/.zshrc"
+alias eza="$EDITOR ~/.zathurarc"
 
 # Fix smart search history
 bindkey -a 'k' history-beginning-search-backward
