@@ -62,6 +62,7 @@ alias nsess="$EDITOR -S Session.vim"
 alias pull='git pull origin master'
 alias purge='sudo apt-get purge'
 alias push='git push origin master'
+alias pushs='git push --recurse-submodules=check'
 alias remove='sudo apt-get autoremove'
 alias tmux="TERM=screen-256color-bce tmux"
 alias update='sudo apt-get update'

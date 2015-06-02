@@ -3,7 +3,7 @@ call plug#begin('~/.nvim/plugged')
 Plug 'airblade/vim-gitgutter', { 'on' : 'GitGutterToggle' }
 Plug 'altercation/vim-colors-solarized'
 Plug 'AndrewRadev/splitjoin.vim'
-Plug 'benekastah/neomake'
+Plug 'benekastah/neomake' , { 'for' : 'cpp' }
 Plug 'bling/vim-airline'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'edkolev/tmuxline.vim'
@@ -13,20 +13,18 @@ Plug 'gregsexton/gitv', { 'on' : 'Gitv' }
 Plug 'honza/vim-snippets'
 Plug 'jamessan/vim-gnupg', { 'for' : 'asc' }
 Plug 'junegunn/fzf', { 'on' : 'FZF' }
-Plug 'junegunn/goyo.vim', { 'on' : 'Goyo' }
-Plug 'junegunn/limelight.vim', { 'on' : 'Limelight' }
 Plug 'junegunn/seoul256.vim'
-Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/vim-pseudocl'
 Plug 'junegunn/vim-oblique'
 Plug 'junegunn/vim-peekaboo'
-Plug 'junegunn/vim-pseudocl'
 Plug 'junegunn/rainbow_parentheses.vim'
-Plug 'kien/ctrlp.vim'
+Plug 'kassio/neoterm', { 'on' : 'T' }
+Plug 'kien/ctrlp.vim', { 'on' : 'CtrlP' }
 Plug 'LaTeX-Box-Team/latex-box', { 'for' : 'tex' }
-Plug 'lervag/vimtex'
 Plug 'majutsushi/tagbar'
-Plug 'mileszs/ack.vim'
+Plug 'mileszs/ack.vim', { 'on' : 'Ack' }
 Plug 'rdnetto/YCM-Generator', { 'branch' : 'stable' }
+Plug 'ryanss/vim-hackernews'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/syntastic'
 Plug 'SirVer/ultisnips'
@@ -41,7 +39,6 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-scriptease'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
@@ -52,7 +49,7 @@ Plug 'xolox/vim-notes', { 'on' : 'Note' }
 call plug#end()
 
 "" Plugins options
-let g:LatexBox_Folding=0
+let g:LatexBox_fold_automatic=0
 let g:LatexBox_latexmk_preview_continuously=1
 let g:LatexBox_quickfix=2
 let g:LatexBox_viewer='zathura'
@@ -148,8 +145,8 @@ set nonumber
 set diffopt=filler,vertical
 set listchars=tab:▸\ ,eol:¬,trail:-
 set fillchars=fold:\ ,vert:\ ,
-set showbreak=--▸\ ,
 set breakindent
+let &showbreak='--▸ '
 set colorcolumn=0
 set scrolloff=0
 set t_Co=256
@@ -157,7 +154,7 @@ set guitablabel=%N\ %t\ %M
 set showcmd
 
 " Layout text
-set nowrap
+set wrap
 set linebreak
 set textwidth=0
 set conceallevel=2
