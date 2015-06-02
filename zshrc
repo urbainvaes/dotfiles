@@ -37,7 +37,7 @@ alias books='cd ~/Dropbox/phd/books'
 alias cdd='cd ~/dotfiles'
 alias papers='cd ~/Dropbox/phd/papers'
 alias report='cd ~/Dropbox/phd/reports/9\ months'
-alias u='cd ~/Dropbox/phd/papers/spectral/code/finite'
+alias u='cd ~/Dropbox/phd'
 alias uc='cd ~/Dropbox/phd/programs'
 alias ul='cd ~/Dropbox/phd/literature'
 alias up='cd ~/Dropbox/phd/presentations'
@@ -90,3 +90,16 @@ crontab ~/.crontab
 
 TERM=xterm-256color
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
+fancy-ctrl-z () {
+    if [[ $#BUFFER -eq 0 ]]; then
+        BUFFER="fg"
+        zle accept-line
+    else
+        zle push-input
+        zle clear-screen
+    fi
+}
+zle -N fancy-ctrl-z
+bindkey '^Z' fancy-ctrl-z

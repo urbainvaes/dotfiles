@@ -23,8 +23,8 @@ Plug 'kien/ctrlp.vim', { 'on' : 'CtrlP' }
 Plug 'LaTeX-Box-Team/latex-box', { 'for' : 'tex' }
 Plug 'majutsushi/tagbar'
 Plug 'mileszs/ack.vim', { 'on' : 'Ack' }
-Plug 'rdnetto/YCM-Generator', { 'branch' : 'stable' }
-Plug 'ryanss/vim-hackernews'
+Plug 'rdnetto/YCM-Generator', { 'branch' : 'stable' , 'on' : 'YcmGenerateConfig' }
+Plug 'ryanss/vim-hackernews', { 'on' : 'HackerNews' }
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/syntastic'
 Plug 'SirVer/ultisnips'
@@ -277,3 +277,4 @@ augroup END
 
 "" Experimental
 let g:notes_directories = ['~/dotfiles/notes']
+" Idea: instant download colorscheme
