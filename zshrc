@@ -33,56 +33,57 @@ alias -s tex=$EDITOR
 alias -s pdf=zathura
 
 # Directories
-alias u='cd ~/Dropbox/phd/papers/spectral/code/finite'
-alias uc='cd ~/Dropbox/phd/programs'
-alias ul='cd ~/Dropbox/phd/literature'
-alias ur='cd ~/Dropbox/phd/reports'
-alias up='cd ~/Dropbox/phd/presentations'
-alias papers='cd ~/Dropbox/phd/papers'
 alias books='cd ~/Dropbox/phd/books'
 alias cdd='cd ~/dotfiles'
+alias papers='cd ~/Dropbox/phd/papers'
+alias report='cd ~/Dropbox/phd/reports/9\ months'
+alias u='cd ~/Dropbox/phd'
+alias uc='cd ~/Dropbox/phd/programs'
+alias ul='cd ~/Dropbox/phd/literature'
+alias up='cd ~/Dropbox/phd/presentations'
+alias ur='cd ~/Dropbox/phd/reports'
 
 # Commands
-alias tmux="TERM=screen-256color-bce tmux"
-alias g='git'
-alias v='vim'
-alias n='nvim'
-alias e=$EDITOR
-alias vs="$EDITOR --servername SYNC"
-alias vsess="$EDITOR -S Session.vim"
-alias va="$EDITOR --servername SYNC main.tex \
-                                sections/introduction.tex \
-                                sections/sec1.tex \
-                                sections/sec2.tex \
-                                sections/sec3.tex \
-                                sections/conclusion.tex"
-alias c='clear'
-alias mc='make clean'
-alias m='mutt'
 alias a='vifm'
-alias mn="$EDITOR ~/.mynotes"
-alias x='sh ~/.xmodmap'
-alias mail='offlineimap -u quiet &'
+alias c='clear'
 alias ca='printf "\ec"'
-alias update='sudo apt-get update'
-alias upgrade='sudo apt-get upgrade'
+alias commit='git commit -a -m'
+alias e=$EDITOR
+alias g='git'
+alias gco='git checkout'
 alias install='sudo apt-get install'
-alias remove='sudo apt-get autoremove'
+alias m='mutt'
+alias mail='offlineimap -u quiet &'
+alias mc='make clean'
+alias mn="$EDITOR ~/.mynotes"
+alias n='nvim'
+alias ns="$EDITOR --servername SYNC"
+alias nsess="$EDITOR -S Session.vim"
+alias pull='git pull origin master'
 alias purge='sudo apt-get purge'
 alias push='git push origin master'
-alias pull='git pull origin master'
-alias commit='git commit -a -m'
-alias gco='git checkout'
+alias pushs='git push --recurse-submodules=check'
+alias remove='sudo apt-get autoremove'
+alias tmux="TERM=screen-256color-bce tmux"
+alias update='sudo apt-get update'
+alias upgrade='sudo apt-get upgrade'
+alias v='vim'
+alias x='sh ~/.xmodmap'
 
 # Configuration
-alias ez="$EDITOR ~/.zshrc"
 alias em="$EDITOR ~/.mutt/muttrc"
-alias ev="$EDITOR ~/.vimrc"
-alias eza="$EDITOR ~/.zathurarc"
-alias et="$EDITOR ~/.tmux.conf"
-alias evi="$EDITOR ~/.vifm/vifmrc"
+alias en="$EDITOR ~/.nvimrc"
 alias eo="$EDITOR ~/.offlineimaprc"
+alias et="$EDITOR ~/.tmux.conf"
+alias ev="$EDITOR ~/.vimrc"
+alias evi="$EDITOR ~/.vifm/vifmrc"
 alias ex="$EDITOR ~/.xmodmap"
+alias ez="$EDITOR ~/.zshrc"
+alias eza="$EDITOR ~/.zathurarc"
+
+# Tmux
+alias son="tmux set -g status on"
+alias soff="tmux set -g status off"
 
 # Fix smart search history
 bindkey -a 'k' history-beginning-search-backward
@@ -93,3 +94,16 @@ crontab ~/.crontab
 
 TERM=xterm-256color
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
+fancy-ctrl-z () {
+    if [[ $#BUFFER -eq 0 ]]; then
+        BUFFER="fg"
+        zle accept-line
+    else
+        zle push-input
+        zle clear-screen
+    fi
+}
+zle -N fancy-ctrl-z
+bindkey '^Z' fancy-ctrl-z

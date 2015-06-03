@@ -5,6 +5,7 @@ mutt/mailboxes/
 mutt/mutt-colors-solarized/
 mutt/temp/
 newsbeuter
+nvim/netrwhist
 nvim/autoload/
 nvim/plugged/
 nvim/vim-plug/
