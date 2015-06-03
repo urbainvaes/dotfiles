@@ -81,6 +81,10 @@ alias ex="$EDITOR ~/.xmodmap"
 alias ez="$EDITOR ~/.zshrc"
 alias eza="$EDITOR ~/.zathurarc"
 
+# Tmux
+alias son="tmux set -g status on"
+alias soff="tmux set -g status off"
+
 # Fix smart search history
 bindkey -a 'k' history-beginning-search-backward
 bindkey -a 'j' history-beginning-search-forward
