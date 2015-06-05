@@ -19,6 +19,7 @@ Plug 'junegunn/vim-pseudocl'
 Plug 'junegunn/vim-oblique'
 Plug 'junegunn/vim-peekaboo'
 Plug 'junegunn/rainbow_parentheses.vim'
+Plug 'justinmk/vim-sneak'
 Plug 'kassio/neoterm', { 'on' : 'T' }
 Plug 'kien/ctrlp.vim', { 'on' : 'CtrlP' }
 Plug 'LaTeX-Box-Team/latex-box', { 'for' : 'tex' }
