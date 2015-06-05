@@ -11,7 +11,7 @@ ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 
 # Plugins
-plugins=(vi-mode git)
+plugins=(vi-mode git ubuntu)
 
 # Source oh-my-zsh
 source $ZSH/oh-my-zsh.sh
@@ -94,6 +94,7 @@ crontab ~/.crontab
 
 TERM=xterm-256color
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source ~/git/fuzzy-zsh-marks/plugin.zsh
 
 
 fancy-ctrl-z () {

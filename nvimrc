@@ -11,8 +11,9 @@ Plug 'freeo/vim-kalisi'
 Plug 'godlygeek/tabular' , { 'on' : 'Tab' }
 Plug 'gregsexton/gitv', { 'on' : 'Gitv' }
 Plug 'honza/vim-snippets'
+Plug 'itchyny/calendar.vim', { 'on' : 'Calendar' }
 Plug 'jamessan/vim-gnupg', { 'for' : 'asc' }
-Plug 'junegunn/fzf', { 'on' : 'FZF' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' , 'on' : 'FZF' }
 Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/vim-pseudocl'
 Plug 'junegunn/vim-oblique'
@@ -119,6 +120,9 @@ let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_confirm_extra_conf = 1
 let g:ycm_auto_trigger = 1
 
+let g:calendar_google_calendar = 1
+let g:calendar_google_task = 1
+
 "" Vim options
 
 " Tabs and indent
@@ -158,7 +162,7 @@ set wrap
 set linebreak
 set textwidth=0
 set conceallevel=2
-set formatprg=par\ w70
+set formatprg=par\ w80
 set guifont=Monaco\ 11
 
 " Case and spell
