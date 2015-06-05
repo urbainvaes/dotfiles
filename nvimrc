@@ -182,7 +182,7 @@ set lazyredraw
 set hidden
 
 " Colorscheme
-silent! colo solarized
+silent! colo seoul256
 highlight Comment cterm=italic
 set t_ZH=[3m
 set t_ZR=[23m

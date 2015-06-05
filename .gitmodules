@@ -1,0 +1,3 @@
+[submodule "fuzzy-zsh-marks"]
+	path = fuzzy-zsh-marks
+	url = git@github.com:uvaes/fuzzy-zsh-marks

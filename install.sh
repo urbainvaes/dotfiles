@@ -1,78 +1,102 @@
 #!/bin/bash
 
+home=/home/urbain
 dir=~/dotfiles
 olddir=~/dotfiles_old
-home=/home/urbain
 
-rm -rf $olddir
-mkdir -p $olddir
+install_dotfiles=0
+install_repos=0
+install_aux=0
 
-echo -e "\n*** Symlinking files *** \n"
+while [[ $# > 0 ]]
+do
+    key="$1"
+    echo $key
+    case $key in
+        -d|--dotfiles)
+            install_dotfiles=1
+            ;;
+        -r|--repositories)
+            install_repos=1
+            ;;
+        -l|--lib)
+            install_aux=1
+            ;;
+        *)
+            ;;
+    esac
+    shift
+done
 
-if [ $# -eq 0 ]; then
+if [[ "$install_dotfiles" -eq "1"  ]]; then
+
+    echo -e "\n*** Installing dotfiles ***"
+
+
+    rm -rf $olddir
+    mkdir -p $olddir
+
     listFiles=`ls --ignore="make" --ignore="tex" --ignore="README.md"`
-else
-    listFiles=$@
+
+    cd $dir
+    for file in $listFiles; do
+        if [ -e ~/.$file ]; then
+            mv ~/.$file $olddir
+            printf '~/.%-15s exists. ' $file
+            echo -n "Moving it to $olddir. "
+        fi
+        ln -s $dir/$file ~/.$file
+        echo "(Re)-creating symbolic link of $file."
+    done
+
+    cd $dir
+    mkdir -p nvim/vimundo
+    mkdir -p mutt/temp
+    mkdir -p mutt/cache
+    mkdir -p mutt/cache/bodies
 fi
 
-cd $dir
-for file in $listFiles; do
-    if [ -e ~/.$file ]; then
-        mv ~/.$file $olddir
-        printf '~/.%-15s exists. ' $file
-        echo -n "Moving it to $olddir. "
+if [[ "$install_repos" -eq "1" ]]; then
+    echo -e "\n *** Updating/Creating git repositories ***"
+
+    declare -A repos
+    repos[altercation]=$home/.solarized/mutt-colors-solarized
+    repos[Anthony25]=$home/.solarized/gnome-terminal-colors-solarized
+    repos[seebi]=$home/.solarized/dircolors-solarized
+    repos[gmarik]=$home/.vim/bundle/vundle
+    repos[junegunn]=$home/.nvim/vim-plug
+    repos[tmux-plugins]=$home/.tmux/plugins/tpm
+    repos[uvaes]=$home/git/fuzzy-zsh-marks
+    repos[alols]=$home/xcape
+
+    for author in "${!repos[@]}"; do
+        thisDir=${repos[$author]}
+        if [ ! -d $thisDir ]; then
+            parentDir=`echo $thisDir | sed 's/\/[^\/]\+$//g'`
+            githubDir=https://github.com/$author`echo $thisDir | sed 's/.*\(\/[^\/]\+\)$/\1/g'`
+            mkdir -p $parentDir; cd $parentDir
+            echo "Cloning $githubDir in $parentDir..."
+            git clone -q $githubDir >> /dev/null
+        else
+            cd $thisDir
+            echo "Updating git repository stored in $thisDir"
+            git pull -q origin master >> /dev/null
+            cat <(git log --pretty=format:"-- %h %s (%cr)" "ORIG_HEAD...HEAD")
+        fi
+    done
+
+    # Installing vim-plug vim package manager
+    cd $dir/nvim
+    if [ -e autoload ]; then
+        rm -rf autoload
     fi
-    ln -s $dir/$file ~/.$file
-    echo "(Re)-creating symbolic link of $file."
-done
-
-if [ $# -ne 0 ]; then
-    exit
+    mkdir -p autoload
+    ln -s $dir/nvim/vim-plug/plug.vim $dir/nvim/autoload/plug.vim
 fi
 
-# Symlink for neovim
-# rm ~/.nvim ~/.nvimrc
-# ln -s $dir/vim ~/.nvim
-# ln -s $dir/vimrc ~/.nvimrc
-
-echo -e "\n*** Updating/Creating git repositories *** \n"
-
-declare -A repos
-repos[altercation]=$home/.solarized/mutt-colors-solarized
-repos[Anthony25]=$home/.solarized/gnome-terminal-colors-solarized
-repos[seebi]=$home/.solarized/dircolors-solarized
-repos[gmarik]=$home/.vim/bundle/vundle
-repos[junegunn]=$home/.nvim/vim-plug
-repos[tmux-plugins]=$home/.tmux/plugins/tpm
-
-for author in "${!repos[@]}"; do
-    thisDir=${repos[$author]}
-    if [ ! -d $thisDir ]; then
-        parentDir=`echo $thisDir | sed 's/\/[^\/]\+$//g'`
-        githubDir=https://github.com/$author`echo $thisDir | sed 's/.*\(\/[^\/]\+\)$/\1/g'`
-        echo $githubDir
-        mkdir -p $parentDir; cd $parentDir
-        git clone $githubDir
-    else
-        cd $thisDir
-        git pull origin master
-    fi
-done
-
-# Installing vim-plug vim package manager
-cd $dir/nvim
-if [ -e autoload ]; then
-    rm -rf autoload
+# Creating auxiliary files
+if [[ "$install_aux" -eq "1" ]]; then
+    echo "Nothing to do for -a"
 fi
-mkdir -p autoload
-ln -s $dir/nvim/vim-plug/plug.vim $dir/nvim/autoload/plug.vim
-sudo pip install neovim
-
-# Creating auxiliary files for mutt
-cd $dir
-mkdir -p nvim/vimundo
-mkdir -p mutt/temp
-mkdir -p mutt/cache
-mkdir -p mutt/cache/bodies
 
 echo -e "\n*** Installation successful *** \n"
