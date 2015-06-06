@@ -93,8 +93,7 @@ bindkey -a 'j' history-beginning-search-forward
 crontab ~/.crontab
 
 TERM=xterm-256color
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-source ~/git/fuzzy-zsh-marks/plugin.zsh
+source ~/github/fuzzy-zsh-marks/plugin.zsh
 
 
 fancy-ctrl-z () {
@@ -108,3 +107,4 @@ fancy-ctrl-z () {
 }
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

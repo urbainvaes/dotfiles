@@ -13,7 +13,7 @@ Plug 'gregsexton/gitv', { 'on' : 'Gitv' }
 Plug 'honza/vim-snippets'
 Plug 'itchyny/calendar.vim', { 'on' : 'Calendar' }
 Plug 'jamessan/vim-gnupg', { 'for' : 'asc' }
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' , 'on' : 'FZF' }
+Plug 'junegunn/fzf'
 Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/vim-pseudocl'
 Plug 'junegunn/vim-oblique'
@@ -238,6 +238,9 @@ nnoremap <c-e> 3<c-e>
 nnoremap <Return> o<Esc>
 nnoremap <s-Return> O<Esc>
 nnoremap >f :FZF ~ <cr>
+
+" Substitute shadowed by vim-sneak
+nnoremap _ s
 
 " Git
 nnoremap <Leader>gs :Gstatus<cr>

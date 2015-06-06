@@ -1,42 +1,131 @@
 #!/bin/bash
 
 home=/home/urbain
-dir=~/dotfiles
-olddir=~/dotfiles_old
+dir=$home/dotfiles
+olddir=$home/dotfiles_old
 
-install_dotfiles=0
-install_repos=0
-install_aux=0
+declare -A repodirs
+repodirs[altercation/mutt-colors-solarized]=$home/.solarized/mutt-colors-solarized
+repodirs[Anthony25/gnome-terminal-colors-solarized]=$home/.solarized/gnome-terminal-colors-solarized
+repodirs[seebi/dircolors-solarized]=$home/.solarized/dircolors-solarized
+repodirs[gmarik/vundle]=$dir/bundle/vundle
+repodirs[junegunn/vim-plug]=$dir/nvim/vim-plug
+repodirs[junegunn/fzf]=$home/.fzf
+repodirs[tmux-plugins/tpm]=$home/.tmux/plugins/tpm
+repodirs[uvaes/fuzzy-zsh-marks]=$home/github/fuzzy-zsh-marks
+repodirs[alols/xcape]=$home/xcape
+repodirs[icholy/ttygif]=$home/ttygif
 
-while [[ $# > 0 ]]
-do
-    key="$1"
-    echo $key
-    case $key in
-        -d|--dotfiles)
-            install_dotfiles=1
-            ;;
-        -r|--repositories)
-            install_repos=1
-            ;;
-        -l|--lib)
-            install_aux=1
-            ;;
-        *)
-            ;;
-    esac
-    shift
-done
+function after_vimplug {
+    cd ..
+    rm -rf autoload
+    mkdir -p autoload
+    cd autoload
+    ln -s ../vim-plug/plug.vim;
+}
 
-if [[ "$install_dotfiles" -eq "1"  ]]; then
+declare -A actions
+actions[altercation/mutt-colors-solarized]=''
+actions[Anthony25/gnome-terminal-colors-solarized]=''
+actions[seebi/dircolors-solarized]=''
+actions[gmarik/vundle]=''
+actions[junegunn/vim-plug]='after_vimplug'
+actions[junegunn/fzf]='./install'
+actions[tmux-plugins/tpm]=''
+actions[uvaes/fuzzy-zsh-marks]=''
+actions[alols/xcape]='make'
+actions[icholy/ttygif]='make'
 
-    echo -e "\n*** Installing dotfiles ***"
+function fetch_repo {
+    cd $1
+    echo "Fetching origin of git repository stored in $1 ..."
+    git fetch -q origin master
+}
 
+function clone_repo {
+    githubDir=https://github.com/$1
+    echo "Cloning $repo in $2"
+    git clone -q $githubDir $2
+    cd $2
+}
+
+function waitjobs {
+    for job in `jobs -p`
+    do
+        wait $job
+    done
+}
+
+function install_repos {
+    echo -e "\n*** \e[1mInstalling git repositories\e[0m ***"
+
+    for repo in "${!repodirs[@]}"; do
+
+        repodir=${repodirs[$repo]}
+        action=${actions[$repo]}
+
+        if [ ! -d $repodir ]; then
+            clone_repo $repo $repodir $action &
+        else
+            echo -e "\e[0mRepository $repo already installed in ${repodir}.\e[0m"
+        fi
+    done
+    waitjobs
+    echo "--> Done!"; echo
+
+    echo -e "*** \e[1mExectutiong actions after installation\e[0m ***"
+    for repo in "${!repodirs[@]}"; do
+        cd ${repodirs[$repo]}
+        eval ${actions[$repo]}
+    done
+}
+
+function update_repos {
+    echo -e "\n*** \e[1mUpdating git repositories\e[0m ***"
+
+    for repo in "${!repodirs[@]}"; do
+
+        repodir=${repodirs[$repo]}
+
+        if [ -d $repodir ]; then
+            fetch_repo $repodir &
+        fi
+    done
+
+    for job in `jobs -p`
+    do
+        wait $job
+    done
+
+    echo "--> Done!"; echo
+
+    for repo in "${!repodirs[@]}"; do
+
+        repodir=${repodirs[$repo]}
+
+        if [ -d $repodir ]; then
+            cd $repodir
+            echo "Merging upstream updates of git repository stored in ${repo}..."
+            cat <(git log --reverse --pretty=format:"-- %h %s (%cr)" -4); echo -e "\e[36m"
+            output=$(git log HEAD..origin)
+            if [[ ! -z $output ]]; then
+                cat <(git log --reverse --pretty=format:"-- %h %s (%cr)" HEAD..origin); echo -e "\e[0m"
+            else
+                echo -e "-- No updates since last pull\e[0m"
+            fi
+            git merge -q origin/master
+            echo
+        fi
+    done
+}
+
+function install_dotfiles {
+    echo -e "\n*** \e[1mInstalling dotfiles\e[0m ***"
 
     rm -rf $olddir
     mkdir -p $olddir
 
-    listFiles=`ls --ignore="make" --ignore="tex" --ignore="README.md"`
+    listFiles=`ls --ignore="make" --ignore="README.md"`
 
     cd $dir
     for file in $listFiles; do
@@ -54,49 +143,70 @@ if [[ "$install_dotfiles" -eq "1"  ]]; then
     mkdir -p mutt/temp
     mkdir -p mutt/cache
     mkdir -p mutt/cache/bodies
-fi
+}
 
-if [[ "$install_repos" -eq "1" ]]; then
-    echo -e "\n *** Updating/Creating git repositories ***"
-
-    declare -A repos
-    repos[altercation]=$home/.solarized/mutt-colors-solarized
-    repos[Anthony25]=$home/.solarized/gnome-terminal-colors-solarized
-    repos[seebi]=$home/.solarized/dircolors-solarized
-    repos[gmarik]=$home/.vim/bundle/vundle
-    repos[junegunn]=$home/.nvim/vim-plug
-    repos[tmux-plugins]=$home/.tmux/plugins/tpm
-    repos[uvaes]=$home/git/fuzzy-zsh-marks
-    repos[alols]=$home/xcape
-
-    for author in "${!repos[@]}"; do
-        thisDir=${repos[$author]}
-        if [ ! -d $thisDir ]; then
-            parentDir=`echo $thisDir | sed 's/\/[^\/]\+$//g'`
-            githubDir=https://github.com/$author`echo $thisDir | sed 's/.*\(\/[^\/]\+\)$/\1/g'`
-            mkdir -p $parentDir; cd $parentDir
-            echo "Cloning $githubDir in $parentDir..."
-            git clone -q $githubDir >> /dev/null
-        else
-            cd $thisDir
-            echo "Updating git repository stored in $thisDir"
-            git pull -q origin master >> /dev/null
-            cat <(git log --pretty=format:"-- %h %s (%cr)" "ORIG_HEAD...HEAD")
-        fi
+function clean {
+    echo -e "\n*** \e[1mCleaning repositories\e[0m ***"
+    for repo in "${!repodirs[@]}"; do
+        rm -rfv ${repodirs[$repo]}
     done
 
-    # Installing vim-plug vim package manager
-    cd $dir/nvim
-    if [ -e autoload ]; then
-        rm -rf autoload
+    echo -e "\n*** \e[1mCleaning dotfiles\e[0m ***"
+    for file in `ls`; do
+        rm -rfv  ~/.$file
+    done
+}
+
+function install_packages {
+    apt-get install ttyrec mutt msmtp
+}
+
+function update_dotfiles {
+    cd $dir
+    echo -e "\n*** \e[1m Updating dotfiles repository\e[0m ***"
+    git fetch -q origin master
+    cat <(git log --reverse --pretty=format:"-- %h %s (%cr)" -4); echo -e "\e[36m"
+    output=$(git log HEAD..origin)
+    if [[ ! -z $output ]]; then
+        cat <(git log --reverse --pretty=format:"-- %h %s (%cr)" HEAD..origin); echo -e "\e[0m"
+    else
+        echo -e "-- No updates since last pull\e[0m"
     fi
-    mkdir -p autoload
-    ln -s $dir/nvim/vim-plug/plug.vim $dir/nvim/autoload/plug.vim
+}
+
+if [[ $# = 0 ]]; then
+    update_dotfiles
+    install_dotfiles
+    update_repos
 fi
 
-# Creating auxiliary files
-if [[ "$install_aux" -eq "1" ]]; then
-    echo "Nothing to do for -a"
-fi
-
-echo -e "\n*** Installation successful *** \n"
+while [[ $# > 0 ]]
+do
+    key="$1"
+    case $key in
+        -d|--dotfiles)
+            install_dotfiles
+            ;;
+        -i|--repositories)
+            install_repos
+            ;;
+        -u|--repositories)
+            update_repos
+            ;;
+        -p|--packages)
+            install_packages
+            ;;
+        -c|--clean)
+            clean
+            ;;
+        -a|--all)
+            clean
+            install_dotfiles
+            install_repos
+            update_repos
+            ;;
+        *)
+            ;;
+    esac
+    shift
+done
