@@ -148,7 +148,8 @@ function install_dotfiles {
 function clean {
     echo -e "\n*** \e[1mCleaning repositories\e[0m ***"
     for repo in "${!repodirs[@]}"; do
-        rm -rfv ${repodirs[$repo]}
+        echo "Cleaning $repo in ${repodirs[$repo]}"
+        rm -rf ${repodirs[$repo]}
     done
 
     echo -e "\n*** \e[1mCleaning dotfiles\e[0m ***"
