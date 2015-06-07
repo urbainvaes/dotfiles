@@ -5,16 +5,16 @@ dir=$home/dotfiles
 olddir=$home/dotfiles_old
 
 declare -A repodirs
-repodirs[altercation/mutt-colors-solarized]=$home/.solarized/mutt-colors-solarized
 repodirs[Anthony25/gnome-terminal-colors-solarized]=$home/.solarized/gnome-terminal-colors-solarized
-repodirs[seebi/dircolors-solarized]=$home/.solarized/dircolors-solarized
+repodirs[alols/xcape]=$home/xcape
+repodirs[altercation/mutt-colors-solarized]=$home/.solarized/mutt-colors-solarized
 repodirs[gmarik/vundle]=$dir/bundle/vundle
-repodirs[junegunn/vim-plug]=$dir/nvim/vim-plug
+repodirs[icholy/ttygif]=$home/ttygif
 repodirs[junegunn/fzf]=$home/.fzf
+repodirs[junegunn/vim-plug]=$dir/nvim/vim-plug
+repodirs[seebi/dircolors-solarized]=$home/.solarized/dircolors-solarized
 repodirs[tmux-plugins/tpm]=$home/.tmux/plugins/tpm
 repodirs[uvaes/fuzzy-zsh-marks]=$home/github/fuzzy-zsh-marks
-repodirs[alols/xcape]=$home/xcape
-repodirs[icholy/ttygif]=$home/ttygif
 
 function after_vimplug {
     cd ..
@@ -25,16 +25,16 @@ function after_vimplug {
 }
 
 declare -A actions
-actions[altercation/mutt-colors-solarized]=''
 actions[Anthony25/gnome-terminal-colors-solarized]=''
-actions[seebi/dircolors-solarized]=''
+actions[alols/xcape]='make'
+actions[altercation/mutt-colors-solarized]=''
 actions[gmarik/vundle]=''
-actions[junegunn/vim-plug]='after_vimplug'
+actions[icholy/ttygif]='make'
 actions[junegunn/fzf]='./install'
+actions[junegunn/vim-plug]='after_vimplug'
+actions[seebi/dircolors-solarized]=''
 actions[tmux-plugins/tpm]=''
 actions[uvaes/fuzzy-zsh-marks]=''
-actions[alols/xcape]='make'
-actions[icholy/ttygif]='make'
 
 function fetch_repo {
     cd $1

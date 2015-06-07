@@ -39,6 +39,7 @@ Plug 'ton/vim-bufsurf'
 Plug 'tpope/vim-abolish', { 'for' : 'tex' }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-git'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
@@ -185,7 +186,7 @@ set hidden
 silent! colo seoul256
 highlight Comment cterm=italic
 set t_ZH=[3m
-set t_ZR=[23m
+set t_ZR=[23m
 
 "" Maps
 
@@ -239,9 +240,6 @@ nnoremap <Return> o<Esc>
 nnoremap <s-Return> O<Esc>
 nnoremap >f :FZF ~ <cr>
 
-" Substitute shadowed by vim-sneak
-nnoremap _ s
-
 " Git
 nnoremap <Leader>gs :Gstatus<cr>
 nnoremap <Leader>gr :Gread<cr>
@@ -282,6 +280,17 @@ augroup nvimrc
                 \   exe "normal! g`\"" |
                 \ endif
 augroup END
+
+"" Taken from Junegunn Chong
+nnoremap <silent> <Leader>C :call fzf#run({
+\   'source':
+\     map(split(globpath(&rtp, "colors/*.vim"), "\n"),
+\         "substitute(fnamemodify(v:val, ':t'), '\\..\\{-}$', '', '')"),
+\   'sink':     'colo',
+\   'options':  '+m',
+\   'left':     30,
+\   'launcher': 'iterm2-launcher 20 30 %s'
+\ })<CR>
 
 "" Experimental
 let g:notes_directories = ['~/dotfiles/notes']
