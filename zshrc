@@ -93,7 +93,7 @@ bindkey -a 'j' history-beginning-search-forward
 crontab ~/.crontab
 
 TERM=xterm-256color
-source ~/github/fuzzy-zsh-marks/plugin.zsh
+source ~/github/fzf-marks/fzf-marks.zsh
 
 
 fancy-ctrl-z () {

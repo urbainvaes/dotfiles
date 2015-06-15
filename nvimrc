@@ -6,7 +6,7 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'benekastah/neomake' , { 'for' : 'cpp' }
 Plug 'bling/vim-airline'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'edkolev/tmuxline.vim'
+" Plug 'edkolev/tmuxline.vim'
 Plug 'freeo/vim-kalisi'
 Plug 'godlygeek/tabular' , { 'on' : 'Tab' }
 Plug 'gregsexton/gitv', { 'on' : 'Gitv' }
@@ -21,7 +21,7 @@ Plug 'junegunn/vim-peekaboo'
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'justinmk/vim-sneak'
 Plug 'kassio/neoterm', { 'on' : 'T' }
-Plug 'kien/ctrlp.vim', { 'on' : 'CtrlP' }
+Plug 'kien/ctrlp.vim'
 Plug 'LaTeX-Box-Team/latex-box', { 'for' : 'tex' }
 Plug 'majutsushi/tagbar'
 Plug 'mileszs/ack.vim', { 'on' : 'Ack' }
@@ -31,7 +31,6 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/syntastic'
 Plug 'SirVer/ultisnips'
 Plug 'sjl/Gundo.vim', { 'on' : 'GundoToggle' }
-Plug 'szw/vim-ctrlspace'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tomasr/molokai'
 Plug 'tommcdo/vim-exchange'
@@ -99,9 +98,12 @@ let g:limelight_conceal_ctermfg = 240
 
 let g:syntastic_cpp_compiler = "g++"
 let g:syntastic_cpp_compiler_options = "-std=c++11 -Wall -Wextra -Wpedantic"
+let g:syntastic_error_symbol = "✗"
+let g:syntastic_warning_symbol = "W"
 
 let g:tagbar_width = 30
 let g:tagbar_show_linenumbers=1
+let g:tagbar_autofocus=1
 
 let g:tex_conceal= 'adgm'
 let g:tex_flavor='latex'
@@ -207,13 +209,13 @@ nnoremap <Leader>pc :PlugClean<cr>
 nnoremap <Leader>pd :PlugDiff<cr>
 nnoremap <Leader>ps :PlugStatus<cr>
 
-" Toggles
+" Toggles (cp : change [stote of] plugin / yi? (you inverse) )
 nnoremap cop :set paste!<cr>
-nnoremap <Leader>tg :GitGutterToggle<cr>
-nnoremap <Leader>tl :Limelight!!<cr>
-nnoremap <Leader>tn :NERDTreeToggle<cr>
-nnoremap <Leader>tt :TagbarToggle<cr>
-nnoremap <Leader>tu :GundoToggle<cr>
+nnoremap cof :set foldenable!<cr>
+nnoremap cpg :GitGutterToggle<cr>
+nnoremap cpn :NERDTreeToggle<cr>
+nnoremap cpt :TagbarToggle<cr>
+nnoremap cpu :GundoToggle<cr>
 
 " Sourcing
 nnoremap <Leader>sv :source ~/.vimrc<cr>
