@@ -22,7 +22,8 @@ Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'justinmk/vim-sneak'
 Plug 'kassio/neoterm', { 'on' : 'T' }
 Plug 'kien/ctrlp.vim'
-Plug 'LaTeX-Box-Team/latex-box', { 'for' : 'tex' }
+" Plug 'LaTeX-Box-Team/latex-box', { 'for' : 'tex' }
+Plug 'lervag/vimtex', { 'for' : 'tex' }
 Plug 'majutsushi/tagbar'
 Plug 'mileszs/ack.vim', { 'on' : 'Ack' }
 Plug 'rdnetto/YCM-Generator', { 'branch' : 'stable' , 'on' : 'YcmGenerateConfig' }
@@ -51,10 +52,20 @@ Plug 'xolox/vim-notes', { 'on' : 'Note' }
 call plug#end()
 
 "" Plugins options
-let g:LatexBox_fold_automatic=0
-let g:LatexBox_latexmk_preview_continuously=1
-let g:LatexBox_quickfix=2
-let g:LatexBox_viewer='zathura'
+" let g:LatexBox_fold_automatic=0
+" let g:LatexBox_latexmk_preview_continuously=1
+" let g:LatexBox_quickfix=2
+" let g:LatexBox_viewer='zathura'
+let g:vimtex_fold_enabled=0
+let g:vimtex_view_method='zathura'
+let g:vimtex_latexmk_continuous=1
+let g:vimtex_quickfix_mode=0
+if !exists('g:ycm_semantic_triggers')
+    let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers.tex = [
+    \ 're!\\[A-Za-z]*(ref|cite)[A-Za-z]*([^]]*])?{([^}]*, ?)*'
+    \ ]
 
 let g:UltiSnipsEditSplit="horizontal"
 let g:UltiSnipsExpandTrigger="<tab>"
