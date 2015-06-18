@@ -46,8 +46,16 @@ snippet ip "Inner product" i
 \ip{$1}{$2}$0
 endsnippet
 
+snippet ipw "Inner product" i
+\wip{$1}{$2}{$3}$0
+endsnippet
+
 snippet norm "Norm" i
 \norm{$1}$0
+endsnippet
+
+snippet normw "Weighted norm" i
+\wnorm{$1}{${2:\gamma}}
 endsnippet
 
 snippet test "Test functions" i
@@ -55,7 +63,7 @@ snippet test "Test functions" i
 endsnippet
 
 snippet lp "Flat Lp space" i
-\lp{${1:2}}{${2:\real^n}}$0
+\flp{${1:2}}{${2:\real^n}}$0
 endsnippet
 
 snippet lpw "Weighted Lp space" i

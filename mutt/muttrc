@@ -77,7 +77,7 @@ set sort_aux     = reverse-last-date-received
 set sort_browser = reverse-date
 
 # Files to source
-source `sh /home/urbain/.mutt/colormutt`
+# source `sh /home/urbain/.mutt/colormutt`
 source ~/.mutt/alias
 
 # HTML messages

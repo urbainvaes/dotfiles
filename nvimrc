@@ -6,7 +6,7 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'benekastah/neomake' , { 'for' : 'cpp' }
 Plug 'bling/vim-airline'
 Plug 'christoomey/vim-tmux-navigator'
-" Plug 'edkolev/tmuxline.vim'
+Plug 'edkolev/tmuxline.vim'
 Plug 'freeo/vim-kalisi'
 Plug 'godlygeek/tabular' , { 'on' : 'Tab' }
 Plug 'gregsexton/gitv', { 'on' : 'Gitv' }
@@ -69,7 +69,7 @@ let g:airline_right_sep=''
 let g:airline_section_c = '%f%m'
 let g:airline_section_y = ''
 let g:airline_section_z = '%3p%%|%3l|%3c'
-let g:airline_theme='base16'
+let g:airline_theme='dark'
 let g:airline#extensions#tabline#enabled = 0
 let g:airline_exclude_preview = 0
 
@@ -154,7 +154,7 @@ set diffopt=filler,vertical
 set listchars=tab:▸\ ,eol:¬,trail:-
 set fillchars=fold:\ ,vert:\ ,
 set breakindent
-let &showbreak='--▸ '
+let &showbreak='--> '
 set colorcolumn=0
 set scrolloff=0
 set t_Co=256
@@ -185,7 +185,7 @@ set lazyredraw
 set hidden
 
 " Colorscheme
-silent! colo seoul256
+silent! colo molokai
 highlight Comment cterm=italic
 set t_ZH=[3m
 set t_ZR=[23m
@@ -246,6 +246,7 @@ nnoremap >f :FZF ~ <cr>
 nnoremap <Leader>gs :Gstatus<cr>
 nnoremap <Leader>gr :Gread<cr>
 nnoremap <Leader>gd :Gdiff<cr>
+nnoremap <Leader>gv :Gitv<cr>
 
 " Commands
 nnoremap ym :Neomake!<cr>

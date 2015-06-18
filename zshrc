@@ -93,7 +93,6 @@ bindkey -a 'j' history-beginning-search-forward
 crontab ~/.crontab
 
 TERM=xterm-256color
-source ~/github/fzf-marks/fzf-marks.zsh
 
 
 fancy-ctrl-z () {
@@ -107,4 +106,19 @@ fancy-ctrl-z () {
 }
 zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
+
+fshow() {
+    git log --graph --color=always \
+        --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
+    fzf --ansi --no-sort --reverse --tiebreak=index --toggle-sort=\` \
+        --bind 'ctrl-m:execute:
+    echo {} | grep -o "[a-f0-9]\{7\}" |
+    xargs -I % sh -c "git show --color=always % | less -R"'
+}
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source ~/github/fzf-marks/fzf-marks.zsh
+source ~/github/z/z.sh
+source ~/github/fzf-extras/fzf-extras.sh
+source ~/github/fzf-extras/fzf-extras.zsh
+xrdb ~/.Xressources
