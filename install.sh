@@ -17,6 +17,7 @@ repodirs[junegunn/vim-plug]=$dir/nvim/vim-plug
 repodirs[seebi/dircolors-solarized]=$home/.solarized/dircolors-solarized
 repodirs[tmux-plugins/tpm]=$home/.tmux/plugins/tpm
 repodirs[uvaes/fzf-marks]=$home/github/fzf-marks
+repodirs[muennich/urxvt-perls]=$home/.urxvt/ext
 
 function after_vimplug {
     cd ..
@@ -39,6 +40,7 @@ actions[junegunn/vim-plug]='after_vimplug'
 actions[seebi/dircolors-solarized]=''
 actions[tmux-plugins/tpm]=''
 actions[uvaes/fzf-marks]=''
+actions[muennich/urxvt-perls]=''
 
 function fetch_repo {
     cd $1
