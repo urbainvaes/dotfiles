@@ -69,6 +69,7 @@ alias update='sudo apt-get update'
 alias upgrade='sudo apt-get upgrade'
 alias v='vim'
 alias x='sh ~/.xmodmap'
+alias xcape='/home/urbain/xcape/xcape'
 
 # Configuration
 alias em="$EDITOR ~/.mutt/muttrc"
@@ -93,7 +94,7 @@ bindkey -a 'j' history-beginning-search-forward
 crontab ~/.crontab
 
 TERM=xterm-256color
-
+# TERM=rxvt-unicode-256color
 
 fancy-ctrl-z () {
     if [[ $#BUFFER -eq 0 ]]; then
@@ -121,4 +122,4 @@ source ~/github/fzf-marks/fzf-marks.zsh
 source ~/github/z/z.sh
 source ~/github/fzf-extras/fzf-extras.sh
 source ~/github/fzf-extras/fzf-extras.zsh
-xrdb ~/.Xressources
+xrdb ~/.Xresources

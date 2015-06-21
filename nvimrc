@@ -6,7 +6,7 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'benekastah/neomake' , { 'for' : 'cpp' }
 Plug 'bling/vim-airline'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'edkolev/tmuxline.vim'
+" Plug 'edkolev/tmuxline.vim'
 Plug 'freeo/vim-kalisi'
 Plug 'godlygeek/tabular' , { 'on' : 'Tab' }
 Plug 'gregsexton/gitv', { 'on' : 'Gitv' }
@@ -60,12 +60,6 @@ let g:vimtex_fold_enabled=0
 let g:vimtex_view_method='zathura'
 let g:vimtex_latexmk_continuous=1
 let g:vimtex_quickfix_mode=0
-if !exists('g:ycm_semantic_triggers')
-    let g:ycm_semantic_triggers = {}
-endif
-let g:ycm_semantic_triggers.tex = [
-    \ 're!\\[A-Za-z]*(ref|cite)[A-Za-z]*([^]]*])?{([^}]*, ?)*'
-    \ ]
 
 let g:UltiSnipsEditSplit="horizontal"
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -132,8 +126,12 @@ let NERDTreeIgnore=['\.pdf$', '\~$','\.toc$',
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:ycm_add_preview_to_completeopt = 0
-let g:ycm_confirm_extra_conf = 1
+let g:ycm_confirm_extra_conf = 0
 let g:ycm_auto_trigger = 1
+if !exists('g:ycm_semantic_triggers')
+    let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers.tex = ['re!\\[A-Za-z]*(ref|cite)[A-Za-z]*([^]]*])?{([^}]*, ?)*' ]
 
 let g:calendar_google_calendar = 1
 let g:calendar_google_task = 1
