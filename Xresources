@@ -15,12 +15,14 @@ XTerm*selectToClipboard: true
 ! Custom META key
 URxvt*modifier: alt
 
-! Perl extensons configuration
-URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select
-URxvt.url-select.launcher: /usr/bin/uzbl
-URxvt.url-select.underline: true
+! Copy-paste configuration
 URxvt.clipboard.copycmd:  xclip -i -selection clipboard
 URxvt.clipboard.pastecmd: xclip -o -selection clipboard
+
+! Perl extensions configuration
+URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select,fullscreen
+URxvt.url-select.launcher: /usr/bin/uzbl
+URxvt.url-select.underline: true
 
 ! Key bindings for extensions
 URxvt.keysym.M-Escape: perl:keyboard-select:activate
@@ -28,12 +30,15 @@ URxvt.keysym.M-s: perl:keyboard-select:search
 URxvt.keysym.M-u: perl:url-select:select_next
 URxvt.keysym.M-c: perl:clipboard:copy
 URxvt.keysym.M-v: perl:clipboard:paste
+URxvt.keysym.F11: perl:fullscreen:switch
 
 ! Appearance
 URxvt*font: xft:DejaVu Sans Mono:size=12
 URxvt*scrollBar: false
-URxvt.depth: 32
 URxvt*cursorColor: Green
+
+! True transparency
+URxvt.depth: 32
 
 ! Colors
 URxvt*background: [80]Black

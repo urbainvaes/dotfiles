@@ -1,0 +1,2 @@
+setxkbmap -layout us -variant dvp
+xrdb ~/.Xresources
