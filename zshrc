@@ -89,6 +89,8 @@ alias soff="tmux set -g status off"
 # Fix smart search history
 bindkey -a 'k' history-beginning-search-backward
 bindkey -a 'j' history-beginning-search-forward
+bindkey '^P' history-beginning-search-backward
+bindkey '^N' history-beginning-search-forward
 
 # Crontab jobs
 crontab ~/.crontab
@@ -118,8 +120,14 @@ fshow() {
 }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Set programmer dvorak
+xrdb ~/.Xresources
+# setxkbmap -layout us -variant dvp
+
+# Load external scripts
 source ~/github/fzf-marks/fzf-marks.zsh
 source ~/github/z/z.sh
 source ~/github/fzf-extras/fzf-extras.sh
 source ~/github/fzf-extras/fzf-extras.zsh
-xrdb ~/.Xresources
+
