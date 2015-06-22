@@ -161,7 +161,13 @@ function clean {
 }
 
 function install_packages {
-    apt-get install ttyrec mutt msmtp
+
+    # General
+    sudo apt-get install ttyrec mutt msmtp offlineimap wmctrl rxvt-unicode-256color \
+        tmux git gcc clang cmake make zathura feh chromium-browser zsh
+
+    # For xcape
+    sudo apt-get install pkg-config libx11-dev libxtst-dev libxi-dev clang
 }
 
 function update_dotfiles {
