@@ -41,7 +41,7 @@ URxvt*cursorColor: Green
 URxvt.depth: 32
 
 ! Colors
-URxvt*background: [80]Black
+URxvt*background: [90]Black
 URxvt*foreground: White
 URxvt.color0  : #2E2E34343636
 URxvt.color8  : #555557575353

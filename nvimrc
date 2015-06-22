@@ -6,7 +6,6 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'benekastah/neomake' , { 'for' : 'cpp' }
 Plug 'bling/vim-airline'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'edkolev/tmuxline.vim'
 Plug 'freeo/vim-kalisi'
 Plug 'godlygeek/tabular' , { 'on' : 'Tab' }
 Plug 'gregsexton/gitv', { 'on' : 'Gitv' }

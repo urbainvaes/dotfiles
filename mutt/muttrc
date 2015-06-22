@@ -3,6 +3,7 @@ set from             = "u.vaes13@imperial.ac.uk"
 set realname         = "Urbain Vaes"
 set use_from         = yes
 set envelope_from    = "yes"
+set weed
 
 # Folders
 set folder           = ~/.mail
@@ -19,10 +20,12 @@ set spoolfile = "+Main/Main"
 set record    = "+Main/Sent"
 set postponed = "+Main/Drafts"
 
-# Status Bar
-# set status_chars  = " *%A"
+# Headers
+ignore *
+unignore from: to: cc: date: subject:
+unhdr_order *
+hdr_order from: to: cc: date: subject:
 
-# Mailboxes
 mailboxes +Main/Main \
           +Imperial/Imperial \
           +Hotmail/Hotmail \
