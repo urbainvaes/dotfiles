@@ -15,7 +15,7 @@ snippet new "New command" b
 endsnippet
 
 snippet op "Operator style" i
-\op 
+\op
 endsnippet
 
 snippet pard "Partial derivative" i
@@ -27,7 +27,7 @@ snippet pardd "Double partial derivative" i
 endsnippet
 
 snippet herm "Hermite polynomials" i
-\hermite 
+\hermite
 endsnippet
 
 snippet red "Red text" i
@@ -39,7 +39,7 @@ snippet sumi "Sum over index set" i
 endsnippet
 
 snippet int "Integral" i
-\int_{$1} 
+\int_{$1}
 endsnippet
 
 snippet ip "Inner product" i
@@ -62,20 +62,12 @@ snippet test "Test functions" i
 \test{${1:\real^n}}$0
 endsnippet
 
-snippet lp "Flat Lp space" i
-\flp{${1:2}}{${2:\real^n}}$0
+snippet lp "Lp spaces" w
+\lp{${1:exponent}}{${2:domain}}${3/^.+$/[/}${3:weight}${3/^.+$/]/}$0
 endsnippet
 
-snippet lpw "Weighted Lp space" i
-\wlp{${1:2}}{${2:\real^n}}{${3:\rho}}$0
-endsnippet
-
-snippet sob "Flat Sobolev space" i
-\sobolev{${1:s}}{${2:\real^n}}$0
-endsnippet
-
-snippet sobw "Weighted Sobolev space" i
-\wsobolev{${1:s}}{${2:\real^n}}{${3:\rho}}$0
+snippet  sob "Sobolev spaces" w
+\sobolev{${1:exponent}}{${2:domain}}${3/^.+$/[/}${3:weight}${3/^.+$/]/}$0
 endsnippet
 
 snippet cont "Continuous function" i
