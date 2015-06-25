@@ -1,10 +1,35 @@
 snippet print_mat "Print matrix" b
-for (unsigned int iii = 0; iii < ${0:mat}.size(); ++iii) {
-	cout << setw(12) << mat[iii][0];
-	for (unsigned int jjj = 1; jjj < mat.size(); ++jjj) {
+for (unsigned int iii = 0; iii < ${1:mat}.size(); ++iii) {
+	cout << setw(12) << $1[iii][0];
+	for (unsigned int jjj = 1; jjj < $1.size(); ++jjj) {
 		cout << ", ";
-		cout << setw(12) << mat[iii][jjj];
+		cout << setw(12) << $1[iii][jjj];
 	}
 	cout << endl;
 }
+$0
+endsnippet
+
+snippet print_vec "Print vector" b
+for (unsigned int iii = 0; iii < ${1:mat}.size(); ++iii) {
+	cout << setw(12) << $1[iii];
+	cout << endl;
+}
+$0
+endsnippet
+
+snippet forij "Matrix iteration" b
+for (int ${2:i} = 0; $2 < ${1:count}; $2++) {
+	for (int ${4:j} = 0; $4 < $1; $4++) {
+		${5}
+	}
+}
+endsnippet
+
+snippet vec "vector" i
+vector<${1:double}> $0
+endsnippet
+
+snippet mat "matrix" i
+vector< vector<${1:double}> > $0
 endsnippet
