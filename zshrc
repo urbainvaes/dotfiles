@@ -11,7 +11,7 @@ ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 
 # Plugins
-plugins=(vi-mode git ubuntu tmux)
+plugins=(git nyan vi-mode ubuntu themes tmux z)
 
 # Source oh-my-zsh
 source $ZSH/oh-my-zsh.sh
@@ -127,7 +127,7 @@ xrdb ~/.Xresources
 
 # Load external scripts
 source ~/github/fzf-marks/fzf-marks.zsh
-source ~/github/z/z.sh
-source ~/github/fzf-extras/fzf-extras.sh
-source ~/github/fzf-extras/fzf-extras.zsh
+# source ~/github/z/z.sh
+# source ~/github/fzf-extras/fzf-extras.sh
+# source ~/github/fzf-extras/fzf-extras.zsh
 
