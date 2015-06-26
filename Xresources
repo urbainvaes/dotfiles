@@ -1,8 +1,8 @@
 ! XTERM !
 
 ! Appearance xterm
-*xterm*faceName: DejaVuSansMono
-*xterm*faceSize: 12
+*xterm*faceName: Monaco
+*xterm*faceSize: 11
 *xterm*background: Black
 *xterm*foreground: White
 *xterm*cursorColor: Green
@@ -33,15 +33,17 @@ URxvt.keysym.M-v: perl:clipboard:paste
 URxvt.keysym.F11: perl:fullscreen:switch
 
 ! Appearance
-URxvt*font: xft:DejaVu Sans Mono:size=12
+! URxvt*font: xft:DejaVu Sans Mono:size=12
+URxvt*font: xft:monaco:size=11:antialias=false
 URxvt*scrollBar: false
 URxvt*cursorColor: Green
+URxvt*internalBorder: 0
 
 ! True transparency
 URxvt.depth: 32
 
 ! Colors
-URxvt*background: [90]Black
+URxvt*background: [80]Black
 URxvt*foreground: White
 URxvt.color0  : #2E2E34343636
 URxvt.color8  : #555557575353
@@ -330,5 +332,3 @@ URxvt.color15 : #EEEEEEEEECEC
 
 ! Turn on/off ISO 14755 5.2 mode (default enabled).
 ! URxvt*iso14755_52: boolean
-
-

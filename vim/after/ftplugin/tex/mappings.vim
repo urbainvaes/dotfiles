@@ -31,20 +31,29 @@ iabbrev <buffer> gp \pi
 iabbrev <buffer> gw \omega
 iabbrev <buffer> dd \d
 
-function! SynctexShow()
-    let synctex = glob("*.synctex.gz")
-    if strlen(synctex) == 0
-        echom "no synctex file found"
-    else
-        let pdffile = substitute(synctex,"synctex.gz","pdf","")
-        let execline = printf(":!zathura --synctex-forward %d:%d:%s %s", line('.'), col('.'), shellescape(bufname("%")), shellescape(pdffile))
-        exec execline
-    end
-endfunction
+" function! SynctexShow()
+"     let synctex = glob("*.synctex.gz")
+"     if strlen(synctex) == 0
+"         echom "no synctex file found"
+"     else
+"         let pdffile = substitute(synctex,"synctex.gz","pdf","")
+"         let execline = printf(":!zathura --synctex-forward %d:%d:%s %s", line('.'), col('.'), shellescape(bufname("%")), shellescape(pdffile))
+"         exec execline
+"     end
+" endfunction
 
-nnoremap <buffer> <LocalLeader>a :call SynctexShow()<CR><CR>
-nnoremap <buffer> <LocalLeader>i :Latexmk<CR>
-nnoremap <buffer> <LocalLeader>e :LatexErrors<CR>
-nnoremap <buffer> <LocalLeader>o :LatexView<CR>
-nnoremap <buffer> <LocalLeader>k :LatexmkStop<CR>:LatexmkClean<CR>
+" nnoremap <buffer> <LocalLeader>a :call SynctexShow()<CR><CR>
+" nnoremap <buffer> <LocalLeader>i :Latexmk<CR>
+" nnoremap <buffer> <LocalLeader>e :LatexErrors<CR>
+" nnoremap <buffer> <LocalLeader>o :LatexView<CR>
+" noremap  <buffer> <LocalLeader>k :LatexmkStop<CR>:LatexmkClean<CR>
+" nnoremap <buffer> <LocalLeader>h :split header.sty<CR>
+
+
+nnoremap <buffer> <LocalLeader>i :VimtexCompile<CR>
+nnoremap <buffer> <LocalLeader>e :VimtexErrors<CR>
+nnoremap <buffer> <LocalLeader>o :VimtexView<CR>
+nnoremap <buffer> <LocalLeader>k :VimtexStop<CR>:VimtexClean<CR>
+nnoremap <buffer> <LocalLeader>t :VimtexTocToggle<CR>
+nnoremap <buffer> <LocalLeader>h :split header.sty<CR>
 nnoremap <buffer> <LocalLeader>h :split header.sty<CR>

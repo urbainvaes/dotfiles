@@ -64,7 +64,7 @@ alias purge='sudo apt-get purge'
 alias push='git push origin master'
 alias pushs='git push --recurse-submodules=check'
 alias remove='sudo apt-get autoremove'
-alias tmux="TERM=screen-256color-bce tmux"
+# alias tmux="TERM=screen-256color-bce tmux"
 alias update='sudo apt-get update'
 alias upgrade='sudo apt-get upgrade'
 alias v='vim'
@@ -95,8 +95,6 @@ bindkey '^N' history-beginning-search-forward
 # Crontab jobs
 crontab ~/.crontab
 
-TERM=xterm-256color
-# TERM=rxvt-unicode-256color
 
 fancy-ctrl-z () {
     if [[ $#BUFFER -eq 0 ]]; then
@@ -122,12 +120,22 @@ fshow() {
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Set programmer dvorak
-xrdb ~/.Xresources
-# setxkbmap -layout us -variant dvp
+# xrdb ~/.Xresources
+
+TERM=xterm-256color
+
+if [[ -n ${TMUX} && -n ${commands[tmux]} ]];then
+    case $(tmux showenv TERM 2>/dev/null) in
+        *256color) ;&
+        TERM=fbterm)
+            TERM=screen-256color ;;
+        *)
+            TERM=screen
+    esac
+fi
 
 # Load external scripts
 source ~/github/fzf-marks/fzf-marks.zsh
 # source ~/github/z/z.sh
 # source ~/github/fzf-extras/fzf-extras.sh
 # source ~/github/fzf-extras/fzf-extras.zsh
-

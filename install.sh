@@ -5,19 +5,17 @@ dir=$home/dotfiles
 olddir=$home/dotfiles_old
 
 declare -A repodirs
-repodirs[Anthony25/gnome-terminal-colors-solarized]=$home/.solarized/gnome-terminal-colors-solarized
 repodirs[alols/xcape]=$home/xcape
-repodirs[altercation/mutt-colors-solarized]=$home/.solarized/mutt-colors-solarized
-repodirs[gmarik/vundle]=$dir/vim/bundle/vundle
-repodirs[icholy/ttygif]=$home/ttygif
-repodirs[junegunn/fzf]=$home/.fzf
-repodirs[rupa/z]=$home/github/z
-repodirs[atweiden/fzf-extras]=$home/github/fzf-extras
-repodirs[junegunn/vim-plug]=$dir/nvim/vim-plug
-repodirs[seebi/dircolors-solarized]=$home/.solarized/dircolors-solarized
-repodirs[tmux-plugins/tpm]=$home/.tmux/plugins/tpm
+repodirs[Anthony25/gnome-terminal-colors-solarized]=$home/github/gnome-terminal-colors-solarized
+repodirs[altercation/mutt-colors-solarized]=$home/github/mutt-colors-solarized
+repodirs[seebi/dircolors-solarized]=$home/github/dircolors-solarized
 repodirs[uvaes/fzf-marks]=$home/github/fzf-marks
-repodirs[muennich/urxvt-perls]=$home/.urxvt/ext
+repodirs[atweiden/fzf-extras]=$home/github/fzf-extras
+repodirs[rupa/z]=$home/github/z
+repodirs[junegunn/fzf]=$home/.fzf
+repodirs[icholy/ttygif]=$home/github/ttygif
+repodirs[tmux-plugins/tpm]=$home/.tmux/plugins/tpm
+repodirs[junegunn/vim-plug]=$dir/vim/vim-plug
 
 function after_vimplug {
     cd ..
@@ -31,7 +29,6 @@ declare -A actions
 actions[Anthony25/gnome-terminal-colors-solarized]=''
 actions[alols/xcape]='make'
 actions[altercation/mutt-colors-solarized]=''
-actions[gmarik/vundle]=''
 actions[icholy/ttygif]='make'
 actions[junegunn/fzf]='./install'
 actions[rupa/z]='make'
@@ -40,7 +37,6 @@ actions[junegunn/vim-plug]='after_vimplug'
 actions[seebi/dircolors-solarized]=''
 actions[tmux-plugins/tpm]=''
 actions[uvaes/fzf-marks]=''
-actions[muennich/urxvt-perls]=''
 
 function fetch_repo {
     cd $1
@@ -141,7 +137,7 @@ function install_dotfiles {
     done
 
     cd $dir
-    mkdir -p nvim/vimundo
+    mkdir -p vim/vimundo
     mkdir -p mutt/temp
     mkdir -p mutt/cache
     mkdir -p mutt/cache/bodies
