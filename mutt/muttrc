@@ -56,9 +56,9 @@ set include=yes
 set sendmail="/usr/bin/msmtp"
 
 # Sorting options
-set sort         = threads
+# set sort         = threads
 set sort_aux     = reverse-last-date-received
-set sort_browser = reverse-date
+# set sort_browser = reverse-date
 
 # Alias file
 source ~/.mutt/alias
@@ -82,3 +82,15 @@ bind   pager   \Cy  previous-line
 bind   pager   j    next-entry
 bind   pager   k    previous-entry
 bind   pager   R    group-reply
+
+# Colors
+color index brightblue color0 "~f edfenergy"
+color index brightblue color0 "~f terravision"
+color index magenta color0 "~f avaaz"
+color index green color0 "~f vaes"
+color index blue color0 "~f pavliotis"
+color index blue color0 "~f abdulle"
+color index magenta color0 "~f santos"
+color index magenta color0 "~f rusudan"
+color index red color0 "~F"
+color index cyan color0 "~U"

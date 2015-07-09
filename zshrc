@@ -48,28 +48,23 @@ alias a='vifm'
 alias c='clear'
 alias ca='printf "\ec"'
 alias commit='git commit -a -m'
-alias e=$EDITOR
 alias g='git'
-alias gco='git checkout'
 alias install='sudo apt-get install'
 alias m='mutt'
 alias mail='offlineimap -u quiet &'
 alias mc='make clean'
-alias mn="$EDITOR ~/.mynotes"
 alias n='nvim'
-alias ns="$EDITOR --servername SYNC"
-alias nsess="$EDITOR -S Session.vim"
+alias ns="$EDITOR -S Session.vim"
 alias pull='git pull origin master'
-alias purge='sudo apt-get purge'
 alias push='git push origin master'
 alias pushs='git push --recurse-submodules=check'
-alias remove='sudo apt-get autoremove'
-# alias tmux="TERM=screen-256color-bce tmux"
 alias update='sudo apt-get update'
 alias upgrade='sudo apt-get upgrade'
 alias v='vim'
 alias x='sh ~/.xmodmap'
 alias xcape='/home/urbain/xcape/xcape'
+alias light='xrdb ~/.Xresources.light'
+alias dark='xrdb ~/.Xresources.dark'
 
 # Configuration
 alias em="$EDITOR ~/.mutt/muttrc"
