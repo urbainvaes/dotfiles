@@ -12,6 +12,7 @@ Plug 'godlygeek/tabular' , { 'on' : 'Tab' }
 Plug 'gregsexton/gitv', { 'on' : 'Gitv' }
 Plug 'honza/vim-snippets'
 Plug 'itchyny/calendar.vim', { 'on' : 'Calendar' }
+Plug 'klen/python-mode'
 Plug 'jamessan/vim-gnupg', { 'for' : 'asc' }
 Plug 'junegunn/fzf'
 Plug 'junegunn/seoul256.vim'
@@ -37,6 +38,7 @@ Plug 'tommcdo/vim-exchange'
 Plug 'ton/vim-bufsurf'
 Plug 'tpope/vim-abolish', { 'for' : 'tex' }
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-flagship'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-obsession'
@@ -44,9 +46,9 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-vinegar'
 Plug 'troydm/zoomwintab.vim'
-Plug 'Valloric/YouCompleteMe'
-", { 'do' : './install.sh --clang-completer' }
+Plug 'Valloric/YouCompleteMe', { 'do' : './install.sh --clang-completer' }
 Plug 'xolox/vim-misc', { 'on' : 'Note' }
 Plug 'xolox/vim-notes', { 'on' : 'Note' }
 call plug#end()
@@ -92,6 +94,8 @@ let g:ctrlp_prompt_mappings = {
     \ 'PrtHistory(-1)':       ['<c-j>'],
     \ 'PrtHistory(1)':        ['<c-k>'],}
 
+let g:pymode_rope=0
+
 let g:syntastic_cpp_compiler = "g++"
 let g:syntastic_cpp_compiler_options = "-std=c++11 -Wall -Wextra -Wpedantic"
 let g:syntastic_error_symbol = "✗"
@@ -101,9 +105,10 @@ let g:tagbar_width = 30
 let g:tagbar_show_linenumbers=1
 let g:tagbar_autofocus=1
 
+
 let g:tex_conceal= 'adgm'
 let g:tex_flavor='latex'
-let g:tex_fast=1
+" let g:tex_fast=1
 
 let NERDTreeIgnore=['\.pdf$', '\~$','\.toc$',
             \ '\.fls$','\.bbl$','\.blg$',
@@ -122,6 +127,8 @@ let g:ycm_semantic_triggers.tex = ['re!\\[A-Za-z]*(ref|cite)[A-Za-z]*([^]]*])?{(
 
 let g:calendar_google_calendar = 1
 let g:calendar_google_task = 1
+
+let g:tabprefix = ""
 
 
 "" Vim options
@@ -168,7 +175,7 @@ set guifont=Monaco\ 11
 
 " Case and spell
 set nospell
-set spellfile="/home/urbain/.vim/spell/en.utf-8.add"
+" set spellfile="/home/urbain/.vim/spell/en.utf-8.add"
 set smartcase
 set ignorecase
 
