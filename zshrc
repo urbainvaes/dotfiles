@@ -1,20 +1,18 @@
-# Path to oh-my-zsh
-export ZSH=$HOME/.oh-my-zsh
+# Source antigen
+source ~/.antigen.zsh
+
+# Load the oh-my-zsh's library.
+antigen use oh-my-zsh
+
+# Bundles from the default repo (robbyrussell's oh-my-zsh).
+antigen bundle git
+antigen bundle vi-mode
+antigen bundle ubuntu
+antigen bundle tmux
+antigen bundle rupa/z
 
 # Theme
-ZSH_THEME="eastwood"
-
-# Enable correction
-ENABLE_CORRECTION="true"
-
-# Dots for completion
-COMPLETION_WAITING_DOTS="true"
-
-# Plugins
-plugins=(git nyan vi-mode ubuntu themes tmux z)
-
-# Source oh-my-zsh
-source $ZSH/oh-my-zsh.sh
+antigen theme eastwood
 
 # User configuration
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
@@ -131,6 +129,3 @@ fi
 
 # Load external scripts
 source ~/github/fzf-marks/fzf-marks.zsh
-# source ~/github/z/z.sh
-# source ~/github/fzf-extras/fzf-extras.sh
-# source ~/github/fzf-extras/fzf-extras.zsh
