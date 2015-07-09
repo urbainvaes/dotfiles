@@ -70,35 +70,31 @@ snippet  sob "Sobolev spaces" w
 \sobolev{${1:exponent}}{${2:domain}}${3/^.+$/[/}${3:weight}${3/^.+$/]/}$0
 endsnippet
 
-snippet cont "Continuous function" i
+snippet cont "Continuous function" w
 \cont{$1}{$2}$0
 endsnippet
 
-snippet mean "Expectation" i
+snippet mean "Expectation" w
 \expect $0
 endsnippet
 
-snippet dot "Dot product" i
+snippet dot "Dot product" w
 \dotx
 endsnippet
 
-snippet abs "Absolute value" i
+snippet abs "Absolute value" w
 \abs{ $1 }$0
 endsnippet
 
-snippet sum "Sum" i
+snippet sum "Sum" w
 \sum_{${1:i=1}}^{${2:n}}
 endsnippet
 
-snippet smooth "Smooth function" i
+snippet smooth "Smooth function" w
 \smooth{${1:\real^n}} $0
 endsnippet
 
-snippet cont "Continuous function" i
-\cont{$1}{$2} $0
-endsnippet
-
-snippet ref "Clever reference" i
+snippet ref "Clever reference" w
 \cref{$1}$0
 endsnippet
 
@@ -107,4 +103,8 @@ snippet frame "My frame snippet" b
 	\frametitle{$1}
 	$0
 \end{frame}
+endsnippet
+
+snippet gauss "Gaussian density" w
+\gaussian{${1:\mu}}{${2:\Sigma}}
 endsnippet
