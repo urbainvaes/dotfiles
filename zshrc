@@ -8,15 +8,21 @@ if ! zgen saved; then
     # Load oh-my-zsh framework
     zgen oh-my-zsh
 
-    # Plugins
+    # Oh-my-zsh plugins
     zgen oh-my-zsh plugins/git
     zgen oh-my-zsh plugins/vi-mode
     zgen oh-my-zsh plugins/ubuntu
     zgen oh-my-zsh plugins/tmux
-    zgen rupa/z
 
-    # Load completion
+    # zsh-users plugins
     zgen load zsh-users/zsh-completions src
+    zgen load zsh-users/zsh-syntax-highlighting
+
+    # Other plugins
+    zgen load rupa/z
+    zgen load tarruda/zsh-autosuggestions
+    zgen load Tarrasch/zsh-autoenv
+    zgen load uvaes/fzf-marks plugin develop
 
     # Theme
     zgen oh-my-zsh themes/eastwood
@@ -24,6 +30,19 @@ if ! zgen saved; then
     # Save all to init script
     zgen save
 fi
+
+# Plugins configuration
+
+# Autosuggestion
+AUTOSUGGESTION_HIGHLIGHT_COLOR='fg=6'
+bindkey '^y' autosuggest-execute-suggestion
+zle-line-init() {
+    zle autosuggest-start
+}
+zle -N zle-line-init
+
+# Fzf-marks
+bindkey '^g' fzf-marks-navigate
 
 # User configuration
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
@@ -120,9 +139,6 @@ fshow() {
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Set programmer dvorak
-# xrdb ~/.Xresources
-
 TERM=xterm-256color
 
 if [[ -n ${TMUX} && -n ${commands[tmux]} ]];then
@@ -134,6 +150,3 @@ if [[ -n ${TMUX} && -n ${commands[tmux]} ]];then
             TERM=screen
     esac
 fi
-
-# Load external scripts
-source ~/github/fzf-marks/fzf-marks.zsh
