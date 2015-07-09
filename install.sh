@@ -16,6 +16,7 @@ repodirs[junegunn/fzf]=$home/.fzf
 repodirs[icholy/ttygif]=$home/github/ttygif
 repodirs[tmux-plugins/tpm]=$home/.tmux/plugins/tpm
 repodirs[junegunn/vim-plug]=$dir/vim/vim-plug
+repodirs[tarjoilija/zgen]=$home/.zgen
 
 function after_vimplug {
     cd ..

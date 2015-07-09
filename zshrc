@@ -1,27 +1,35 @@
-# Source antigen
-source ~/.antigen.zsh
+# Load zgen
+source "/home/urbain/.zgen/zgen.zsh"
 
-# Load the oh-my-zsh's library.
-antigen use oh-my-zsh
+if ! zgen saved; then
 
-# Bundles from the default repo (robbyrussell's oh-my-zsh).
-antigen bundle git
-antigen bundle vi-mode
-antigen bundle ubuntu
-antigen bundle tmux
-antigen bundle rupa/z
+    echo "Creating a zgen save"
 
-# Theme
-antigen theme eastwood
+    # Load oh-my-zsh framework
+    zgen oh-my-zsh
+
+    # Plugins
+    zgen oh-my-zsh plugins/git
+    zgen oh-my-zsh plugins/vi-mode
+    zgen oh-my-zsh plugins/ubuntu
+    zgen oh-my-zsh plugins/tmux
+    zgen rupa/z
+
+    # Load completion
+    zgen load zsh-users/zsh-completions src
+
+    # Theme
+    zgen oh-my-zsh themes/eastwood
+
+    # Save all to init script
+    zgen save
+fi
 
 # User configuration
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
 
 # Editor
 export EDITOR=/usr/bin/nvim
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 # Apps for filetypes
 alias -s vim=$EDITOR
