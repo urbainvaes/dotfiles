@@ -1,23 +1,26 @@
 # include "/home/urbain/.Xresources"
 
-! Backgreund / Foreground
-URxvt*background: [80]Black
-URxvt*foreground: White
+! Background / Foreground
+URxvt*background: #3a3a3a 
+URxvt*foreground: #d0d0d0 
 
-! Colors
-URxvt.color0  : #2E2E34343636
-URxvt.color8  : #555557575353
-URxvt.color1  : #CCCC00000000
-URxvt.color9  : #EFEF29292929
-URxvt.color2  : #4E4E9A9A0606
-URxvt.color10 : #8A8AE2E23434
-URxvt.color3  : #C4C4A0A00000
-URxvt.color11 : #FCFCE9E94F4F
-URxvt.color4  : #34346565A4A4
-URxvt.color12 : #72729F9FCFCF
-URxvt.color5  : #757550507B7B
-URxvt.color13 : #ADAD7F7FA8A8
-URxvt.color6  : #060698209A9A
-URxvt.color14 : #3434E2E2E2E2
-URxvt.color7  : #D3D3D7D7CFCF
-URxvt.color15 : #EEEEEEEEECEC
+! Other colors
+URxvt*color0: #4e4e4e
+URxvt*color1: #d68787 
+URxvt*color2: #5f865f
+URxvt*color3: #d8af5f
+URxvt*color4: #85add4
+URxvt*color5: #d7afaf
+URxvt*color6: #87afaf
+URxvt*color7: #d0d0d0
+URxvt*color8: #626262
+URxvt*color9: #d75f87
+URxvt*color10: #87af87
+URxvt*color11: #ffd787 
+URxvt*color12: #add4fb
+URxvt*color13: #ffafaf
+URxvt*color14: #87d7d7
+URxvt*color15: #e4e4e4
+URxvt*cursorColor: #d0d0d0
+URxvt*cursorColor2: #3a3a3a
+URxvt*colorBD: #e4e4e4
