@@ -1,12 +1,11 @@
 #!/bin/bash
-h=`date +%H`
 
-if [ $h -lt 9 ]; then
-    theme=dark
-elif [ $h -lt 21 ]; then
+if [ "$COLORSCHEME" = "light" ]; then
     theme=light
-else
+elif [ "$COLORSCHEME" = "dark" ]; then
     theme=dark
+else 
+    echo $COLORSCHEME
 fi
 
-echo "/home/urbain/.solarized/mutt-colors-solarized/mutt-colors-solarized-"$theme"-16.muttrc"
+echo "/home/urbain/github/mutt-colors-solarized/mutt-colors-solarized-"$theme"-16.muttrc"

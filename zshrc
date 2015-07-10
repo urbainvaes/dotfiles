@@ -20,6 +20,7 @@ if ! zgen saved; then
 
     # Other plugins
     zgen load rupa/z
+    zgen load djui/alias-tips
     zgen load tarruda/zsh-autosuggestions
     zgen load Tarrasch/zsh-autoenv
     zgen load uvaes/fzf-marks plugin develop
@@ -88,8 +89,6 @@ alias upgrade='sudo apt-get upgrade'
 alias v='vim'
 alias x='sh ~/.xmodmap'
 alias xcape='/home/urbain/xcape/xcape'
-alias light='xrdb ~/.Xresources.light'
-alias dark='xrdb ~/.Xresources.dark'
 
 # Configuration
 alias em="$EDITOR ~/.mutt/muttrc"
@@ -139,7 +138,6 @@ fshow() {
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-TERM=xterm-256color
 
 if [[ -n ${TMUX} && -n ${commands[tmux]} ]];then
     case $(tmux showenv TERM 2>/dev/null) in
@@ -150,3 +148,18 @@ if [[ -n ${TMUX} && -n ${commands[tmux]} ]];then
             TERM=screen
     esac
 fi
+
+
+# Colors
+export TERM=xterm-256color
+export COLORSCHEME=light
+
+light() {
+    xrdb ~/.Xresources.light
+    export COLORSCHEME=light
+}
+
+dark() {
+    xrdb ~/.Xresources.dark
+    export COLORSCHEME=dark
+}

@@ -83,14 +83,17 @@ bind   pager   j    next-entry
 bind   pager   k    previous-entry
 bind   pager   R    group-reply
 
+# Source mutt solarized
+source `sh /home/urbain/.mutt/colormutt`
+
 # Colors
-color index brightblue color0 "~f edfenergy"
-color index brightblue color0 "~f terravision"
-color index magenta color0 "~f avaaz"
-color index green color0 "~f vaes"
-color index blue color0 "~f pavliotis"
-color index blue color0 "~f abdulle"
-color index magenta color0 "~f santos"
-color index magenta color0 "~f rusudan"
-color index red color0 "~F"
-color index cyan color0 "~U"
+color index brightblue default "~f edfenergy"
+color index brightblue default "~f terravision"
+color index magenta default "~f avaaz"
+color index green default "~f vaes"
+color index blue default "~f pavliotis"
+color index blue default "~f abdulle"
+color index magenta default "~f santos"
+color index magenta default "~f rusudan"
+color index red default "~F"
+color index cyan default "~U"

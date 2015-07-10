@@ -190,6 +190,12 @@ set hidden
 
 " Colorscheme
 silent! colo solarized
+if $COLORSCHEME=="light"
+    set background=light
+elseif $COLORSCHEME=="dark"
+    set background=dark
+endif
+    
 highlight Comment cterm=italic
 set t_ZH=[3m
 set t_ZR=[23m
