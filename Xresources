@@ -28,8 +28,8 @@ URxvt.url-select.underline: true
 URxvt.keysym.M-Escape: perl:keyboard-select:activate
 URxvt.keysym.M-s: perl:keyboard-select:search
 URxvt.keysym.M-u: perl:url-select:select_next
-URxvt.keysym.M-c: perl:clipboard:copy
-URxvt.keysym.M-v: perl:clipboard:paste
+URxvt.keysym.M-y: perl:clipboard:copy
+URxvt.keysym.M-p: perl:clipboard:paste
 URxvt.keysym.F11: perl:fullscreen:switch
 
 ! Appearance
@@ -41,3 +41,6 @@ URxvt*internalBorder: 0
 
 ! Cursor color
 URxvt*cursorColor: Green
+
+! True transparency
+URxvt.depth: 32

@@ -1,8 +1,5 @@
 # include "/home/urbain/.Xresources"
 
-! True transparency
-URxvt.depth: 32
-
 ! Backgreund / Foreground
 URxvt*background: [80]Black
 URxvt*foreground: White
