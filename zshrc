@@ -23,9 +23,12 @@ if ! zgen saved; then
     zgen load djui/alias-tips
     zgen load tarruda/zsh-autosuggestions
     zgen load Tarrasch/zsh-autoenv
-    zgen load uvaes/fzf-marks plugin develop
+    zgen load uvaes/fzf-marks
+    zgen load joel-porquet/zsh-dircolors-solarized
 
-    # Theme
+    # Appearance
+    # zgen load mafredri/zsh-async
+    # zgen load sindresorhus/pure
     zgen oh-my-zsh themes/eastwood
 
     # Save all to init script
@@ -152,23 +155,30 @@ fi
 
 # Colors
 export TERM=xterm-256color
-export COLORSCHEME=light
+export COLORSCHEME=dark
 
-default() {
-    $HOME/.bin/recolor.sh < ~/.Xresources.default
-    xrdb ~/.Xresources.default
-    export COLORSCHEME=default
-    sed -i "s/export COLORSCHEME=.*/export COLORSHEME=default/g" ~/.zshrc
+function cc {
+
+    # Change colors for current session
+    $HOME/.bin/recolor.sh < ~/.Xresources.$1
+
+    # Load Xresources file for future sessions
+    xrdb ~/.Xresources.$1
+
+    # Change environment variable
+    export COLORSCHEME=$1
+
+    # Change default environment variable for future sessions
+    sed -i "s/^export COLORSCHEME=.*$/export COLORSCHEME=$1/g" ~/dotfiles/.zshrc
 }
 
-light() {
-    $HOME/.bin/recolor.sh < ~/.Xresources.light
-    xrdb ~/.Xresources.light
-    export COLORSCHEME=light
-}
-
-dark() {
-    $HOME/.bin/recolor.sh < ~/.Xresources.dark
-    xrdb ~/.Xresources.dark
-    export COLORSCHEME=dark
-}
+# Fix tmux colors
+if [[ -n ${TMUX} && -n ${commands[tmux]} ]];then
+    case $(tmux showenv TERM 2>/dev/null) in
+        *256color) ;&
+        TERM=fbterm)
+            TERM=screen-256color ;;
+        *)
+            TERM=screen
+    esac
+fi
