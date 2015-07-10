@@ -84,7 +84,8 @@ bind   pager   k    previous-entry
 bind   pager   R    group-reply
 
 # Source mutt solarized
-source `sh /home/urbain/.mutt/colormutt`
+`[ "$COLORSCHEME" = "light" ] && echo source $HOME/github/mutt-colors-solarized/mutt-colors-solarized-light-16.muttrc || echo set`
+`[ "$COLORSCHEME" = "dark" ] && echo source $HOME/github/mutt-colors-solarized/mutt-colors-solarized-dark-16.muttrc || echo set`
 
 # Colors
 color index brightblue default "~f edfenergy"

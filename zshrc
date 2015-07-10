@@ -154,12 +154,21 @@ fi
 export TERM=xterm-256color
 export COLORSCHEME=light
 
+default() {
+    $HOME/.bin/recolor.sh < ~/.Xresources.default
+    xrdb ~/.Xresources.default
+    export COLORSCHEME=default
+    sed -i "s/export COLORSCHEME=.*/export COLORSHEME=default/g" ~/.zshrc
+}
+
 light() {
+    $HOME/.bin/recolor.sh < ~/.Xresources.light
     xrdb ~/.Xresources.light
     export COLORSCHEME=light
 }
 
 dark() {
+    $HOME/.bin/recolor.sh < ~/.Xresources.dark
     xrdb ~/.Xresources.dark
     export COLORSCHEME=dark
 }

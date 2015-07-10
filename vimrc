@@ -189,10 +189,14 @@ set lazyredraw
 set hidden
 
 " Colorscheme
-silent! colo solarized
 if $COLORSCHEME=="light"
+    silent! colo solarized
     set background=light
 elseif $COLORSCHEME=="dark"
+    silent! colo solarized
+    set background=dark
+elseif $COLORSCHEME=="default"
+    silent! colo seoul256
     set background=dark
 endif
     
