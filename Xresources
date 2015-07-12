@@ -12,6 +12,10 @@ XTerm*selectToClipboard: true
 
 ! URXVT !
 
+! General settings
+URxvt.loginShell   : true
+URxvt.termName     : rxvt-256color
+
 ! Custom META key
 URxvt*modifier: alt
 
@@ -33,14 +37,11 @@ URxvt.keysym.M-p: perl:clipboard:paste
 URxvt.keysym.F11: perl:fullscreen:switch
 
 ! Appearance
-!
 ! URxvt*font: xft:DejaVu Sans Mono:size=12
 URxvt*font: xft:monaco:size=11:antialias=false
 URxvt*scrollBar: false
 URxvt*internalBorder: 0
-
-! Cursor color
-URxvt*cursorColor: Green
+URxvt.borderColor: black
 
 ! True transparency
 URxvt.depth: 32

@@ -1,7 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/home/urbain/Dropbox/phd/code/spectral/feature'
-let g:netrw_dirhist_2='/home/urbain/Dropbox/phd/code/spectral/feature/src'
-let g:netrw_dirhist_3='/home/urbain/Dropbox/phd/code/spectral/develop/python'
-let g:netrw_dirhist_4='/home/urbain/.antigen'
-let g:netrw_dirhist_5='/home/urbain/dotfiles/mutt'
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/home/urbain/Dropbox/phd'
+let g:netrw_dirhist_2='/home/urbain'
+let g:netrw_dirhist_3='/home/urbain/Dropbox/phd/presentations/spectral'
+let g:netrw_dirhist_4='/home/urbain/Dropbox/phd/code/spectral/feature/cpp/src'

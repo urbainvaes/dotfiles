@@ -199,7 +199,7 @@ elseif $COLORSCHEME=="default"
     silent! colo seoul256
     set background=dark
 endif
-    
+
 highlight Comment cterm=italic
 set t_ZH=[3m
 set t_ZR=[23m
@@ -207,9 +207,8 @@ set t_ZR=[23m
 "" Maps
 
 " Definition of leaders
-let mapleader = "\\"
-let maplocalleader = "-"
-nmap <Space> <Leader>
+let mapleader = " "
+let maplocalleader = "\\"
 
 " New pages
 nnoremap <Leader>pe :tabedit

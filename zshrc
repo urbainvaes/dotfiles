@@ -13,10 +13,16 @@ if ! zgen saved; then
     zgen oh-my-zsh plugins/vi-mode
     zgen oh-my-zsh plugins/ubuntu
     zgen oh-my-zsh plugins/tmux
+    zgen oh-my-zsh plugins/themes
 
     # zsh-users plugins
     zgen load zsh-users/zsh-completions src
     zgen load zsh-users/zsh-syntax-highlighting
+
+    # Appearance
+    zgen load mafredri/zsh-async
+    zgen load sindresorhus/pure
+    # zgen oh-my-zsh themes/eastwood
 
     # Other plugins
     zgen load rupa/z
@@ -25,11 +31,6 @@ if ! zgen saved; then
     zgen load Tarrasch/zsh-autoenv
     zgen load uvaes/fzf-marks
     zgen load joel-porquet/zsh-dircolors-solarized
-
-    # Appearance
-    # zgen load mafredri/zsh-async
-    # zgen load sindresorhus/pure
-    zgen oh-my-zsh themes/eastwood
 
     # Save all to init script
     zgen save
@@ -46,7 +47,6 @@ zle-line-init() {
 zle -N zle-line-init
 
 # Fzf-marks
-bindkey '^g' fzf-marks-navigate
 
 # User configuration
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
@@ -154,10 +154,10 @@ fi
 
 
 # Colors
-export TERM=xterm-256color
-export COLORSCHEME=dark
+# export TERM=xterm-256color
+export COLORSCHEME=defau
 
-function cc {
+function colo {
 
     # Change colors for current session
     $HOME/.bin/recolor.sh < ~/.Xresources.$1
@@ -169,7 +169,7 @@ function cc {
     export COLORSCHEME=$1
 
     # Change default environment variable for future sessions
-    sed -i "s/^export COLORSCHEME=.*$/export COLORSCHEME=$1/g" ~/dotfiles/.zshrc
+    sed -i --follow-symlinks "s/^export COLORSCHEME=.*$/export COLORSCHEME=$1/g" ~/dotfiles/zshrc
 }
 
 # Fix tmux colors
@@ -182,3 +182,14 @@ if [[ -n ${TMUX} && -n ${commands[tmux]} ]];then
             TERM=screen
     esac
 fi
+
+
+# Z
+unalias z 2> /dev/null
+z() {
+  if [[ -z "$*" ]]; then
+    cd "$(_z -l 2>&1 | fzf-tmux +s --tac | sed 's/^[0-9,.]* *//')"
+  else
+    _z "$@"
+  fi
+}
