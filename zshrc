@@ -20,39 +20,44 @@ if ! zgen saved; then
     zgen load zsh-users/zsh-syntax-highlighting
 
     # Appearance
-    # zgen load mafredri/zsh-async
-    # zgen load sindresorhus/pure
-    zgen oh-my-zsh themes/eastwood
+    zgen load mafredri/zsh-async
+    zgen load sindresorhus/pure
+    # zgen oh-my-zsh themes/eastwood
+
+    # My plugins
+    zgen load uvaes/fzf-marks
+    zgen load uvaes/grm
 
     # Other plugins
     zgen load rupa/z
     zgen load djui/alias-tips
     zgen load tarruda/zsh-autosuggestions
     zgen load Tarrasch/zsh-autoenv
-    zgen load uvaes/fzf-marks
     zgen load joel-porquet/zsh-dircolors-solarized
 
     # Save all to init script
     zgen save
 fi
 
-# Custom key bindings
+# Custom key bindings for widgets
 bindkey -a 'k' history-beginning-search-backward
 bindkey -a 'j' history-beginning-search-forward
 bindkey '^P' history-beginning-search-backward
 bindkey '^N' history-beginning-search-forward
+bindkey '^y' autosuggest-execute-suggestion
 
-# Plugins configuration
+# Environment variables for plugins
+AUTOSUGGESTION_HIGHLIGHT_COLOR='fg=6'
+REPOFILE=/home/urbain/dotfiles/repos.zsh
+
 
 # Autosuggestion
-AUTOSUGGESTION_HIGHLIGHT_COLOR='fg=6'
-bindkey '^y' autosuggest-execute-suggestion
 zle-line-init() {
     zle autosuggest-start
 }
 zle -N zle-line-init
 
-# Fzf-marks
+# Repofile
 
 # User configuration
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"

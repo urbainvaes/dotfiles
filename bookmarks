@@ -4,5 +4,6 @@ dotfiles : /home/urbain/dotfiles
 phd : /home/urbain/Dropbox/phd
 code : /home/urbain/Dropbox/phd/code/spectral
 feature : /home/urbain/Dropbox/phd/code/spectral/feature
-develop : /home/urbain/Dropbox/phd/code/spectral/develop
 presentation : /home/urbain/Dropbox/phd/presentations/spectral
+develop : /home/urbain/Dropbox/phd/code/spectral/develop
+github : /home/urbain/github
