@@ -48,7 +48,8 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'troydm/zoomwintab.vim'
-Plug 'Valloric/YouCompleteMe', { 'do' : './install.sh --clang-completer' }
+Plug 'Valloric/YouCompleteMe'
+", { 'do' : './install.sh --clang-completer' }
 Plug 'xolox/vim-misc', { 'on' : 'Note' }
 Plug 'xolox/vim-notes', { 'on' : 'Note' }
 call plug#end()
@@ -108,7 +109,7 @@ let g:tagbar_autofocus=1
 
 let g:tex_conceal= 'adgm'
 let g:tex_flavor='latex'
-" let g:tex_fast=1
+ let g:tex_fast="1"
 
 let NERDTreeIgnore=['\.pdf$', '\~$','\.toc$',
             \ '\.fls$','\.bbl$','\.blg$',
@@ -309,5 +310,6 @@ nnoremap <silent> <Leader>C :call fzf#run({
 
 "" Experimental
 let g:notes_directories = ['~/dotfiles/notes']
+let g:pymode=0
 
 " Idea: instant download colorscheme

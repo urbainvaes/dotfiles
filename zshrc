@@ -20,9 +20,9 @@ if ! zgen saved; then
     zgen load zsh-users/zsh-syntax-highlighting
 
     # Appearance
-    zgen load mafredri/zsh-async
-    zgen load sindresorhus/pure
-    # zgen oh-my-zsh themes/eastwood
+    # zgen load mafredri/zsh-async
+    # zgen load sindresorhus/pure
+    zgen oh-my-zsh themes/eastwood
 
     # Other plugins
     zgen load rupa/z
@@ -35,6 +35,12 @@ if ! zgen saved; then
     # Save all to init script
     zgen save
 fi
+
+# Custom key bindings
+bindkey -a 'k' history-beginning-search-backward
+bindkey -a 'j' history-beginning-search-forward
+bindkey '^P' history-beginning-search-backward
+bindkey '^N' history-beginning-search-forward
 
 # Plugins configuration
 
@@ -82,6 +88,7 @@ alias install='sudo apt-get install'
 alias m='mutt'
 alias mail='offlineimap -u quiet &'
 alias mc='make clean'
+alias mca='make clean-all'
 alias n='nvim'
 alias ns="$EDITOR -S Session.vim"
 alias pull='git pull origin master'
@@ -108,11 +115,6 @@ alias eza="$EDITOR ~/.zathurarc"
 alias son="tmux set -g status on"
 alias soff="tmux set -g status off"
 
-# Fix smart search history
-bindkey -a 'k' history-beginning-search-backward
-bindkey -a 'j' history-beginning-search-forward
-bindkey '^P' history-beginning-search-backward
-bindkey '^N' history-beginning-search-forward
 
 # Crontab jobs
 crontab ~/.crontab
@@ -155,7 +157,7 @@ fi
 
 # Colors
 # export TERM=xterm-256color
-export COLORSCHEME=defau
+export COLORSCHEME=light
 
 function colo {
 
