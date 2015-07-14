@@ -12,9 +12,10 @@ repodirs[icholy/ttygif]=$home/github/ttygif
 repodirs[altercation/mutt-colors-solarized]=$home/github/mutt-colors-solarized
 
 # My repositories
+repodirs[uvaes/fzf-marks]=$home/github/fzf-marks
+repodirs[uvaes/grm]=$home/github/grm
 
 # fzf-related
-repodirs[uvaes/fzf-marks]=$home/github/fzf-marks
 repodirs[atweiden/fzf-extras]=$home/github/fzf-extras
 repodirs[junegunn/fzf]=$home/.fzf
 

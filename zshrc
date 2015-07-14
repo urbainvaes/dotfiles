@@ -162,7 +162,7 @@ fi
 
 # Colors
 # export TERM=xterm-256color
-export COLORSCHEME=light
+export COLORSCHEME=dark
 
 function colo {
 
