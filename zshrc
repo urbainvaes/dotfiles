@@ -1,4 +1,4 @@
-# Load zgen
+Load zgen
 source "/home/urbain/.zgen/zgen.zsh"
 
 if ! zgen saved; then
@@ -20,13 +20,13 @@ if ! zgen saved; then
     zgen load zsh-users/zsh-syntax-highlighting
 
     # Appearance
-    zgen load mafredri/zsh-async
-    zgen load sindresorhus/pure
-    # zgen oh-my-zsh themes/eastwood
+    # zgen load mafredri/zsh-async
+    # zgen load sindresorhus/pure
+    zgen oh-my-zsh themes/eastwood
 
     # My plugins
     zgen load uvaes/fzf-marks
-    zgen load uvaes/grm
+    # zgen load uvaes/grm
 
     # Other plugins
     zgen load rupa/z
@@ -49,7 +49,6 @@ bindkey '^y' autosuggest-execute-suggestion
 # Environment variables for plugins
 AUTOSUGGESTION_HIGHLIGHT_COLOR='fg=6'
 REPOFILE=/home/urbain/dotfiles/repos.zsh
-
 
 # Autosuggestion
 zle-line-init() {
@@ -146,7 +145,6 @@ fshow() {
     xargs -I % sh -c "git show --color=always % | less -R"'
 }
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 
 if [[ -n ${TMUX} && -n ${commands[tmux]} ]];then
@@ -162,7 +160,7 @@ fi
 
 # Colors
 # export TERM=xterm-256color
-export COLORSCHEME=dark
+export COLORSCHEME=light
 
 function colo {
 
@@ -200,3 +198,4 @@ z() {
     _z "$@"
   fi
 }
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

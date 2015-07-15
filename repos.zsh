@@ -1,28 +1,25 @@
-home=/home/urbain
-dir=$home/dotfiles
-olddir=$home/dotfiles_old
-
 declare -A repodirs
+declare -A actions
 
-# General purpose programs
-repodirs[alols/xcape]=$home/xcape
-repodirs[icholy/ttygif]=$home/github/ttygif
+# General purpose
+repodirs[icholy/ttygif]=/home/urbain/github/ttygif
+repodirs[alols/xcape]=/home/urbain/xcape
 
-# Solarized for mutt
-repodirs[altercation/mutt-colors-solarized]=$home/github/mutt-colors-solarized
+# Solarized
+repodirs[altercation/mutt-colors-solarized]=/home/urbain/github/mutt-colors-solarized
 
-# My repositories
-repodirs[uvaes/fzf-marks]=$home/github/fzf-marks
-repodirs[uvaes/grm]=$home/github/grm
+# My plugins
+repodirs[uvaes/fzf-marks]=/home/urbain/github/fzf-marks
+repodirs[uvaes/grm]=/home/urbain/.grm
 
 # fzf-related
-repodirs[atweiden/fzf-extras]=$home/github/fzf-extras
-repodirs[junegunn/fzf]=$home/.fzf
+repodirs[junegunn/fzf]=/home/urbain/.fzf
+repodirs[atweiden/fzf-extras]=/home/urbain/github/fzf-extras
 
-# Plugin managers for tmux/vim/zsh
-repodirs[tmux-plugins/tpm]=$home/.tmux/plugins/tpm
-repodirs[junegunn/vim-plug]=$dir/vim/vim-plug
-repodirs[tarjoilija/zgen]=$home/.zgen
+# Plugin managers
+repodirs[junegunn/vim-plug]=/home/urbain/.vim/vim-plug
+repodirs[tmux-plugins/tpm]=/home/urbain/.tmux/plugins/tpm
+# repodirs[tarjoilija/zgen]=/home/urbain/.zgen
 
 function after_vimplug {
     cd ..
