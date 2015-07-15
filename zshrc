@@ -24,12 +24,15 @@ if ! zgen saved; then
     # zgen load sindresorhus/pure
     zgen oh-my-zsh themes/eastwood
 
+    # My plugins
+    zgen load uvaes/fzf-marks
+    zgen load uvaes/grm
+
     # Other plugins
     zgen load rupa/z
     zgen load djui/alias-tips
     zgen load tarruda/zsh-autosuggestions
     zgen load Tarrasch/zsh-autoenv
-    zgen load uvaes/fzf-marks
     zgen load joel-porquet/zsh-dircolors-solarized
 
     # Save all to init script
@@ -43,6 +46,7 @@ bindkey '^P' history-beginning-search-backward
 bindkey '^N' history-beginning-search-forward
 
 # Plugins configuration
+REPOFILE="/home/urbain/dotfiles/repos.zsh"
 
 # Autosuggestion
 AUTOSUGGESTION_HIGHLIGHT_COLOR='fg=6'
