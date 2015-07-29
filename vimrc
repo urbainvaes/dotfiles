@@ -13,7 +13,7 @@ Plug 'gregsexton/gitv', { 'on' : 'Gitv' }
 Plug 'honza/vim-snippets'
 Plug 'itchyny/calendar.vim', { 'on' : 'Calendar' }
 Plug 'klen/python-mode'
-Plug 'jamessan/vim-gnupg', { 'for' : 'asc' }
+Plug 'jamessan/vim-gnupg'
 Plug 'junegunn/fzf'
 Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/vim-pseudocl'

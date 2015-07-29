@@ -1,16 +1,16 @@
 declare -A repodirs
-declare -A actions
+declare -A install
+declare -A uninstall
 
 # General purpose
 repodirs[icholy/ttygif]=/home/urbain/github/ttygif
-repodirs[alols/xcape]=/home/urbain/xcape
 
 # Solarized
 repodirs[altercation/mutt-colors-solarized]=/home/urbain/github/mutt-colors-solarized
 
 # My plugins
 repodirs[uvaes/fzf-marks]=/home/urbain/github/fzf-marks
-repodirs[uvaes/grm]=/home/urbain/.grm
+repodirs[uvaes/grm]=/home/urbain/github/grm
 
 # fzf-related
 repodirs[junegunn/fzf]=/home/urbain/.fzf
@@ -19,7 +19,12 @@ repodirs[atweiden/fzf-extras]=/home/urbain/github/fzf-extras
 # Plugin managers
 repodirs[junegunn/vim-plug]=/home/urbain/.vim/vim-plug
 repodirs[tmux-plugins/tpm]=/home/urbain/.tmux/plugins/tpm
-# repodirs[tarjoilija/zgen]=/home/urbain/.zgen
+repodirs[tarjoilija/zgen]=/home/urbain/.zgen
+
+# Experimental
+repodirs[adbrebs/taxi]=/home/urbain/github/adbrebs/taxi
+repodirs[adbrebs/meg]=/home/urbain/github/adbrebs/meg
+repodirs[adbrebs/brain_segmentation]=/home/urbain/github/adbrebs/brain_segmentation
 
 function after_vimplug {
     cd ..
@@ -29,8 +34,10 @@ function after_vimplug {
     ln -s ../vim-plug/plug.vim;
 }
 
-declare -A actions
-actions[alols/xcape]='make'
-actions[icholy/ttygif]='make'
-actions[junegunn/fzf]='./install'
-actions[junegunn/vim-plug]='after_vimplug'
+# Installation instructions
+install[icholy/ttygif]='make'
+install[junegunn/fzf]='./install'
+install[junegunn/vim-plug]='after_vimplug'
+
+# Uninstall
+uninstall[junegunn/fzf]='./uninstall'

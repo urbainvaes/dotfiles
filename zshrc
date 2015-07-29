@@ -1,4 +1,4 @@
-Load zgen
+# Load zgen
 source "/home/urbain/.zgen/zgen.zsh"
 
 if ! zgen saved; then
@@ -20,13 +20,11 @@ if ! zgen saved; then
     zgen load zsh-users/zsh-syntax-highlighting
 
     # Appearance
-    # zgen load mafredri/zsh-async
-    # zgen load sindresorhus/pure
     zgen oh-my-zsh themes/eastwood
 
     # My plugins
     zgen load uvaes/fzf-marks
-    # zgen load uvaes/grm
+    zgen load uvaes/grm
 
     # Other plugins
     zgen load rupa/z
