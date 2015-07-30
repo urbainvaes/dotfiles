@@ -13,7 +13,7 @@ Plug 'gregsexton/gitv', { 'on' : 'Gitv' }
 Plug 'honza/vim-snippets'
 Plug 'itchyny/calendar.vim', { 'on' : 'Calendar' }
 Plug 'klen/python-mode'
-Plug 'jamessan/vim-gnupg', { 'for' : 'asc' }
+Plug 'jamessan/vim-gnupg'
 Plug 'junegunn/fzf'
 Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/vim-pseudocl'
@@ -50,8 +50,8 @@ Plug 'tpope/vim-vinegar'
 Plug 'troydm/zoomwintab.vim'
 Plug 'Valloric/YouCompleteMe'
 ", { 'do' : './install.sh --clang-completer' }
-Plug 'xolox/vim-misc', { 'on' : 'Note' }
-Plug 'xolox/vim-notes', { 'on' : 'Note' }
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-notes'
 call plug#end()
 
 let g:vimtex_fold_enabled=0

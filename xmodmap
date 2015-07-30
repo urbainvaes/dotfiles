@@ -29,5 +29,9 @@ xmodmap -e "keycode 32 = r R 9"
 # Dollars, symbols hard to reach
 xmodmap -e "keycode 47 = s S dollar"
 
-/home/urbain/xcape/xcape -e 'Control_L=Escape'
-/home/urbain/xcape/xcape -e 'Shift_L=Escape'
+xcape -e 'Control_L=Escape'
+xcape -e 'Shift_L=Escape'
+
+# Map alt-gr to alt
+# xmodmap -e 'clear mod5'
+# xmodmap -e 'add mod1 = Mode_switch'

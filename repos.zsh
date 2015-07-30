@@ -1,5 +1,4 @@
-declare -A repodirs
-declare -A actions
+declare -A repodirs install
 
 # General purpose
 repodirs[icholy/ttygif]=/home/urbain/github/ttygif
@@ -19,8 +18,12 @@ repodirs[atweiden/fzf-extras]=/home/urbain/github/fzf-extras
 # Plugin managers
 repodirs[junegunn/vim-plug]=/home/urbain/.vim/vim-plug
 repodirs[tmux-plugins/tpm]=/home/urbain/.tmux/plugins/tpm
-# repodirs[tarjoilija/zgen]=/home/urbain/.zgen
+repodirs[tarjoilija/zgen]=/home/urbain/.zgen
 
+# Experimental
+repodirs[adbrebs/taxi]=/home/urbain/github/taxi
+
+# Installation
 function after_vimplug {
     cd ..
     rm -rf autoload
@@ -29,8 +32,10 @@ function after_vimplug {
     ln -s ../vim-plug/plug.vim;
 }
 
-declare -A actions
-actions[alols/xcape]='make'
-actions[icholy/ttygif]='make'
-actions[junegunn/fzf]='./install'
-actions[junegunn/vim-plug]='after_vimplug'
+install[alols/xcape]='make'
+install[icholy/ttygif]='make'
+install[junegunn/fzf]='./install'
+install[junegunn/vim-plug]='after_vimplug'
+
+# Uninstallation
+uninstall[junegunn/fzf]='./uninstall'

@@ -1,2 +1,3 @@
 setxkbmap -layout us -variant dvp
-xrdb ~/.Xresources
+xrdb /home/urbain/.Xresources
+/home/urbain/.xmodmap

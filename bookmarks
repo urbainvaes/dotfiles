@@ -1,9 +1,9 @@
-report : /home/urbain/Dropbox/phd/reports/esa
 paper : /home/urbain/Dropbox/phd/papers/spectral
+presentation : /home/urbain/Dropbox/phd/presentations/spectral
+github : /home/urbain/github
+develop : /home/urbain/Dropbox/phd/code/spectral/develop
 dotfiles : /home/urbain/dotfiles
 phd : /home/urbain/Dropbox/phd
 code : /home/urbain/Dropbox/phd/code/spectral
 feature : /home/urbain/Dropbox/phd/code/spectral/feature
-presentation : /home/urbain/Dropbox/phd/presentations/spectral
-develop : /home/urbain/Dropbox/phd/code/spectral/develop
-github : /home/urbain/github
+report : /home/urbain/Dropbox/phd/reports/esa

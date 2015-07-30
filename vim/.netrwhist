@@ -1,5 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_cnt =6
 let g:netrw_dirhist_1='/home/urbain/Dropbox/phd/code/spectral/develop/cpp'
 let g:netrw_dirhist_2='/home/urbain/dotfiles'
 let g:netrw_dirhist_3='/home/urbain'
+let g:netrw_dirhist_4='/home/urbain/dotfiles'
+let g:netrw_dirhist_5='/home/urbain/Dropbox/phd/code/spectral/feature/cpp/src'
+let g:netrw_dirhist_6='/etc/NetworkManager'

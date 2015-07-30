@@ -1,4 +1,4 @@
-Load zgen
+# Load zgen
 source "/home/urbain/.zgen/zgen.zsh"
 
 if ! zgen saved; then
@@ -26,7 +26,7 @@ if ! zgen saved; then
 
     # My plugins
     zgen load uvaes/fzf-marks
-    # zgen load uvaes/grm
+    zgen load uvaes/grm
 
     # Other plugins
     zgen load rupa/z
@@ -60,6 +60,7 @@ zle -N zle-line-init
 
 # User configuration
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+export PATH="$PATH:/home/urbain/.local/bin"
 
 # Editor
 export EDITOR=/usr/bin/nvim
@@ -102,7 +103,7 @@ alias update='sudo apt-get update'
 alias upgrade='sudo apt-get upgrade'
 alias v='vim'
 alias x='sh ~/.xmodmap'
-alias xcape='/home/urbain/xcape/xcape'
+alias youtube=mpsyt
 
 # Configuration
 alias em="$EDITOR ~/.mutt/muttrc"
