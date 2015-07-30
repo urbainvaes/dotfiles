@@ -20,8 +20,6 @@ if ! zgen saved; then
     zgen load zsh-users/zsh-syntax-highlighting
 
     # Appearance
-    # zgen load mafredri/zsh-async
-    # zgen load sindresorhus/pure
     zgen oh-my-zsh themes/eastwood
 
     # My plugins
