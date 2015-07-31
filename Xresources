@@ -41,7 +41,6 @@ URxvt.keysym.F11: perl:fullscreen:switch
 URxvt*font: xft:monaco:size=11:antialias=false
 URxvt*scrollBar: false
 URxvt*internalBorder: 0
-URxvt.borderColor: black
 
 ! True transparency
 URxvt.depth: 32

@@ -1,5 +1,8 @@
 # include "/home/urbain/.Xresources"
 
+! Border color
+URxvt.borderColor: #3a3a3a
+
 ! Background / Foreground
 URxvt*background: #3a3a3a 
 URxvt*foreground: #d0d0d0 
