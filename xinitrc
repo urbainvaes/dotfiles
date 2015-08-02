@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Key repeat rate
-xset r rate 200 50
+xset r rate 400 50
 
 # Dvorak programer
 setxkbmap us -variant dvp
@@ -10,7 +10,7 @@ setxkbmap us -variant dvp
 $HOME/.xmodmap
 
 # Set colorscheme to light
-export COLORSCHEME=light
+export COLORSCHEME=default
 
 # Load Xresources to light colorscheme
-xrdb $HOME/.Xresources.light
+xrdb $HOME/.Xresources.default

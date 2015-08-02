@@ -44,3 +44,10 @@ URxvt*internalBorder: 0
 
 ! True transparency
 URxvt.depth: 32
+
+! Font configuration
+! Xft.dpi:        96
+! Xft.antialias:  false
+! Xft.hinting:    true
+! Xft.rgba:       rgb
+! Xft.hintstyle:  hintslight

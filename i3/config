@@ -159,7 +159,15 @@ bar {
         status_command i3status
 }
 
+# Personal Customization
+
+bindsym $mod+Tab workspace back_and_forth
+
+# Shortcuts
+bindsym $mod+b exec chromium-browser
+
+# Init script
 exec $HOME/.xinitrc
 
-# Personal shortcuts
-bindsym $mod+b exec chromium-browser
+# Font
+font xft:Droid Sans Mono 10
