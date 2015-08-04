@@ -10,7 +10,7 @@ setxkbmap us -variant dvp
 $HOME/.xmodmap
 
 # Set colorscheme to light
-export COLORSCHEME=default
+export COLORSCHEME=dark
 
 # Load Xresources to light colorscheme
-xrdb $HOME/.Xresources.default
+xrdb $HOME/.Xresources/Xresources.dark

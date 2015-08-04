@@ -1,4 +1,4 @@
-# include "/home/urbain/.Xresources"
+# include "/home/urbain/.Xresources/Xresources"
 
 ! Border color
 URxvt.borderColor: #3a3a3a

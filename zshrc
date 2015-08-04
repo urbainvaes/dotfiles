@@ -159,15 +159,15 @@ fi
 
 # Colors
 # export TERM=xterm-256color
-export COLORSCHEME=dark
+export COLORSCHEME=light
 
 function colo {
 
     # Change colors for current session
-    $HOME/.bin/recolor.sh < ~/.Xresources.$1
+    $HOME/.bin/recolor.sh < ~/.Xresources/Xresources.$1
 
     # Load Xresources file for future sessions
-    xrdb ~/.Xresources.$1
+    xrdb ~/.Xresources/Xresources.$1
 
     # Change environment variable
     export COLORSCHEME=$1

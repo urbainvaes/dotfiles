@@ -1,4 +1,6 @@
-declare -A repodirs install uninstall
+declare -A repodirs
+declare -A install
+declare -A uninstall
 
 # General purpose
 repodirs[icholy/ttygif]=/home/urbain/github/ttygif
@@ -17,15 +19,12 @@ repodirs[atweiden/fzf-extras]=/home/urbain/github/fzf-extras
 # Plugin managers
 repodirs[junegunn/vim-plug]=/home/urbain/.vim/vim-plug
 repodirs[tmux-plugins/tpm]=/home/urbain/.tmux/plugins/tpm
-repodirs[tarjoilija/zgen]=/home/urbain/.zgen
+# repodirs[tarjoilija/zgen]=/home/urbain/.zgen
 
 # Experimental
 repodirs[adbrebs/taxi]=/home/urbain/github/adbrebs/taxi
 repodirs[adbrebs/meg]=/home/urbain/github/adbrebs/meg
 repodirs[adbrebs/brain_segmentation]=/home/urbain/github/adbrebs/brain_segmentation
-
-# Experimental
-repodirs[adbrebs/taxi]=/home/urbain/github/taxi
 
 # Installation
 function after_vimplug {
