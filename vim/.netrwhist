@@ -1,9 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/home/urbain/dotfiles/ncmpcpp'
-let g:netrw_dirhist_2='/etc/NetworkManager'
-let g:netrw_dirhist_3='/etc/NetworkManager/dnsmasq.d'
-let g:netrw_dirhist_4='/home/urbain/.gnupg/private-keys-v1.d'
-let g:netrw_dirhist_5='/home/urbain/.gnupg'
-let g:netrw_dirhist_6='/home/urbain/dotfiles'
-let g:netrw_dirhist_7='/home/urbain/dotfiles/passwords'
