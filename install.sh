@@ -28,6 +28,9 @@ function install_dotfiles {
     mkdir -p mutt/temp
     mkdir -p mutt/cache
     mkdir -p mutt/cache/bodies
+
+    cd ~/.config/zathura/
+    ln -s /home/urbain/dotfiles/zathurarc
 }
 
 function clean {

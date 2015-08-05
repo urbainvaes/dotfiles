@@ -88,14 +88,12 @@ bind   pager   R    group-reply
 `[ "$COLORSCHEME" = "dark" ] && echo source $HOME/github/mutt-colors-solarized/mutt-colors-solarized-dark-16.muttrc || echo set`
 `[ "$COLORSCHEME" = "default" ] && echo source $HOME/github/mutt-colors-solarized/mutt-colors-solarized-dark-16.muttrc || echo set`
 
-# Colors
+color index red default "~F"
 color index brightblue default "~f edfenergy"
 color index brightblue default "~f terravision"
 color index magenta default "~f avaaz"
-color index green default "~f vaes"
-color index blue default "~f pavliotis"
-color index blue default "~f abdulle"
 color index magenta default "~f santos"
 color index magenta default "~f rusudan"
-color index red default "~F"
 color index cyan default "~U"
+color index green default "~f pavliotis"
+color index green default "~f abdulle"
