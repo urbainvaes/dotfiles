@@ -13,19 +13,25 @@ set socket_dir = /tmp
 # Shell command
 set shell_cmd       = sh -c
 
-# === General config aliases =================================================
+## General config aliases
 
 # Config related events (use the request function):
+
 # request MODE_CONFIG <mode> <key> = <value>
 set mode_config     = request MODE_CONFIG
+
 # request ON_EVENT <EVENT_NAME> <command>
 set on_event        = request ON_EVENT
+
 # request ON_SET   <key/glob> <command>
 set on_set          = request ON_SET
+
 # request MODMAP <From> <To>
 set modmap          = request MODMAP
+
 # request IGNORE_KEY <glob>
 set ignore_key      = request IGNORE_KEY
+
 # request TOGGLE_MODES <mode1> <mode2> ... <moden>
 set toggle_modes    = request TOGGLE_MODES
 
@@ -35,7 +41,7 @@ set set_status      = set status_message =
 # Spawn path shortcuts. In spawn the first dir+path match is used in "dir1:dir2:dir3:executable"
 set scripts_dir      = @data_home/uzbl:@prefix/share/uzbl/examples/data:scripts
 
-# === Hardcoded handlers =====================================================
+## Hardcoded handlers
 
 # These handlers can't be moved to the new event system yet as we don't
 # support events that can wait for a response from a script.
@@ -44,9 +50,10 @@ set scheme_handler      = sync_spawn @scripts_dir/scheme.py
 set authentication_handler = sync_spawn @scripts_dir/auth.py
 set download_handler    = sync_spawn @scripts_dir/download.sh
 
-# === Dynamic event handlers =================================================
+## Dynamic event handlers
 
-#   What to do when a website wants to open a new window:
+# What to do when a website wants to open a new window:
+
 # Open link in new window
 @on_event   NEW_WINDOW     sh 'uzbl-browser ${1:+-u "$1"}' %r
 # Open in current window (also see the REQ_NEW_WINDOW event handler below)
@@ -90,7 +97,7 @@ set download_handler    = sync_spawn @scripts_dir/download.sh
 # Scroll percentage calculation
 @on_event   SCROLL_VERT    set scroll_message = \@<(function(curr, min, max, size){if(max == size) return '--'; var p=(curr/(max - size)); return Math.round(10000*p)/100;})(%1,%2,%3,%4)>\@%
 
-# === Behaviour and appearance ===============================================
+## Behaviour and appearance
 
 # Custom CSS can be defined here, including link follower hint styles
 set stylesheet_uri = file://@config_home/uzbl/style.css
@@ -130,11 +137,11 @@ set progress.format     = [%d>%p]%c
 set progress.done       = =
 set progress.pending    =
 
-# === Useragent setup ========================================================
+## Useragent setup
 
 set useragent         = Uzbl (Webkit @{WEBKIT_MAJOR}.@{WEBKIT_MINOR}) (@(+uname -sm)@ [@ARCH_UZBL])
 
-# === Configure cookie blacklist ========================================================
+## Configure cookie blacklist
 
 # Accept 'session cookies' from uzbl.org (when you have a whitelist all other cookies are dropped)
 #request WHITELIST_COOKIE domain 'uzbl.org$' expires '^$'
@@ -142,7 +149,7 @@ set useragent         = Uzbl (Webkit @{WEBKIT_MAJOR}.@{WEBKIT_MINOR}) (@(+uname 
 # Drop google analytics tracking cookies (applied after whitelists if any)
 #request BLACKLIST_COOKIE name '^__utm.$'
 
-# === SSL related configuration ==============================================
+## SSL related configuration
 
 # Set it to certificates store of your distribution, or your own CAfile.
 set ssl_ca_file = /etc/ssl/certs/ca-certificates.crt
@@ -152,7 +159,7 @@ set ssl_verify = 1
 # Example SSL error handler:
 @on_event   LOAD_ERROR    js var patt=new RegExp('SSL handshake failed'); if (patt.test('%3')) {alert ('%3');}
 
-# === Key binding configuration ==============================================
+## Key binding configuration
 # --- Internal modmapping and ignoring ---------------------------------------
 
 #modmap <From>          <To>
@@ -228,7 +235,7 @@ set ebind     = @mode_bind global,-insert
 
 # With this command you can enter in any command at runtime when prefixed with
 # a colon.
-@cbind    :_        = %s
+@cbind    ,_        = %s
 
 # open a new window or a new tab (see the on_event NEW_WINDOW settings above)
 @cbind  w            = event REQ_NEW_WINDOW
@@ -238,8 +245,8 @@ set ebind     = @mode_bind global,-insert
 @cbind  k            = scroll vertical -20
 @cbind  h            = scroll horizontal -20
 @cbind  l            = scroll horizontal 20
-@cbind  <Page_Up>    = scroll vertical -100%
-@cbind  <Page_Down>  = scroll vertical 100%
+@cbind  <Ctrl>e      = scroll vertical 40
+@cbind  <Ctrl>y      = scroll vertical -40
 @cbind  <Ctrl>f      = scroll vertical 100%
 @cbind  <Ctrl>b      = scroll vertical -100%
 @cbind  gg           = scroll vertical begin
@@ -278,7 +285,7 @@ set ebind     = @mode_bind global,-insert
 @cbind  <Ctrl>p = hardcopy
 
 # Web searching binds
-@cbind  go<Google:>_         = uri http://www.google.co.uk/search?q=\@<encodeURIComponent(%r)>\@
+@cbind  <Ctrl>l<Google:>_    = uri http://www.google.co.uk/search?q=\@<encodeURIComponent(%r)>\@
 @cbind  ddg<DuckDuckGo:>_    = uri http://duckduckgo.com/?q=%s
 @cbind  \\awiki<Archwiki:>_  = uri http://wiki.archlinux.org/index.php/Special:Search?search=\@<encodeURIComponent(%r)>\@&go=Go
 @cbind  \\wiki<Wikipedia:>_  = uri http://en.wikipedia.org/w/index.php?title=Special:Search&search=\@<encodeURIComponent(%r)>\@&go=Go
@@ -347,14 +354,9 @@ set ebind     = @mode_bind global,-insert
 @cbind  <Ctrl>d  = spawn @scripts_dir/insert_temp.sh
 @cbind  D        = spawn @scripts_dir/load_url_from_temps.sh
 
-# Link following (similar to vimperator and konqueror)
-# Set custom keys you wish to use for navigation. Some common examples:
-set follow_hint_keys = 0123456789
-#set follow_hint_keys = qwerty
-#set follow_hint_keys = asdfghjkl;
-#set follow_hint_keys = thsnd-rcgmvwb/;789aefijkopquxyz234
-@cbind  fl*  = spawn @scripts_dir/follow.sh \@< uzbl.follow("\@follow_hint_keys", "%s", 'click') >\@
-@cbind  Fl*  = spawn @scripts_dir/follow.sh \@< uzbl.follow("\@follow_hint_keys", "%s", 'newwindow') >\@
+set follow_hint_keys = uhetonaspgcr
+@cbind  f*  = spawn @scripts_dir/follow.sh \@< uzbl.follow("\@follow_hint_keys", "%s", 'click') >\@
+@cbind  F*  = spawn @scripts_dir/follow.sh \@< uzbl.follow("\@follow_hint_keys", "%s", 'newwindow') >\@
 @cbind  fL*  = spawn @scripts_dir/follow.sh \@< uzbl.follow("\@follow_hint_keys", "%s", 'returnuri') >\@ set
 @cbind  FL*  = spawn @scripts_dir/follow.sh \@< uzbl.follow("\@follow_hint_keys", "%s", 'returnuri') >\@ clipboard
 @cbind  fi   = spawn @scripts_dir/go_input.sh
@@ -382,7 +384,7 @@ set formfiller = spawn @scripts_dir/formfiller.sh
 @cbind  zl  = @formfiller load
 @cbind  zo  = @formfiller once
 
-# --- Uzbl tabbed binds ------------------------------------------------------
+## Uzbl tabbed binds
 
 # Tab opening
 @cbind  gn              = event NEW_TAB
@@ -409,10 +411,10 @@ set preset = event PRESET_TABS
 # This doesn't work right now.
 #@cbind  gli                 = @preset list
 
-# === Context menu items =====================================================
+## Context menu items
 
 # Default context menu
-menu_add Google = set uri = http://google.com
+menu_add Google = set uri = http://google.co.uk
 menu_add Go Home = set uri = http://uzbl.org
 menu_separator separator_1
 menu_add Quit uzbl = exit
@@ -453,7 +455,7 @@ set stack    = @mode_config stack
 
 set default_mode = command
 
-# === Post-load misc commands ================================================
+## Post-load misc commands
 sync_spawn_exec @scripts_dir/load_cookies.sh
 sync_spawn_exec @scripts_dir/load_cookies.sh @data_home/uzbl/session-cookies.txt
 
