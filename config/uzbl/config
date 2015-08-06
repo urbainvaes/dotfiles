@@ -354,7 +354,7 @@ set ebind     = @mode_bind global,-insert
 @cbind  <Ctrl>d  = spawn @scripts_dir/insert_temp.sh
 @cbind  D        = spawn @scripts_dir/load_url_from_temps.sh
 
-set follow_hint_keys = uhetonaspgcr
+set follow_hint_keys = uhetonasidpgcr
 @cbind  f*  = spawn @scripts_dir/follow.sh \@< uzbl.follow("\@follow_hint_keys", "%s", 'click') >\@
 @cbind  F*  = spawn @scripts_dir/follow.sh \@< uzbl.follow("\@follow_hint_keys", "%s", 'newwindow') >\@
 @cbind  fL*  = spawn @scripts_dir/follow.sh \@< uzbl.follow("\@follow_hint_keys", "%s", 'returnuri') >\@ set

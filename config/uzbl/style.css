@@ -11,8 +11,9 @@
     font-weight:        bold   !important;
     font-variant:       normal !important;
     text-decoration:    none   !important;
+    text-transform:     uppercase;
 
-    -webkit-transform:  translate(-5px,-5px);
+    -webkit-transform:  translate(-3px,-1px);
     opacity:            0.8;
     -webkit-border-radius: 6px !important;
   /* Play around with this, pretty fun things to do :) */
