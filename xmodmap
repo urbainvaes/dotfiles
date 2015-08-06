@@ -33,6 +33,9 @@ xmodmap -e "keycode 47 = s S dollar"
 xcape -e 'Control_L=Escape'
 xcape -e 'Shift_L=Escape'
 
-# Map alt-gr to alt
+# Map alt-gr and space to alt
 xmodmap -e 'clear mod5'
 xmodmap -e 'keycode 108 = Alt_L'
+xmodmap -e 'keycode 65 = Alt_L'
+xmodmap -e 'keycode any = space'
+xcape -e 'Alt_L=space'
