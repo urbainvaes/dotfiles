@@ -39,7 +39,7 @@ set set_mode        = set mode =
 set set_status      = set status_message =
 
 # Spawn path shortcuts. In spawn the first dir+path match is used in "dir1:dir2:dir3:executable"
-set scripts_dir      = @data_home/uzbl:@prefix/share/uzbl/examples/data:scripts
+set scripts_dir      = /home/urbain/dotfiles/config/uzbl/scripts:@data_home/uzbl:@prefix/share/uzbl/examples/data:scripts
 
 ## Hardcoded handlers
 
@@ -422,7 +422,10 @@ menu_add Quit uzbl = exit
 # Link context menu
 menu_link_add Print Link = print \@SELECTED_URI
 
-# === Mode configuration =====================================================
+# Go up one dir
+@cbind gu = spawn @scripts_dir/goup.pl
+
+# Mode configuration
 
 # Define some mode specific uzbl configurations.
 set command  = @mode_config command

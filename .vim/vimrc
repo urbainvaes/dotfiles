@@ -23,7 +23,7 @@ Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'justinmk/vim-sneak'
 Plug 'kassio/neoterm', { 'on' : 'T' }
 Plug 'kien/ctrlp.vim'
-Plug 'lervag/vimtex' ", { 'for' : 'tex' }
+Plug 'lervag/vimtex'
 Plug 'majutsushi/tagbar'
 Plug 'mileszs/ack.vim', { 'on' : 'Ack' }
 Plug 'rdnetto/YCM-Generator', { 'branch' : 'stable' , 'on' : 'YcmGenerateConfig' }
@@ -48,8 +48,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'troydm/zoomwintab.vim'
-Plug 'Valloric/YouCompleteMe'
-", { 'do' : './install.sh --clang-completer' }
+Plug 'Valloric/YouCompleteMe', { 'do' : './install.sh --clang-completer' }
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-notes'
 call plug#end()
@@ -309,7 +308,7 @@ nnoremap <silent> <Leader>C :call fzf#run({
 \ })<CR>
 
 "" Experimental
-let g:notes_directories = ['~/dotfiles/notes']
+let g:notes_directories = ['~/.notes']
 let g:pymode=0
 
 " Idea: instant download colorscheme

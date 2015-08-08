@@ -55,5 +55,5 @@ fi
 
 # GRM
 {
-    REPOFILE=/home/urbain/dotfiles/repos.zsh
+    REPOFILE=/home/urbain/.grmrc
 }
