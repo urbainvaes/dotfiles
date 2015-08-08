@@ -1,0 +1,59 @@
+# Load zgen
+source "/home/urbain/.zgen/zgen.zsh"
+
+# Load plugins
+if ! zgen saved; then
+
+    echo "Creating a zgen save"
+
+    # Load oh-my-zsh framework
+    zgen oh-my-zsh
+
+    # Oh-my-zsh plugins
+    zgen oh-my-zsh plugins/git
+    zgen oh-my-zsh plugins/vi-mode
+    zgen oh-my-zsh plugins/ubuntu
+    zgen oh-my-zsh plugins/tmux
+    zgen oh-my-zsh plugins/themes
+
+    # zsh-users plugins
+    zgen load zsh-users/zsh-completions src
+    zgen load zsh-users/zsh-syntax-highlighting
+
+    # Appearance
+    zgen oh-my-zsh themes/eastwood
+
+    # My plugins
+    zgen load uvaes/fzf-marks
+    zgen load uvaes/grm
+
+    # Other plugins
+    zgen load rupa/z
+    zgen load djui/alias-tips
+    zgen load tarruda/zsh-autosuggestions
+    zgen load Tarrasch/zsh-autoenv
+    zgen load joel-porquet/zsh-dircolors-solarized
+
+    # Save all to init script
+    zgen save
+fi
+
+# Plugin configuration
+
+# Autosuggestion
+{
+    # Environment variables for plugins
+    AUTOSUGGESTION_HIGHLIGHT_COLOR='fg=6'
+
+    zle-line-init() {
+        zle autosuggest-start
+    }
+    zle -N zle-line-init
+
+    bindkey '^y' autosuggest-execute-suggestion
+}
+
+# GRM
+{
+    REPOFILE=/home/urbain/dotfiles/repos.zsh
+}

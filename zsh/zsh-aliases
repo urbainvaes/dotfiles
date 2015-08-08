@@ -1,0 +1,54 @@
+# Apps for filetypes
+alias -s vim=$EDITOR
+alias -s cpp=$EDITOR
+alias -s c=$EDITOR
+alias -s tex=$EDITOR
+alias -s pdf=zathura
+
+# Directories
+alias books='cd ~/Dropbox/phd/books'
+alias cdd='cd ~/dotfiles'
+alias papers='cd ~/Dropbox/phd/papers'
+alias report='cd ~/Dropbox/phd/reports/9\ months'
+alias u='cd ~/Dropbox/phd'
+alias uc='cd ~/Dropbox/phd/programs'
+alias ul='cd ~/Dropbox/phd/literature'
+alias up='cd ~/Dropbox/phd/presentations'
+alias ur='cd ~/Dropbox/phd/reports'
+
+# Commands
+alias a='vifm'
+alias c='clear'
+alias ca='printf "\ec"'
+alias commit='git commit -a -m'
+alias g='git'
+alias install='sudo apt-get install'
+alias m='mutt'
+alias mail='offlineimap -u quiet &'
+alias mc='make clean'
+alias mca='make clean-all'
+alias n='nvim'
+alias ns="$EDITOR -S Session.vim"
+alias pull='git pull origin master'
+alias push='git push origin master'
+alias pushs='git push --recurse-submodules=check'
+alias update='sudo apt-get update'
+alias upgrade='sudo apt-get upgrade'
+alias v='vim'
+alias x='sh ~/.xmodmap'
+alias youtube=mpsyt
+
+# Configuration
+alias em="$EDITOR ~/.mutt/muttrc"
+alias en="$EDITOR ~/.nvimrc"
+alias eo="$EDITOR ~/.offlineimaprc"
+alias et="$EDITOR ~/.tmux.conf"
+alias ev="$EDITOR ~/.vimrc"
+alias evi="$EDITOR ~/.vifm/vifmrc"
+alias ex="$EDITOR ~/.xmodmap"
+alias ez="$EDITOR ~/.zshrc"
+alias eza="$EDITOR ~/.zathurarc"
+
+# Tmux
+alias son="tmux set -g status on"
+alias soff="tmux set -g status off"
