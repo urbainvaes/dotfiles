@@ -1,4 +1,5 @@
-# Dvorak programer setxkbmap us -variant dvp
+# Dvorak programer
+setxkbmap us -variant dvp
 
 # Make caps lock a Control
 xmodmap -e "clear Lock"

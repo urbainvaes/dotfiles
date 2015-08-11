@@ -26,6 +26,9 @@ repodirs[adbrebs/taxi]=/home/urbain/github/adbrebs/taxi
 repodirs[adbrebs/meg]=/home/urbain/github/adbrebs/meg
 repodirs[adbrebs/brain_segmentation]=/home/urbain/github/adbrebs/brain_segmentation
 
+# Uzbl
+repodirs[zimon/uzbl-config-and-scripts]=/home/urbain/github/uzbl
+
 # Installation
 function after_vimplug {
     cd ..

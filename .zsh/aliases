@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 # Apps for filetypes
 alias -s vim=$EDITOR
 alias -s cpp=$EDITOR
@@ -20,23 +22,18 @@ alias ur='cd ~/Dropbox/phd/reports'
 alias a='vifm'
 alias c='clear'
 alias ca='printf "\ec"'
-alias commit='git commit -a -m'
 alias g='git'
-alias install='sudo apt-get install'
 alias m='mutt'
 alias mail='offlineimap -u quiet &'
 alias mc='make clean'
 alias mca='make clean-all'
 alias n='nvim'
 alias ns="$EDITOR -S Session.vim"
-alias pull='git pull origin master'
-alias push='git push origin master'
 alias pushs='git push --recurse-submodules=check'
-alias update='sudo apt-get update'
-alias upgrade='sudo apt-get upgrade'
 alias v='vim'
 alias x='sh ~/.xmodmap'
-alias youtube=mpsyt
+alias youtube='mpsyt'
+alias notes='vim ~/dotfiles/.notes/Notes'
 
 # Configuration
 alias em="$EDITOR ~/.mutt/muttrc"

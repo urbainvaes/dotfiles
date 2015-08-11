@@ -1,11 +1,7 @@
-ZSH_PLUGINS="$HOME/.zsh/zsh-plugins"
-ZSH_ALIASES="$HOME/.zsh/zsh-aliases"
-ZSH_TMP="$HOME/.zsh/zsh-tmp"
-
-# Source configurations
-source $ZSH_PLUGINS
-source $ZSH_ALIASES
-source $ZSH_TMP
+source "$HOME/.zsh/plugins"
+source "$HOME/.zsh/functions"
+source "$HOME/.zsh/aliases"
+source "$HOME/.zsh/tmp"
 
 # Custom key bindings for built-in widgets
 bindkey -a 'k' history-beginning-search-backward
@@ -19,30 +15,6 @@ export PATH="$PATH:/home/urbain/.local/bin"
 
 # Editor
 export EDITOR=/usr/bin/nvim
-
-fshow() {
-    git log --graph --color=always \
-        --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
-    fzf --ansi --no-sort --reverse --tiebreak=index --toggle-sort=\` \
-        --bind 'ctrl-m:execute:
-    echo {} | grep -o "[a-f0-9]\{7\}" |
-    xargs -I % sh -c "git show --color=always % | less -R"'
-}
-
-function colo {
-
-# Change colors for current session
-$HOME/.bin/recolor.sh < ~/.Xresources/Xresources.$1
-
-# Load Xresources file for future sessions
-xrdb ~/.Xresources/Xresources.$1
-
-# Change environment variable
-export COLORSCHEME=light
-
-# Change default environment variable for future sessions
-sed -i --follow-symlinks "s/^export COLORSCHEME=.*$/export COLORSCHEME=$1/g" ~/dotfiles/zshrc
-}
 
 # Fix tmux colors
 if [[ -n ${TMUX} && -n ${commands[tmux]} ]];then
