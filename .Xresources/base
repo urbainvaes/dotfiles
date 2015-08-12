@@ -1,7 +1,7 @@
 ! XTERM !
 
 ! Appearance xterm
-*xterm*faceName: Monaco
+! *xterm*faceName: Monaco
 *xterm*faceSize: 11
 *xterm*background: Black
 *xterm*foreground: White
@@ -37,8 +37,8 @@ URxvt.keysym.M-p: perl:clipboard:paste
 URxvt.keysym.F11: perl:fullscreen:switch
 
 ! Appearance
-! URxvt*font: xft:DejaVu Sans Mono:size=12
-URxvt*font: xft:monaco:size=11:antialias=false
+URxvt*font: xft:DejaVu Sans Mono:size=12
+! URxvt*font: xft:monaco:size=11:antialias=false
 URxvt*scrollBar: false
 URxvt*internalBorder: 0
 

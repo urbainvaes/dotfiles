@@ -19,7 +19,7 @@ repodirs[atweiden/fzf-extras]=/home/urbain/github/fzf-extras
 # Plugin managers
 repodirs[junegunn/vim-plug]=/home/urbain/.vim/vim-plug
 repodirs[tmux-plugins/tpm]=/home/urbain/.tmux/plugins/tpm
-# repodirs[tarjoilija/zgen]=/home/urbain/.zgen
+repodirs[tarjoilija/zgen]=/home/urbain/.zgen
 
 # Experimental
 repodirs[adbrebs/taxi]=/home/urbain/github/adbrebs/taxi

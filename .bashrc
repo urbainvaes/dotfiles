@@ -114,4 +114,5 @@ if ! shopt -oq posix; then
 fi
 
 source ~/github/fzf-marks/fzf-marks.plugin.bash
+
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

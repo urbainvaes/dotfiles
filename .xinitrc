@@ -14,3 +14,5 @@ killall -9 gpg-agent
 
 gpg-agent --daemon --enable-ssh-support \
     --write-env-file "${HOME}/.gpg-agent-info"
+
+exec i3

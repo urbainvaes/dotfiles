@@ -1,0 +1,5 @@
+style "uzbl" {
+      GtkRange::slider-width = 0
+      GtkRange::trough-border = 0
+}
+widget "Uzbl*" style "uzbl"
