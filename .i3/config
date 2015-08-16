@@ -186,7 +186,7 @@ bindsym F1 exec $HOME/.xinitrc
 # font xft:Droid Sans Mono 10
 
 # Init script
-exec $HOME/.xinitrc
+exec --no-startup-id $HOME/.xinitrc
 
 # Media control
 exec --no-startup-id gnome-settings-daemon
@@ -201,3 +201,5 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 
 # font pango:DejaVu Sans Mono 10
+
+bindsym F2 exec --no-startup-id feh --bg-fill --randomize /usr/share/backgrounds

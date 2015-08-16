@@ -105,10 +105,9 @@ let g:tagbar_width = 30
 let g:tagbar_show_linenumbers=1
 let g:tagbar_autofocus=1
 
-
 let g:tex_conceal= 'adgm'
 let g:tex_flavor='latex'
- let g:tex_fast="1"
+let g:tex_fast="1"
 
 let NERDTreeIgnore=['\.pdf$', '\~$','\.toc$',
             \ '\.fls$','\.bbl$','\.blg$',
@@ -270,12 +269,6 @@ nnoremap J mzJ`z
 nnoremap Y y$
 nnoremap + za
 nnoremap K :OnlineThesaurusCurrentWord<CR>
-
-" Dvorak specific
-nnoremap : ,
-vnoremap : ,
-nnoremap , :
-vnoremap , :
 
 " Neovim specific
 if has("nvim")

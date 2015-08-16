@@ -15,4 +15,6 @@ killall -9 gpg-agent
 gpg-agent --daemon --enable-ssh-support \
     --write-env-file "${HOME}/.gpg-agent-info"
 
+feh --bg-fill --randomize /usr/share/backgrounds
+
 exec i3
