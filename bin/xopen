@@ -1,0 +1,9 @@
+#!/usr/bin/bash
+cd ~
+PDF=$(locate "$HOME/*.pdf")
+DJVU=$(locate "$HOME/*.djvu")
+RESULTS="$PDF
+$DJVU"
+TARGET=$(echo "${RESULTS//"$HOME/"/}" | dmenu -i -p "Open File:" | tr -d '[[:space:]]')
+[[ -n $TARGET ]] || exit
+xdg-open "$TARGET" &

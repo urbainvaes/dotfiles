@@ -75,12 +75,6 @@ let g:airline_theme='solarized'
 let g:airline#extensions#tabline#enabled = 0
 let g:airline_exclude_preview = 0
 
-let g:bufferline_active_buffer_left = ''
-let g:bufferline_active_buffer_right = ''
-let g:bufferline_echo = 0
-let g:bufferline_modified = '+'
-let g:bufferline_rotate = 0
-
 let g:ctrlp_by_filename = 1
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_map = '<c-p>'
