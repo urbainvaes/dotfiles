@@ -486,6 +486,8 @@ bind 'weather _ = sh 'surfraw -g $8 %s' weather
 @cbind gu = spawn @scripts_dir/test.sh
 @cbind gU = spawn @scripts_dir/mytest.sh
 @cbind ytdl = sh '$HOME/dotfiles/.uzbl/scripts/ytdl.sh "$UZBL_URI"'
+# @bind o = sh 'uri=`$HOME/dotfiles/.uzbl/scripts/load_url_from_surfraw.sh` && echo "uri $uri" > $4'
+# @cbind t = sh 'uri=`$HOME/dotfiles/.uzbl/scripts/load_url_from_surfraw.sh` && echo "event REQ_NEW_WINDOW $uri" > "$UZBL_FIFO"'
 
 @on_event DOWNLOAD_COMPLETE spawn @scripts_dir/downloadviewer.sh %s
 @on_event LOAD_COMMIT spawn @scripts_dir/adblock.py

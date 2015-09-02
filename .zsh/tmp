@@ -1,3 +1,3 @@
 #!/bin/zsh
 
-export COLORSCHEME=seoul
+export COLORSCHEME=light
