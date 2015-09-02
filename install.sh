@@ -38,6 +38,12 @@ install_zsh() {
     ln -s $dotdir/.zsh .zsh
 }
 
+install_uzbl() {
+    ln -s $dotdir/.uzbl uzbl
+    cd $HOME/.local/share/uzbl
+    ln -s $dotdir/.uzbl/bookmarks bookmarks
+}
+
 uninstall_offlineimap() {
     rm -f .offlineimaprc
     rm -f .offlineimap.py
@@ -51,6 +57,11 @@ uninstall_zsh() {
     rm -rf .zsh .zshrc
 }
 
+uninstall_uzbl() {
+    rm -rf uzbl
+    rm -f $HOME/.local/share/uzbl/bookmarks
+}
+
 dotdirs[.uzbl]="$HOME/.config/uzbl"
 dotdirs[.zathurarc]="$HOME/.config/zathura/zathurarc"
 
@@ -58,10 +69,12 @@ install[.offlineimap]='install_offlineimap'
 install[.vim]='install_vim'
 install[.mutt]='install_mutt'
 install[.zsh]='install_zsh'
+install[.uzbl]='install_uzbl'
 
 uninstall[.offlineimap]='uninstall_offlineimap'
 uninstall[.vim]='uninstall_vim'
 uninstall[.zsh]='uninstall_zsh'
+uninstall[.uzbl]='uninstall_uzbl'
 
 clean_dotfiles() {
     for file in ${(@k)dotdirs}; do
