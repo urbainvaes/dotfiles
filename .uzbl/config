@@ -285,10 +285,8 @@ set ebind     = @mode_bind global,-insert
 @cbind  <Ctrl>p = hardcopy
 
 # Web searching binds
-@cbind  <Ctrl>l<Google:>_    = uri http://www.google.co.uk/search?q=\@<encodeURIComponent(%r)>\@
 @cbind  ddg<DuckDuckGo:>_    = uri http://duckduckgo.com/?q=%s
-@cbind  \\awiki<Archwiki:>_  = uri http://wiki.archlinux.org/index.php/Special:Search?search=\@<encodeURIComponent(%r)>\@&go=Go
-@cbind  \\wiki<Wikipedia:>_  = uri http://en.wikipedia.org/w/index.php?title=Special:Search&search=\@<encodeURIComponent(%r)>\@&go=Go
+@cbind  go<Google:>_         = uri http://google.com/?q=%s
 
 # Handy binds
 @cbind  s<var:>_<value:>_  = set %1 = %2
@@ -310,7 +308,7 @@ set ebind     = @mode_bind global,-insert
 @cbind  i        = @set_mode insert
 
 # Hard-bound bookmarks
-@cbind  gh  = uri http://www.google.co.uk
+@cbind  gh  = uri http://www.duckduckgo.com
 
 # New window binds
 @cbind  t  = event REQ_NEW_WINDOW
@@ -450,44 +448,6 @@ sync_spawn_exec @scripts_dir/load_cookies.sh @data_home/uzbl/session-cookies.txt
 
 # Set the "home" page.
 set uri = uzbl.org/doesitwork/@COMMIT
-
-# Custom configuration
-bind \sr<Surfraw:>_ = sh 'echo "set uri = $(surfraw -print %s)" > $4'
-bind \gg<Google:>_ = sh 'echo "set uri = $(surfraw -print $8 %s)" > $4' google
-bind \google<Google:>_ = sh 'echo "set uri = $(surfraw -print $8 %s)" > $4' google
-bind \glucky<Google Lucky:>_ = sh 'echo "set uri = $(surfraw -print $8 -l %s)" > $4' google
-bind \gi<Google Image:>_ = sh 'echo "set uri = $(surfraw -print $8 -search=$9 %s)" > $4' google images
-bind \gimage<Google Image:>_ = sh 'echo "set uri = $(surfraw -print $8 -search=$9 %s)" > $4' google images
-bind \glinux<Google Linux:>_ = sh 'echo "set uri = $(surfraw -print $8 -search=$9 %s)" > $4' google linux
-bind \gbsd<Google BSD:>_ = sh 'echo "set uri = $(surfraw -print $8 -search=$9 %s)" > $4' google bsd
-bind \gusa_ = sh 'echo "set uri = $(surfraw -print $8 -search=$9 %s)" > $4' google unclesam
-bind \wiki<Wikipedia:>_ = sh 'echo "set uri = $(surfraw -print $8 %s)" > $4' wikipedia
-bind \imdb<IMBD:>_ = sh 'echo "set uri = $(surfraw -print $8 %s)" > $4' imdb
-bind \aur<AUR:>_ = sh 'echo "set uri = $(surfraw -print $8 %s)" > $4' aur
-bind \freshmeat<Freshmeat:>_ = sh 'echo "set uri = $(surfraw -print $8 %s)" > $4' freshmeat
-bind \weather<Weather:>_ = sh 'echo "set uri = $(surfraw -print $8 %s)" > $4' weather
-
-bind 'sr _ = sh 'surfraw -g %s'
-bind 'gg _ = sh 'surfraw -g $8 %s' google
-bind 'google _ = sh 'surfraw -g $8 %s' google
-bind 'glucky _ = sh 'surfraw -g $8 -l %s' google
-bind 'gi _ = sh 'surfraw -g $8 -search=$9 %s' google images
-bind 'gimage _ = sh 'surfraw -g $8 -search=$9 %s' google images
-bind 'glinux _ = sh 'surfraw -g $8 -search=$9 %s' google linux
-bind 'gbsd _ = sh 'surfraw -g $8 -search=$9 %s' google bsd
-bind 'gusa _ = sh 'surfraw -g $8 -search=$9 %s' google unclesam
-bind 'wiki _ = sh 'surfraw -g $8 %s' wikipedia
-bind 'imdb _ = sh 'surfraw -g $8 %s' imdb
-bind 'aur _ = sh 'surfraw -g $8 %s' aur
-bind 'freshmeat _ = sh 'surfraw -g $8 %s' freshmeat
-bind 'weather _ = sh 'surfraw -g $8 %s' weather
-
-# Custom binds
-@cbind gu = spawn @scripts_dir/test.sh
-@cbind gU = spawn @scripts_dir/mytest.sh
-@cbind ytdl = sh '$HOME/dotfiles/.uzbl/scripts/ytdl.sh "$UZBL_URI"'
-# @bind o = sh 'uri=`$HOME/dotfiles/.uzbl/scripts/load_url_from_surfraw.sh` && echo "uri $uri" > $4'
-# @cbind t = sh 'uri=`$HOME/dotfiles/.uzbl/scripts/load_url_from_surfraw.sh` && echo "event REQ_NEW_WINDOW $uri" > "$UZBL_FIFO"'
 
 @on_event DOWNLOAD_COMPLETE spawn @scripts_dir/downloadviewer.sh %s
 @on_event LOAD_COMMIT spawn @scripts_dir/adblock.py
