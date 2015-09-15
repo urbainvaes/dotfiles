@@ -14,7 +14,7 @@
     text-transform:     uppercase;
 
     -webkit-transform:  translate(-3px,-1px);
-    opacity:            0.8;
+    opacity:            1.0;
     -webkit-border-radius: 6px !important;
   /* Play around with this, pretty fun things to do :) */
   /* -webkit-transform: scale(1) rotate(0deg) translate(-6px,-5px) !important; */

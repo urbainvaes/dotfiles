@@ -449,6 +449,9 @@ sync_spawn_exec @scripts_dir/load_cookies.sh @data_home/uzbl/session-cookies.txt
 # Set the "home" page.
 set uri = uzbl.org/doesitwork/@COMMIT
 
+# Custom binds
+@bind o = sh 'uri=`$HOME/dotfiles/.uzbl/scripts/load_url_from_surfraw.sh` && echo "uri $uri" > "$UZBL_FIFO"'
+
 @on_event DOWNLOAD_COMPLETE spawn @scripts_dir/downloadviewer.sh %s
 @on_event LOAD_COMMIT spawn @scripts_dir/adblock.py
 # vim: set fdm=syntax:
