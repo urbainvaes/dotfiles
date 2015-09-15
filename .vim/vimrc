@@ -7,7 +7,7 @@ Plug 'beloglazov/vim-online-thesaurus'
 Plug 'benekastah/neomake' , { 'for' : 'cpp' }
 Plug 'bling/vim-airline'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'freeo/vim-kalisi'
+Plug 'dhruvasagar/vim-table-mode'
 Plug 'godlygeek/tabular' , { 'on' : 'Tab' }
 Plug 'gregsexton/gitv', { 'on' : 'Gitv' }
 Plug 'honza/vim-snippets'
@@ -19,9 +19,7 @@ Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/vim-pseudocl'
 Plug 'junegunn/vim-oblique'
 Plug 'junegunn/vim-peekaboo'
-Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'justinmk/vim-sneak'
-Plug 'kassio/neoterm', { 'on' : 'T' }
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'lervag/vimtex'
 Plug 'majutsushi/tagbar'
@@ -40,7 +38,6 @@ Plug 'tpope/vim-abolish', { 'for' : 'tex' }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-flagship'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-git'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
