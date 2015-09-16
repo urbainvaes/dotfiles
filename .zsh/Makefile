@@ -9,8 +9,9 @@ $(HOME)/.zshrc :
 $(HOME)/.zsh :
 	rm -f $@ && ln -s $(PWD) $@
 
-$(HOME)/.zgen :
-	rm -f $@ && ln -s $(PWD)/zgen $@
+$(HOME)/.zgen : $(PWD)/zgen
+	cp -r $(PWD)/zgen $@
 
 clean :
-	rm -f $(TARGETS)
+	rm -f $(HOME)/.zsh $(HOME)/.zshrc
+	rm -rf $(HOME)/.zgen
