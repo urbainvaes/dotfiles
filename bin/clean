@@ -2,8 +2,8 @@
 dotdir=/home/urbain/dotfiles
 for file in `ls -A --ignore="install.sh" --ignore="README.md" --ignore=".git*"`; do
     if [[ -f $file/Makefile ]]; then
-        cd $file && make && cd $dotdir
+        cd $file && make clean && cd $dotdir
     else
-        rm -f $HOME/$file && ln -s $dotdir/$file $HOME/$file
+        rm -f $HOME/$file
     fi
 done
