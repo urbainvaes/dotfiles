@@ -8,7 +8,6 @@
 .vim/netrwhist
 .vim/autoload/
 .vim/plugged/
-.vim/vim-plug/
 .vim/vimundo/
 .vifm/Trash
 .vifm/vifminfo

@@ -292,7 +292,7 @@ nnoremap <silent> <Leader>C :call fzf#run({
 \ })<CR>
 
 "" Experimental
-let g:notes_directories = ['~/.notes']
+let g:notes_directories = ['~/dotfiles/private/.notes']
 let g:pymode=0
 
 " Idea: instant download colorscheme
