@@ -1,5 +1,5 @@
 HOME=/home/urbain
-TARGETS=$(addprefix $(HOME)/,.zsh .zshrc)
+TARGETS=$(addprefix $(HOME)/,.zsh .zshrc .zgen)
 
 all : $(TARGETS)
 
