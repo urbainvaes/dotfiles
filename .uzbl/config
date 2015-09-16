@@ -235,7 +235,7 @@ set ebind     = @mode_bind global,-insert
 
 # With this command you can enter in any command at runtime when prefixed with
 # a colon.
-@cbind    ,_        = %s
+@cbind    :_        = %s
 
 # open a new window or a new tab (see the on_event NEW_WINDOW settings above)
 @cbind  w            = event REQ_NEW_WINDOW
