@@ -45,7 +45,8 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'troydm/zoomwintab.vim'
-Plug 'Valloric/YouCompleteMe', { 'do' : './install.sh --clang-completer' }
+Plug 'Valloric/YouCompleteMe'
+", { 'do' : './install.sh --clang-completer' }
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-notes'
 call plug#end()

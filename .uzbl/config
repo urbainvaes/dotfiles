@@ -453,5 +453,6 @@ set uri = uzbl.org/doesitwork/@COMMIT
 @bind o = sh 'uri=`$HOME/dotfiles/.uzbl/scripts/load_url_from_surfraw.sh` && echo "uri $uri" > "$UZBL_FIFO"'
 
 @on_event DOWNLOAD_COMPLETE spawn @scripts_dir/downloadviewer.sh %s
-@on_event LOAD_COMMIT spawn @scripts_dir/adblock.py
+# @on_event LOAD_COMMIT spawn @scripts_dir/adblock.py
+# @on_event LOAD_COMMIT script @sdir/adblock.js
 # vim: set fdm=syntax:
