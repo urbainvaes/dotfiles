@@ -10,3 +10,6 @@
 [submodule ".mutt/solarized"]
 	path = .mutt/solarized
 	url = https://github.com/altercation/mutt-colors-solarized
+[submodule ".urxvt/ext"]
+	path = .urxvt/ext
+	url = https://github.com/muennich/urxvt-perls
