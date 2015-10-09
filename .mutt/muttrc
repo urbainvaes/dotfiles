@@ -6,13 +6,13 @@ set envelope_from    = "yes"
 set weed
 
 # Encryption
-# source /usr/share/doc/mutt-kz/samples/gpg.rc
-# set pgp_use_gpg_agent = yes
-# set pgp_sign_as = 08AC6A48
-# set pgp_timeout = 3600
-# set crypt_autosign = no
-# set crypt_replyencrypt = yes
-# set fcc_clear = yes
+source /usr/share/doc/mutt-kz/samples/gpg.rc
+set pgp_use_gpg_agent = yes
+set pgp_sign_as = 08AC6A48
+set pgp_timeout = 3600
+set crypt_autosign = no
+set crypt_replyencrypt = yes
+set fcc_clear = yes
 
 # Folders
 set folder           = ~/.mail
@@ -28,6 +28,11 @@ set signature        = ~/.mutt/sig
 set spoolfile = "+Main/Main"
 set record    = "+Main/Sent"
 set postponed = "+Main/Drafts"
+
+# Sidebar
+set sidebar_width=26
+set sidebar_visible = yes
+set sidebar_delim='|'
 
 # Headers
 ignore *

@@ -36,7 +36,6 @@ Plug 'tommcdo/vim-exchange'
 Plug 'ton/vim-bufsurf'
 Plug 'tpope/vim-abolish', { 'for' : 'tex' }
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-flagship'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-repeat'
