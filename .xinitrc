@@ -4,7 +4,7 @@
 xset r rate 400 50
 
 # Load key bindings
-$HOME/bin/keyboard.sh
+$HOME/bin/keyboard
 
 # Load Xresources to light colorscheme
 xrdb $HOME/.Xresources/dark

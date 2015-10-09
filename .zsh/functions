@@ -3,7 +3,7 @@
 function colo {
 
     # Change colors for current session
-    $HOME/bin/recolor.sh < ~/.Xresources/$1
+    $HOME/bin/recolor < ~/.Xresources/$1
 
     # Load Xresources file for future sessions
     xrdb ~/.Xresources/$1
