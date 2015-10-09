@@ -12,3 +12,4 @@ $(HOME)/.tmux/plugins/tpm :
 
 clean :
 	rm -f $(TARGETS)
+	rm -rf $(HOME)/.tmux

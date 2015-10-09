@@ -1,10 +1,10 @@
 HOME=/home/urbain
 TARGET=$(HOME)/.config/zathura/zathurarc
 
-all : $(TARGETS)
+all : $(TARGET)
 
 $(HOME)/.config/zathura/zathurarc :
-	rm -f $@ && ln -s $(PWD)/zathurarc $@
+	ln -sf $(PWD)/zathurarc $@
 
 clean :
 	rm -f $(TARGET)

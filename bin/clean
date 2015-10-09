@@ -1,6 +1,6 @@
 #! /bin/bash
 dotdir=/home/urbain/dotfiles
-for file in `ls -A --ignore="install.sh" --ignore="README.md" --ignore=".git*"`; do
+for file in `ls -A --ignore="Makefile" --ignore="README.md" --ignore=".git*"`; do
     if [[ -f $file/Makefile ]]; then
         cd $file && make clean && cd $dotdir
     else
