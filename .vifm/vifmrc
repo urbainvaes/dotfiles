@@ -426,3 +426,6 @@ nnoremap <f8> :delete<cr>
 " Block particular shortcut
 "
 " nnoremap <left> <nop>
+
+" My settings
+set relativenumber
