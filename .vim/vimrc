@@ -2,30 +2,23 @@
 call plug#begin('~/.vim/plugged')
 Plug 'airblade/vim-gitgutter', { 'on' : 'GitGutterToggle' }
 Plug 'altercation/vim-colors-solarized'
-Plug 'AndrewRadev/splitjoin.vim'
 Plug 'beloglazov/vim-online-thesaurus'
-Plug 'benekastah/neomake' , { 'for' : 'cpp' }
 Plug 'bling/vim-airline'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'dhruvasagar/vim-table-mode'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'godlygeek/tabular' , { 'on' : 'Tab' }
 Plug 'gregsexton/gitv', { 'on' : 'Gitv' }
 Plug 'honza/vim-snippets'
-Plug 'itchyny/calendar.vim', { 'on' : 'Calendar' }
-Plug 'klen/python-mode'
 Plug 'jamessan/vim-gnupg'
-Plug 'junegunn/fzf'
 Plug 'junegunn/seoul256.vim'
-Plug 'junegunn/vim-pseudocl'
-Plug 'junegunn/vim-oblique'
 Plug 'junegunn/vim-peekaboo'
 Plug 'justinmk/vim-sneak'
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'klen/python-mode'
 Plug 'lervag/vimtex'
 Plug 'majutsushi/tagbar'
 Plug 'mileszs/ack.vim', { 'on' : 'Ack' }
+Plug 'pgdouyon/vim-evanesco'
 Plug 'rdnetto/YCM-Generator', { 'branch' : 'stable' , 'on' : 'YcmGenerateConfig' }
-Plug 'ryanss/vim-hackernews', { 'on' : 'HackerNews' }
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'scrooloose/syntastic'
 Plug 'SirVer/ultisnips'
@@ -34,7 +27,6 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'tomasr/molokai'
 Plug 'tommcdo/vim-exchange'
 Plug 'ton/vim-bufsurf'
-Plug 'tpope/vim-abolish', { 'for' : 'tex' }
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
@@ -46,8 +38,6 @@ Plug 'tpope/vim-vinegar'
 Plug 'troydm/zoomwintab.vim'
 Plug 'Valloric/YouCompleteMe'
 ", { 'do' : './install.sh --clang-completer' }
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-notes'
 call plug#end()
 
 let g:vimtex_fold_enabled=0
@@ -279,20 +269,3 @@ augroup vimrc
                 \   exe "normal! g`\"" |
                 \ endif
 augroup END
-
-"" Taken from Junegunn Chong
-nnoremap <silent> <Leader>C :call fzf#run({
-\   'source':
-\     map(split(globpath(&rtp, "colors/*.vim"), "\n"),
-\         "substitute(fnamemodify(v:val, ':t'), '\\..\\{-}$', '', '')"),
-\   'sink':     'colo',
-\   'options':  '+m',
-\   'left':     30,
-\   'launcher': 'iterm2-launcher 20 30 %s'
-\ })<CR>
-
-"" Experimental
-let g:notes_directories = ['~/dotfiles/.notes']
-let g:pymode=0
-
-" Idea: instant download colorscheme
