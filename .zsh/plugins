@@ -27,7 +27,6 @@ if ! zgen saved; then
 
     # My plugins
     zgen load uvaes/fzf-marks
-    zgen load uvaes/grm
 
     # Other plugins
     zgen load rupa/z
@@ -44,7 +43,7 @@ fi
 
 # Autosuggestion
 {
-    # Environment variables for plugins
+    # Environment variables for plugin
     AUTOSUGGESTION_HIGHLIGHT_COLOR='fg=6'
 
     zle-line-init() {
@@ -53,9 +52,4 @@ fi
     zle -N zle-line-init
 
     bindkey '^y' autosuggest-execute-suggestion
-}
-
-# GRM
-{
-    REPOFILE=/home/urbain/.grmrc
 }
