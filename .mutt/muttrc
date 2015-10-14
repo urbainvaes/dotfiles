@@ -2,7 +2,7 @@
 set from             = "u.vaes13@imperial.ac.uk"
 set realname         = "Urbain Vaes"
 set use_from         = yes
-set envelope_from    = "yes"
+set envelope_from    = yes
 set weed
 
 # Encryption
@@ -70,9 +70,7 @@ set include=yes
 set sendmail="/usr/bin/msmtp"
 
 # Sorting options
-# set sort         = threads
-set sort_aux     = reverse-last-date-received
-set sort_browser = reverse-date
+set sort = reverse-date
 
 # Alias file
 source ~/.mutt/alias
