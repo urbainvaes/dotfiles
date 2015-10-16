@@ -28,9 +28,10 @@ alias mail='offlineimap -u quiet &'
 alias mc='make clean'
 alias mca='make clean-all'
 alias n='nvim'
-alias ns="$EDITOR -S Session.vim"
 alias pushs='git push --recurse-submodules=check'
 alias v='vim'
+alias vims="vim -S Session.vim"
+alias vimtex='vim -S Session.vim --servername SYNC'
 alias x='sh ~/.xmodmap'
 alias youtube='mpsyt'
 alias notes='vim ~/dotfiles/.notes/Notes'
