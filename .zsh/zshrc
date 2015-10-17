@@ -14,7 +14,7 @@ export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/g
 export PATH="$PATH:/home/urbain/.local/bin"
 
 # Editor
-export EDITOR=/usr/bin/nvim
+export EDITOR=/usr/bin/vim
 
 # Fix tmux colors
 if [[ -n ${TMUX} && -n ${commands[tmux]} ]];then
