@@ -46,5 +46,4 @@ if [[ -n ${TMUX} && -n ${commands[tmux]} ]];then
     esac
 fi
 
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
