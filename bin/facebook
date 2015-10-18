@@ -1,0 +1,7 @@
+#! /bin/bash
+line="127.0.0.1 www.facebook.com"
+if grep -q "facebook" /etc/hosts; then
+    zenity --password | sudo -S bash -c "sed -i '/facebook/d' /etc/hosts"
+else
+    zenity --password | sudo -S bash -c "echo ${line} >> /etc/hosts"
+fi
