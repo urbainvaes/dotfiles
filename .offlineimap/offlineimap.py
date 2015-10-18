@@ -2,9 +2,11 @@
 
 import os
 import subprocess
+
+
 def mailpasswd(acct):
     acct = os.path.basename(acct)
-    path = "/home/urbain/.passwords/%s.asc" % acct
+    path = "/home/urbain/.password-store/Mail/%s.gpg" % acct
     args = ["gpg", "--use-agent", "--quiet", "--batch", "-d", path]
     try:
         return subprocess.check_output(args).strip()
