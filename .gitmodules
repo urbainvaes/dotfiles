@@ -13,3 +13,6 @@
 [submodule ".urxvt/ext"]
 	path = .urxvt/ext
 	url = https://github.com/muennich/urxvt-perls
+[submodule ".passwords"]
+	path = .passwords
+	url = https://github.com/uvaes/passwords
