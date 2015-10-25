@@ -256,14 +256,12 @@ if has("nvim")
     tnoremap <C-_> <C-\><C-n><C-^>:ZoomWinTabOut<cr>
     nnoremap <C-_> :ZoomWinTabIn<cr>:b term<cr>i
     inoremap <C-_> <Esc>:b term<cr>i
-    nnoremap ym :Neomake!<cr>
 endif
 
 "" Restore cursor position
 augroup vimrc
     au!
     autocmd BufWritePost *vimrc source %
-    autocmd BufWritePost *.cpp Neomake!
     autocmd BufReadPost *
                 \ if line("'\"") > 1 && line("'\"") <= line("$") |
                 \   exe "normal! g`\"" |
