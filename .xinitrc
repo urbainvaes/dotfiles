@@ -16,4 +16,8 @@ feh --bg-fill --randomize /usr/share/backgrounds
 autocutsel -fork &
 autocutsel -selection PRIMARY -fork &
 
+# Disable screen going blank
+xset -dpms
+xset s off
+
 exec i3
