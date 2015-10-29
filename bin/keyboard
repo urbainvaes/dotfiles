@@ -33,5 +33,4 @@ xmodmap -e "keysym r = r R 9"
 killall -9 xcape
 
 xcape -e 'Control_L=Escape'
-xcape -e 'Shift_L=Escape'
 xcape -e 'Alt_L=space'
