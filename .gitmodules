@@ -16,3 +16,6 @@
 [submodule ".passwords"]
 	path = .passwords
 	url = https://github.com/uvaes/passwords
+[submodule ".perso"]
+	path = .perso
+	url = https://github.com/uvaes/perso
