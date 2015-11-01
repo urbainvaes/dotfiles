@@ -19,3 +19,6 @@
 [submodule ".perso"]
 	path = .perso
 	url = https://github.com/uvaes/personal
+[submodule ".personal"]
+	path = .personal
+	url = https://github.com/uvaes/personal
