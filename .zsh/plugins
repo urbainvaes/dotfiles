@@ -25,14 +25,14 @@ if ! zgen saved; then
     # Appearance
     zgen oh-my-zsh themes/eastwood
 
-    # My plugins
+    # Navigation plugins
     zgen load uvaes/fzf-marks
+    zgen load b4b4r07/enhancd
 
     # Other plugins
     zgen load rupa/z
     zgen load djui/alias-tips
     zgen load tarruda/zsh-autosuggestions
-    zgen load Tarrasch/zsh-autoenv
     zgen load joel-porquet/zsh-dircolors-solarized
 
     # Save all to init script
