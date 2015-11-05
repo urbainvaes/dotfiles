@@ -3,7 +3,7 @@ setxkbmap us -variant dvp
 
 # Make caps lock a Control
 xmodmap -e "clear Lock"
-xmodmap -e "keysym Caps_Lock = Control_L Caps_Lock"
+xmodmap -e "keysym Caps_Lock = Control_L Control_L"
 xmodmap -e "add Control = Control_L"
 
 # Remap modifiers (Keyboard dependent)
