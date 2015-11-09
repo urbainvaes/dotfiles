@@ -1,0 +1,5 @@
+#!/bin/bash
+DOWNLOAD_DIR="$HOME/Downloads"
+PDF=$(ls -t $DOWNLOAD_DIR/*.pdf)
+TARGET=$(echo "${PDF//"$DOWNLOAD_DIR/"/}" | dmenu -i -p "Open File:")
+[[ -n $TARGET ]] && zathura "$DOWNLOAD_DIR/$TARGET" &
