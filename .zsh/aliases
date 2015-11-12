@@ -19,7 +19,7 @@ alias up='cd ~/Dropbox/phd/presentations'
 alias ur='cd ~/Dropbox/phd/reports'
 
 # Commands
-alias a='vifm'
+alias a='vifm . .'
 alias c='clear'
 alias ca='printf "\ec"'
 alias g='git'
