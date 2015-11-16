@@ -34,7 +34,7 @@ alias vims="vim -S Session.vim"
 alias vimtex='vim -S Session.vim --servername SYNC'
 alias x='sh ~/.xmodmap'
 alias youtube='mpsyt'
-alias notes='vim ~/dotfiles/.notes/Notes'
+alias notes='vim ~/dotfiles/.notes'
 
 # Configuration
 alias em="$EDITOR ~/.mutt/muttrc"

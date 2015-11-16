@@ -50,6 +50,7 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsListSnippets="<c-l>"
 let g:UltiSnipsSnippetDirectories=['UltiSnips', 'mySnippets']
 let g:UltiSnipsSnippetsDir="~/.vim/mySnippets"
+let g:UltiSnipsUsePythonVersion=3
 
 let g:airline_left_sep=''
 let g:airline_right_sep=''
@@ -72,6 +73,8 @@ let g:ctrlp_prompt_mappings = {
     \ 'PrtSelectMove("k")':   ['<c-p>'],
     \ 'PrtHistory(-1)':       ['<c-j>'],
     \ 'PrtHistory(1)':        ['<c-k>'],}
+
+let g:gitgutter_max_signs=1000
 
 let g:pymode_rope=0
 
