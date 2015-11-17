@@ -20,4 +20,8 @@ autocutsel -selection PRIMARY -fork &
 xset -dpms
 xset s off
 
+# Programs to start
+nm-applet &
+dropbox &
+
 exec i3
