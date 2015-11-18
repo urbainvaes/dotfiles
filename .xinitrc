@@ -20,6 +20,9 @@ autocutsel -selection PRIMARY -fork &
 xset -dpms
 xset s off
 
+# SSH agent
+eval $(ssh-agent)
+
 # Programs to start
 nm-applet &
 dropbox &
