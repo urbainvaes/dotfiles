@@ -15,7 +15,7 @@
 	url = https://github.com/muennich/urxvt-perls
 [submodule ".passwords"]
 	path = .passwords
-	url = https://github.com/uvaes/passwords
+	url = git@github.com:uvaes/passwords
 [submodule ".personal"]
 	path = .personal
-	url = https://github.com/uvaes/personal
+	url = git@github.com:uvaes/personal
