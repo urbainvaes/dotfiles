@@ -17,13 +17,14 @@ nametrans      = lambda folder : {'Imperial' : 'INBOX'}.get(folder, folder)
 
 [Repository Imperial-Remote]
 type           = IMAP
-remotehost     = exchange.imperial.ac.uk
-remoteuser     = uv113
+remotehost     = outlook.office365.com
+remoteuser     = uv113@ic.ac.uk
 remotepasseval = mailpasswd("imperial")
 ssl            = yes
+port           = 993
 nametrans      = lambda folder : {'INBOX' : 'Imperial'}.get(folder, folder)
 folderfilter   = lambda folder: folder in ['INBOX']
-Sslcacertfile  = /etc/ssl/certs/ca-certificates.crt
+sslcacertfile  = /etc/ssl/certs/ca-certificates.crt
 
 [Account Main]
 localrepository  = Main-Local
