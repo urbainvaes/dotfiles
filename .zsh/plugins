@@ -28,7 +28,6 @@ if ! zgen saved; then
 
     # Navigation plugins
     zgen load uvaes/fzf-marks
-    zgen load b4b4r07/enhancd
 
     # Other plugins
     zgen load rupa/z
