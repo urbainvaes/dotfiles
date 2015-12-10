@@ -1,15 +1,3 @@
-! XTERM !
-
-! Appearance xterm
-! *xterm*faceName: Monaco
-*xterm*faceSize: 11
-*xterm*background: Black
-*xterm*foreground: White
-*xterm*cursorColor: Green
-
-! Copy-paste support
-XTerm*selectToClipboard: true
-
 ! URXVT !
 
 ! General settings
@@ -17,7 +5,7 @@ URxvt.loginShell   : true
 URxvt.termName     : rxvt-256color
 
 ! Custom META key
-URxvt*modifier: alt
+URxvt*modifier: super
 
 ! Copy-paste configuration
 URxvt.clipboard.copycmd:  xclip -i -selection clipboard
@@ -38,16 +26,8 @@ URxvt.keysym.F11: perl:fullscreen:switch
 
 ! Appearance
 URxvt*font: xft:DejaVu Sans Mono:size=12
-! URxvt*font: xft:monaco:size=11:antialias=false
 URxvt*scrollBar: false
 URxvt*internalBorder: 0
 
 ! True transparency
 URxvt.depth: 32
-
-! Font configuration
-! Xft.dpi:        96
-! Xft.antialias:  false
-! Xft.hinting:    true
-! Xft.rgba:       rgb
-! Xft.hintstyle:  hintslight
