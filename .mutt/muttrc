@@ -1,15 +1,15 @@
 # General information
-set from             = "u.vaes13@imperial.ac.uk"
+set from             = "urbain.p.vaes@gmail.com"
 set realname         = "Urbain Vaes"
 set use_from         = yes
 set envelope_from    = yes
 set weed
 
 # Encryption
-source /usr/share/doc/mutt-kz/samples/gpg.rc
+source ~/.mutt/crypto
 set crypt_autosign = no
 set crypt_replyencrypt = yes
-set fcc_clear = yes
+set pgp_auto_decode = yes
 set pgp_autosign = yes
 set pgp_sign_as = 716064C0
 set pgp_use_gpg_agent = yes
@@ -22,8 +22,8 @@ set header_cache     = ~/.mutt/cache/headers
 set message_cachedir = ~/.mutt/cache/bodies
 set certificate_file = ~/.mutt/certificates
 set mailcap_path     = ~/.mutt/mailcap
+set signature        = ~/.mutt/signature
 set tmpdir           = ~/.mutt/temp
-set signature        = ~/.mutt/sig
 
 # Maildirs
 set spoolfile = "+Main/Main"
@@ -100,13 +100,3 @@ bind   pager   R    group-reply
 `[ "$COLORSCHEME" = "light" ] && echo source $HOME/.mutt/solarized/mutt-colors-solarized-light-16.muttrc || echo set`
 `[ "$COLORSCHEME" = "dark" ] && echo source $HOME/.mutt/solarized/mutt-colors-solarized-dark-16.muttrc || echo set`
 `[ "$COLORSCHEME" = "default" ] && echo source $HOME/.mutt/solarized/mutt-colors-solarized-dark-16.muttrc || echo set`
-
-color index red default "~F"
-color index brightblue default "~f edfenergy"
-color index brightblue default "~f terravision"
-color index magenta default "~f avaaz"
-color index magenta default "~f santos"
-color index magenta default "~f rusudan"
-color index cyan default "~U"
-color index green default "~f pavliotis"
-color index green default "~f abdulle"
