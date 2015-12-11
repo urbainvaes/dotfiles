@@ -13,3 +13,8 @@
 .vifm/vimfiles
 .nvim/.netrwhist
 .vim/.netrwhist
+.mutt/solarized
+.urxvt/ext
+.vim/vim-plug
+.zsh/zgen
+.personal
