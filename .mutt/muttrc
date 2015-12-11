@@ -1,20 +1,3 @@
-# General information
-set from             = "urbain.p.vaes@gmail.com"
-set realname         = "Urbain Vaes"
-set use_from         = yes
-set envelope_from    = yes
-set weed
-
-# Encryption
-source ~/.mutt/crypto
-set crypt_autosign = no
-set crypt_replyencrypt = yes
-set pgp_auto_decode = yes
-set pgp_autosign = yes
-set pgp_sign_as = 716064C0
-set pgp_use_gpg_agent = yes
-set pgp_timeout = 3600
-
 # Folders
 set folder           = ~/.mail
 set alias_file       = ~/.mutt/alias
@@ -25,6 +8,26 @@ set mailcap_path     = ~/.mutt/mailcap
 set signature        = ~/.mutt/signature
 set tmpdir           = ~/.mutt/temp
 
+# Source crypto, aliases, mailboxes
+source ~/.mutt/crypto
+source ~/.mutt/alias
+source ~/.mutt/mailboxes
+
+# General information
+set from = "urbain.p.vaes@gmail.com"
+set realname = "Urbain Vaes"
+set weed
+
+# Encryption
+set crypt_autosign = no
+set crypt_replyencrypt = yes
+set pgp_auto_decode = yes
+set pgp_autosign = yes
+set pgp_sign_as = 716064C0
+set pgp_use_gpg_agent = yes
+set pgp_timeout = 3600
+
+
 # Maildirs
 set spoolfile = "+Main/Main"
 set record    = "+Main/Sent"
@@ -32,35 +35,27 @@ set postponed = "+Main/Drafts"
 
 # Sidebar
 set sidebar_width=26
-set sidebar_visible = yes
+set sidebar_visible = no
 set sidebar_delim='|'
-
-# Headers
-ignore *
-unignore from: to: cc: date: subject:
-unhdr_order *
-hdr_order from: to: cc: date: subject:
-
-mailboxes +Main/Main \
-          +Imperial/Imperial \
-          +Hotmail/Hotmail \
-          +Gmail/Gmail \
-          +Main/Sent \
-          +Main/Drafts \
+bind index,pager \Cn sidebar-next
+bind index,pager \Cp sidebar-prev
+bind index,pager O sidebar-open
 
 # Prompts
 set delete = yes
 set quit = yes
 
 # Pager
-set pager_index_lines = 10
-set pager_context = 0
 set pager_stop
-set reverse_alias
-set menu_scroll
-set tilde
+set pager_index_lines = 10
+
+# Misc
 unset markers
-set quote_regexp = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
+set reverse_alias
+set sort = reverse-date
+
+# HTML messages
+auto_view text/html
 alternative_order text/plain text/enriched text/html
 
 # Editor
@@ -70,33 +65,27 @@ set include=yes
 # Program to send mails
 set sendmail="/usr/bin/msmtp"
 
-# Sorting options
-set sort = reverse-date
-
-# Alias file
-source ~/.mutt/alias
-
-# HTML messages
-auto_view text/html
 
 # Key bindings
-bind   index,pager \Cf   next-page
-bind   index,pager \Cb   previous-page
-bind   index,pager "}" sidebar-next
-bind   index,pager "{" sidebar-prev
-bind   index,pager O sidebar-open
+bind index,pager \Cf next-page
+bind index,pager \Cb previous-page
+bind index gg first-entry
+bind index G last-entry
+bind index i flag-message
 
-bind   index   gg    first-entry
-bind   index   G     last-entry
-bind   index   i     flag-message
-
-bind   pager   \Ce  next-line
-bind   pager   \Cy  previous-line
-bind   pager   j    next-entry
-bind   pager   k    previous-entry
-bind   pager   R    group-reply
+bind pager \Ce next-line
+bind pager \Cy previous-line
+bind pager  j next-entry
+bind pager  k previous-entry
+bind pager  R group-reply
 
 # Source mutt solarized
 `[ "$COLORSCHEME" = "light" ] && echo source $HOME/.mutt/solarized/mutt-colors-solarized-light-16.muttrc || echo set`
 `[ "$COLORSCHEME" = "dark" ] && echo source $HOME/.mutt/solarized/mutt-colors-solarized-dark-16.muttrc || echo set`
 `[ "$COLORSCHEME" = "default" ] && echo source $HOME/.mutt/solarized/mutt-colors-solarized-dark-16.muttrc || echo set`
+
+# Hooks
+reply-hook . 'source ~/.mutt/id_gmail'
+send-hook . 'source ~/.mutt/id_gmail'
+send-hook '~t .*@imperial\.ac\.uk$' 'source ~/.mutt/id_imperial'
+reply-hook '~t .*@imperial\.ac\.uk$' 'source ~/.mutt/id_imperial'
