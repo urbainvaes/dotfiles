@@ -1,3 +1,5 @@
+[dotfiles]
+checkout = git clone 'git@github.com:uvaes/dotfiles' 'dotfiles'
 
 [dotfiles/.passwords]
 checkout = git clone 'git@github.com:uvaes/passwords' '.passwords'
