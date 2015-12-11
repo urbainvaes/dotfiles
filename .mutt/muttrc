@@ -32,10 +32,11 @@ set pgp_timeout = 3600
 set spoolfile = "+Main/Main"
 set record    = "+Main/Sent"
 set postponed = "+Main/Drafts"
+set trash = "+Main/Bin"
 
 # Sidebar
 set sidebar_width=26
-set sidebar_visible = no
+set sidebar_visible = yes
 set sidebar_delim='|'
 bind index,pager \Cn sidebar-next
 bind index,pager \Cp sidebar-prev
@@ -75,9 +76,9 @@ bind index i flag-message
 
 bind pager \Ce next-line
 bind pager \Cy previous-line
-bind pager  j next-entry
-bind pager  k previous-entry
-bind pager  R group-reply
+bind pager j next-entry
+bind pager k previous-entry
+bind pager R group-reply
 
 # Source mutt solarized
 `[ "$COLORSCHEME" = "light" ] && echo source $HOME/.mutt/solarized/mutt-colors-solarized-light-16.muttrc || echo set`

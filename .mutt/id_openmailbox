@@ -1,0 +1,2 @@
+set from = "urbain.p.vaes@openmailbox.org"
+set sendmail="/usr/bin/msmtp -a openmailbox"

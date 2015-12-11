@@ -1,7 +1,7 @@
 [general]
 ui         = ttyui
 pythonfile = /home/urbain/.offlineimap.py
-accounts   = Imperial, Main, Gmail
+accounts   = Imperial, Main, Gmail, openmailbox
 maxsyncaccounts = 4
 
 [Account Imperial]
@@ -43,8 +43,8 @@ remoteuser     = urbain.p.vaes
 remotepasseval = mailpasswd("main")
 realdelete     = no
 maxconnections = 3
-nametrans      = lambda folder : {'INBOX' : 'Main', '[Gmail]/Sent Mail' : 'Sent', '[Gmail]/Drafts' : 'Drafts'}.get(folder, folder)
-folderfilter   = lambda folder: folder in ['INBOX', '[Gmail]/Sent Mail', '[Gmail]/Drafts']
+nametrans      = lambda folder : {'INBOX' : 'Main', '[Gmail]/Sent Mail' : 'Sent', '[Gmail]/Drafts' : 'Drafts', '[Gmail]/Bin' : 'Bin'}.get(folder, folder)
+folderfilter   = lambda folder: folder in ['INBOX', '[Gmail]/Sent Mail', '[Gmail]/Drafts', '[Gmail]/Bin']
 sslcacertfile  = /etc/ssl/certs/ca-certificates.crt
 
 [Account Gmail]
@@ -67,6 +67,28 @@ maxconnections = 3
 nametrans      = lambda folder: {'INBOX' : 'Gmail'}.get(folder, folder)
 folderfilter   = lambda folder: folder in ['INBOX']
 sslcacertfile  = /etc/ssl/certs/ca-certificates.crt
+
+[Account openmailbox]
+localrepository  = openmailbox-Local
+remoterepository = openmailbox-Remote
+autorefresh      = 10
+
+[Repository openmailbox-Local]
+type           = Maildir
+localfolders   = ~/.mail/openmailbox
+status_backend = sqlite
+nametrans      = lambda folder : {'Free' : 'INBOX'}.get(folder, folder)
+
+
+[Repository openmailbox-Remote]
+type           = IMAP
+remotehost     = imap.openmailbox.org
+remoteuser     = urbain.p.vaes@openmailbox.org
+remotepasseval = mailpasswd("openmailbox")
+nametrans      = lambda folder: {'INBOX' : 'Free'}.get(folder, folder)
+folderfilter   = lambda folder: folder in ['INBOX']
+sslcacertfile  = /etc/ssl/certs/ca-certificates.crt
+realdelete     = no
 
 [mbnames]
 enabled  = yes
