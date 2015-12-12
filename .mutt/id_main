@@ -1,0 +1,7 @@
+set from = "urbain.p.vaes@gmail.com"
+set sendmail="/usr/bin/msmtp -a main"
+
+set spoolfile = "+Main/Main"
+set record    = "+Main/Main.sent"
+set postponed = "+Main/Main.drafts"
+set trash     = "+Main/Main.bin"

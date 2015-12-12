@@ -1,0 +1,7 @@
+set from = "urbainvaes90@gmail.com"
+set sendmail="/usr/bin/msmtp -a informal"
+
+set spoolfile = "+Informal/Informal"
+set record    = "+Informal/Informal.sent"
+set postponed = "+Informal/Informal.drafts"
+set trash     = "+Informal/Informal.bin"

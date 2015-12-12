@@ -1,7 +1,7 @@
 [general]
 ui         = ttyui
 pythonfile = /home/urbain/.offlineimap.py
-accounts   = Imperial, Main, Gmail, openmailbox
+accounts   = Imperial, Main, Informal, Private
 maxsyncaccounts = 4
 
 [Account Imperial]
@@ -13,18 +13,18 @@ autorefresh      = 10
 type           = Maildir
 localfolders   = ~/.mail/Imperial
 status_backend = sqlite
-nametrans      = lambda folder : {'Imperial' : 'INBOX'}.get(folder, folder)
+nametrans      = lambda folder : {'Imperial' : 'INBOX', 'Imperial/sent' : 'Sent Items', 'Imperial/drafts' : 'Drafts', 'Imperial/bin' : 'Deleted Items'}.get(folder, folder)
 
 [Repository Imperial-Remote]
 type           = IMAP
 remotehost     = outlook.office365.com
 remoteuser     = uv113@ic.ac.uk
-remotepasseval = mailpasswd("imperial")
-ssl            = yes
-port           = 993
-nametrans      = lambda folder : {'INBOX' : 'Imperial'}.get(folder, folder)
-folderfilter   = lambda folder: folder in ['INBOX']
+remotepasseval = mailpasswd('imperial/u.vaes13@imperial.ac.uk')
+nametrans      = lambda folder : {'INBOX' : 'Imperial', 'Sent Items' : 'Imperial/sent', 'Drafts' : 'Imperial/drafts', 'Deleted Items' : 'Imperial/bin'}.get(folder, folder)
+folderfilter   = lambda folder: folder in ['INBOX', 'Sent Items', 'Drafts', 'Deleted Items']
 sslcacertfile  = /etc/ssl/certs/ca-certificates.crt
+realdelete     = no
+maxconnections = 3
 
 [Account Main]
 localrepository  = Main-Local
@@ -35,60 +35,60 @@ autorefresh      = 10
 type           = Maildir
 localfolders   = ~/.mail/Main
 status_backend = sqlite
-nametrans      = lambda folder : {'Main' : 'INBOX', 'Sent' : '[Gmail]/Sent Mail', 'Drafts' : '[Gmail]/Drafts'}.get(folder, folder)
+nametrans      = lambda folder : {'Main' : 'INBOX', 'Main/sent' : '[Gmail]/Sent Mail', 'Main/drafts' : '[Gmail]/Drafts', 'Main/bin' : '[Gmail]/Bin'}.get(folder, folder)
 
 [Repository Main-Remote]
 type           = Gmail
 remoteuser     = urbain.p.vaes
-remotepasseval = mailpasswd("main")
-realdelete     = no
-maxconnections = 3
-nametrans      = lambda folder : {'INBOX' : 'Main', '[Gmail]/Sent Mail' : 'Sent', '[Gmail]/Drafts' : 'Drafts', '[Gmail]/Bin' : 'Bin'}.get(folder, folder)
+remotepasseval = mailpasswd("gmail/urbain.p.vaes@gmail.com")
+nametrans      = lambda folder : {'INBOX' : 'Main', '[Gmail]/Sent Mail' : 'Main/sent', '[Gmail]/Drafts' : 'Main/drafts', '[Gmail]/Bin' : 'Main/bin'}.get(folder, folder)
 folderfilter   = lambda folder: folder in ['INBOX', '[Gmail]/Sent Mail', '[Gmail]/Drafts', '[Gmail]/Bin']
 sslcacertfile  = /etc/ssl/certs/ca-certificates.crt
-
-[Account Gmail]
-localrepository  = Gmail-Local
-remoterepository = Gmail-Remote
-autorefresh      = 10
-
-[Repository Gmail-Local]
-type           = Maildir
-localfolders   = ~/.mail/Gmail
-status_backend = sqlite
-nametrans      = lambda folder : {'Gmail' : 'INBOX'}.get(folder, folder)
-
-[Repository Gmail-Remote]
-type           = Gmail
-remoteuser     = urbainvaes90
-remotepasseval = mailpasswd("gmail")
 realdelete     = no
 maxconnections = 3
-nametrans      = lambda folder: {'INBOX' : 'Gmail'}.get(folder, folder)
-folderfilter   = lambda folder: folder in ['INBOX']
-sslcacertfile  = /etc/ssl/certs/ca-certificates.crt
 
-[Account openmailbox]
-localrepository  = openmailbox-Local
-remoterepository = openmailbox-Remote
+[Account Informal]
+localrepository  = Informal-Local
+remoterepository = Informal-Remote
 autorefresh      = 10
 
-[Repository openmailbox-Local]
+[Repository Informal-Local]
 type           = Maildir
-localfolders   = ~/.mail/openmailbox
+localfolders   = ~/.mail/Informal
 status_backend = sqlite
-nametrans      = lambda folder : {'Free' : 'INBOX'}.get(folder, folder)
+nametrans      = lambda folder : {'Informal' : 'INBOX', 'Informal/sent' : '[Gmail]/Sent Mail', 'Informal/drafts' : '[Gmail]/Drafts', 'Informal/bin' : '[Gmail]/Bin'}.get(folder, folder)
 
+[Repository Informal-Remote]
+type           = Gmail
+remoteuser     = urbainvaes90
+remotepasseval = mailpasswd("gmail/urbainvaes90@gmail.com")
+nametrans      = lambda folder : {'INBOX' : 'Informal', '[Gmail]/Sent Mail' : 'Informal/sent', '[Gmail]/Drafts' : 'Informal/drafts', '[Gmail]/Bin' : 'Informal/bin'}.get(folder, folder)
+folderfilter   = lambda folder: folder in ['INBOX', '[Gmail]/Sent Mail', '[Gmail]/Drafts', '[Gmail]/Bin']
+sslcacertfile  = /etc/ssl/certs/ca-certificates.crt
+realdelete     = no
+maxconnections = 3
 
-[Repository openmailbox-Remote]
+[Account Private]
+localrepository  = Private-Local
+remoterepository = Private-Remote
+autorefresh      = 10
+
+[Repository Private-Local]
+type           = Maildir
+localfolders   = ~/.mail/Private
+status_backend = sqlite
+nametrans      = lambda folder : {'Private' : 'INBOX', 'Private/sent' : 'Sent', 'Private/drafts' : 'Drafts', 'Private/bin' : 'Trash'}.get(folder, folder)
+
+[Repository Private-Remote]
 type           = IMAP
 remotehost     = imap.openmailbox.org
 remoteuser     = urbain.p.vaes@openmailbox.org
-remotepasseval = mailpasswd("openmailbox")
-nametrans      = lambda folder: {'INBOX' : 'Free'}.get(folder, folder)
-folderfilter   = lambda folder: folder in ['INBOX']
+remotepasseval = mailpasswd("openmailbox/urbain.p.vaes@openmailbox.org")
+nametrans      = lambda folder : {'INBOX' : 'Private', 'Sent' : 'Private/sent', 'Drafts' : 'Private/drafts', 'Trash' : 'Private/bin'}.get(folder, folder)
+folderfilter   = lambda folder: folder in ['INBOX', 'Sent', 'Drafts', 'Trash']
 sslcacertfile  = /etc/ssl/certs/ca-certificates.crt
 realdelete     = no
+maxconnections = 3
 
 [mbnames]
 enabled  = yes

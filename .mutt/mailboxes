@@ -1,1 +1,1 @@
-mailboxes "+openmailbox/Free" "+Main/Main" "+Gmail/Gmail" "+Imperial/Imperial" "+Main/Sent" "+Main/Drafts" "+Main/Bin"
+mailboxes "+Imperial/Imperial" "+Imperial/Imperial.bin" "+Imperial/Imperial.drafts" "+Imperial/Imperial.sent" "+Informal/Informal" "+Informal/Informal.bin" "+Informal/Informal.drafts" "+Informal/Informal.sent" "+Main/Main" "+Main/Main.bin" "+Main/Main.drafts" "+Main/Main.sent" "+Private/Private" "+Private/Private.bin" "+Private/Private.drafts" "+Private/Private.sent"

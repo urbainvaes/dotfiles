@@ -1,0 +1,7 @@
+set from = "urbain.p.vaes@openmailbox.org"
+set sendmail="/usr/bin/msmtp -a private"
+
+set spoolfile = "+Private/Private"
+set record    = "+Private/Private.sent"
+set postponed = "+Private/Private.drafts"
+set trash     = "+Private/Private.bin"

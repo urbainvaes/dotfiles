@@ -12,11 +12,14 @@ set tmpdir           = ~/.mutt/temp
 source ~/.mutt/crypto
 source ~/.mutt/alias
 source ~/.mutt/mailboxes
+source ~/.mutt/id_main
 
 # General information
-set from = "urbain.p.vaes@gmail.com"
 set realname = "Urbain Vaes"
+set reverse_alias
+set sort = reverse-date
 set weed
+unset markers
 
 # Encryption
 set crypt_autosign = no
@@ -26,13 +29,6 @@ set pgp_autosign = yes
 set pgp_sign_as = 716064C0
 set pgp_use_gpg_agent = yes
 set pgp_timeout = 3600
-
-
-# Maildirs
-set spoolfile = "+Main/Main"
-set record    = "+Main/Sent"
-set postponed = "+Main/Drafts"
-set trash = "+Main/Bin"
 
 # Sidebar
 set sidebar_width=26
@@ -50,11 +46,6 @@ set quit = yes
 set pager_stop
 set pager_index_lines = 10
 
-# Misc
-unset markers
-set reverse_alias
-set sort = reverse-date
-
 # HTML messages
 auto_view text/html
 alternative_order text/plain text/enriched text/html
@@ -63,13 +54,21 @@ alternative_order text/plain text/enriched text/html
 set editor="vim --noplugin"
 set include=yes
 
-# Program to send mails
-set sendmail="/usr/bin/msmtp"
+# Macros
+macro index gm "<change-folder> +Main/Main<enter>" 
+macro index gp "<change-folder> +Private/Private<enter>" 
+macro index gi "<change-folder> +Informal/Informal<enter>" 
+macro index gw "<change-folder> +Imperial/Imperial<enter>" 
 
+macro index gs "<change-folder> $record<enter>" 
+macro index gd "<change-folder> $postponed<enter>" 
+macro index gb "<change-folder> $trash<enter>"
 
 # Key bindings
 bind index,pager \Cf next-page
 bind index,pager \Cb previous-page
+bind index,pager \Cu next-unread-mailbox
+
 bind index gg first-entry
 bind index G last-entry
 bind index i flag-message
@@ -80,13 +79,16 @@ bind pager j next-entry
 bind pager k previous-entry
 bind pager R group-reply
 
+# Hooks
+send-hook '~t .*@imperial\.ac\.uk$' 'source ~/.mutt/id_imperial'
+reply-hook '~t .*@imperial\.ac\.uk$' 'source ~/.mutt/id_imperial'
+
+folder-hook 'Main*'    'source ~/.mutt/id_main'
+folder-hook 'Informal*' 'source ~/.mutt/id_informal'
+folder-hook 'Private*'  'source ~/.mutt/id_private'
+folder-hook 'Imperial*' 'source ~/.mutt/id_imperial'
+
 # Source mutt solarized
 `[ "$COLORSCHEME" = "light" ] && echo source $HOME/.mutt/solarized/mutt-colors-solarized-light-16.muttrc || echo set`
 `[ "$COLORSCHEME" = "dark" ] && echo source $HOME/.mutt/solarized/mutt-colors-solarized-dark-16.muttrc || echo set`
 `[ "$COLORSCHEME" = "default" ] && echo source $HOME/.mutt/solarized/mutt-colors-solarized-dark-16.muttrc || echo set`
-
-# Hooks
-reply-hook . 'source ~/.mutt/id_gmail'
-send-hook . 'source ~/.mutt/id_gmail'
-send-hook '~t .*@imperial\.ac\.uk$' 'source ~/.mutt/id_imperial'
-reply-hook '~t .*@imperial\.ac\.uk$' 'source ~/.mutt/id_imperial'

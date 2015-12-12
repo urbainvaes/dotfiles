@@ -1,2 +1,0 @@
-set from = "urbain.p.vaes@gmail.com"
-set sendmail="/usr/bin/msmtp -a gmail"

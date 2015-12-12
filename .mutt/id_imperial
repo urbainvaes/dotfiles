@@ -1,2 +1,7 @@
 set from = "u.vaes13@imperial.ac.uk"
 set sendmail="/usr/bin/msmtp -a imperial"
+
+set spoolfile = "+Imperial/Imperial"
+set record    = "+Imperial/Imperial.sent"
+set postponed = "+Imperial/Imperial.drafts"
+set trash     = "+Imperial/Imperial.bin"
