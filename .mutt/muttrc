@@ -60,10 +60,6 @@ macro index gp "<change-folder> +Private/Private<enter>"
 macro index gi "<change-folder> +Informal/Informal<enter>" 
 macro index gw "<change-folder> +Imperial/Imperial<enter>" 
 
-macro index gs "<change-folder> $record<enter>" 
-macro index gd "<change-folder> $postponed<enter>" 
-macro index gb "<change-folder> $trash<enter>"
-
 # Key bindings
 bind index,pager \Cf next-page
 bind index,pager \Cb previous-page

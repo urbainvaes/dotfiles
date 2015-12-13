@@ -13,7 +13,7 @@ URxvt.clipboard.pastecmd: xclip -o -selection clipboard
 
 ! Perl extensions configuration
 URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select,fullscreen
-URxvt.url-select.launcher: /usr/bin/uzbl
+URxvt.url-select.launcher: /usr/bin/uzbl-browser
 URxvt.url-select.underline: true
 
 ! Key bindings for extensions

@@ -5,3 +5,7 @@ set spoolfile = "+Main/Main"
 set record    = "+Main/Main.sent"
 set postponed = "+Main/Main.drafts"
 set trash     = "+Main/Main.bin"
+
+macro index gs "<change-folder> $record<enter>"
+macro index gd "<change-folder> $postponed<enter>"
+macro index gb "<change-folder> $trash<enter>"
