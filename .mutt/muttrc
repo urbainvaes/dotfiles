@@ -19,6 +19,7 @@ set realname = "Urbain Vaes"
 set reverse_alias
 set sort = reverse-date
 set weed
+set fcc_clear
 unset markers
 
 # Encryption
@@ -55,10 +56,10 @@ set editor="vim --noplugin"
 set include=yes
 
 # Macros
-macro index gm "<change-folder> +Main/Main<enter>" 
-macro index gp "<change-folder> +Private/Private<enter>" 
-macro index gi "<change-folder> +Informal/Informal<enter>" 
-macro index gw "<change-folder> +Imperial/Imperial<enter>" 
+macro index,pager gm "<change-folder> +Main/Main<enter>" 
+macro index,pager gp "<change-folder> +Private/Private<enter>" 
+macro index,pager gi "<change-folder> +Informal/Informal<enter>" 
+macro index,pager gw "<change-folder> +Imperial/Imperial<enter>" 
 
 # Key bindings
 bind index,pager \Cf next-page
