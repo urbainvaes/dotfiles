@@ -155,6 +155,7 @@ bindsym $mod+period workspace next
 # Programs shortcuts
 bindsym $mod+b exec uzbl-browser
 bindsym $mod+at exec chromium-browser
+bindsym $mod+n exec workspace
 
 # Configuration
 # bindsym F1 exec $HOME/.xinitrc
@@ -178,6 +179,5 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 10
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 
 # font pango:DejaVu Sans Mono 10
-
 bindsym F1 exec --no-startup-id feh --bg-fill --randomize /usr/share/backgrounds
 bindsym $mod+semicolon exec --no-startup-id /home/urbain/dotfiles/bin/run

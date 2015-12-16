@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+workspaces=$(i3-msg -t get_workspaces | grep -Po '"name":.*?[^\\]"' | sed 's/"name":"\([0-9a-zA-Z]\+\)"/\1/g')
+target=$(echo $workspaces | dmenu -i -p "Go to workspace:")
+exec i3-msg workspace $target
