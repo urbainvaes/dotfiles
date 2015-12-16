@@ -26,7 +26,7 @@ unset markers
 set crypt_autosign = no
 set crypt_replyencrypt = yes
 set pgp_auto_decode = yes
-set pgp_autosign = yes
+set pgp_autosign = no
 set pgp_sign_as = 716064C0
 set pgp_use_gpg_agent = yes
 set pgp_timeout = 3600
