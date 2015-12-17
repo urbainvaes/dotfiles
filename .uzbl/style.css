@@ -17,7 +17,7 @@
     opacity:            1.0;
     -webkit-border-radius: 6px !important;
   /* Play around with this, pretty fun things to do :) */
-  /* -webkit-transform: scale(1) rotate(0deg) translate(-6px,-5px) !important; */
+  /* -webkit-transform: scale(1) rotate(90deg) translate(-6px,-5px) !important; */
 }
 
 /* we can have different colours for different types of hints! */
