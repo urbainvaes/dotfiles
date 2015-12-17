@@ -8,10 +8,10 @@ xmodmap -e "add Control = Control_L"
 
 # Remap modifiers (Keyboard dependent)
 xmodmap -e "keycode 94 = Mode_switch"
-xmodmap -e 'keycode 108 = Alt_L'
+xmodmap -e 'keycode 108 = Super_L'
 
 # Remap modifiers (Keyboard independent)
-xmodmap -e 'keysym space = Alt_L'
+xmodmap -e 'keysym space = Super_L'
 xmodmap -e 'keycode any = space'
 
 # Numbers
@@ -33,4 +33,4 @@ xmodmap -e "keysym r = r R 9"
 killall -9 xcape
 
 xcape -e 'Control_L=Escape'
-xcape -e 'Alt_L=space'
+xcape -e 'Super_L=space'

@@ -5,7 +5,8 @@ URxvt.loginShell   : true
 URxvt.termName     : rxvt-256color
 
 ! Custom META key
-URxvt*modifier: super
+! URxvt*modifier: super
+URxvt*modifier: alt
 
 ! Copy-paste configuration
 URxvt.clipboard.copycmd:  xclip -i -selection clipboard
