@@ -8,6 +8,6 @@ largest_gap=$(echo $used_numbers | awk '$1!=p+1{print p+1}{p=$1}')
 
 target=$(echo $workspaces | dmenu -i -sf green -p "Go to workspace:")
 [[ -z $target ]] && exit
-[[ ! $target = [0-9]:* ]] && target=$new_number:$target
+[[ ! $target = [0-9]* ]] && target=$new_number:$target
 
 exec i3-msg workspace $target
