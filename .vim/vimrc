@@ -16,6 +16,7 @@ Plug 'junegunn/vim-pseudocl'
 Plug 'junegunn/vim-oblique'
 Plug 'justinmk/vim-sneak'
 Plug 'klen/python-mode'
+Plug 'ledger/vim-ledger'
 Plug 'lervag/vimtex'
 Plug 'majutsushi/tagbar'
 Plug 'mileszs/ack.vim', { 'on' : 'Ack' }
