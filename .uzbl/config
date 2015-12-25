@@ -84,7 +84,7 @@ set download_handler    = sync_spawn @scripts_dir/download.sh
 
 # Load finish handlers
 @on_event   LOAD_FINISH    @set_status <span foreground="gold">done</span>
-@on_event   LOAD_FINISH    spawn @scripts_dir/history.sh
+# @on_event   LOAD_FINISH    spawn @scripts_dir/history.sh
 
 # Switch to insert mode if a (editable) html form is clicked
 @on_event   FOCUS_ELEMENT  sh 'if [ "$1" = INPUT -o "$1" = TEXTAREA -o "$1" = SELECT ]; then echo "@set_mode insert" > $UZBL_FIFO; fi' %s
@@ -239,6 +239,7 @@ set ebind     = @mode_bind global,-insert
 
 # open a new window or a new tab (see the on_event NEW_WINDOW settings above)
 @cbind  w            = event REQ_NEW_WINDOW
+@cbind  t<tabopen:>_ = sh '$XDG_CONFIG_HOME/uzbl/scripts/url_from_surfraw.sh "%s" "event REQ_NEW_WINDOW"'
 
 # Page movement binds
 @cbind  j            = scroll vertical 20
@@ -284,9 +285,6 @@ set ebind     = @mode_bind global,-insert
 # Print pages to a printer
 @cbind  <Ctrl>p = hardcopy
 
-# Web searching binds
-@cbind  ddg<DuckDuckGo:>_    = uri http://duckduckgo.com/?q=%s
-@cbind  go<Google:>_         = uri http://google.com/?q=%s
 
 # Handy binds
 @cbind  s<var:>_<value:>_  = set %1 = %2
@@ -298,20 +296,14 @@ set ebind     = @mode_bind global,-insert
 # Reload all variables in the config
 @cbind  !reload            = sh "sed '/^# === Post-load misc commands/,$d' \"$UZBL_CONFIG\" | grep '^set ' > \"$UZBL_FIFO\""
 
-# Uri opening prompts
-@cbind  o<uri:>_       = uri %s
-
-# Or have it load the current uri into the keycmd for editing
+@cbind o<open:>_ = sh '$XDG_CONFIG_HOME/uzbl/scripts/url_from_surfraw.sh "%s" "uri"'
 @cbind  O<uri:\@uri>_  = uri %s
 
 # Mode setting binds
-@cbind  i        = @set_mode insert
+@cbind  i = @set_mode insert
 
 # Hard-bound bookmarks
 @cbind  gh  = uri google.co.uk
-
-# New window binds
-@cbind  t  = event REQ_NEW_WINDOW
 
 # SSL-ify bindings
 @cbind  zs  = uri \@(echo "$UZBL_URI" | sed -e 's/^http:/https:/')\@
@@ -449,10 +441,5 @@ sync_spawn_exec @scripts_dir/load_cookies.sh @data_home/uzbl/session-cookies.txt
 # Set the "home" page.
 set uri = google.co.uk
 
-# Custom binds
-@bind o = sh 'uri=`$HOME/dotfiles/.uzbl/scripts/load_url_from_surfraw.sh` && echo "uri $uri" > "$UZBL_FIFO"'
-
 @on_event DOWNLOAD_COMPLETE spawn @scripts_dir/downloadviewer.sh %s
-# @on_event LOAD_COMMIT spawn @scripts_dir/adblock.py
-# @on_event LOAD_COMMIT script @sdir/adblock.js
 # vim: set fdm=syntax:
