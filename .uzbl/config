@@ -183,13 +183,13 @@ set bind      = request MODE_BIND global
 set mode_bind = request MODE_BIND
 
 # Insert mode binding alias
-set ibind     = @mode_bind insert
+set ibind = @mode_bind insert
 
 # Command mode binding alias
-set cbind     = @mode_bind command
+set cbind = @mode_bind command
 
 # Non-insert mode bindings alias (ebind for edit-bind).
-set ebind     = @mode_bind global,-insert
+set ebind = @mode_bind global,-insert
 
 # --- Global & keycmd editing binds ------------------------------------------
 
@@ -300,7 +300,7 @@ set ebind     = @mode_bind global,-insert
 @cbind  O<uri:\@uri>_  = uri %s
 
 # Mode setting binds
-@cbind  i = @set_mode insert
+@cbind i = @set_mode insert
 
 # Hard-bound bookmarks
 @cbind  gh  = uri google.co.uk
@@ -439,7 +439,7 @@ sync_spawn_exec @scripts_dir/load_cookies.sh
 sync_spawn_exec @scripts_dir/load_cookies.sh @data_home/uzbl/session-cookies.txt
 
 # Set the "home" page.
-set uri = google.co.uk
+# set uri = google.co.uk
 
 @on_event DOWNLOAD_COMPLETE spawn @scripts_dir/downloadviewer.sh %s
 # vim: set fdm=syntax:
