@@ -195,6 +195,8 @@ fileviewer *.flac soxi
 
 " Video
 filextype *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.vob,*.flv,*.m2v,*.mov,*.webm,*.ts,*.m4v
+        \ {View using vlc}
+        \ vlc %c,
         \ {View using ffplay}
         \ ffplay -fs %c,
         \ {View using Dragon}
@@ -224,7 +226,7 @@ fileviewer *.[1-8] man ./%c | col -b
 " Image
 filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
         \ {View in feh}
-        \ feh %d --start-at %d/%c 2>/dev/null &,
+        \ feh %d --scale-down --start-at %d/%c 2>/dev/null &,
         \ {View in sxiv}
         \ sxiv,
         \ {View in gpicview}
