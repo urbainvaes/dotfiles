@@ -172,6 +172,9 @@ set clipboard=unnamedplus
 set lazyredraw
 set hidden
 
+" mutt
+au BufRead *mutt* set tw=72
+
 " Colorscheme
 if $COLORSCHEME=="light"
     silent! colo solarized
