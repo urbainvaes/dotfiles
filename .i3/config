@@ -97,7 +97,7 @@ bindsym $mod+plus exec workspace n 9
 bindsym $mod+bracketright exec workspace n 10
 
 # move focused container to workspace
-bindsym $mod+Shift+ampersand exec workspace m 1 m
+bindsym $mod+Shift+ampersand exec workspace m 1
 bindsym $mod+Shift+bracketleft exec workspace m 2
 bindsym $mod+Shift+braceleft exec workspace m 3
 bindsym $mod+Shift+braceright exec workspace m 4
