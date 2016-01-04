@@ -53,3 +53,6 @@ fi
 
     bindkey '^y' autosuggest-execute-suggestion
 }
+
+# Z
+export _Z_EXCLUDE_DIRS=("$HOME/sshfs")
