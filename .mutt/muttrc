@@ -12,7 +12,7 @@ set tmpdir           = ~/.mutt/temp
 source ~/.mutt/crypto
 source ~/.mutt/alias
 source ~/.mutt/mailboxes
-source ~/.mutt/id_main
+source ~/.mutt/id_work
 
 # General information
 set realname = "Urbain Vaes"
@@ -57,9 +57,9 @@ set include=yes
 
 # Macros
 macro index,pager gm "<change-folder> +Main/Main<enter>" 
-macro index,pager gp "<change-folder> +Private/Private<enter>" 
+macro index,pager gp "<change-folder> +Personal/Personal<enter>" 
 macro index,pager gi "<change-folder> +Informal/Informal<enter>" 
-macro index,pager gw "<change-folder> +Imperial/Imperial<enter>" 
+macro index,pager gw "<change-folder> +Work/Work<enter>" 
 
 # Key bindings
 bind index,pager \Cf next-page
@@ -77,13 +77,13 @@ bind pager k previous-entry
 bind pager R group-reply
 
 # Hooks
-send-hook '~t .*@imperial\.ac\.uk$' 'source ~/.mutt/id_imperial'
-reply-hook '~t .*@imperial\.ac\.uk$' 'source ~/.mutt/id_imperial'
+send-hook '~t .*@imperial\.ac\.uk$' 'source ~/.mutt/id_work'
+reply-hook '~t .*@imperial\.ac\.uk$' 'source ~/.mutt/id_work'
 
-folder-hook 'Main*'    'source ~/.mutt/id_main'
+folder-hook 'Main*'     'source ~/.mutt/id_main'
 folder-hook 'Informal*' 'source ~/.mutt/id_informal'
-folder-hook 'Private*'  'source ~/.mutt/id_private'
-folder-hook 'Imperial*' 'source ~/.mutt/id_imperial'
+folder-hook 'Personal*'  'source ~/.mutt/id_personal'
+folder-hook 'Work*'     'source ~/.mutt/id_work'
 
 # Source mutt solarized
 `[ "$COLORSCHEME" = "light" ] && echo source $HOME/.mutt/solarized/mutt-colors-solarized-light-16.muttrc || echo set`

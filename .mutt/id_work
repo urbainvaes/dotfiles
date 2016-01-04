@@ -1,10 +1,10 @@
 set from = "u.vaes13@imperial.ac.uk"
 set sendmail="/usr/bin/msmtp -a imperial"
 
-set spoolfile = "+Imperial/Imperial"
-set record    = "+Imperial/Imperial.sent"
-set postponed = "+Imperial/Imperial.drafts"
-set trash     = "+Imperial/Imperial.bin"
+set spoolfile = "+Work/Work"
+set record    = "+Work/Work.sent"
+set postponed = "+Work/Work.drafts"
+set trash     = "+Work/Work.bin"
 
 macro index,pager gs "<change-folder> $record<enter>"
 macro index,pager gd "<change-folder> $postponed<enter>"

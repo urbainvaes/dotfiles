@@ -1,10 +1,10 @@
 set from = "urbain.p.vaes@openmailbox.org"
-set sendmail="/usr/bin/msmtp -a private"
+set sendmail="/usr/bin/msmtp -a openmailbox"
 
-set spoolfile = "+Private/Private"
-set record    = "+Private/Private.sent"
-set postponed = "+Private/Private.drafts"
-set trash     = "+Private/Private.bin"
+set spoolfile = "+Personal/Personal"
+set record    = "+Personal/Personal.sent"
+set postponed = "+Personal/Personal.drafts"
+set trash     = "+Personal/Personal.bin"
 
 macro index,pager gs "<change-folder> $record<enter>"
 macro index,pager gd "<change-folder> $postponed<enter>"
