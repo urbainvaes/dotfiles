@@ -85,28 +85,28 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 
 # switch to workspace
-bindsym $mod+ampersand exec workspace n 1
-bindsym $mod+bracketleft exec workspace n 2
-bindsym $mod+braceleft exec workspace n 3
-bindsym $mod+braceright exec workspace n 4
-bindsym $mod+parenleft exec workspace n 5
-bindsym $mod+equal exec workspace n 6
-bindsym $mod+asterisk exec workspace n 7
-bindsym $mod+parenright exec workspace n 8
-bindsym $mod+plus exec workspace n 9
-bindsym $mod+bracketright exec workspace n 10
+bindsym $mod+ampersand workspace number 1
+bindsym $mod+bracketleft workspace number 2
+bindsym $mod+braceleft workspace number 3
+bindsym $mod+braceright workspace number 4
+bindsym $mod+parenleft workspace number 5
+bindsym $mod+equal workspace number 6
+bindsym $mod+asterisk workspace number 7
+bindsym $mod+parenright workspace number 8
+bindsym $mod+plus workspace number 9
+bindsym $mod+bracketright workspace number 10
 
 # move focused container to workspace
-bindsym $mod+Shift+ampersand exec workspace m 1
-bindsym $mod+Shift+bracketleft exec workspace m 2
-bindsym $mod+Shift+braceleft exec workspace m 3
-bindsym $mod+Shift+braceright exec workspace m 4
-bindsym $mod+Shift+1 exec workspace m 5
-bindsym $mod+Shift+equal exec workspace m 6
-bindsym $mod+Shift+asterisk exec workspace m 7
-bindsym $mod+Shift+2 exec workspace m 8
-bindsym $mod+Shift+plus exec workspace m 9
-bindsym $mod+Shift+bracketright exec workspace m 10
+bindsym $mod+Shift+ampersand move container to workspace number 1
+bindsym $mod+Shift+bracketleft move container to workspace number 2
+bindsym $mod+Shift+braceleft move container to workspace number 3
+bindsym $mod+Shift+braceright move container to workspace number 4
+bindsym $mod+Shift+1 move container to workspace number 5
+bindsym $mod+Shift+equal move container to workspace number 6
+bindsym $mod+Shift+asterisk move container to workspace number 7
+bindsym $mod+Shift+2 move container to workspace number 8
+bindsym $mod+Shift+plus move container to workspace number 9
+bindsym $mod+Shift+bracketright move container to workspace number 10
 
 # Keybindings for create and move
 bindsym $mod+n exec workspace n

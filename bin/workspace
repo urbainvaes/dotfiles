@@ -1,20 +1,29 @@
 #!/bin/zsh
 
+# Command to use
+[[ $1 = 'n' ]] && cmd="workspace" || cmd="move container to workspace"
+
+# List of workspaces
 workspaces=$(i3-msg -t get_workspaces | grep -Po '"name":.*?[^\\]"' | sed 's/"name":"\([^"]\+\)"/\1/g')
 
-if [[ ! -z $2 ]]; then
-    target=$(echo $workspaces | grep "$2")
-    [[ -z $target ]] && target=$2
-else
+# Get desired workspace
+target=$(echo $workspaces | dmenu -i -sf green -p "Go to workspace:")
+
+# Exit if empty
+[[ -z $target ]] && exit
+
+# If new workspace has to be created
+if [[ ! $target = [0-9]* ]]; then
+
+    # Calculate number for new workspace
     used_numbers=$(echo $workspaces | awk 'BEGIN { FS = ":" } ; { print $1 }')
     max_number=$(echo $used_numbers | tail -1)
     lowest_gap=$(echo $used_numbers | awk '$1!=p+1{print p+1}{p=$1}' | head -1)
     [[ -z $lowest_gap ]] && new_number=$(($max_number +  1)) || new_number=$lowest_gap
 
-    target=$(echo $workspaces | dmenu -i -sf green -p "Go to workspace:")
-    [[ -z $target ]] && exit
-    [[ ! $target = [0-9]* ]] && target=$new_number:$target
+    # Add number to workspace name
+    target=$new_number:$target
 fi
 
-[[ $1 = 'n' ]] && cmd="workspace" || cmd="move container to workspace"
+# Execute command
 exec i3-msg $cmd $target
