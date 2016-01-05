@@ -52,7 +52,7 @@ auto_view text/html
 alternative_order text/plain text/enriched text/html
 
 # Editor
-set editor="vim --noplugin"
+set editor="vim"
 set include=yes
 
 # Macros
