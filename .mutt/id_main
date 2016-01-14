@@ -9,3 +9,5 @@ set trash     = "+Main/Main.bin"
 macro index,pager gs "<change-folder> $record<enter>"
 macro index,pager gd "<change-folder> $postponed<enter>"
 macro index,pager gb "<change-folder> $trash<enter>"
+
+unset record
