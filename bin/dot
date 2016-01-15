@@ -1,0 +1,58 @@
+#!/usr/bin/env python
+
+import os
+import sys
+import yaml
+
+# Colors for terminal
+from termcolor import colored
+
+
+# Path of dotfiles
+dotpath = '/home/urbain/dotfiles'
+
+# Load yaml configuration file
+with open(dotpath + "/install.yaml", 'r') as stream:
+    config = yaml.load(stream)
+
+# Special symlinks
+special_symlinks = set(config['special'].keys())
+
+# All files in dir
+normal_symlinks = set(os.listdir(dotpath)) - set(config['exclude'])
+
+
+def perform(action):
+
+    # Command to execute
+    command = config['commands'][action]
+
+    for f in special_symlinks | normal_symlinks:
+
+        # Print filename
+        print('[' + colored(f, 'green') + ']')
+
+        if f in config['pre']:
+            print(config['pre'][f])
+            os.system(config['pre'][f])
+
+        # Target of symlink
+        if f in special_symlinks:
+            t = config['special'][f]
+        elif f in normal_symlinks:
+            t = config['default'].format(file=f)
+
+        if t != "":
+            # Formatted command
+            formatted = command.format(file=f, path=dotpath, target=t)
+
+            # Print & execute command
+            print(formatted)
+            os.system(formatted)
+
+        else:
+            print("Nothing to do!")
+
+        print('\n')
+
+perform(sys.argv[1])

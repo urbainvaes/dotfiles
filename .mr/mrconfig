@@ -1,0 +1,24 @@
+[dotfiles]
+checkout = git clone 'git@github.com:uvaes/dotfiles' 'dotfiles'
+
+[dotfiles/.personal]
+checkout = git clone 'git@github.com:uvaes/personal' '.personal'
+
+[dotfiles/.vim/vim-plug]
+checkout = git clone 'https://github.com/junegunn/vim-plug' 'vim-plug'
+skip = [ "$1" = push ]
+
+[dotfiles/.mutt/solarized]
+checkout = git clone 'https://github.com/altercation/mutt-colors-solarized' 'solarized'
+skip = [ "$1" = push ]
+
+[dotfiles/.zsh/zgen]
+checkout = git clone 'https://github.com/tarjoilija/zgen' 'zgen'
+skip = [ "$1" = push ]
+
+[dotfiles/.passwords]
+checkout = git clone 'urbain@urbainvaes.com:git/passwords.git' '.passwords'
+
+[dotfiles/.urxvt/ext]
+checkout = git clone 'https://github.com/muennich/urxvt-perls' 'ext'
+skip = [ "$1" = push ]

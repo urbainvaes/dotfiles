@@ -1,0 +1,47 @@
+exclude:
+    - '.personal'
+    - '.git'
+    - '.gitignore'
+    - 'install.yaml'
+    - 'README.md'
+
+# Commands to install / uninstall symlinks
+commands:
+    up: rm -rf {target} && ln -s {path}/{file} {target}
+    down: rm -rf {target}
+
+# Default target
+default: ~/{file}
+
+# Special targets
+special:
+
+    .i3: ~/.config/i3
+
+    .mr/mrconfig: ~/.mrconfig
+    .mr/mrtrust: ~/.mrtrust
+
+    .offlineimap: ""
+    .offlineimap/offlineimaprc: ~/.offlineimaprc
+    .offlineimap/offlineimap.py: ~/.offlineimap.py
+
+    .vim/.vimrc: ~/.vimrc
+    .zathurarc: ~/.config/zathura/zathurarc
+
+    .zsh/zgen: ~/.zgen
+    .zsh/zshrc: ~/.zshrc
+
+    .uzbl: ~/.config/uzbl
+    .uzbl/bookmarks: ~/.local/share/uzbl/bookmarks
+
+    .passwords: ~/.password-store
+
+# Additional actions before symlink
+pre:
+    .mutt: |
+        mkdir -p .mutt/temp
+        mkdir -p .mutt/cache
+        mkdir -p .mutt/bodies
+
+    .vim: |
+        mkdir -p .vim/vimundo
