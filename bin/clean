@@ -1,9 +1,0 @@
-#! /bin/bash
-dotdir=/home/urbain/dotfiles && cd $dotdir
-for file in `ls -A --ignore="Makefile" --ignore="README.md" --ignore=".git*"`; do
-    if [[ -f $file/Makefile ]]; then
-        cd $file && make clean && cd $dotdir
-    else
-        rm -f $HOME/$file
-    fi
-done

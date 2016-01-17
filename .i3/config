@@ -27,7 +27,7 @@ font pango:DejaVu Sans Mono 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+d kill
@@ -109,8 +109,8 @@ bindsym $mod+Shift+plus move container to workspace number 9
 bindsym $mod+Shift+bracketright move container to workspace number 10
 
 # Keybindings for create and move
-bindsym $mod+n exec workspace n
-bindsym $mod+m exec workspace m
+bindsym $mod+n exec --no-startup-id workspace n
+bindsym $mod+Shift+n exec --no-startup-id workspace m
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -157,8 +157,8 @@ bindsym $mod+comma workspace prev
 bindsym $mod+period workspace next
 
 # Programs shortcuts
-bindsym $mod+b exec uzbl-browser
-bindsym $mod+at exec chromium-browser
+bindsym $mod+b exec --no-startup-id uzbl-browser
+bindsym $mod+i exec --no-startup-id vimin
 
 # Configuration
 # bindsym F1 exec $HOME/.xinitrc

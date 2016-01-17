@@ -1,47 +1,49 @@
-exclude:
-    - '.personal'
-    - '.git'
-    - '.gitignore'
-    - 'install.yaml'
-    - 'README.md'
-
 # Commands to install / uninstall symlinks
 commands:
     up: rm -rf {target} && ln -s {path}/{file} {target}
     down: rm -rf {target}
 
-# Default target
-default: ~/{file}
+
+# Default targets
+default:
+    - bin
+    - .bashrc
+    - .gitconfig
+    - .git_template
+    - .inputrc
+    - .latexmkrc
+    - .ncmpcpp
+    - .surfraw.bookmarks
+    - .urxvt
+    - .vim
+    - .vifm
+    - .xinitrc
+    - .Xresources
+    - .zsh
 
 # Special targets
 special:
-
     .i3: ~/.config/i3
-
     .mr/mrconfig: ~/.mrconfig
     .mr/mrtrust: ~/.mrtrust
-
-    .offlineimap: ""
+    .msmtprc: ~/.msmptprc
     .offlineimap/offlineimaprc: ~/.offlineimaprc
     .offlineimap/offlineimap.py: ~/.offlineimap.py
-
-    .vim/.vimrc: ~/.vimrc
-    .zathurarc: ~/.config/zathura/zathurarc
-
-    .zsh/zgen: ~/.zgen
-    .zsh/zshrc: ~/.zshrc
-
+    .tmux.conf: ~/.tmux.conf
+    .vim/vimrc: ~/.vimrc
     .uzbl: ~/.config/uzbl
     .uzbl/bookmarks: ~/.local/share/uzbl/bookmarks
-
     .passwords: ~/.password-store
+    .zathurarc: ~/.config/zathura/zathurarc
+    .zsh/zgen: ~/.zgen
+    .zsh/zshrc: ~/.zshrc
 
 # Additional actions before symlink
 pre:
     .mutt: |
-        mkdir -p .mutt/temp
-        mkdir -p .mutt/cache
-        mkdir -p .mutt/bodies
+        mkdir -p {path}/.mutt/temp
+        mkdir -p {path}/.mutt/cache
+        mkdir -p {path}/.mutt/bodies
 
     .vim: |
-        mkdir -p .vim/vimundo
+        mkdir -p {path}/.vim/vimundo
