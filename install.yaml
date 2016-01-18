@@ -23,7 +23,8 @@ default:
 
 # Special targets
 special:
-    .i3: ~/.config/i3
+    .i3/config: ~/.config/i3/config
+    .i3/i3status.conf: ~/.config/i3status/config
     .mr/mrconfig: ~/.mrconfig
     .mr/mrtrust: ~/.mrtrust
     .msmtprc: ~/.msmptprc

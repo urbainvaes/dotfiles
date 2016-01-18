@@ -56,12 +56,14 @@ set editor="vim"
 set include=yes
 
 # Macros
-macro index,pager gm "<change-folder> +Main/Main<enter>" 
-macro index,pager gp "<change-folder> +Personal/Personal<enter>" 
-macro index,pager gi "<change-folder> +Informal/Informal<enter>" 
-macro index,pager gw "<change-folder> +Work/Work<enter>" 
+macro index,pager gm "<change-folder> +Main/Main<enter>"
+macro index,pager gp "<change-folder> +Personal/Personal<enter>"
+macro index,pager gi "<change-folder> +Informal/Informal<enter>"
+macro index,pager gw "<change-folder> +Work/Work<enter>"
 
 # Key bindings
+bind attach <return> view-mailcap
+
 bind index,pager \Cf next-page
 bind index,pager \Cb previous-page
 bind index,pager \Cu next-unread-mailbox
