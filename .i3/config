@@ -109,8 +109,8 @@ bindsym $mod+Shift+plus move container to workspace number 9
 bindsym $mod+Shift+bracketright move container to workspace number 10
 
 # Keybindings for create and move
-bindsym $mod+n exec --no-startup-id workspace n
-bindsym $mod+Shift+n exec --no-startup-id workspace m
+bindsym $mod+n exec $HOME/bin/workspace n
+bindsym $mod+Shift+n exec $HOME/bin/workspace m
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -158,7 +158,7 @@ bindsym $mod+period workspace next
 
 # Programs shortcuts
 bindsym $mod+b exec --no-startup-id uzbl-browser
-bindsym $mod+i exec --no-startup-id vimin
+bindsym $mod+i exec $HOME/bin/vimin
 
 # Configuration
 # bindsym F1 exec $HOME/.xinitrc
@@ -183,4 +183,4 @@ bindsym XF86MonBrightnessDown exec light -U 10
 
 # font pango:DejaVu Sans Mono 10
 bindsym F1 exec --no-startup-id feh --bg-fill --randomize /usr/share/backgrounds
-bindsym $mod+semicolon exec --no-startup-id /home/urbain/dotfiles/bin/run
+bindsym $mod+semicolon exec --no-startup-id $HOME/bin/run
