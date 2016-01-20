@@ -4,7 +4,7 @@ while true;
 do
     mbsync -a
     nmails=$(find $HOME/.mail -path '*/new/*' -type f | wc -l)
-    [[ nmails -ge 1 ]] && notify-send "New mail!"
+    [[ nmails -ge 1 ]] && notify-send -t 1 "New mail!"
     date
     sleep 5m
 done
