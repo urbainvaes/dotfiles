@@ -5,7 +5,6 @@ URxvt.loginShell   : true
 URxvt.termName     : rxvt-256color
 
 ! Custom META key
-! URxvt*modifier: super
 URxvt*modifier: alt
 
 ! Copy-paste configuration
@@ -13,7 +12,7 @@ URxvt.clipboard.copycmd:  xclip -i -selection clipboard
 URxvt.clipboard.pastecmd: xclip -o -selection clipboard
 
 ! Perl extensions configuration
-URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select,fullscreen
+URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select
 URxvt.url-select.launcher: /usr/bin/uzbl-browser
 URxvt.url-select.underline: true
 
@@ -23,7 +22,6 @@ URxvt.keysym.M-s: perl:keyboard-select:search
 URxvt.keysym.M-u: perl:url-select:select_next
 URxvt.keysym.M-y: perl:clipboard:copy
 URxvt.keysym.M-p: perl:clipboard:paste
-URxvt.keysym.F11: perl:fullscreen:switch
 
 ! Appearance
 URxvt*font: xft:DejaVu Sans Mono:size=12
@@ -31,4 +29,5 @@ URxvt*scrollBar: false
 URxvt*internalBorder: 0
 
 ! True transparency
-URxvt.depth: 32
+! URxvt.transparent: true
+! URxvt.shading: 10
