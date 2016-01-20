@@ -12,6 +12,7 @@ default:
     - .git_template
     - .inputrc
     - .latexmkrc
+    - .mbsyncrc
     - .ncmpcpp
     - .surfraw.bookmarks
     - .urxvt
@@ -28,8 +29,6 @@ special:
     .mr/mrconfig: ~/.mrconfig
     .mr/mrtrust: ~/.mrtrust
     .msmtprc: ~/.msmptprc
-    .offlineimap/offlineimaprc: ~/.offlineimaprc
-    .offlineimap/offlineimap.py: ~/.offlineimap.py
     .tmux.conf: ~/.tmux.conf
     .vim/vimrc: ~/.vimrc
     .uzbl: ~/.config/uzbl

@@ -1,0 +1,118 @@
+Create Both
+SyncState *
+
+IMAPAccount Main
+Host imap.gmail.com
+User urbain.p.vaes@gmail.com
+PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.password-store/gmail/urbain.p.vaes@gmail.com.gpg"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPAccount Informal
+Host imap.gmail.com
+User urbainvaes90@gmail.com
+PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.password-store/gmail/urbainvaes90@gmail.com.gpg"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPAccount Work
+Host outlook.office365.com
+User uv113@ic.ac.uk
+PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.password-store/imperial/u.vaes13@imperial.ac.uk.gpg"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPAccount Personal
+Host imap.openmailbox.org
+User urbain.p.vaes@openmailbox.org
+PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.password-store/openmailbox/urbain.p.vaes@openmailbox.org.gpg"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore Main-remote
+Account Main
+
+IMAPStore Informal-remote
+Account Informal
+
+IMAPStore Work-remote
+Account Work
+
+IMAPStore Personal-remote
+Account Personal
+
+MaildirStore Main-local
+Path ~/.mail/Main/
+
+MaildirStore Informal-local
+Path ~/.mail/Informal/
+
+MaildirStore Work-local
+Path ~/.mail/Work/
+
+MaildirStore Personal-local
+Path ~/.mail/Personal/
+
+Channel Main-inbox
+Master :Main-remote:"INBOX"
+Slave  :Main-local:"Main"
+
+Channel Main-draft
+Master :Main-remote:"[Gmail]/Drafts"
+Slave  :Main-local:"Main.drafts"
+
+Channel Main-sent
+Master :Main-remote:"[Gmail]/Sent Mail"
+Slave  :Main-local:"Main.sent"
+
+Channel Main-bin
+Master :Main-remote:"[Gmail]/Bin"
+Slave  :Main-local:"Main.bin"
+
+Channel Informal-inbox
+Master :Informal-remote:"INBOX"
+Slave  :Informal-local:"Informal"
+
+Channel Informal-draft
+Master :Informal-remote:"[Gmail]/Drafts"
+Slave  :Informal-local:"Informal.drafts"
+
+Channel Informal-sent
+Master :Informal-remote:"[Gmail]/Sent Mail"
+Slave  :Informal-local:"Informal.sent"
+
+Channel Informal-bin
+Master :Informal-remote:"[Gmail]/Bin"
+Slave  :Informal-local:"Informal.bin"
+
+Channel Work-inbox
+Master :Work-remote:"INBOX"
+Slave  :Work-local:"Work"
+
+Channel Work-draft
+Master :Work-remote:"Drafts"
+Slave  :Work-local:"Work.drafts"
+
+Channel Work-sent
+Master :Work-remote:"Sent Items"
+Slave  :Work-local:"Work.sent"
+
+Channel Work-bin
+Master :Work-remote:"Deleted Items"
+Slave  :Work-local:"Work.bin"
+
+Channel Personal-inbox
+Master :Personal-remote:"INBOX"
+Slave  :Personal-local:"Personal"
+
+Channel Personal-draft
+Master :Personal-remote:"Drafts"
+Slave  :Personal-local:"Personal.drafts"
+
+Channel Personal-sent
+Master :Personal-remote:"Sent"
+Slave  :Personal-local:"Personal.sent"
+
+Channel Personal-bin
+Master :Personal-remote:"Trash"
+Slave  :Personal-local:"Personal.bin"
