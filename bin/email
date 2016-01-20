@@ -1,0 +1,10 @@
+#! /usr/bin/env bash
+
+while true;
+do
+    mbsync -a
+    nmails=$(find $HOME/.mail -path '*/new/*' -type f | wc -l)
+    [[ nmails -ge 1 ]] && notify-send "New mail!"
+    date
+    sleep 5m
+done

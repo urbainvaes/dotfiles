@@ -26,5 +26,6 @@ eval $(ssh-agent)
 # Programs to start
 nm-applet &
 dropbox &
+dunst &
 
 exec i3
