@@ -20,6 +20,7 @@ set sort = reverse-date
 set weed
 set fcc_clear
 unset markers
+set sleep_time = 0
 
 # Encryption
 set crypt_autosign = no
@@ -59,8 +60,6 @@ macro index,pager gm "<change-folder> +Main/Main<enter>"
 macro index,pager gp "<change-folder> +Personal/Personal<enter>"
 macro index,pager gi "<change-folder> +Informal/Informal<enter>"
 macro index,pager gw "<change-folder> +Work/Work<enter>"
-
-macro index d "WNk<delete-message>"
 
 # Key bindings
 bind attach <return> view-mailcap

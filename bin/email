@@ -1,10 +1,6 @@
 #! /usr/bin/env bash
-
-while true;
-do
-    mbsync -a
-    nmails=$(find $HOME/.mail -path '*/new/*' -type f | wc -l)
-    [[ nmails -ge 1 ]] && notify-send -t 1 "New mail!"
-    date
-    sleep 5m
-done
+export DISPLAY=:0
+mbsync -a
+nmails=$(find $HOME/.mail -path '*/new/*' -type f | wc -l)
+[[ nmails -ge 1 ]] && /usr/bin/notify-send -t 1 "New mail!" || /usr/bin/notify-send -u low -t 1 "No new mail!"
+echo "Email last checked on $(date)".

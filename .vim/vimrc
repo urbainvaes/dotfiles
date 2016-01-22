@@ -174,7 +174,7 @@ set lazyredraw
 set hidden
 
 " mutt
-au BufRead *mutt* set tw=72
+au BufRead /tmp/mutt-* set tw=72
 
 " Colorscheme
 if $COLORSCHEME=="light"
@@ -224,11 +224,10 @@ nnoremap <Leader>sc :source %<cr>
 
 " File edits
 nnoremap <Leader>es :UltiSnipsEdit<cr>
-nnoremap <Leader>em :e ~/dotfiles/mutt/muttrc<cr>
-nnoremap <Leader>en :e ~/dotfiles/nvimrc<cr>
-nnoremap <Leader>ev :e ~/dotfiles/vimrc<cr>
-nnoremap <Leader>ez :e ~/dotfiles/zshrc<cr>
-nnoremap <Leader>et :e ~/dotfiles/tmux.conf<cr>
+nnoremap <Leader>em :e ~/dotfiles/.mutt/muttrc<cr>
+nnoremap <Leader>ev :e ~/dotfiles/.vim/vimrc<cr>
+nnoremap <Leader>ez :e ~/dotfiles/.zsh/zshrc<cr>
+nnoremap <Leader>et :e ~/dotfiles/.tmux.conf<cr>
 
 " Formatting
 nnoremap <Leader>fw :%s/\s\+$//<cr>
