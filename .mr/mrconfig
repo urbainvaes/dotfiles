@@ -1,24 +1,24 @@
-[.]
+[/home/urbain/dotfiles]
 checkout = git clone 'git@github.com:uvaes/dotfiles' 'dotfiles'
 
-[.personal]
+[/home/urbain/dotfiles/.personal]
 checkout = git clone 'urbain@urbainvaes.com:git/perso/personal.git' '.personal'
 
-[.vim/vim-plug]
+[/home/urbain/dotfiles/.vim/vim-plug]
 checkout = git clone 'https://github.com/junegunn/vim-plug' 'vim-plug'
 skip = [ "$1" = push ]
 
-[.mutt/solarized]
+[/home/urbain/dotfiles/.mutt/solarized]
 checkout = git clone 'https://github.com/altercation/mutt-colors-solarized' 'solarized'
 skip = [ "$1" = push ]
 
-[.zsh/zgen]
+[/home/urbain/dotfiles/.zsh/zgen]
 checkout = git clone 'https://github.com/tarjoilija/zgen' 'zgen'
 skip = [ "$1" = push ]
 
-[.passwords]
+[/home/urbain/dotfiles/.passwords]
 checkout = git clone 'urbain@urbainvaes.com:git/passwords.git' '.passwords'
 
-[.urxvt/ext]
+[/home/urbain/dotfiles/.urxvt/ext]
 checkout = git clone 'https://github.com/muennich/urxvt-perls' 'ext'
 skip = [ "$1" = push ]
