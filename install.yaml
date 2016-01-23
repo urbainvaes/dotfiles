@@ -13,6 +13,7 @@ default:
     - .inputrc
     - .latexmkrc
     - .mbsyncrc
+    - .mutt
     - .ncmpcpp
     - .surfraw.bookmarks
     - .urxvt
