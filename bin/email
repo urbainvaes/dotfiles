@@ -1,6 +1,16 @@
 #! /usr/bin/env bash
+
+# Necessary to see the notification
 export DISPLAY=:0
+
+# Get all emails
 mbsync -a
-nmails=$(find $HOME/.mail -path '*/new/*' -type f | wc -l)
-[[ nmails -ge 1 ]] && /usr/bin/notify-send -t 1 "New mail!" || /usr/bin/notify-send -u low -t 1 "No new mail!"
+
+new_mails=$(find $HOME/.mail -path '*/new/*' -type f)
+subjects=$(cat $(echo -e ${new_mails/'\n'/' '}) | grep "^Subject: " | sed "s/^Subject: //g")
+
+if [[ ! -z ${new_mails} ]]; then
+    /usr/bin/notify-send -t 3 "New mail(s)!" "${subjects}"
+fi
+
 echo "Email last checked on $(date)".

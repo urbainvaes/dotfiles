@@ -2,7 +2,7 @@
 checkout = git clone 'git@github.com:uvaes/dotfiles' 'dotfiles'
 
 [.personal]
-checkout = git clone 'git@github.com:uvaes/personal' '.personal'
+checkout = git clone 'urbain@urbainvaes.com:git/perso/personal.git' '.personal'
 
 [.vim/vim-plug]
 checkout = git clone 'https://github.com/junegunn/vim-plug' 'vim-plug'
