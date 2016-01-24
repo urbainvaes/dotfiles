@@ -14,8 +14,10 @@ default:
     - .latexmkrc
     - .mbsyncrc
     - .mutt
+    - .msmtprc
     - .ncmpcpp
     - .surfraw.bookmarks
+    - .tmux.conf
     - .urxvt
     - .vim
     - .vifm
@@ -25,12 +27,11 @@ default:
 
 # Special targets
 special:
+    .dunstrc: ~/.config/dunst/dunstrc
     .i3/config: ~/.config/i3/config
     .i3/i3status.conf: ~/.config/i3status/config
     .mr/mrconfig: ~/.mrconfig
     .mr/mrtrust: ~/.mrtrust
-    .msmtprc: ~/.msmptprc
-    .tmux.conf: ~/.tmux.conf
     .vim/vimrc: ~/.vimrc
     .uzbl: ~/.config/uzbl
     .uzbl/bookmarks: ~/.local/share/uzbl/bookmarks
