@@ -1,6 +1,6 @@
 # Commands to install / uninstall symlinks
 commands:
-    up: rm -rf {target} && ln -s {path}/{file} {target}
+    up: rm -rf {target} && mkdir -p $(dirname {target}) && ln -s {path}/{file} {target}
     down: rm -rf {target}
 
 

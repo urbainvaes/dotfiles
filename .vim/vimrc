@@ -39,7 +39,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'troydm/zoomwintab.vim'
-Plug 'Valloric/YouCompleteMe', { 'do' : './install.py --clang-completer' }
+Plug 'Valloric/YouCompleteMe', { 'do' : 'python2 install.py --clang-completer' }
 call plug#end()
 
 let g:vimtex_fold_enabled=0
