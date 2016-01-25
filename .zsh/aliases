@@ -1,22 +1,7 @@
 #!/bin/zsh
 
-# Apps for filetypes
-alias -s vim=$EDITOR
-alias -s cpp=$EDITOR
-alias -s c=$EDITOR
-alias -s tex=$EDITOR
-alias -s pdf=zathura
-
 # Directories
-alias books='cd ~/Dropbox/phd/books'
 alias cdd='cd ~/dotfiles'
-alias papers='cd ~/Dropbox/phd/papers'
-alias report='cd ~/Dropbox/phd/reports/9\ months'
-alias u='cd ~/Dropbox/phd'
-alias uc='cd ~/Dropbox/phd/programs'
-alias ul='cd ~/Dropbox/phd/literature'
-alias up='cd ~/Dropbox/phd/presentations'
-alias ur='cd ~/Dropbox/phd/reports'
 
 # Commands
 alias a='vifm . .'
@@ -24,28 +9,14 @@ alias c='clear'
 alias ca='printf "\ec"'
 alias g='git'
 alias m='mutt'
-alias mail='offlineimap -u quiet &'
 alias mc='make clean'
 alias mca='make clean-all'
 alias n='nvim'
-alias pushs='git push --recurse-submodules=check'
 alias v='vim'
 alias vims="vim -S Session.vim"
 alias vimtex='vim -S Session.vim --servername SYNC'
-alias x='sh ~/.xmodmap'
 alias youtube='mpsyt'
 alias notes='vim ~/dotfiles/.notes'
-
-# Configuration
-alias em="$EDITOR ~/.mutt/muttrc"
-alias en="$EDITOR ~/.nvimrc"
-alias eo="$EDITOR ~/.offlineimaprc"
-alias et="$EDITOR ~/.tmux.conf"
-alias ev="$EDITOR ~/.vimrc"
-alias evi="$EDITOR ~/.vifm/vifmrc"
-alias ex="$EDITOR ~/.xmodmap"
-alias ez="$EDITOR ~/.zshrc"
-alias eza="$EDITOR ~/.zathurarc"
 
 # Tmux
 alias son="tmux set -g status on"
