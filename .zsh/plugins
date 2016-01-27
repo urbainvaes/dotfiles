@@ -55,4 +55,4 @@ fi
 }
 
 # Z
-export _Z_EXCLUDE_DIRS=("$HOME/sshfs")
+export _Z_EXCLUDE_DIRS=("$HOME/sshfs", "$HOME/nfs")
