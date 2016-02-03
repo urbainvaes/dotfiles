@@ -1,5 +1,5 @@
-set from = "urbain.p.vaes@openmailbox.org"
-set sendmail="/usr/bin/msmtp -a openmailbox"
+set from = "me@urbainvaes.com"
+set sendmail="/usr/bin/msmtp -a personal"
 
 set spoolfile = "+Personal/Personal"
 set record    = "+Personal/Personal.sent"

@@ -56,9 +56,7 @@ set editor="vim"
 set include=yes
 
 # Macros
-macro index,pager gm "<change-folder> +Main/Main<enter>"
 macro index,pager gp "<change-folder> +Personal/Personal<enter>"
-macro index,pager gi "<change-folder> +Informal/Informal<enter>"
 macro index,pager gw "<change-folder> +Work/Work<enter>"
 
 # Key bindings
@@ -79,13 +77,8 @@ bind pager k previous-entry
 bind pager R group-reply
 
 # Hooks
-# send-hook '~t .*@imperial\.ac\.uk$' 'source ~/.mutt/id_work'
-# reply-hook '~t .*@imperial\.ac\.uk$' 'source ~/.mutt/id_work'
-
-folder-hook 'Main*'     'source ~/.mutt/id_main'
-folder-hook 'Informal*' 'source ~/.mutt/id_informal'
-folder-hook 'Personal*' 'source ~/.mutt/id_personal'
 folder-hook 'Work*'     'source ~/.mutt/id_work'
+folder-hook 'Personal*' 'source ~/.mutt/id_personal'
 
 # Source mutt solarized
 `[ "$COLORSCHEME" = "light" ] && echo source $HOME/.mutt/solarized/mutt-colors-solarized-light-16.muttrc || echo set`
