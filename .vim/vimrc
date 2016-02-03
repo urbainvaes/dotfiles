@@ -157,6 +157,7 @@ set linebreak
 set textwidth=0
 set conceallevel=2
 set guifont=Monaco\ 11
+set nojoinspaces
 
 " Case and spell
 set nospell
