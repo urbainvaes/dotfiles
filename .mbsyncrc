@@ -6,14 +6,14 @@ Sync All
 IMAPAccount Work
 Host outlook.office365.com
 User uv113@ic.ac.uk
-PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.password-store/imperial/u.vaes13@imperial.ac.uk.gpg"
+PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.password-store/email/u.vaes13@imperial.ac.uk.gpg"
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
 IMAPAccount Personal
 Host box.bknguyen.org
 User me@urbainvaes.com
-PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.password-store/mailinabox/me@urbainvaes.com.gpg"
+PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.password-store/email/me@urbainvaes.com.gpg"
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
