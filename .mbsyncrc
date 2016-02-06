@@ -12,8 +12,8 @@ CertificateFile /etc/ssl/certs/ca-certificates.crt
 
 IMAPAccount Personal
 Host box.bknguyen.org
-User me@urbainvaes.com
-PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.password-store/email/me@urbainvaes.com.gpg"
+User mail@urbainvaes.com
+PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.password-store/email/mail@urbainvaes.com.gpg"
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
@@ -60,19 +60,3 @@ Slave  :Personal-local:"Personal.sent"
 Channel Personal-bin
 Master :Personal-remote:"Trash"
 Slave  :Personal-local:"Personal.bin"
-
-Channel Personal-accounts
-Master :Personal-remote:"Accounts"
-Slave  :Personal-local:"Personal.accounts"
-
-Channel Personal-personal
-Master :Personal-remote:"Personal"
-Slave  :Personal-local:"Personal.personal"
-
-Channel Personal-jobs
-Master :Personal-remote:"Jobs"
-Slave  :Personal-local:"Personal.jobs"
-
-Channel Personal-archive
-Master :Personal-remote:"Archive"
-Slave  :Personal-local:"Personal.archive"
