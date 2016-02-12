@@ -189,6 +189,7 @@ elseif $COLORSCHEME=="seoul"
     set background=dark
 else
     silent! colo solarized
+    set background=dark
 endif
 
 highlight Comment cterm=italic
