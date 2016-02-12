@@ -1,14 +1,14 @@
-inoremap <buffer> (( \left(
-inoremap <buffer> )) \right)
-inoremap <buffer> {{ \left\{
-inoremap <buffer> }} \right\}
-inoremap <buffer> [[ \left[
-inoremap <buffer> ]] \right]
-inoremap <buffer> == \,=\,
-inoremap <buffer> >> \,\geq\,
-inoremap <buffer> << \,\leq\,
-inoremap <buffer> ++ \,+\,
-inoremap <buffer> -- \,-\,
+iabbrev <buffer> (( \left(
+iabbrev <buffer> )) \right)
+iabbrev <buffer> {{ \left\{
+iabbrev <buffer> }} \right\}
+iabbrev <buffer> [[ \left[
+iabbrev <buffer> ]] \right]
+iabbrev <buffer> == \,=\,
+iabbrev <buffer> >> \,\geq\,
+iabbrev <buffer> << \,\leq\,
+iabbrev <buffer> ++ \,+\,
+iabbrev <buffer> -- \,-\,
 
 iabbrev <buffer> ga \alpha
 iabbrev <buffer> gb \beta
@@ -29,7 +29,6 @@ iabbrev <buffer> gs \sigma
 iabbrev <buffer> gf \phi
 iabbrev <buffer> gp \pi
 iabbrev <buffer> gw \omega
-iabbrev <buffer> dd \d
 
 nnoremap <buffer> <LocalLeader>i :VimtexCompile<CR>
 nnoremap <buffer> <LocalLeader>e :VimtexErrors<CR>
