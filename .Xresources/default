@@ -1,0 +1,5 @@
+# include "/home/urbain/.Xresources/dark"
+
+! True transparency
+URxvt.transparent: true
+URxvt.shading: 10

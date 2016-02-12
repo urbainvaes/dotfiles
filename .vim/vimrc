@@ -184,8 +184,11 @@ if $COLORSCHEME=="light"
 elseif $COLORSCHEME=="dark"
     silent! colo solarized
     set background=dark
-elseif $COLORSCHEME=="default"
+elseif $COLORSCHEME=="seoul"
     silent! colo seoul256
+    set background=dark
+else
+    silent! colo solarized
     set background=dark
 endif
 

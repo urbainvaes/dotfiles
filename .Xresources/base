@@ -27,7 +27,3 @@ URxvt.keysym.M-p: perl:clipboard:paste
 URxvt*font: xft:DejaVu Sans Mono:size=12
 URxvt*scrollBar: false
 URxvt*internalBorder: 0
-
-! True transparency
-! URxvt.transparent: true
-! URxvt.shading: 10

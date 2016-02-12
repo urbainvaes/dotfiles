@@ -7,7 +7,7 @@ xset r rate 400 50
 $HOME/bin/keyboard
 
 # Load Xresources to light colorscheme
-xrdb $HOME/.Xresources/light
+xrdb $HOME/.Xresources/default
 
 # Background
 feh --bg-fill --randomize /usr/share/backgrounds
