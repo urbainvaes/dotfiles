@@ -32,7 +32,7 @@ if ! zgen saved; then
     # Other plugins
     zgen load rupa/z
     zgen load djui/alias-tips
-    zgen load tarruda/zsh-autosuggestions
+    zgen load tarruda/zsh-autosuggestions dist/autosuggestions.zsh
     zgen load joel-porquet/zsh-dircolors-solarized
 
     # Save all to init script
@@ -43,16 +43,10 @@ fi
 
 # Autosuggestion
 {
-    # Environment variables for plugin
-    AUTOSUGGESTION_HIGHLIGHT_COLOR='fg=6'
-
-    zle-line-init() {
-        zle autosuggest-start
-    }
-    zle -N zle-line-init
-
-    bindkey '^y' autosuggest-execute-suggestion
+    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=6'
+    autosuggest_start
+    bindkey '^y' autosuggest-accept
 }
 
 # Z
-export _Z_EXCLUDE_DIRS=("$HOME/sshfs")
+export _Z_EXCLUDE_DIRS=("$HOME/sshfs", "$HOME/nfs")

@@ -1,5 +1,5 @@
 [/home/urbain/dotfiles]
-checkout = git clone 'git@github.com:uvaes/dotfiles' 'dotfiles'
+checkout = git clone 'urbain@urbainvaes.com:git/dotfiles.git' 'dotfiles'
 
 [/home/urbain/dotfiles/.personal]
 checkout = git clone 'urbain@urbainvaes.com:git/perso/personal.git' '.personal'
