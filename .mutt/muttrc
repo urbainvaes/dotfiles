@@ -38,6 +38,7 @@ set sidebar_visible = yes
 set sidebar_delim='|'
 set sidebar_shortpath = yes
 set sidebar_folderindent = yes
+set sidebar_format = "%B%* %?F?[%F]?%?N?(%N)?%4S"
 bind index,pager \Cn sidebar-next
 bind index,pager \Cp sidebar-prev
 bind index,pager O sidebar-open
@@ -87,3 +88,7 @@ folder-hook 'Personal*' 'source ~/.mutt/id_personal'
 `[ "$COLORSCHEME" = "light" ] && echo source $HOME/.mutt/solarized/mutt-colors-solarized-light-16.muttrc || echo set`
 `[ "$COLORSCHEME" = "dark" ] && echo source $HOME/.mutt/solarized/mutt-colors-solarized-dark-16.muttrc || echo set`
 `[ "$COLORSCHEME" = "default" ] && echo source $HOME/.mutt/solarized/mutt-colors-solarized-dark-16.muttrc || echo set`
+
+# Identities
+set reverse_name
+alternates "mail@urbainvaes.com|spotify@urbainvaes.com|github@urbainvaes.com|linkedin@urbainvaes.com"
