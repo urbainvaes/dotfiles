@@ -442,4 +442,5 @@ sync_spawn_exec @scripts_dir/load_cookies.sh @data_home/uzbl/session-cookies.txt
 set uri = ""
 
 @on_event DOWNLOAD_COMPLETE spawn @scripts_dir/downloadviewer.sh %s
+
 # vim: set fdm=syntax:
