@@ -3,7 +3,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
 Plug 'beloglazov/vim-online-thesaurus'
-Plug 'bling/vim-airline'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'gregsexton/gitv', { 'on' : 'Gitv' }
@@ -40,6 +39,8 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'troydm/zoomwintab.vim'
 Plug 'Valloric/YouCompleteMe', { 'do' : 'python2 install.py --clang-completer' }
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 let g:vimtex_fold_enabled=0
