@@ -32,7 +32,7 @@ if ! zgen saved; then
     # Other plugins
     zgen load rupa/z
     zgen load djui/alias-tips
-    zgen load tarruda/zsh-autosuggestions dist/autosuggestions.zsh
+    zgen load tarruda/zsh-autosuggestions
     zgen load joel-porquet/zsh-dircolors-solarized
 
     # Save all to init script
@@ -44,7 +44,6 @@ fi
 # Autosuggestion
 {
     ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=6'
-    autosuggest_start
     bindkey '^y' autosuggest-accept
 }
 
