@@ -91,4 +91,4 @@ folder-hook 'Personal*' 'source ~/.mutt/id_personal'
 
 # Identities
 set reverse_name
-alternates "mail@urbainvaes.com|spotify@urbainvaes.com|github@urbainvaes.com|linkedin@urbainvaes.com"
+alternates "*@urbainvaes.com"
