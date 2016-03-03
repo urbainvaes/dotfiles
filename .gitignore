@@ -20,4 +20,4 @@
 .personal
 .passwords
 
-!**/*.gitkeep
+!*.gitkeep
