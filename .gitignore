@@ -1,4 +1,4 @@
-.mutt/cache/
+.mutt/attachments/*
 .mutt/cache/
 .mutt/cache/headers
 .mutt/mailboxes/
@@ -19,3 +19,5 @@
 .zsh/zgen
 .personal
 .passwords
+
+!**/*.gitkeep
