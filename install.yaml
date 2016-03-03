@@ -34,6 +34,7 @@ special:
     .mr/mrtrust: ~/.mrtrust
     .vim/vimrc: ~/.vimrc
     .uzbl: ~/.config/uzbl
+    .qutebrowser: ~/.config/qutebrowser
     .uzbl/bookmarks: ~/.local/share/uzbl/bookmarks
     .passwords: ~/.password-store
     .zathurarc: ~/.config/zathura/zathurarc
