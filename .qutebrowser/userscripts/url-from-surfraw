@@ -2,19 +2,19 @@
 
 DEFAULT_SEARCH=startpage
 
-string="$1 $2"
-
-set -- $string
-is_elvi=$(surfraw -elvi | grep -c "^$1\s")
-nbr_words=$(echo "$string" | wc -w)
-if [ "$nbr_words" -eq 1 ] && [ "$is_elvi" -eq 0 ] && ([[ "$string" == *.* ]] || [[ "$string" == *:* ]])
-then
-    url="$1"
-elif [ $is_elvi -eq 1 ]
-then
-    url="$(surfraw -print $string)"
-else
-    url="$(surfraw -print $DEFAULT_SEARCH $string)"
+if [[ $1 =~ ^-.$ ]]; then
+    option="$1"
+    shift 1
 fi
 
-echo "open $url" >> "$QUTE_FIFO"
+is_elvi=$(surfraw -elvi | grep -c "^$1\s")
+nbr_words=$(echo $1 | wc -w)
+
+if [[ $is_elvi -eq 0 && $nbr_words -eq 1 && ($1 == *.* || $1 == *:*) ]]; then
+    url="$1"
+else 
+    [[ $is_elvi -eq 0 ]] && sr="$DEFAULT_SEARCH $*" || sr=$*
+    url=$(surfraw -print $sr)
+fi
+
+echo "open $option $url" >> $QUTE_FIFO
