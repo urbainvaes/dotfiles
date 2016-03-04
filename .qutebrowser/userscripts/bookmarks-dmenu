@@ -1,0 +1,7 @@
+#!/bin/bash
+
+url=$(cat ~/.config/qutebrowser/bookmarks/urls | dmenu -i -l 15 | awk '{print $1}')
+
+[ -z ${url} ] && exit
+
+echo "open $url" >> "$QUTE_FIFO"
