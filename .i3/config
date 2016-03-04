@@ -157,7 +157,7 @@ bindsym $mod+comma workspace prev
 bindsym $mod+period workspace next
 
 # Programs shortcuts
-bindsym $mod+b exec --no-startup-id uzbl-browser
+bindsym $mod+b exec --no-startup-id qutebrowser
 bindsym $mod+i exec $HOME/bin/vimin
 
 # Configuration
