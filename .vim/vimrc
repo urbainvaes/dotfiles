@@ -171,7 +171,6 @@ set noautochdir
 set cpoptions+=Iq
 set encoding=utf-8
 set mouse=a
-set clipboard=unnamedplus
 set lazyredraw
 set hidden
 
