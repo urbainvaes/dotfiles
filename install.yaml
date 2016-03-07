@@ -32,6 +32,7 @@ special:
     .i3/i3status.conf: ~/.config/i3status/config
     .mr/mrconfig: ~/.mrconfig
     .mr/mrtrust: ~/.mrtrust
+    .newsbeuter: ~/.config/newsbeuter
     .vim/vimrc: ~/.vimrc
     .qutebrowser: ~/.config/qutebrowser
     .qutebrowser/userscripts: ~/.local/share/qutebrowser/userscripts
