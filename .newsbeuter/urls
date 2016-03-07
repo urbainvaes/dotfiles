@@ -1,3 +1,6 @@
-https://www.urbainvaes.com/git/dotfiles.git/master/rss/
-https://stallman.org/rss/rss.xml
-http://www.aaronsw.com/2002/feeds/pgessays.rss
+https://www.urbainvaes.com/git/dotfiles.git/master/rss/ tech
+http://bknguyen.org/cgit/dotfiles.git/atom/?h=master tech
+http://www.aaronsw.com/2002/feeds/pgessays.rss blog
+https://stallman.org/rss/rss.xml news
+http://hnrss.org/newest?points=50 news
+http://static.fsf.org/fsforg/rss/news.xml news
