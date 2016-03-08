@@ -1,22 +1,23 @@
 #!/bin/zsh
 
-# Directories
-alias cdd='cd ~/dotfiles'
-
 # Commands
-alias a='vifm . .'
 alias c='clear'
 alias ca='printf "\ec"'
+alias cdd='cd ~/dotfiles'
+alias notes='vim ~/dotfiles/.notes'
+
+# Programs
+alias a='vifm . .'
 alias g='git'
-alias m='cd ~/.mutt/attachments && mutt'
-alias mc='make clean'
-alias mca='make clean-all'
-alias n='nvim'
+alias m='cd ~/.mutt/attachments && mutt && cd -'
+alias n='newsbeuter'
 alias v='vim'
 alias vims="vim -S Session.vim"
 alias vimtex='vim -S Session.vim --servername SYNC'
-alias youtube='mpsyt'
-alias notes='vim ~/dotfiles/.notes'
+
+# Build
+alias mc='make clean'
+alias mca='make clean-all'
 
 # Tmux
 alias son="tmux set -g status on"
