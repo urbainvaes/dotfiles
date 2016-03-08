@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+workspace=$(i3-msg -t get_outputs | grep -Po '"current_workspace":"[^\"]*"' | sed 's/"current_workspace":"\([^"]\+\)"/\1/g')
+number=$(echo "${workspace//[!0-9]}")
+
+new_name=$(zenity --entry --title="Rename workspace" --entry-text "$workspace")
+if [[ "$new_name" != *:* ]]; then
+    new_name="$number:$new_name"
+fi
+
+echo $new_name
+exec i3-msg rename workspace to "$new_name"

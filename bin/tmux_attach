@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+SESSIONS=$(tmux list-sessions | cut -d':' -f1)
+
+SESSION=$(echo "$SESSIONS" | dmenu -i -p "Session:" | tr -d '[[:space:]]')
+
+[[ -n $SESSION ]] || exit
+
+urxvt -e zsh -c "tmux new-session -A -s $SESSION"
