@@ -15,3 +15,11 @@ color article      default   default
 highlight article "^(Title):.*$" blue default
 highlight article "https?://[^ ]+" red default
 highlight article "\\[image\\ [0-9]+\\]" green default
+
+# vim-like navigation
+bind-key j down
+bind-key k up
+bind-key h left
+bind-key l right
+
+browser "qutebrowser %u"
