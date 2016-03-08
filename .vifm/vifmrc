@@ -209,7 +209,7 @@ fileviewer *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.vob,*.flv,*.m2v,*.m
 " Web
 filextype *.html,*.htm
         \ {Open with uzbl}
-        \ uzbl-browser %f %i &,
+        \ qutebrowser %f %i &,
         \ {Open with dwb}
         \ dwb %f %i &,
         \ {Open with firefox}

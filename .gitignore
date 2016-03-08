@@ -18,5 +18,6 @@
 .vim/vim-plug
 .vim/vimundo/
 .zsh/zgen
+.zsh/tmp
 
 !*.gitkeep

@@ -1,3 +1,7 @@
+# Write tmp file if it doesn't exist
+[[ ! -f ~/.zsh/tmp ]] && echo "export COLORSCHEME=dark" > ~/.zsh/tmp
+
+# Source configuration files
 source "$HOME/.zsh/plugins"
 source "$HOME/.zsh/functions"
 source "$HOME/.zsh/aliases"
