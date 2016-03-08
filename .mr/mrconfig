@@ -1,8 +1,17 @@
 [/home/urbain/dotfiles]
-checkout = git clone 'urbain@urbainvaes.com:git/dotfiles.git' 'dotfiles'
+checkout = git clone 'git@urbainvaes.com:dotfiles.git' 'dotfiles'
+update = git pull origin master
+push = git push origin master
 
 [/home/urbain/dotfiles/.personal]
-checkout = git clone 'urbain@urbainvaes.com:git/perso/personal.git' '.personal'
+checkout = git clone 'git@urbainvaes.com:private/personal.git' '.personal'
+update = git pull origin master
+push = git push origin master
+
+[/home/urbain/dotfiles/.passwords]
+checkout = git clone 'git@urbainvaes.com:private/passwords.git' '.passwords'
+update = git pull origin master
+push = git push origin master
 
 [/home/urbain/dotfiles/.vim/vim-plug]
 checkout = git clone 'https://github.com/junegunn/vim-plug' 'vim-plug'
@@ -15,9 +24,6 @@ skip = [ "$1" = push ]
 [/home/urbain/dotfiles/.zsh/zgen]
 checkout = git clone 'https://github.com/tarjoilija/zgen' 'zgen'
 skip = [ "$1" = push ]
-
-[/home/urbain/dotfiles/.passwords]
-checkout = git clone 'urbain@urbainvaes.com:git/passwords.git' '.passwords'
 
 [/home/urbain/dotfiles/.urxvt/ext]
 checkout = git clone 'https://github.com/muennich/urxvt-perls' 'ext'
