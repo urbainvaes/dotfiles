@@ -1,56 +1,47 @@
-#!/usr/bin/env python
+#!/usr/bin/env bash
 
-import os
-import sys
-import yaml
+get_links()
+{
+    find $HOME -not -path "$HOME/dotfiles/*" -type l | while read line; do
+        if [[ "$(realpath -q $line)" == "${HOME}/dotfiles/"* ]]; then
+            echo $line
+        fi
+    done
+}
 
-# Colors for terminal
-from termcolor import colored
+clean()
+{
+    get_links | while read link; do
+        rm -v ${link}
+    done
+}
 
-# Path of dotfiles
-homepath = '/home/urbain'
-dotpath = homepath + '/dotfiles'
+down()
+{
+    source $HOME/dotfiles/.dotmap
+    for link in "${!dotmap[@]}"; do
+        echo "Removing ${link}."
+        rm -rf $link
+    done
+}
 
-# Load yaml configuration file
-with open(dotpath + "/install.yaml", 'r') as stream:
-    config = yaml.load(stream)
+up()
+{
+    source $HOME/dotfiles/.dotmap
+    for link in "${!dotmap[@]}"; do
+        target=${dotmap[$link]}
+        mkdir -p $(dirname ${link})
+        echo "Linking $target."
+        rm -rf $link && ln -s $target $link
+    done
+}
 
-# Special and default symlinks
-special_symlinks = set(config['special'].keys())
-normal_symlinks = set(config['default'])
+save()
+{
+    echo "declare -A dotmap" > .dotmap
+    get_links | while read link; do
+        echo "dotmap[$link]=$(realpath -q $link)" >> .dotmap
+    done
+}
 
-
-def perform(action):
-
-    for f in special_symlinks | normal_symlinks:
-
-        # Print filename
-        print('[' + colored(f, 'green') + ']')
-
-        if f in config['pre'] and action == 'up':
-
-            # Format command
-            command = config['pre'][f]
-            formatted = command.format(file=f, path=dotpath)
-
-            # Print & execute
-            print(formatted)
-            os.system(formatted)
-
-        # Target of symlink
-        if f in special_symlinks:
-            t = config['special'][f]
-        elif f in normal_symlinks:
-            t = homepath + '/' + f
-
-        # Command to execute
-        command = config['commands'][action]
-        formatted = command.format(file=f, path=dotpath, target=t)
-
-        # Print & execute command
-        print(formatted)
-        os.system(formatted)
-
-        print('\n')
-
-perform(sys.argv[1])
+$1
