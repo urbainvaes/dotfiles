@@ -1,3 +1,5 @@
+.gitolite
+.ledger
 .mutt/attachments/*
 .mutt/cache/*
 .mutt/solarized

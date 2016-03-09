@@ -41,6 +41,7 @@ Plug 'troydm/zoomwintab.vim'
 Plug 'Valloric/YouCompleteMe', { 'do' : 'python2 install.py --clang-completer' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'holomorph/vim-freefem'
 call plug#end()
 
 let g:vimtex_fold_enabled=0
@@ -81,7 +82,6 @@ let g:ctrlp_prompt_mappings = {
     \ 'PrtHistory(1)':        ['<c-k>'],}
 
 let g:gitgutter_max_signs=1000
-
 let g:pymode_rope=0
 
 let g:syntastic_cpp_compiler = "g++"

@@ -3,13 +3,23 @@ checkout = git clone 'git@urbainvaes.com:dotfiles.git' 'dotfiles'
 update = git pull origin master
 push = git push origin master
 
-[/home/urbain/dotfiles/.personal]
-checkout = git clone 'git@urbainvaes.com:private/personal.git' '.personal'
+[/home/urbain/dotfiles/.gitolite]
+checkout = git clone 'git@urbainvaes.com:gitolite-admin.git' '.gitolite'
+update = git pull origin master
+push = git push origin master
+
+[/home/urbain/dotfiles/.ledger]
+checkout = git clone 'git@urbainvaes.com:private/ledger.git' '.ledger'
 update = git pull origin master
 push = git push origin master
 
 [/home/urbain/dotfiles/.passwords]
 checkout = git clone 'git@urbainvaes.com:private/passwords.git' '.passwords'
+update = git pull origin master
+push = git push origin master
+
+[/home/urbain/dotfiles/.personal]
+checkout = git clone 'git@urbainvaes.com:private/personal.git' '.personal'
 update = git pull origin master
 push = git push origin master
 
