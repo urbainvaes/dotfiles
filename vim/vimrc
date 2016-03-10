@@ -41,6 +41,7 @@ Plug 'troydm/zoomwintab.vim'
 Plug 'Valloric/YouCompleteMe', { 'do' : 'python2 install.py --clang-completer' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-scripts/gmsh.vim'
 Plug 'holomorph/vim-freefem'
 call plug#end()
 
