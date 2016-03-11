@@ -1,5 +1,5 @@
 #! /bin/bash
-PWD_DIR="$HOME/dotfiles/.passwords"
-PASSWORDS=$(locate "$PWD_DIR/**/*.gpg")
+PWD_DIR="$HOME/.password-store"
+PASSWORDS=$(locate "${PWD_DIR}/**/*.gpg")
 TARGET=$(echo "${PASSWORDS//"$PWD_DIR/"/}" | dmenu -i -p "Get identifier for:")
 basename $TARGET .gpg | xclip -i
