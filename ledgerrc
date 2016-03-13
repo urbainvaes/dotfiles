@@ -1,0 +1,2 @@
+--pager /bin/less
+--file ~/dotfiles/ledger/perso.ledger

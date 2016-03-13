@@ -42,6 +42,7 @@ save()
     get_links | while read link; do
         echo "dotmap[$link]=$(realpath -q $link)" >> .dotmap
     done
+    sort .dotmap -o .dotmap
 }
 
 $1
