@@ -5,6 +5,23 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'beloglazov/vim-online-thesaurus'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ctrlpvim/ctrlp.vim'
+let g:ctrlp_by_filename = 1
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_open_new_file = 't'
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+let g:ctrlp_working_path_mode = 'r'
+let g:ctrlp_prompt_mappings = {
+    \ 'PrtSelectMove("j")':   ['<c-n>'],
+    \ 'PrtSelectMove("k")':   ['<c-p>'],
+    \ 'PrtHistory(-1)':       ['<c-j>'],
+    \ 'PrtHistory(1)':        ['<c-k>'],}
+
+Plug 'embear/vim-localvimrc'
+let g:localvimrc_ask = 0
+let g:localvimrc_sandbox = 0
+
 Plug 'gregsexton/gitv', { 'on' : 'Gitv' }
 Plug 'honza/vim-snippets'
 Plug 'jamessan/vim-gnupg'
@@ -15,13 +32,40 @@ Plug 'junegunn/vim-pseudocl'
 Plug 'junegunn/vim-oblique'
 Plug 'justinmk/vim-sneak'
 Plug 'klen/python-mode'
+let g:pymode_rope=0
+
 Plug 'ledger/vim-ledger'
 Plug 'lervag/vimtex'
+let g:vimtex_fold_enabled=0
+let g:vimtex_view_method='zathura'
+let g:vimtex_latexmk_continuous=1
+let g:vimtex_quickfix_mode=0
+let g:vimtex_latexmk_build_dir='build'
+let g:vimtex_latexmk_progname='nvr'
+
 Plug 'majutsushi/tagbar'
+let g:tagbar_width = 30
+let g:tagbar_show_linenumbers=1
+let g:tagbar_autofocus=1
+
 Plug 'mileszs/ack.vim', { 'on' : 'Ack' }
 Plug 'rdnetto/YCM-Generator', { 'branch' : 'stable' , 'on' : 'YcmGenerateConfig' }
 Plug 'scrooloose/syntastic'
+let g:syntastic_cpp_compiler = "g++"
+let g:syntastic_cpp_compiler_options = "-std=c++11 -Wall -Wextra -Wpedantic"
+let g:syntastic_error_symbol = "✗"
+let g:syntastic_warning_symbol = "W"
+
 Plug 'SirVer/ultisnips'
+let g:UltiSnipsEditSplit="horizontal"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsListSnippets="<c-l>"
+let g:UltiSnipsSnippetDirectories=['UltiSnips', 'mySnippets']
+let g:UltiSnipsSnippetsDir="~/.vim/mySnippets"
+let g:UltiSnipsUsePythonVersion=3
+
 Plug 'sjl/Gundo.vim', { 'on' : 'GundoToggle' }
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tomasr/molokai'
@@ -39,70 +83,6 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'troydm/zoomwintab.vim'
 Plug 'Valloric/YouCompleteMe', { 'do' : 'python2 install.py --clang-completer' }
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-scripts/gmsh.vim'
-Plug 'holomorph/vim-freefem'
-call plug#end()
-
-let g:vimtex_fold_enabled=0
-let g:vimtex_view_method='zathura'
-let g:vimtex_latexmk_continuous=1
-let g:vimtex_quickfix_mode=0
-let g:vimtex_latexmk_build_dir='build'
-
-let g:UltiSnipsEditSplit="horizontal"
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsListSnippets="<c-l>"
-let g:UltiSnipsSnippetDirectories=['UltiSnips', 'mySnippets']
-let g:UltiSnipsSnippetsDir="~/.vim/mySnippets"
-let g:UltiSnipsUsePythonVersion=3
-
-let g:airline_left_sep=''
-let g:airline_right_sep=''
-let g:airline_section_c = '%f%m'
-let g:airline_section_y = ''
-let g:airline_section_z = '%3p%%|%3l|%3c'
-let g:airline_theme='solarized'
-let g:airline#extensions#tabline#enabled = 0
-let g:airline_exclude_preview = 0
-
-let g:ctrlp_by_filename = 1
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_open_new_file = 't'
-let g:ctrlp_show_hidden = 1
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-let g:ctrlp_working_path_mode = 'r'
-let g:ctrlp_prompt_mappings = {
-    \ 'PrtSelectMove("j")':   ['<c-n>'],
-    \ 'PrtSelectMove("k")':   ['<c-p>'],
-    \ 'PrtHistory(-1)':       ['<c-j>'],
-    \ 'PrtHistory(1)':        ['<c-k>'],}
-
-let g:gitgutter_max_signs=1000
-let g:pymode_rope=0
-
-let g:syntastic_cpp_compiler = "g++"
-let g:syntastic_cpp_compiler_options = "-std=c++11 -Wall -Wextra -Wpedantic"
-let g:syntastic_error_symbol = "✗"
-let g:syntastic_warning_symbol = "W"
-
-let g:tagbar_width = 30
-let g:tagbar_show_linenumbers=1
-let g:tagbar_autofocus=1
-
-let g:tex_conceal= 'adgm'
-let g:tex_flavor='latex'
-let g:tex_fast="1"
-
-let NERDTreeIgnore=['\.pdf$', '\~$','\.toc$',
-            \ '\.fls$','\.bbl$','\.blg$',
-            \ '\.out$', '\.log$','\.aux$','\.sty$',
-            \ '\.fdb_latexmk$', '\.synctex.gz$','\.latexmain$']
-
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:ycm_add_preview_to_completeopt = 0
@@ -113,11 +93,25 @@ if !exists('g:ycm_semantic_triggers')
 endif
 let g:ycm_semantic_triggers.tex = ['re!\\[A-Za-z]*(ref|cite)[A-Za-z]*([^]]*])?{([^}]*, ?)*' ]
 
-let g:calendar_google_calendar = 1
-let g:calendar_google_task = 1
+Plug 'vim-airline/vim-airline'
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+let g:airline_section_c = '%f%m'
+let g:airline_section_y = ''
+let g:airline_section_z = '%3p%%|%3l|%3c'
+let g:airline_theme='solarized'
+let g:airline#extensions#tabline#enabled = 0
+let g:airline_exclude_preview = 0
 
+Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-scripts/gmsh.vim'
+Plug 'holomorph/vim-freefem'
+call plug#end()
+
+let g:tex_conceal= 'adgm'
+let g:tex_flavor='latex'
+let g:tex_fast="1"
 let g:tabprefix = ""
-
 
 "" Vim options
 
@@ -176,7 +170,9 @@ set lazyredraw
 set hidden
 
 " mutt
-au BufRead /tmp/mutt-* set tw=72
+au BufNewFile,Bufread /tmp/mutt-* setlocal tw=72
+au BufNewFile,BufRead *.edp setlocal makeprg=FreeFem++\ %
+au BufNewFile,BufRead *.geo setlocal makeprg=gmsh\ %
 
 " Colorscheme
 if $COLORSCHEME=="light"
@@ -203,18 +199,6 @@ set t_ZR=[23m
 let mapleader = " "
 let maplocalleader = "\\"
 
-" New pages
-nnoremap <Leader>pe :tabedit
-nnoremap <Leader>pn :tabnew<cr>
-nnoremap <Leader>po :tabonly<cr>
-
-" Plugin Management
-nnoremap <Leader>pi :PlugInstall<cr>
-nnoremap <Leader>pu :PlugUpdate<cr>
-nnoremap <Leader>pc :PlugClean<cr>
-nnoremap <Leader>pd :PlugDiff<cr>
-nnoremap <Leader>ps :PlugStatus<cr>
-
 " Toggles
 nnoremap cop :set paste!<cr>
 nnoremap cof :set foldenable!<cr>
@@ -223,20 +207,11 @@ nnoremap cpn :NERDTreeToggle<cr>
 nnoremap cpt :TagbarToggle<cr>
 nnoremap cpu :GundoToggle<cr>
 
-" Sourcing
-nnoremap <Leader>sv :source ~/.vimrc<cr>
-nnoremap <Leader>sc :source %<cr>
-
 " File edits
 nnoremap <Leader>es :UltiSnipsEdit<cr>
-nnoremap <Leader>em :e ~/dotfiles/.mutt/muttrc<cr>
-nnoremap <Leader>ev :e ~/dotfiles/.vim/vimrc<cr>
-nnoremap <Leader>ez :e ~/dotfiles/.zsh/zshrc<cr>
-nnoremap <Leader>et :e ~/dotfiles/.tmux.conf<cr>
 
 " Formatting
 nnoremap <Leader>fw :%s/\s\+$//<cr>
-nnoremap <Leader>fi zzmxgg=G'x
 
 " Navigation
 nnoremap (( :BufSurfBack<CR>
@@ -244,7 +219,6 @@ nnoremap )) :BufSurfForward<CR>
 nnoremap <c-y> 3<c-y>
 nnoremap <c-e> 3<c-e>
 nnoremap <Return> o<Esc>
-nnoremap <s-Return> O<Esc>
 
 " Git
 nnoremap <Leader>gs :Gstatus<cr>
@@ -257,6 +231,7 @@ nnoremap <tab> <C-^>
 nnoremap Q :bd!<cr>
 nnoremap <Leader>w :w<cr>
 nnoremap <Leader>q :q!<cr>
+nnoremap <Leader>m :Make!<cr>
 nnoremap <LocalLeader>h :e %:p:s,.hpp$,.X123X,:s,.cpp$,.hpp,:s,.X123X$,.cpp,<CR>
 nnoremap J mzJ`z
 nnoremap Y y$
@@ -268,14 +243,5 @@ if has("nvim")
     tnoremap <C-_> <C-\><C-n><C-^>:ZoomWinTabOut<cr>
     nnoremap <C-_> :ZoomWinTabIn<cr>:b term<cr>i
     inoremap <C-_> <Esc>:b term<cr>i
+    nmap <BS> <C-W>h
 endif
-
-"" Restore cursor position
-augroup vimrc
-    au!
-    autocmd BufWritePost *vimrc source %
-    autocmd BufReadPost *
-                \ if line("'\"") > 1 && line("'\"") <= line("$") |
-                \   exe "normal! g`\"" |
-                \ endif
-augroup END

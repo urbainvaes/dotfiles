@@ -108,14 +108,12 @@ bindsym $mod+Shift+2 move container to workspace number 8
 bindsym $mod+Shift+plus move container to workspace number 9
 bindsym $mod+Shift+bracketright move container to workspace number 10
 
-# Keybindings for create and move
-bindsym $mod+n exec $HOME/bin/workspace n
-bindsym $mod+Shift+n exec $HOME/bin/workspace m
-
 # reload the configuration file
 bindsym $mod+Shift+c reload
+
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
+
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
@@ -148,7 +146,7 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command $HOME/bin/mystatus
+    status_command $HOME/bin/mystatus
 }
 
 # Workspaces
@@ -160,18 +158,6 @@ bindsym $mod+period workspace next
 bindsym $mod+b exec --no-startup-id qutebrowser
 bindsym $mod+i exec $HOME/bin/vimin
 
-# Configuration
-# bindsym F1 exec $HOME/.xinitrc
-
-# Font
-# font xft:Droid Sans Mono 10
-
-# Init script
-# exec --no-startup-id $HOME/.xinitrc
-
-# Media control
-exec --no-startup-id gnome-settings-daemon
-
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+
 bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%-
@@ -181,11 +167,15 @@ bindsym XF86AudioMute exec amixer -D pulse sset Master 0%
 bindsym XF86MonBrightnessUp exec light -A 10
 bindsym XF86MonBrightnessDown exec light -U 10
 
-# Disable touchpad
-bindsym XF86AudioPlay exec $HOME/bin/touchpad
-
-# font pango:DejaVu Sans Mono 10
+# Change wallpaper
 bindsym F1 exec --no-startup-id feh --bg-fill --randomize /usr/share/backgrounds
+
+# Custom scripts
+bindsym XF86AudioPlay exec $HOME/bin/touchpad
+bindsym $mod+n exec $HOME/bin/workspace n
+bindsym $mod+Shift+n exec $HOME/bin/workspace m
 bindsym $mod+semicolon exec --no-startup-id $HOME/bin/run
 bindsym $mod+z exec --no-startup-id $HOME/bin/tmux_attach
 bindsym $mod+e exec --no-startup-id $HOME/bin/rename_workspace
+
+for_window [class="^.*"] border pixel 1
