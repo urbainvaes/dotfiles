@@ -74,6 +74,11 @@ Plug 'ton/vim-bufsurf'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-flagship'
+autocmd BufEnter,BufWritePost * let g:trailing=search('\s\+$','pn')
+autocmd User Flags call Hoist("window", "%{g:trailing?'[tw]':''}")
+autocmd User Flags call Hoist("window", "SyntasticStatuslineFlag")
+
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-repeat'
@@ -93,17 +98,6 @@ if !exists('g:ycm_semantic_triggers')
 endif
 let g:ycm_semantic_triggers.tex = ['re!\\[A-Za-z]*(ref|cite)[A-Za-z]*([^]]*])?{([^}]*, ?)*' ]
 
-Plug 'vim-airline/vim-airline'
-let g:airline_left_sep=''
-let g:airline_right_sep=''
-let g:airline_section_c = '%f%m'
-let g:airline_section_y = ''
-let g:airline_section_z = '%3p%%|%3l|%3c'
-let g:airline_theme='solarized'
-let g:airline#extensions#tabline#enabled = 0
-let g:airline_exclude_preview = 0
-
-Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/gmsh.vim'
 Plug 'holomorph/vim-freefem'
 call plug#end()
