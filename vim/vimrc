@@ -27,6 +27,9 @@ Plug 'honza/vim-snippets'
 Plug 'jamessan/vim-gnupg'
 Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/vim-easy-align'
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
 Plug 'junegunn/vim-peekaboo'
 Plug 'junegunn/vim-pseudocl'
 Plug 'junegunn/vim-oblique'
@@ -71,7 +74,10 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-flagship'
-function Mixed_indent()
+let g:tabprefix = ""
+let g:tablabel = "%N%{flagship#tabmodified()} %{flagship#tabcwds('shorten',',')}"
+
+function! Mixed_indent()
     let l:spaces=search('\v(^ +)','n')
     let l:tabs=search('\v(^\t+)','n')
     return (l:spaces * l:tabs > 0)
@@ -134,7 +140,6 @@ call plug#end()
 
 let g:tex_conceal= 'adgm'
 let g:tex_flavor='latex'
-let g:tabprefix = ""
 
 "" Vim options
 
@@ -273,7 +278,7 @@ if has("nvim")
 
     nnoremap <a-w>  :w<cr>
     nnoremap <a-d>  :q<cr>
-    nnoremap <a-cr> :tabnew<cr>
+    nnoremap <a-t> :tabnew<cr>
 
     nnoremap <a-b>  :CtrlPBuffer<cr>
     nnoremap <a-f>  :CtrlP<cr>
