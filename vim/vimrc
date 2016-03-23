@@ -71,9 +71,20 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-flagship'
-autocmd BufEnter,BufWritePost * let g:trailing=search('\s\+$','pn')
-autocmd User Flags call Hoist("window", "%{g:trailing?'[tw]':''}")
-autocmd User Flags call Hoist("window", "SyntasticStatuslineFlag")
+function Mixed_indent()
+    let b:spaces=search('\v(^ +)','n')
+    let b:tabs=search('\v(^\t+)','n')
+    return (b:spaces * b:tabs > 0)
+endfunction
+
+augroup myflags
+    autocmd!
+    autocmd BufEnter,BufWritePost * let b:trailing=search('\s\+$','n')
+    autocmd BufEnter,BufWritePost * let b:mixed=Mixed_indent()
+    autocmd User Flags call Hoist("window", "SyntasticStatuslineFlag")
+    autocmd User Flags call Hoist("window", "%{b:trailing?'[tw]':''}")
+    autocmd User Flags call Hoist("window", "%{b:mixed?'[mixed]':''}")
+augroup END
 
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
