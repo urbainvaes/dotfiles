@@ -45,16 +45,12 @@ let g:vimtex_latexmk_progname='nvr'
 
 Plug 'majutsushi/tagbar'
 let g:tagbar_width = 30
-let g:tagbar_show_linenumbers=1
-let g:tagbar_autofocus=1
+let g:tagbar_show_linenumbers = 1
+let g:tagbar_autofocus = 1
 
 Plug 'mileszs/ack.vim', { 'on' : 'Ack' }
 Plug 'rdnetto/YCM-Generator', { 'branch' : 'stable' , 'on' : 'YcmGenerateConfig' }
-Plug 'scrooloose/syntastic'
-let g:syntastic_cpp_compiler = "g++"
-let g:syntastic_cpp_compiler_options = "-std=c++11 -Wall -Wextra -Wpedantic"
-let g:syntastic_error_symbol = "✗"
-let g:syntastic_warning_symbol = "W"
+Plug 'scrooloose/nerdtree'
 
 Plug 'SirVer/ultisnips'
 let g:UltiSnipsEditSplit="horizontal"
@@ -87,19 +83,41 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 Plug 'troydm/zoomwintab.vim'
-Plug 'Valloric/YouCompleteMe', { 'do' : 'python2 install.py --clang-completer' }
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:ycm_add_preview_to_completeopt = 0
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_auto_trigger = 1
-if !exists('g:ycm_semantic_triggers')
-    let g:ycm_semantic_triggers = {}
-endif
-let g:ycm_semantic_triggers.tex = ['re!\\[A-Za-z]*(ref|cite)[A-Za-z]*([^]]*])?{([^}]*, ?)*' ]
-
 Plug 'vim-scripts/gmsh.vim'
 Plug 'holomorph/vim-freefem'
+
+if has("nvim")
+    Plug 'benekastah/neomake'
+    let g:neomake_freefem_ff_maker = {
+                \ 'exe': 'FreeFem++',
+                \ 'args': '-ne',
+                \ 'errorformat': ' Error line number %l\, in file %f\,%m',
+                \ }
+
+    Plug 'Shougo/deoplete.nvim'
+    let g:deoplete#enable_at_startup = 1
+    let g:deoplete#omni#input_patterns={}
+    let g:deoplete#omni#input_patterns.ledger = ':\w*'
+    let g:deoplete#omni#input_patterns.tex = ['cite.\w*', 'ref.\w*']
+else
+    Plug 'Valloric/YouCompleteMe', { 'do' : 'python2 install.py --clang-completer' }
+    let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+    let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+    let g:ycm_add_preview_to_completeopt = 0
+    let g:ycm_confirm_extra_conf = 0
+    let g:ycm_auto_trigger = 1
+    if !exists('g:ycm_semantic_triggers')
+        let g:ycm_semantic_triggers = {}
+        let g:ycm_semantic_triggers.tex = ['re!\\[A-Za-z]*(ref|cite)[A-Za-z]*([^]]*])?{([^}]*, ?)*' ]
+    endif
+
+    Plug 'scrooloose/syntastic'
+    let g:syntastic_cpp_compiler = "g++"
+    let g:syntastic_cpp_compiler_options = "-std=c++11 -Wall -Wextra -Wpedantic"
+    let g:syntastic_error_symbol = "✗"
+    let g:syntastic_warning_symbol = "W"
+endif
+
 call plug#end()
 
 let g:tex_conceal= 'adgm'
@@ -156,6 +174,7 @@ set smartcase
 set ignorecase
 
 " Misc
+set clipboard=unnamedplus
 set noautochdir
 set cpoptions+=Iq
 set encoding=utf-8
@@ -165,8 +184,8 @@ set hidden
 
 " mutt
 au BufNewFile,Bufread /tmp/mutt-* setlocal tw=72
-au BufNewFile,BufRead *.edp setlocal makeprg=FreeFem++\ %
-au BufNewFile,BufRead *.geo setlocal makeprg=gmsh\ %
+au BufNewFile,BufRead *.edp comp freefem
+au BufNewFile,BufRead *.geo setf gmsh
 
 " Colorscheme
 if $COLORSCHEME=="light"
@@ -177,7 +196,8 @@ elseif $COLORSCHEME=="dark"
     set background=dark
 elseif $COLORSCHEME=="seoul"
     silent! colo seoul256
-    set background=dark
+elseif $COLORSCHEME=="molokai"
+    silent! colo molokai
 else
     silent! colo solarized
     set background=dark
@@ -225,17 +245,28 @@ nnoremap <tab> <C-^>
 nnoremap Q :bd!<cr>
 nnoremap <Leader>w :w<cr>
 nnoremap <Leader>q :q!<cr>
-nnoremap <Leader>m :Make!<cr>
 nnoremap <LocalLeader>h :e %:p:s,.hpp$,.X123X,:s,.cpp$,.hpp,:s,.X123X$,.cpp,<CR>
+nnoremap gm :Make<cr>
+nnoremap <Leader>m :Neomake!<cr>
 nnoremap J mzJ`z
 nnoremap Y y$
 nnoremap + za
 nnoremap K :OnlineThesaurusCurrentWord<CR>
+
 
 " Neovim specific
 if has("nvim")
     tnoremap <C-_> <C-\><C-n><C-^>:ZoomWinTabOut<cr>
     nnoremap <C-_> :ZoomWinTabIn<cr>:b term<cr>i
     inoremap <C-_> <Esc>:b term<cr>i
+
+    nnoremap <a-w>  :w<cr>
+    nnoremap <a-d>  :q<cr>
+    nnoremap <a-cr> :tabnew<cr>
+
+    nnoremap <a-b>  :CtrlPBuffer<cr>
+    nnoremap <a-f>  :CtrlP<cr>
+    nnoremap <a-r>  :CtrlPMRU<cr>
+
     nmap <BS> <C-W>h
 endif
