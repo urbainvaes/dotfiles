@@ -9,6 +9,7 @@ set mailcap_path     = ~/.mutt/mailcap
 set tmpdir           = ~/.mutt/temp
 
 # Source crypto, aliases, mailboxes
+source ~/.mutt/colors
 source ~/.mutt/crypto
 source ~/.mutt/alias
 source ~/.mutt/mailboxes
@@ -87,7 +88,6 @@ folder-hook 'Personal*' 'source ~/.mutt/id_personal'
 # Source mutt solarized
 `[ "$COLORSCHEME" = "light" ] && echo source $HOME/.mutt/solarized/mutt-colors-solarized-light-16.muttrc || echo set`
 `[ "$COLORSCHEME" = "dark" ] && echo source $HOME/.mutt/solarized/mutt-colors-solarized-dark-16.muttrc || echo set`
-`[ "$COLORSCHEME" = "default" ] && echo source $HOME/.mutt/solarized/mutt-colors-solarized-dark-16.muttrc || echo set`
 
 # Identities
 set reverse_name
