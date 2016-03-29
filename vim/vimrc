@@ -4,20 +4,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
 Plug 'beloglazov/vim-online-thesaurus'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'ctrlpvim/ctrlp.vim'
-let g:ctrlp_by_filename = 1
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_open_new_file = 't'
-let g:ctrlp_show_hidden = 1
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-let g:ctrlp_working_path_mode = 'r'
-let g:ctrlp_prompt_mappings = {
-    \ 'PrtSelectMove("j")':   ['<c-n>'],
-    \ 'PrtSelectMove("k")':   ['<c-p>'],
-    \ 'PrtHistory(-1)':       ['<c-j>'],
-    \ 'PrtHistory(1)':        ['<c-k>'],}
-
 Plug 'embear/vim-localvimrc'
 let g:localvimrc_ask = 0
 let g:localvimrc_sandbox = 0
@@ -25,6 +11,8 @@ let g:localvimrc_sandbox = 0
 Plug 'gregsexton/gitv', { 'on' : 'Gitv' }
 Plug 'honza/vim-snippets'
 Plug 'jamessan/vim-gnupg'
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/vim-easy-align'
 xmap ga <Plug>(EasyAlign)
@@ -135,7 +123,6 @@ else
     let g:syntastic_error_symbol = "✗"
     let g:syntastic_warning_symbol = "W"
 endif
-
 call plug#end()
 
 let g:tex_conceal= 'adgm'
@@ -278,11 +265,12 @@ if has("nvim")
 
     nnoremap <a-w>  :w<cr>
     nnoremap <a-d>  :q<cr>
-    nnoremap <a-t> :tabnew<cr>
+    nnoremap <a-t>  :tabnew<cr>
 
-    nnoremap <a-b>  :CtrlPBuffer<cr>
-    nnoremap <a-f>  :CtrlP<cr>
-    nnoremap <a-r>  :CtrlPMRU<cr>
+    nnoremap <a-b>  :Buffers<cr>
+    nnoremap <a-f>  :Files<cr>
+    nnoremap <a-r>  :History<cr>
+    nnoremap <a-g>  :GitFiles<cr>
 
     nmap <BS> <C-W>h
 endif
