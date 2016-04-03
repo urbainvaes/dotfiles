@@ -1,5 +1,6 @@
 #! /bin/bash
 PWD_DIR="$HOME/.password-store"
+[[ ! -z $(readlink ${PWD_DIR}) ]] && PWD_DIR=$(readlink ${PWD_DIR})
 PASSWORDS=$(locate "${PWD_DIR}/**/*.gpg")
 TARGET=$(echo "${PASSWORDS//"$PWD_DIR/"/}" | dmenu -i -p "Get identifier for:")
 basename $TARGET .gpg | xclip -i
