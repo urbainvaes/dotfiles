@@ -3,6 +3,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
 Plug 'beloglazov/vim-online-thesaurus'
+nnoremap K :OnlineThesaurusCurrentWord<CR>
+
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'embear/vim-localvimrc'
 let g:localvimrc_ask = 0
@@ -13,6 +15,26 @@ Plug 'honza/vim-snippets'
 Plug 'jamessan/vim-gnupg'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+let g:fzf_buffers_jump = 1
+if has("nvim")
+    nnoremap <a-b>  :Buffers<cr>
+    nnoremap <a-f>  :Files<cr>
+    nnoremap <a-r>  :History<cr>
+    nnoremap <a-g>  :GitFiles<cr>
+    nnoremap <a-c>  :Colors<cr>
+    nnoremap <a-h>  :History:<cr>
+else
+    nnoremap <c-p>b  :Buffers<cr>
+    nnoremap <c-p>f  :Files<cr>
+    nnoremap <c-p>r  :History<cr>
+    nnoremap <c-p>g  :GitFiles<cr>
+    nnoremap <c-p>c  :Colors<cr>
+    nnoremap <c-p>h  :History:<cr>
+endif
+
+imap <c-x><c-l> <plug>(fzf-complete-line)
+imap <c-x><c-f> <plug>(fzf-complete-file)
+
 Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/vim-easy-align'
 xmap ga <Plug>(EasyAlign)
@@ -52,12 +74,16 @@ let g:UltiSnipsListSnippets="<c-l>"
 let g:UltiSnipsSnippetDirectories=['UltiSnips', 'mySnippets']
 let g:UltiSnipsSnippetsDir="~/.vim/mySnippets"
 let g:UltiSnipsUsePythonVersion=3
+nnoremap <Leader>es :UltiSnipsEdit<cr>
 
 Plug 'sjl/Gundo.vim', { 'on' : 'GundoToggle' }
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tomasr/molokai'
 Plug 'tommcdo/vim-exchange'
 Plug 'ton/vim-bufsurf'
+nnoremap (( :BufSurfBack<CR>
+nnoremap )) :BufSurfForward<CR>
+
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-eunuch'
@@ -78,9 +104,15 @@ augroup myflags
     autocmd User Flags call Hoist("window", "SyntasticStatuslineFlag")
     autocmd User Flags call Hoist("window", "%{b:trailing?'[tw]':''}")
     autocmd User Flags call Hoist("window", "%{b:mixed?'[mixed]':''}")
+    autocmd User Flags call Hoist("window", "%{&paste?'[paste]':''}")
 augroup END
 
 Plug 'tpope/vim-fugitive'
+nnoremap <Leader>gs :Gstatus<cr>
+nnoremap <Leader>gr :Gread<cr>
+nnoremap <Leader>gd :Gdiff<cr>
+nnoremap <Leader>gv :Gitv<cr>
+
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
@@ -99,6 +131,7 @@ if has("nvim")
                 \ 'args': '-ne',
                 \ 'errorformat': ' Error line number %l\, in file %f\,%m',
                 \ }
+    nnoremap gm :Neomake!<cr>
 
     Plug 'Shougo/deoplete.nvim'
     let g:deoplete#enable_at_startup = 1
@@ -198,6 +231,7 @@ elseif $COLORSCHEME=="dark"
     silent! colo solarized
     set background=dark
 elseif $COLORSCHEME=="seoul"
+    let g:seoul256_background = 239
     silent! colo seoul256
 elseif $COLORSCHEME=="molokai"
     silent! colo molokai
@@ -225,23 +259,14 @@ nnoremap cpt :TagbarToggle<cr>
 nnoremap cpu :GundoToggle<cr>
 
 " File edits
-nnoremap <Leader>es :UltiSnipsEdit<cr>
 
 " Formatting
 nnoremap <Leader>fw :%s/\s\+$//<cr>
 
 " Navigation
-nnoremap (( :BufSurfBack<CR>
-nnoremap )) :BufSurfForward<CR>
 nnoremap <c-y> 3<c-y>
 nnoremap <c-e> 3<c-e>
 nnoremap <Return> o<Esc>
-
-" Git
-nnoremap <Leader>gs :Gstatus<cr>
-nnoremap <Leader>gr :Gread<cr>
-nnoremap <Leader>gd :Gdiff<cr>
-nnoremap <Leader>gv :Gitv<cr>
 
 " Misc
 nnoremap <tab> <C-^>
@@ -250,27 +275,17 @@ nnoremap <Leader>w :w<cr>
 nnoremap <Leader>q :q!<cr>
 nnoremap <LocalLeader>h :e %:p:s,.hpp$,.X123X,:s,.cpp$,.hpp,:s,.X123X$,.cpp,<CR>
 nnoremap gm :Make<cr>
-nnoremap <Leader>m :Neomake!<cr>
 nnoremap J mzJ`z
 nnoremap Y y$
 nnoremap + za
-nnoremap K :OnlineThesaurusCurrentWord<CR>
-
 
 " Neovim specific
 if has("nvim")
     tnoremap <C-_> <C-\><C-n><C-^>:ZoomWinTabOut<cr>
     nnoremap <C-_> :ZoomWinTabIn<cr>:b term<cr>i
     inoremap <C-_> <Esc>:b term<cr>i
-
     nnoremap <a-w>  :w<cr>
     nnoremap <a-d>  :q<cr>
     nnoremap <a-t>  :tabnew<cr>
-
-    nnoremap <a-b>  :Buffers<cr>
-    nnoremap <a-f>  :Files<cr>
-    nnoremap <a-r>  :History<cr>
-    nnoremap <a-g>  :GitFiles<cr>
-
     nmap <BS> <C-W>h
 endif
