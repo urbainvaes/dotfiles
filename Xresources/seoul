@@ -1,15 +1,17 @@
 # include "/home/urbain/.Xresources/base"
 
 ! Border color
-URxvt.borderColor: #3a3a3a
+/* URxvt.borderColor: #3a3a3a */
+URxvt*borderColor: #4B4B4B
 
 ! Background / Foreground
-URxvt*background: #3a3a3a 
-URxvt*foreground: #d0d0d0 
+/* URxvt*background: #3a3a3a */
+URxvt*background: #4B4B4B
+URxvt*foreground: #d0d0d0
 
 ! Other colors
 URxvt*color0: #4e4e4e
-URxvt*color1: #d68787 
+URxvt*color1: #d68787
 URxvt*color2: #5f865f
 URxvt*color3: #d8af5f
 URxvt*color4: #85add4
@@ -19,7 +21,7 @@ URxvt*color7: #d0d0d0
 URxvt*color8: #626262
 URxvt*color9: #d75f87
 URxvt*color10: #87af87
-URxvt*color11: #ffd787 
+URxvt*color11: #ffd787
 URxvt*color12: #add4fb
 URxvt*color13: #ffafaf
 URxvt*color14: #87d7d7
