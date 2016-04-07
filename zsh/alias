@@ -28,3 +28,5 @@ alias mca='make clean-all'
 # Tmux
 alias son="tmux set -g status on"
 alias soff="tmux set -g status off"
+
+unalias ag

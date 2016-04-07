@@ -17,7 +17,7 @@ bindkey '^N' history-beginning-search-forward
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/bin/core_perl:/home/urbain/bin"
 
 # Editor
-export EDITOR=/usr/bin/vim
+export EDITOR=/usr/bin/nvim
 
 # Fix tmux colors
 if [[ -n ${TMUX} && -n ${commands[tmux]} ]];then
