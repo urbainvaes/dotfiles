@@ -9,7 +9,7 @@ personal
 qutebrowser/qsettings
 urxvt/ext
 vifm/Trash
-vifm/vifminfo
+vifm/vifminfo*
 vifm/vimfiles
 vim/.netrwhist
 vim/plugged
