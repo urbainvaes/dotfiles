@@ -14,7 +14,7 @@ bindkey '^P' history-beginning-search-backward
 bindkey '^N' history-beginning-search-forward
 
 # Paths of executables
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/bin/core_perl:/home/urbain/bin"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/bin/core_perl:$HOME/bin"
 
 # Editor
 export EDITOR=/usr/bin/nvim
@@ -32,7 +32,7 @@ fi
 
 # Export GPG-agent related
 if [[ -f "${HOME}/.gpg-agent-info" ]]; then
-    source /home/urbain/.gpg-agent-info
+    source ${HOME}/.gpg-agent-info
     export GPG_AGENT_INFO
     export SSH_AUTH_SOCK
 fi

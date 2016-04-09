@@ -185,6 +185,7 @@ filextype *.djvu
 
 " Audio
 filetype *.wav,*.mp3,*.flac,*.ogg,*.m4a,*.wma,*.ape,*.ac3
+       \ mpv %f,
        \ {Play using ffplay}
        \ ffplay -nodisp %c,
        \ {Play using MPlayer}
@@ -244,6 +245,11 @@ filetype *.md5
 filetype *.asc
        \ {Check signature}
        \ !!gpg --verify %c,
+
+" GMSH file
+filetype *.geo, *.msh, *.pos
+       \ {Open in gmsh}
+       \ gmsh %d,
 
 " Torrent
 filetype *.torrent ktorrent %f &

@@ -40,7 +40,7 @@ save()
 {
     echo "declare -A dotmap" > .dotmap
     get_links | while read link; do
-        echo "dotmap[$link]=$(realpath -q $link)" >> .dotmap
+        echo "dotmap[$link]=$(readlink -f -q $link)" | sed "s#$HOME#"'$HOME#g' >> .dotmap
     done
     sort .dotmap -o .dotmap
 }

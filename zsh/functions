@@ -6,20 +6,11 @@ function colo {
     $HOME/bin/recolor < ~/.Xresources/$1
 
     # Load Xresources file for future sessions
-    xrdb ~/.Xresources/$1
+    xrdb -I$HOME ~/.Xresources/$1
 
     # Change environment variable
     export COLORSCHEME=$1
 
     # Change default environment variable for future sessions
     sed -i --follow-symlinks "s/^export COLORSCHEME=.*$/export COLORSCHEME=$1/g" ~/.zsh/tmp
-}
-
-fshow() {
-    git log --graph --color=always \
-        --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
-    fzf --ansi --no-sort --reverse --tiebreak=index --toggle-sort=\` \
-        --bind 'ctrl-m:execute:
-    echo {} | grep -o "[a-f0-9]\{7\}" |
-    xargs -I % sh -c "git show --color=always % | less -R"'
 }

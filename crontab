@@ -1,1 +1,1 @@
-*/5 * * * * /home/urbain/bin/email >> /home/urbain/.cron_email_log
+*/5 * * * * $HOME/bin/email >> $HOME/.cron_email_log
