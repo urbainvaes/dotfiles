@@ -1,3 +1,7 @@
+" Definition of leaders
+let mapleader = " "
+let maplocalleader = "\\"
+
 "" Plugins
 call plug#begin('~/.vim/plugged')
 Plug 'airblade/vim-gitgutter'
@@ -245,10 +249,6 @@ set t_ZH=[3m
 set t_ZR=[23m
 
 "" Maps
-
-" Definition of leaders
-let mapleader = " "
-let maplocalleader = "\\"
 
 " Toggles
 nnoremap cop :set paste!<cr>
