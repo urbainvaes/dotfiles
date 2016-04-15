@@ -1,12 +1,10 @@
 # include ".Xresources/base"
 
 ! Border color
-/* URxvt.borderColor: #3a3a3a */
-URxvt*borderColor: #4B4B4B
+URxvt.borderColor: #3a3a3a
 
 ! Background / Foreground
-/* URxvt*background: #3a3a3a */
-URxvt*background: #4B4B4B
+URxvt*background: #3a3a3a
 URxvt*foreground: #d0d0d0
 
 ! Other colors

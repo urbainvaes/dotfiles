@@ -235,7 +235,6 @@ elseif $COLORSCHEME=="dark"
     silent! colo solarized
     set background=dark
 elseif $COLORSCHEME=="seoul"
-    let g:seoul256_background = 239
     silent! colo seoul256
 elseif $COLORSCHEME=="molokai"
     silent! colo molokai
