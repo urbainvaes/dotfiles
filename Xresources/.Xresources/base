@@ -1,0 +1,31 @@
+! URXVT !
+
+! General settings
+URxvt.loginShell   : true
+URxvt.termName     : rxvt-256color
+
+! Custom META key
+URxvt*modifier: alt
+
+! Copy-paste configuration
+URxvt.clipboard.copycmd:  xclip -i -selection clipboard
+URxvt.clipboard.pastecmd: xclip -o -selection clipboard
+
+! Perl extensions configuration
+URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select,resize
+URxvt.url-select.launcher: /usr/bin/qutebrowser
+URxvt.url-select.underline: true
+
+! Key bindings for extensions
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+URxvt.keysym.M-s: perl:keyboard-select:search
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.keysym.M-y: perl:clipboard:copy
+URxvt.keysym.M-p: perl:clipboard:paste
+URxvt.resize-font.smaller: C-minus
+URxvt.resize-font.bigger: C-plus
+
+! Appearance
+URxvt*font: xft:DejaVu Sans Mono:size=12
+URxvt*scrollBar: false
+URxvt*internalBorder: 0

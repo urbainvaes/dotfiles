@@ -1,5 +1,0 @@
-#!/bin/bash
-SCRIPTS_DIR="$HOME/dotfiles/bin" && cd $SCRIPTS_DIR
-SCRIPTS=$(ls -A $SCRIPTS_DIR)
-TARGET=$(echo "${SCRIPTS//"$SCRIPTS_DIR/"/}" | dmenu -i -p "Run script:")
-[[ -n $TARGET ]] && "$SCRIPTS_DIR/$TARGET"

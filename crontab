@@ -1,1 +1,0 @@
-*/5 * * * * $HOME/bin/email >> $HOME/.cron_email_log

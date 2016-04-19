@@ -1,21 +1,9 @@
 gitolite
 ledger
-mutt/attachments/*
-mutt/cache/*
-mutt/solarized
-mutt/temp/*
 passwords
 personal
-qutebrowser/qsettings
-urxvt/ext
-vifm/Trash
-vifm/vifminfo*
-vifm/vimfiles
-vim/.netrwhist
-vim/plugged
-vim/vim-plug
-vim/vimundo/*
-zsh/tmp
-zsh/zgen
+urxvt/ext/.git
+zsh/.zsh/tmp
+zsh/.zsh/zgen
 
 !*.gitkeep

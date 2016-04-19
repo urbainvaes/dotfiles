@@ -1,40 +1,40 @@
-[/home/urbain/dotfiles]
+[$HOME/dotfiles]
 checkout = git clone 'git@urbainvaes.com:dotfiles.git' 'dotfiles'
 update = git pull origin master
 push = git push origin master
 
-[/home/urbain/dotfiles/gitolite]
+[$HOME/gitolite]
 checkout = git clone 'git@urbainvaes.com:gitolite-admin.git' 'gitolite'
 update = git pull origin master
 push = git push origin master
 
-[/home/urbain/dotfiles/ledger]
+[$HOME/ledger]
 checkout = git clone 'git@urbainvaes.com:private/ledger.git' 'ledger'
 update = git pull origin master
 push = git push origin master
 
-[/home/urbain/dotfiles/passwords]
-checkout = git clone 'git@urbainvaes.com:private/passwords.git' 'passwords'
+[$HOME/.password-store]
+checkout = git clone 'git@urbainvaes.com:private/passwords.git' '.password-store'
 update = git pull origin master
 push = git push origin master
 
-[/home/urbain/dotfiles/personal]
+[$HOME/personal]
 checkout = git clone 'git@urbainvaes.com:private/personal.git' 'personal'
 update = git pull origin master
 push = git push origin master
 
-[/home/urbain/dotfiles/vim/vim-plug]
+[$HOME/.vim/vim-plug]
 checkout = git clone 'https://github.com/junegunn/vim-plug' 'vim-plug'
 skip = [ "$1" = push ]
 
-[/home/urbain/dotfiles/mutt/solarized]
+[$HOME/.mutt/solarized]
 checkout = git clone 'https://github.com/altercation/mutt-colors-solarized' 'solarized'
 skip = [ "$1" = push ]
 
-[/home/urbain/dotfiles/zsh/zgen]
+[$HOME/.zsh/zgen]
 checkout = git clone 'https://github.com/tarjoilija/zgen' 'zgen'
 skip = [ "$1" = push ]
 
-[/home/urbain/dotfiles/urxvt/ext]
+[$HOME/.urxvt/ext]
 checkout = git clone 'https://github.com/muennich/urxvt-perls' 'ext'
 skip = [ "$1" = push ]
