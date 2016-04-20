@@ -1,0 +1,9 @@
+[submodule "vim/.vim/vim-plug"]
+	path = vim/.vim/vim-plug
+	url = https://github.com/junegunn/vim-plug
+[submodule "mutt/.mutt/solarized"]
+	path = mutt/.mutt/solarized
+	url = https://github.com/altercation/mutt-colors-solarized
+[submodule "zsh/.zsh/zgen"]
+	path = zsh/.zsh/zgen
+	url = https://github.com/tarjoilija/zgen

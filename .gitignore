@@ -3,7 +3,5 @@ ledger
 passwords
 personal
 urxvt/ext/.git
-zsh/.zsh/tmp
-zsh/.zsh/zgen
 
 !*.gitkeep

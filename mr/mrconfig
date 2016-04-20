@@ -13,28 +13,12 @@ checkout = git clone 'git@urbainvaes.com:private/ledger.git' 'ledger'
 update = git pull origin master
 push = git push origin master
 
-[$HOME/.password-store]
-checkout = git clone 'git@urbainvaes.com:private/passwords.git' '.password-store'
-update = git pull origin master
-push = git push origin master
-
 [$HOME/personal]
 checkout = git clone 'git@urbainvaes.com:private/personal.git' 'personal'
 update = git pull origin master
 push = git push origin master
 
-[$HOME/.vim/vim-plug]
-checkout = git clone 'https://github.com/junegunn/vim-plug' 'vim-plug'
-skip = [ "$1" = push ]
-
-[$HOME/.mutt/solarized]
-checkout = git clone 'https://github.com/altercation/mutt-colors-solarized' 'solarized'
-skip = [ "$1" = push ]
-
-[$HOME/.zsh/zgen]
-checkout = git clone 'https://github.com/tarjoilija/zgen' 'zgen'
-skip = [ "$1" = push ]
-
-[$HOME/.urxvt/ext]
-checkout = git clone 'https://github.com/muennich/urxvt-perls' 'ext'
-skip = [ "$1" = push ]
+[$HOME/.password-store]
+checkout = git clone 'git@urbainvaes.com:private/passwords.git' '.password-store'
+update = git pull origin master
+push = git push origin master
