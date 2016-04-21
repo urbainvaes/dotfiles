@@ -19,10 +19,6 @@ if ! zgen saved; then
     zgen oh-my-zsh plugins/tmux
     zgen oh-my-zsh plugins/themes
 
-    # zsh-users plugins
-    zgen load zsh-users/zsh-completions src
-    zgen load zsh-users/zsh-syntax-highlighting
-
     # Appearance
     # zgen oh-my-zsh themes/eastwood
     zgen load mafredri/zsh-async
@@ -35,6 +31,10 @@ if ! zgen saved; then
     zgen load rupa/z
     zgen load djui/alias-tips
     zgen load tarruda/zsh-autosuggestions
+
+    # zsh-users plugins
+    zgen load zsh-users/zsh-completions src
+    zgen load zsh-users/zsh-syntax-highlighting
 
     # Save all to init script
     zgen save
