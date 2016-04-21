@@ -1,0 +1,23 @@
+# include ".Xresources/base"
+
+URxvt*foreground:   #4d4d4c
+URxvt*background:   #ffffff
+URxvt*borderColor:  #ffffff
+URxvt*cursorColor:  #aeafad
+
+URxvt*color0:       #000000
+URxvt*color8:       #666666
+URxvt*color1:       #c82829
+URxvt*color9:       #FF3334
+URxvt*color2:       #718c00
+URxvt*color10:      #9ec400
+URxvt*color3:       #f5871f
+URxvt*color11:      #eab700
+URxvt*color4:       #4271ae
+URxvt*color12:      #4271ae
+URxvt*color5:       #8959a8
+URxvt*color13:      #b777e0
+URxvt*color6:       #3e999f
+URxvt*color14:      #54ced6
+URxvt*color7:       #d6d6d6
+URxvt*color15:      #efefef

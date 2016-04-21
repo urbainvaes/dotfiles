@@ -1,4 +1,4 @@
-# include "dark"
+# include "solarized-dark"
 
 ! True transparency
 URxvt.transparent: true

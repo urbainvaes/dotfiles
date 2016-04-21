@@ -130,6 +130,7 @@ Plug 'troydm/zoomwintab.vim'
 Plug 'vim-scripts/gmsh.vim'
 Plug 'holomorph/vim-freefem'
 Plug 'nanotech/jellybeans.vim'
+Plug 'chriskempson/vim-tomorrow-theme'
 
 if has("nvim")
     Plug 'benekastah/neomake'
@@ -231,19 +232,11 @@ au BufNewFile,BufRead *.edp comp freefem
 au BufNewFile,BufRead *.geo setf gmsh
 
 " Colorscheme
-if $COLORSCHEME=="light"
-    silent! colo solarized
+silent! colo $COLORSCHEME
+if $BACKGROUND=="dark"
+    set background=dark
+elseif $BACKGROUND=="light"
     set background=light
-elseif $COLORSCHEME=="dark"
-    silent! colo solarized
-    set background=dark
-elseif $COLORSCHEME=="seoul"
-    silent! colo seoul256
-elseif $COLORSCHEME=="molokai"
-    silent! colo molokai
-else
-    silent! colo solarized
-    set background=dark
 endif
 
 highlight Comment cterm=italic

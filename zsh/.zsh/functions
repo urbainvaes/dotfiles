@@ -2,15 +2,26 @@
 
 function colo {
 
-    # Change colors for current session
-    $HOME/bin/recolor < ~/.Xresources/$1
-
-    # Load Xresources file for future sessions
-    xrdb -I$HOME ~/.Xresources/$1
-
     # Change environment variable
     export COLORSCHEME=$1
+    export BACKGROUND=$2
+
+    if [[ -z ${BACKGROUND} ]]; then
+        XRESOURCE=~/.Xresources/${COLORSCHEME}
+    else
+        XRESOURCE=~/.Xresources/${COLORSCHEME}-${BACKGROUND}
+    fi
+
+    # Change colors for current session
+    $HOME/bin/recolor < ${XRESOURCE}
+
+    # Load Xresources file for future sessions
+    xrdb -I$HOME ${XRESOURCE}
 
     # Change default environment variable for future sessions
-    sed -i --follow-symlinks "s/^export COLORSCHEME=.*$/export COLORSCHEME=$1/g" ~/.zsh/tmp
+    sed -i --follow-symlinks "s/^export COLORSCHEME=.*$/export COLORSCHEME=${COLORSCHEME}/g" ~/.zsh/tmp
+    sed -i --follow-symlinks "s/^export COLORSCHEME=.*$/export BACKGROUND=${BACKGROUND}/g" ~/.zsh/tmp
 }
+
+# Completion for colorschemes
+compctl -k "($(ls ${HOME}/.Xresources))" colo
