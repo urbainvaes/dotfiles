@@ -2,26 +2,30 @@
 
 function colo {
 
-    # Change environment variable
-    export COLORSCHEME=$1
-    export BACKGROUND=$2
+    # Xresource file
+    XRESOURCE=$1
 
-    if [[ -z ${BACKGROUND} ]]; then
-        XRESOURCE=~/.Xresources/${COLORSCHEME}
-    else
-        XRESOURCE=~/.Xresources/${COLORSCHEME}-${BACKGROUND}
+    if [[ "${XRESOURCE}" == *"-dark" ]]; then
+        export COLORSCHEME=${XRESOURCE%-dark}
+        export BACKGROUND="dark"
+    elif [[ "${XRESOURCE}" == *"-light" ]]; then
+        export COLORSCHEME=${XRESOURCE%-light}
+        export BACKGROUND="light"
+    else 
+        export COLORSCHEME=${XRESOURCE}
+        export BACKGROUND=""
     fi
 
     # Change colors for current session
-    $HOME/bin/recolor < ${XRESOURCE}
+    $HOME/bin/recolor < ~/.Xresources/${XRESOURCE}
 
     # Load Xresources file for future sessions
-    xrdb -I$HOME ${XRESOURCE}
+    xrdb -I$HOME ~/.Xresources/${XRESOURCE}
 
     # Change default environment variable for future sessions
     sed -i --follow-symlinks "s/^export COLORSCHEME=.*$/export COLORSCHEME=${COLORSCHEME}/g" ~/.zsh/tmp
     sed -i --follow-symlinks "s/^export COLORSCHEME=.*$/export BACKGROUND=${BACKGROUND}/g" ~/.zsh/tmp
 }
 
-# Completion for colorschemes
-compctl -k "($(ls ${HOME}/.Xresources))" colo
+# Completion for colorschemes (-M -> Case insensitive)
+compctl -k "($(ls ${HOME}/.Xresources))" -M 'm:{a-z}={A-Z}' colo
