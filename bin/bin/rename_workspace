@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-workspace=$(i3-msg -t get_outputs | grep -Po '"current_workspace":"[^\"]*"' | sed 's/"current_workspace":"\([^"]\+\)"/\1/g')
-number=$(echo "${workspace//[!0-9]}")
+workspace=$(i3-msg -t get_workspaces | grep -Po '{[^}]*"focused":true[^}]*}' | sed 's/.*"name":"\([^"]*\)".*$/\1/g')
+number=$(i3-msg -t get_workspaces | grep -Po '{[^}]*"focused":true[^}]*}' | sed 's/{"num":\([^,]*\),.*$/\1/g')
 
 new_name=$(zenity --entry --title="Rename workspace" --entry-text "$workspace")
 if [[ "$new_name" != *:* ]]; then

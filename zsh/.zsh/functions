@@ -8,6 +8,7 @@ function colo {
     if [[ "${XRESOURCE}" == *"-dark" ]]; then
         export COLORSCHEME=${XRESOURCE%-dark}
         export BACKGROUND="dark"
+        echo ${COLORSCHEME}
     elif [[ "${XRESOURCE}" == *"-light" ]]; then
         export COLORSCHEME=${XRESOURCE%-light}
         export BACKGROUND="light"
@@ -24,7 +25,7 @@ function colo {
 
     # Change default environment variable for future sessions
     sed -i --follow-symlinks "s/^export COLORSCHEME=.*$/export COLORSCHEME=${COLORSCHEME}/g" ~/.zsh/tmp
-    sed -i --follow-symlinks "s/^export COLORSCHEME=.*$/export BACKGROUND=${BACKGROUND}/g" ~/.zsh/tmp
+    sed -i --follow-symlinks "s/^export BACKGROUND=.*$/export BACKGROUND=${BACKGROUND}/g" ~/.zsh/tmp
 }
 
 # Completion for colorschemes (-M -> Case insensitive)
