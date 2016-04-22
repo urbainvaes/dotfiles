@@ -232,7 +232,7 @@ au BufNewFile,BufRead *.edp comp freefem
 au BufNewFile,BufRead *.geo setf gmsh
 
 " Colorscheme
-let base16colorspace=256 
+let base16colorspace=256
 silent! colo $COLORSCHEME
 if $BACKGROUND=="dark"
     set background=dark
