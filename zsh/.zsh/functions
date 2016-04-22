@@ -1,4 +1,10 @@
-#!/bin/zsh
+if [[ -z ${ZSH_COLORS} ]]; then
+    ZSH_COLORS=${HOME}/.local/share/zsh/colors.zsh
+fi
+
+if [[ -f ${ZSH_COLORS} ]]; then
+    source ${ZSH_COLORS}
+fi
 
 function colo {
 
@@ -8,7 +14,6 @@ function colo {
     if [[ "${XRESOURCE}" == *"-dark" ]]; then
         export COLORSCHEME=${XRESOURCE%-dark}
         export BACKGROUND="dark"
-        echo ${COLORSCHEME}
     elif [[ "${XRESOURCE}" == *"-light" ]]; then
         export COLORSCHEME=${XRESOURCE%-light}
         export BACKGROUND="light"
@@ -18,14 +23,19 @@ function colo {
     fi
 
     # Change colors for current session
-    $HOME/bin/recolor < ~/.Xresources/${XRESOURCE}
-
+    cat ~/.Xresources/${XRESOURCE} | tr -d ' \t' | sed -n \
+        -e 's/.*background:/\x1b]11;/p' \
+        -e 's/.*foreground:/\x1b]10;/p' \
+        -e 's/.*borderColor:/\x1b]708;/p' \
+        -e 's/.*color\([0-9][^:]*\):/\x1b]4;\1;/p' | tr \\n \\a
+    
     # Load Xresources file for future sessions
     xrdb -I$HOME ~/.Xresources/${XRESOURCE}
 
     # Change default environment variable for future sessions
-    sed -i --follow-symlinks "s/^export COLORSCHEME=.*$/export COLORSCHEME=${COLORSCHEME}/g" ~/.zsh/tmp
-    sed -i --follow-symlinks "s/^export BACKGROUND=.*$/export BACKGROUND=${BACKGROUND}/g" ~/.zsh/tmp
+    mkdir -p $(dirname ${ZSH_COLORS})
+    echo "export COLORSCHEME=${COLORSCHEME}" > ${ZSH_COLORS}
+    echo "export BACKGROUND=${BACKGROUND}" >> ${ZSH_COLORS}
 }
 
 # Completion for colorschemes (-M -> Case insensitive)
