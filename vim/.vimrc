@@ -4,6 +4,7 @@ let maplocalleader = "\\"
 
 "" Plugins
 call plug#begin('~/.vim/plugged')
+Plug 'chriskempson/base16-vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
 Plug 'beloglazov/vim-online-thesaurus'
@@ -199,7 +200,6 @@ set breakindent
 let &showbreak='--> '
 set colorcolumn=0
 set scrolloff=0
-set t_Co=256
 set guitablabel=%N\ %t\ %M
 set showcmd
 
@@ -232,6 +232,7 @@ au BufNewFile,BufRead *.edp comp freefem
 au BufNewFile,BufRead *.geo setf gmsh
 
 " Colorscheme
+let base16colorspace=256 
 silent! colo $COLORSCHEME
 if $BACKGROUND=="dark"
     set background=dark

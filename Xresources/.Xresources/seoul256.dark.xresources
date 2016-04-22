@@ -1,5 +1,3 @@
-# include ".Xresources/base"
-
 ! Border color
 URxvt.borderColor: #3a3a3a
 

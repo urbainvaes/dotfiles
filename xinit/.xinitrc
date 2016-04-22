@@ -7,7 +7,7 @@ xset r rate 400 50
 $HOME/bin/keyboard
 
 # Load Xresources to light colorscheme
-xrdb -I$HOME ~/.Xresources/Tomorrow-Night-Eighties
+xrdb ~/.Xresources/base.xresources
 
 # Background
 feh --bg-fill --randomize /usr/share/backgrounds

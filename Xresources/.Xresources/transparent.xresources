@@ -1,5 +1,3 @@
-# include "solarized-dark"
-
 ! True transparency
 URxvt.transparent: true
 URxvt.shading: 10

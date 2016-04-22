@@ -5,7 +5,6 @@
 source "$HOME/.zsh/plugins"
 source "$HOME/.zsh/functions"
 source "$HOME/.zsh/alias"
-source "$HOME/.zsh/tmp"
 
 # Custom key bindings for built-in widgets
 bindkey -a 'k' history-beginning-search-backward

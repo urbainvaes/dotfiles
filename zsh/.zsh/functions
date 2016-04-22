@@ -1,42 +1,63 @@
+#!/bin/zsh
+
 if [[ -z ${ZSH_COLORS} ]]; then
     ZSH_COLORS=${HOME}/.local/share/zsh/colors.zsh
 fi
 
-if [[ -f ${ZSH_COLORS} ]]; then
-    source ${ZSH_COLORS}
-fi
+colorschemes=$(echo ${HOME}/.Xresources/**/* | sed "s#${HOME}/.Xresources/##g" | sed 's#base16/base16-##g')
 
 function colo {
 
     # Xresource file
-    XRESOURCE=$1
-
-    if [[ "${XRESOURCE}" == *"-dark" ]]; then
-        export COLORSCHEME=${XRESOURCE%-dark}
-        export BACKGROUND="dark"
-    elif [[ "${XRESOURCE}" == *"-light" ]]; then
-        export COLORSCHEME=${XRESOURCE%-light}
-        export BACKGROUND="light"
-    else 
-        export COLORSCHEME=${XRESOURCE}
-        export BACKGROUND=""
+    if [[ -z $1 ]]; then
+        XRESOURCE=$(echo ${colorschemes} | sed 's/ /\n/g' | fzf)
+    else
+        XRESOURCE=$1
+    fi
+    if [[ -z ${XRESOURCE} ]]; then
+        return
+    fi
+    if [[ ! -f ${HOME}/.Xresources/${XRESOURCE} ]]; then
+        XRESOURCE=base16/base16-${XRESOURCE}
+    fi
+    if [[ ! -f ${HOME}/.Xresources/${XRESOURCE} ]]; then
+        echo "Invalid colorscheme!"
+        return
     fi
 
     # Change colors for current session
-    cat ~/.Xresources/${XRESOURCE} | tr -d ' \t' | sed -n \
+    /usr/bin/cpp ~/.Xresources/${XRESOURCE} | tr -d ' \t' | sed -n \
         -e 's/.*background:/\x1b]11;/p' \
         -e 's/.*foreground:/\x1b]10;/p' \
-        -e 's/.*borderColor:/\x1b]708;/p' \
         -e 's/.*color\([0-9][^:]*\):/\x1b]4;\1;/p' | tr \\n \\a
-    
+
+    # Ensure border color is the same as background
+    bg=$(/usr/bin/cpp ~/.Xresources/${XRESOURCE} | grep "background" | sed 's/[^ ]\+[ ]\+\([^ ]\+\)$/\1/')
+    echo "\x1b]708;${bg}" | tr \\n \\a
+
     # Load Xresources file for future sessions
-    xrdb -I$HOME ~/.Xresources/${XRESOURCE}
+    xrdb ~/.Xresources/base.xresources
+    xrdb -merge ~/.Xresources/${XRESOURCE}
+    xrdb -merge <<< "URxvt.borderColor: ${bg}"
 
     # Change default environment variable for future sessions
     mkdir -p $(dirname ${ZSH_COLORS})
+
+    COLORSCHEME=$(echo $(basename ${XRESOURCE}) | sed 's/\([^.]\+\)\..\+$/\1/g')
+    BACKGROUND=$(echo ${XRESOURCE} | sed 's/^.\+\(dark\|light\).\+$/\1/')
+
     echo "export COLORSCHEME=${COLORSCHEME}" > ${ZSH_COLORS}
     echo "export BACKGROUND=${BACKGROUND}" >> ${ZSH_COLORS}
+    echo "export XRESOURCE=${XRESOURCE}" >> ${ZSH_COLORS}
+    source ${ZSH_COLORS}
 }
 
+# Source colors
+if [[ -f ${ZSH_COLORS} ]]; then
+    source ${ZSH_COLORS}
+    colo ${XRESOURCE}
+    # echo "sourced ${XRESOURCE}"
+fi
+
 # Completion for colorschemes (-M -> Case insensitive)
-compctl -k "($(ls ${HOME}/.Xresources))" -M 'm:{a-z}={A-Z}' colo
+compctl -k "(${colorschemes})" -M 'm:{a-z}={A-Z}' colo
