@@ -1,0 +1,75 @@
+#!/bin/bash
+
+# Zathura history file
+zathura_history="${HOME}/.local/share/zathura/history"
+
+# Name of .pdf file
+pdffile=${PWD}/$1
+
+# Move to directory of file
+cd $(dirname ${pdffile})
+
+# Get basename
+pdf_basename=$(basename ${pdffile})
+pdf_dirname=$(dirname ${pdffile})
+
+# Look for .tex file
+if [[ -f ${pdf_basename%.*}.tex ]]; then
+    texfile=${pdf_dirname}/${pdf_basename%.*}.tex
+elif [[ -f ../${pdf_basename%.*}.tex ]]; then
+    texfile=${pdf_dirname}/../${pdf_basename%.*}.tex
+else    
+    echo "Error: Could not find tex file"
+    exit
+fi
+
+# Move to directory of tex file
+cd $(dirname ${texfile})
+
+# Define function to get page in Zathura
+function getpage {
+    grep -A 10 -B 0 "$1" ${zathura_history} | grep "page=" | sed 's/^page=//'
+}
+
+# Define function to get videos to play
+function getvideo {
+    grep -n "% INCLUDE_VIDEO " ${texfile} | \
+        while read video; do
+            line=${video%%:*}
+            video_page=$(synctex view -i ${line}:0:${texfile} -o ${pdffile} | grep "Page:" | sed 's/Page://')
+            if [[ ${video_page} -eq $1 ]]; then
+                echo ${video} | rev | cut -f1  -d" " | rev
+            fi
+        done
+}
+
+# Calculate total number of pages
+pages=$(pdfinfo ${pdffile} | grep Pages | sed 's/[^0-9]*//')
+
+# Launch presentation
+zathura  --page 0 --mode presentation ${pdffile}
+
+while :
+do
+    # Get page number at quit (Zathura starts at 0)
+    page=$(($(getpage ${pdffile}) + 1))
+
+    # Clean Zathura history
+    rm ${zathura_history}
+
+    # Get corresponding video
+    toplay=$(getvideo ${page})
+
+    # Play video
+    if [[ ! -z ${toplay} ]]; then
+        vlc -f --play-and-exit ${toplay}
+    fi
+
+    # Terminate if on last page
+    if [[ ${page} -eq ${pages} ]]; then
+        exit
+    fi
+
+    # Relaunch Zathura at next page
+    zathura  --page ${page} --mode presentation ${pdffile}
+done
