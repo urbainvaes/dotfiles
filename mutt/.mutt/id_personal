@@ -1,4 +1,4 @@
-set from = "mail@urbainvaes.com"
+set from = "urbain@vaes.uk"
 set sendmail="/usr/bin/msmtp -a personal"
 
 set spoolfile = "+Personal/Personal"
