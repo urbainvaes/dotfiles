@@ -8,11 +8,6 @@ checkout = git clone 'git@urbainvaes.com:gitolite-admin.git' 'gitolite'
 update = git pull origin master
 push = git push origin master
 
-[$HOME/ledger]
-checkout = git clone 'git@urbainvaes.com:private/ledger.git' 'ledger'
-update = git pull origin master
-push = git push origin master
-
 [$HOME/personal]
 checkout = git clone 'git@urbainvaes.com:private/personal.git' 'personal'
 update = git pull origin master

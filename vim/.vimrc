@@ -29,14 +29,13 @@ if has("nvim")
     nnoremap <a-g>  :GitFiles<cr>
     nnoremap <a-c>  :Colors<cr>
     nnoremap <a-h>  :History:<cr>
-else
-    nnoremap <c-p>b  :Buffers<cr>
-    nnoremap <c-p>f  :Files<cr>
-    nnoremap <c-p>r  :History<cr>
-    nnoremap <c-p>g  :GitFiles<cr>
-    nnoremap <c-p>c  :Colors<cr>
-    nnoremap <c-p>h  :History:<cr>
 endif
+nnoremap <c-p>b  :Buffers<cr>
+nnoremap <c-p>f  :Files<cr>
+nnoremap <c-p>r  :History<cr>
+nnoremap <c-p>g  :GitFiles<cr>
+nnoremap <c-p>c  :Colors<cr>
+nnoremap <c-p>h  :History:<cr>
 
 imap <c-x><c-l> <plug>(fzf-complete-line)
 imap <c-x><c-f> <plug>(fzf-complete-file)
@@ -55,7 +54,6 @@ Plug 'justinmk/vim-sneak'
 Plug 'klen/python-mode'
 let g:pymode_rope=0
 
-Plug 'ledger/vim-ledger'
 Plug 'lervag/vimtex'
 let g:vimtex_fold_enabled=0
 let g:vimtex_view_method='zathura'
@@ -107,8 +105,8 @@ endfunction
 
 augroup myflags
     autocmd!
-    autocmd BufEnter,BufWritePost * let b:trailing=search('\s\+$','n')
-    autocmd BufEnter,BufWritePost * let b:mixed=Mixed_indent()
+    autocmd BufEnter,BufRead,BufWritePost * let b:trailing=search('\s\+$','n')
+    autocmd BufEnter,BufRead,BufWritePost * let b:mixed=Mixed_indent()
     autocmd User Flags call Hoist("window", "SyntasticStatuslineFlag")
     autocmd User Flags call Hoist("window", "%{b:trailing?'[tw]':''}")
     autocmd User Flags call Hoist("window", "%{b:mixed?'[mixed]':''}")
@@ -131,7 +129,6 @@ Plug 'troydm/zoomwintab.vim'
 Plug 'vim-scripts/gmsh.vim'
 Plug 'holomorph/vim-freefem'
 Plug 'nanotech/jellybeans.vim'
-Plug 'chriskempson/vim-tomorrow-theme'
 
 if has("nvim")
     Plug 'benekastah/neomake'
@@ -233,6 +230,7 @@ au BufNewFile,BufRead *.geo setf gmsh
 
 " Colorscheme
 let base16colorspace=256
+" let g:seoul256_background =235
 silent! colo $COLORSCHEME
 if $BACKGROUND=="dark"
     set background=dark
@@ -253,8 +251,6 @@ nnoremap cpg :GitGutterToggle<cr>
 nnoremap cpn :NERDTreeToggle<cr>
 nnoremap cpt :TagbarToggle<cr>
 nnoremap cpu :GundoToggle<cr>
-
-" File edits
 
 " Formatting
 nnoremap <Leader>fw :%s/\s\+$//<cr>
