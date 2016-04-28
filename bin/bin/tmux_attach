@@ -6,4 +6,4 @@ SESSION=$(echo "$SESSIONS" | dmenu -i -p "Session:" | tr -d '[[:space:]]')
 
 [[ -n $SESSION ]] || exit
 
-urxvt -e zsh -c "tmux new-session -A -s $SESSION"
+urxvt -e zsh -c "source ~/.zshrc && tmux new-session -A -s $SESSION"

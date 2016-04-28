@@ -4,8 +4,10 @@ if [[ -z ${ZSH_COLORS} ]]; then
     ZSH_COLORS=${HOME}/.local/share/zsh/colors.zsh
 fi
 
-colorschemes=$(echo ${HOME}/.Xresources/**/*.xresources | sed "s#${HOME}/.Xresources/##g" | sed 's#base16/base16-##g' | \
-    sed 's/[^ ]\+\.256\.[^ ]\+//g' | sed 's/.xresources//g' | sed 's/[ ]\+/ /g' )
+if [[ -d ${HOME}/.Xresources ]]; then
+    colorschemes=$(echo ${HOME}/.Xresources/**/*.xresources | sed "s#${HOME}/.Xresources/##g" | sed 's#base16/base16-##g' | \
+        sed 's/[^ ]\+\.256\.[^ ]\+//g' | sed 's/.xresources//g' | sed 's/[ ]\+/ /g' )
+fi
 
 function colo {
 
@@ -35,11 +37,6 @@ function colo {
     bg=$(/usr/bin/cpp ${XRESOURCE_FILE} | grep "background" | sed 's/[^ ]\+[ ]\+\([^ ]\+\)$/\1/')
     echo "\x1b]708;${bg}" | tr \\n \\a
 
-    # Load Xresources file for future sessions
-    xrdb ~/.Xresources/base.xresources
-    xrdb -merge ${XRESOURCE_FILE}
-    xrdb -merge <<< "URxvt.borderColor: ${bg}"
-
     # Change default environment variable for future sessions
     mkdir -p $(dirname ${ZSH_COLORS})
 
@@ -56,7 +53,6 @@ function colo {
 if [[ -f ${ZSH_COLORS} ]]; then
     source ${ZSH_COLORS}
     colo ${XRESOURCE}
-    # echo "sourced ${XRESOURCE}"
 fi
 
 # Completion for colorschemes (-M -> Case insensitive)
