@@ -77,6 +77,7 @@ let g:tagbar_autofocus = 1
 Plug 'mileszs/ack.vim', { 'on' : 'Ack' }
 Plug 'rdnetto/YCM-Generator', { 'branch' : 'stable' , 'on' : 'YcmGenerateConfig' }
 Plug 'scrooloose/nerdtree'
+let g:NERDTreeHijackNetrw = 0
 
 Plug 'SirVer/ultisnips'
 let g:UltiSnipsEditSplit="horizontal"
