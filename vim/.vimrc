@@ -4,6 +4,17 @@ let maplocalleader = "\\"
 
 "" Plugins
 call plug#begin('~/.vim/plugged')
+Plug 'critiqjo/lldb.nvim'
+nmap <c-d>n :LLsession new
+nmap <c-d>b <Plug>LLBreakSwitch
+nmap <c-d>c :LL continue<cr>
+nmap <c-d>d :LLmode debug<cr>
+nmap <c-d>z :LLmode code<cr>
+nmap <c-d>l :LL process launch<cr>
+nmap <c-d>p :LL print <C-R>=expand('<cword>')<CR>
+vmap <c-d>p :<C-U>LL print <C-R>=lldb#util#get_selection()<CR><CR>
+
+Plug 'AndrewRadev/splitjoin.vim'
 Plug 'chriskempson/base16-vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
@@ -113,6 +124,9 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-rsi'
+let g:rsi_no_meta = 1
+
 Plug 'troydm/zoomwintab.vim'
 Plug 'vim-scripts/gmsh.vim'
 Plug 'holomorph/vim-freefem'
