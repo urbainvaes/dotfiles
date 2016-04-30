@@ -47,6 +47,13 @@ nmap ga <Plug>(EasyAlign)
 xmap gl <Plug>(LiveEasyAlign)
 nmap gl <Plug>(LiveEasyAlign)
 
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing', 'mixed-indent-file' ]
+let g:airline_theme='base16'
+
 Plug 'junegunn/vim-peekaboo'
 Plug 'junegunn/vim-pseudocl'
 Plug 'junegunn/vim-oblique'
@@ -93,26 +100,6 @@ nnoremap )) :BufSurfForward<CR>
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-flagship'
-let g:tabprefix = ""
-let g:tablabel = "%N%{flagship#tabmodified()} %{flagship#tabcwds('shorten',',')}"
-
-function! Mixed_indent()
-    let l:spaces=search('\v(^ +)','n')
-    let l:tabs=search('\v(^\t+)','n')
-    return (l:spaces * l:tabs > 0)
-endfunction
-
-augroup myflags
-    autocmd!
-    autocmd BufEnter,BufRead,BufWritePost * let b:trailing=search('\s\+$','n')
-    autocmd BufEnter,BufRead,BufWritePost * let b:mixed=Mixed_indent()
-    autocmd User Flags call Hoist("window", "SyntasticStatuslineFlag")
-    autocmd User Flags call Hoist("window", "%{b:trailing?'[tw]':''}")
-    autocmd User Flags call Hoist("window", "%{b:mixed?'[mixed]':''}")
-    autocmd User Flags call Hoist("window", "%{&paste?'[paste]':''}")
-augroup END
-
 Plug 'tpope/vim-fugitive'
 nnoremap <Leader>gs :Gstatus<cr>
 nnoremap <Leader>gr :Gread<cr>
