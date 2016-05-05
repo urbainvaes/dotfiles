@@ -116,23 +116,6 @@ nnoremap gm :Neomake!<cr>
 
 "" Plugin configurations
 
-" Deoplete
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#omni#input_patterns={}
-let g:deoplete#omni#input_patterns.ledger = ':\w*'
-let g:deoplete#omni#input_patterns.tex = ['cite.\w*', 'ref.\w*']
-
-" Python-mode
-let g:pymode_rope=0
-
-" NerdTree
-let g:NERDTreeHijackNetrw = 0
-
-" Tagbar
-let g:tagbar_width = 30
-let g:tagbar_show_linenumbers = 1
-let g:tagbar_autofocus = 1
-
 " Airline
 let g:airline_left_sep=''
 let g:airline_right_sep=''
@@ -144,13 +127,25 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#tabline#tab_min_count = 2
 let g:airline#extensions#tabline#show_buffers = 0
 
-" Vimtex
-let g:vimtex_fold_enabled=0
-let g:vimtex_view_method='zathura'
-let g:vimtex_latexmk_continuous=1
-let g:vimtex_quickfix_mode=0
-let g:vimtex_latexmk_build_dir='build'
-let g:vimtex_latexmk_progname='nvr'
+" Deoplete
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#omni#input_patterns={}
+let g:deoplete#omni#input_patterns.ledger = ':\w*'
+let g:deoplete#omni#input_patterns.tex = ['cite.\w*', 'ref.\w*']
+
+" FZF.vim
+let g:fzf_buffers_jump = 1
+
+" NerdTree
+let g:NERDTreeHijackNetrw = 0
+
+" Python-mode
+let g:pymode_rope=0
+
+" Tagbar
+let g:tagbar_width = 30
+let g:tagbar_show_linenumbers = 1
+let g:tagbar_autofocus = 1
 
 " Syntastic
 let g:syntastic_cpp_compiler = "g++"
@@ -168,8 +163,13 @@ let g:UltiSnipsSnippetDirectories=['UltiSnips', 'mySnippets']
 let g:UltiSnipsSnippetsDir="~/.vim/mySnippets"
 let g:UltiSnipsUsePythonVersion=3
 
-" FZF.vim
-let g:fzf_buffers_jump = 1
+" Vimtex
+let g:vimtex_fold_enabled=0
+let g:vimtex_view_method='zathura'
+let g:vimtex_latexmk_continuous=1
+let g:vimtex_quickfix_mode=0
+let g:vimtex_latexmk_build_dir='build'
+let g:vimtex_latexmk_progname='nvr'
 
 " YouCompleteMe
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
@@ -184,6 +184,7 @@ endif
 
 
 "" Vim variables
+let g:netrw_bufsettings='relativenumber'
 let g:tex_conceal= 'adgm'
 let g:tex_flavor='latex'
 
@@ -243,6 +244,9 @@ endif
 
 
 "" Autocommands
-au BufNewFile,Bufread /tmp/mutt-* setlocal tw=72
-au BufNewFile,BufRead *.edp comp freefem
-au BufNewFile,BufRead *.geo setf gmsh
+augroup vimrc
+    autocmd!
+    au BufNewFile,Bufread /tmp/mutt-* setlocal tw=72
+    au BufNewFile,BufRead *.edp comp freefem
+    au BufNewFile,BufRead *.geo setf gmsh
+augroup END
