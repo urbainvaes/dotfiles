@@ -1,3 +1,5 @@
 attachments/*
 cache/*
 temp/*
+
+!*.gitkeep
