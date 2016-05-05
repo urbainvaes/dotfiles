@@ -7,13 +7,11 @@ alias cdd='cd ~/dotfiles'
 
 # Shortcut to files
 alias notes='vim ~/dotfiles/.notes'
-alias el='nvim ~/dotfiles/ledger/perso.ledger'
 
 # Programs
 alias a='vifm . .'
 alias ff='FreeFem++'
 alias g='git'
-alias l='ledger'
 alias m='cd ~/.mutt/attachments && mutt && cd -'
 alias e='nvim'
 alias n='nvim'
@@ -29,4 +27,5 @@ alias mca='make clean-all'
 alias son="tmux set -g status on"
 alias soff="tmux set -g status off"
 
+# Unablias ag from ubuntu plugin
 unalias ag

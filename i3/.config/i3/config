@@ -168,7 +168,7 @@ bindsym XF86MonBrightnessUp exec light -A 10
 bindsym XF86MonBrightnessDown exec light -U 10
 
 # Change wallpaper
-bindsym F11 exec --no-startup-id feh --bg-fill --randomize /usr/share/backgrounds
+bindsym F11 exec --no-startup-id feh --bg-fill --randomize /usr/share/archlinux/wallpaper
 
 # Custom scripts
 bindsym XF86AudioPlay exec $HOME/bin/touchpad
