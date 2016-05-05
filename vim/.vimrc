@@ -57,8 +57,9 @@ if has("nvim")
     Plug 'Shougo/deoplete.nvim'
     Plug 'benekastah/neomake'
 else
-    Plug 'Valloric/YouCompleteMe', { 'do' : 'python2 install.py --clang-completer' }
+    Plug 'Shougo/neocomplete.vim'
     Plug 'scrooloose/syntastic'
+    " Plug 'Valloric/YouCompleteMe', { 'do' : 'python2 install.py --clang-completer' }
 endif
 
 call plug#end()
@@ -127,9 +128,13 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#tabline#tab_min_count = 2
 let g:airline#extensions#tabline#show_buffers = 0
 
-" Deoplete
+" Deoplete / neocomplete
 let g:deoplete#enable_at_startup = 1
+let g:neocomplete#enable_at_startup = 1
 let g:deoplete#omni#input_patterns={}
+if !exists('g:deoplete#omni#input_patterns')
+    let g:deoplete#omni#input_patterns = {}
+endif
 let g:deoplete#omni#input_patterns.ledger = ':\w*'
 let g:deoplete#omni#input_patterns.tex = ['cite.\w*', 'ref.\w*']
 
@@ -201,8 +206,6 @@ set noswapfile
 set nowritebackup
 set undofile
 set diffopt=filler,vertical
-set breakindent
-let &showbreak='--> '
 set nowrap
 set conceallevel=2
 set nojoinspaces
@@ -211,6 +214,9 @@ set smartcase
 set ignorecase
 set lazyredraw
 set hidden
+set encoding=utf-8 " Makes it slow to source
+silent! set breakindent
+let &showbreak='--> '
 " set clipboard=unnamedplus
 " set spellfile="$HOME/.vim/spell/en.utf-8.add"
 
