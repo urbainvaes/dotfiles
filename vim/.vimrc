@@ -42,6 +42,7 @@ Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-sensible'
@@ -136,7 +137,21 @@ if !exists('g:deoplete#omni#input_patterns')
     let g:deoplete#omni#input_patterns = {}
 endif
 let g:deoplete#omni#input_patterns.ledger = ':\w*'
-let g:deoplete#omni#input_patterns.tex = ['cite.\w*', 'ref.\w*']
+let g:deoplete#omni#input_patterns.tex = ['cite.\w*', 'ref.\w*', 'includegraphics.\w*']
+if !exists('g:neocomplete#sources#omni#input_patterns')
+    let g:neocomplete#sources#omni#input_patterns = {}
+endif
+let g:neocomplete#sources#omni#input_patterns.tex =
+    \ '\v\\%('
+    \ . '\a*cite\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+    \ . '|\a*ref%(\s*\{[^}]*|range\s*\{[^,}]*%(}\{)?)'
+    \ . '|hyperref\s*\[[^]]*'
+    \ . '|includegraphics\*?%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+    \ . '|%(include%(only)?|input)\s*\{[^}]*'
+    \ . '|\a*(gls|Gls|GLS)(pl)?\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
+    \ . '|includepdf%(\s*\[[^]]*\])?\s*\{[^}]*'
+    \ . '|includestandalone%(\s*\[[^]]*\])?\s*\{[^}]*'
+    \ . ')'
 
 " FZF.vim
 let g:fzf_buffers_jump = 1
@@ -166,6 +181,7 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsListSnippets="<c-l>"
 let g:UltiSnipsSnippetDirectories=['UltiSnips', 'mySnippets']
 let g:UltiSnipsSnippetsDir="~/.vim/mySnippets"
+let g:UltiSnipsUsePythonVersion=3
 
 " Vimtex
 let g:vimtex_fold_enabled=0
@@ -213,6 +229,7 @@ set smartcase
 set ignorecase
 set lazyredraw
 set hidden
+set fo+=or
 set encoding=utf-8 " Makes it slow to source
 silent! set breakindent
 let &showbreak='--> '
