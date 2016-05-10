@@ -49,6 +49,10 @@ Channel Personal-inbox
 Master :Personal-remote:"INBOX"
 Slave  :Personal-local:"Personal"
 
+Channel Personal-rss
+Master :Personal-remote:"INBOX/Rss"
+Slave  :Personal-local:"rss"
+
 Channel Personal-draft
 Master :Personal-remote:"Drafts"
 Slave  :Personal-local:"Personal.drafts"

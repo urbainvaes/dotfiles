@@ -63,6 +63,7 @@ set include=yes
 # Macros
 macro index,pager gp "<change-folder> +Personal/Personal<enter>"
 macro index,pager gw "<change-folder> +Work/Work<enter>"
+macro index,pager gr "<change-folder> +Personal/rss<enter>"
 
 # Key bindings
 bind attach <return> view-mailcap
