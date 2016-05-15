@@ -132,12 +132,9 @@ let g:airline#extensions#tabline#show_buffers = 0
 " Deoplete / neocomplete
 let g:deoplete#enable_at_startup = 1
 let g:neocomplete#enable_at_startup = 1
-let g:deoplete#omni#input_patterns={}
-if !exists('g:deoplete#omni#input_patterns')
-    let g:deoplete#omni#input_patterns = {}
+if !exists('g:deoplete#omni_patterns')
+    let g:deoplete#omni_patterns = {}
 endif
-let g:deoplete#omni#input_patterns.ledger = ':\w*'
-let g:deoplete#omni#input_patterns.tex = ['cite.\w*', 'ref.\w*', 'includegraphics.\w*']
 if !exists('g:neocomplete#sources#omni#input_patterns')
     let g:neocomplete#sources#omni#input_patterns = {}
 endif
@@ -152,6 +149,7 @@ let g:neocomplete#sources#omni#input_patterns.tex =
     \ . '|includepdf%(\s*\[[^]]*\])?\s*\{[^}]*'
     \ . '|includestandalone%(\s*\[[^]]*\])?\s*\{[^}]*'
     \ . ')'
+let g:deoplete#omni_patterns.tex = g:neocomplete#sources#omni#input_patterns.tex.'\m'
 
 " FZF.vim
 let g:fzf_buffers_jump = 1
@@ -220,6 +218,7 @@ set nofoldenable
 set noswapfile
 set nowritebackup
 set undofile
+set undodir="$HOME/.vim/vimundo"
 set diffopt=filler,vertical
 set nowrap
 set conceallevel=2
@@ -230,11 +229,13 @@ set ignorecase
 set lazyredraw
 set hidden
 set fo+=or
-set encoding=utf-8 " Makes it slow to source
 silent! set breakindent
 let &showbreak='--> '
 " set clipboard=unnamedplus
 " set spellfile="$HOME/.vim/spell/en.utf-8.add"
+if !has("nvim")
+  set encoding=utf-8
+endif
 
 
 "" Mappings
@@ -246,7 +247,6 @@ nnoremap <Leader>t :tabnew<cr>
 nnoremap got :call system('urxvt -cd '.getcwd().' &')<cr>
 nnoremap goT :call system('urxvt -cd '.expand("%:p:h").' &')<cr>
 
-nnoremap <tab> <C-^>
 nnoremap <LocalLeader>h :e %:p:s,.hpp$,.X123X,:s,.cpp$,.hpp,:s,.X123X$,.cpp,<CR>
 nnoremap Y y$
 nnoremap + za
@@ -271,4 +271,6 @@ augroup vimrc
     au BufNewFile,Bufread /tmp/mutt-* setlocal tw=72
     au BufNewFile,BufRead *.edp comp freefem
     au BufNewFile,BufRead *.geo setf gmsh
+    au FileType gmsh set makeprg=gmsh\ %
+    au FileType dirvish set relativenumber
 augroup END
