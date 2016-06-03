@@ -2,15 +2,14 @@
 let mapleader = " "
 let maplocalleader = "\\"
 
-
 "" Plugins
 call plug#begin('~/.vim/plugged')
+Plug 'dhruvasagar/vim-table-mode'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
 Plug 'beloglazov/vim-online-thesaurus'
-Plug 'chriskempson/base16-vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'critiqjo/lldb.nvim'
 Plug 'holomorph/vim-freefem'
@@ -38,6 +37,7 @@ Plug 'sjl/Gundo.vim', { 'on' : 'GundoToggle' }
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tomasr/molokai'
 Plug 'tommcdo/vim-exchange'
+Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-eunuch'
@@ -214,7 +214,8 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set showcmd
-set nofoldenable
+" set nofoldenable
+set foldmethod=marker
 set noswapfile
 set nowritebackup
 set undofile
@@ -231,7 +232,7 @@ set hidden
 set fo+=or
 silent! set breakindent
 let &showbreak='--> '
-" set clipboard=unnamedplus
+set clipboard=unnamedplus
 " set spellfile="$HOME/.vim/spell/en.utf-8.add"
 if !has("nvim")
   set encoding=utf-8
@@ -242,7 +243,7 @@ endif
 nnoremap <Leader>w :w!<cr>
 nnoremap <Leader>q :q!<cr>
 nnoremap <Leader>d :bd!<cr>
-nnoremap <Leader>t :tabnew<cr>
+nnoremap <Leader>n :tabnew<cr>
 
 nnoremap got :call system('urxvt -cd '.getcwd().' &')<cr>
 nnoremap goT :call system('urxvt -cd '.expand("%:p:h").' &')<cr>
@@ -253,9 +254,7 @@ nnoremap + za
 nnoremap <BS> <C-W>h
 nnoremap <Leader>fw :%s/\s\+$//<cr>
 
-
 "" Colorscheme
-let base16colorspace=256
 let g:seoul256_background =235
 silent! colo $COLORSCHEME
 if $BACKGROUND=="dark"
@@ -264,13 +263,13 @@ elseif $BACKGROUND=="light"
     set background=light
 endif
 
-
 "" Autocommands
 augroup vimrc
     autocmd!
     au BufNewFile,Bufread /tmp/mutt-* setlocal tw=72
-    au BufNewFile,BufRead *.edp comp freefem
     au BufNewFile,BufRead *.geo setf gmsh
+    au BufNewFile,BufRead *.pde setf freefem
     au FileType gmsh set makeprg=gmsh\ %
+    au FileType freefem comp freefem
     au FileType dirvish set relativenumber
 augroup END
