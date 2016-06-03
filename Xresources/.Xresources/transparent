@@ -1,3 +1,5 @@
+#include "/home/urbain/.Xresources/base"
+
 ! True transparency
 URxvt.transparent: true
 URxvt.shading: 10
