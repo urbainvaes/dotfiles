@@ -36,7 +36,7 @@ function getvideo {
     grep -n "% INCLUDE_VIDEO " ${texfile} | \
         while read video; do
             line=${video%%:*}
-            video_page=$(synctex view -i ${line}:0:${texfile} -o ${pdffile} | grep "Page:" | sed 's/Page://')
+            video_page=$(synctex view -i ${line}:0:${texfile} -o ${pdffile} | grep "Page:" | sed 's/Page://' | head -1)
             if [[ ${video_page} -eq $1 ]]; then
                 echo ${video} | rev | cut -f1  -d" " | rev
             fi
