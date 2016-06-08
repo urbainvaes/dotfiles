@@ -226,8 +226,8 @@ set showcmd
 set foldmethod=marker
 set noswapfile
 set nowritebackup
+set undodir=~/.vim/vimundo/
 set undofile
-set undodir="$HOME/.vim/vimundo"
 set diffopt=filler,vertical
 set nowrap
 set conceallevel=2
