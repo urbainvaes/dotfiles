@@ -6,7 +6,7 @@ export DISPLAY=:0
 # Get all emails
 mbsync -a
 
-new_mails=$(find $HOME/.mail -path '*/new/*' -type f)
+new_mails=$(find $HOME/.mail -path '*/new/*' -type f -not -path '*/rss/*')
 
 if [[ ! -z ${new_mails} ]]; then
     subjects=$(cat $(echo -e ${new_mails/'\n'/' '}) | grep "^Subject: " | sed "s/^Subject: //g")
