@@ -200,6 +200,14 @@ if !exists('g:ycm_semantic_triggers')
     let g:ycm_semantic_triggers.tex = ['re!\\[A-Za-z]*(ref|cite)[A-Za-z]*([^]]*])?{([^}]*, ?)*' ]
 endif
 
+" Plugins interactions
+function! Multiple_cursors_before()
+    let b:deoplete_disable_auto_complete = 1
+endfunction
+
+function! Multiple_cursors_after()
+    let b:deoplete_disable_auto_complete = 0
+endfunction
 
 "" Vim variables
 let g:netrw_bufsettings='relativenumber'
