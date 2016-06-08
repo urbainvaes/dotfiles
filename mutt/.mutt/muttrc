@@ -15,7 +15,7 @@ source ~/.mutt/alias
 source ~/.mutt/mailboxes
 source ~/.mutt/id_work
 
-# General information
+# General
 set realname = "Urbain Vaes"
 set reverse_alias
 set sort = reverse-date
@@ -23,6 +23,7 @@ set weed
 set fcc_clear
 unset markers
 set sleep_time = 0
+set wait_key = no
 
 # Encryption
 set crypt_autosign = no
@@ -64,6 +65,7 @@ set include=yes
 macro index,pager gp "<change-folder> +Personal/Personal<enter>"
 macro index,pager gw "<change-folder> +Work/Work<enter>"
 macro index,pager gr "<change-folder> +Personal/rss<enter>"
+macro pager u "<pipe-message>urlview\n"
 
 # Key bindings
 bind attach <return> view-mailcap
