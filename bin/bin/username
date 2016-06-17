@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 PWD_DIR="$HOME/.password-store"
 [[ ! -z $(readlink ${PWD_DIR}) ]] && PWD_DIR=$(readlink ${PWD_DIR})
 PASSWORDS=$(locate "${PWD_DIR}/**/*.gpg")
