@@ -30,6 +30,16 @@ iabbrev <buffer> gf \phi
 iabbrev <buffer> gp \pi
 iabbrev <buffer> gw \omega
 
+iabbrev <buffer> gB \Beta
+iabbrev <buffer> gG \Gamma
+iabbrev <buffer> gD \Delta
+iabbrev <buffer> gT \Theta
+iabbrev <buffer> gL \Lambda
+iabbrev <buffer> gX \Xi
+iabbrev <buffer> gF \Phi
+iabbrev <buffer> gP \Pi
+iabbrev <buffer> gW \Omega
+
 nnoremap <buffer> <LocalLeader>i :VimtexCompile<CR>
 nnoremap <buffer> <LocalLeader>e :VimtexErrors<CR>
 nnoremap <buffer> <LocalLeader>o :VimtexView<CR>
