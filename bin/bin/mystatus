@@ -4,6 +4,6 @@
 i3status | while :
 do
     read line
-    nmails=$(find $HOME/.mail -path '*/new/*' -type f | wc -l)
+    nmails=$(find $HOME/.mail -path '*/new/*' -type f -not -path '*/rss/*' | wc -l)
     echo "Email: ${nmails} | $line" || exit 1
 done
