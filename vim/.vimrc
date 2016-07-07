@@ -4,6 +4,7 @@ let maplocalleader = "\\"
 
 "" Plugins
 call plug#begin('~/.vim/plugged')
+Plug 'arpanpal010/vim-read'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'SirVer/ultisnips'
@@ -40,6 +41,7 @@ Plug 'tommcdo/vim-exchange'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
+Plug 'radenling/vim-dispatch-neovim'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
@@ -86,7 +88,7 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 imap <c-x><c-f> <plug>(fzf-complete-file)
 
 " LLDB
-nnoremap <c-d>n :LLsession new
+nnoremap <c-d>n :LLsession new<cr>
 nnoremap <c-d>b <Plug>LLBreakSwitch
 nnoremap <c-d>c :LL continue<cr>
 nnoremap <c-d>d :LLmode debug<cr>
@@ -114,6 +116,7 @@ nnoremap cps :UltiSnipsEdit<cr>
 
 " Neomake
 nnoremap gm :Neomake!<cr>
+nnoremap gr :Make run<cr>
 
 
 "" Plugin configurations
@@ -216,7 +219,7 @@ let g:tex_flavor='latex'
 
 
 "" Vim options
-set smartindent
+set cindent
 set expandtab
 set tabstop=4
 set softtabstop=4
@@ -237,7 +240,7 @@ set smartcase
 set ignorecase
 set lazyredraw
 set hidden
-set fo+=or
+set formatoptions+=orw
 silent! set breakindent
 let &showbreak='--> '
 set clipboard=unnamedplus
@@ -252,6 +255,9 @@ nnoremap <Leader>w :w!<cr>
 nnoremap <Leader>q :q!<cr>
 nnoremap <Leader>d :bd!<cr>
 nnoremap <Leader>n :tabnew<cr>
+
+nnoremap cqo :copen<cr>
+nnoremap cqc :cclose<cr>
 
 nnoremap got :call system('urxvt -cd '.getcwd().' &')<cr>
 nnoremap goT :call system('urxvt -cd '.expand("%:p:h").' &')<cr>
