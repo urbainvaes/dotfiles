@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+PASSWORD=$(pass show email/urbain@vaes.uk)
+
+curl -4 -X PUT  --user "urbain@vaes.uk:$PASSWORD" https://box.bknguyen.org/admin/dns/custom/vaes.uk
