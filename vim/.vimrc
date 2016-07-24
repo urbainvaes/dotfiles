@@ -41,7 +41,6 @@ Plug 'tommcdo/vim-exchange'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
-Plug 'radenling/vim-dispatch-neovim'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
@@ -59,6 +58,8 @@ Plug 'vim-scripts/gmsh.vim'
 if has("nvim")
     Plug 'Shougo/deoplete.nvim'
     Plug 'benekastah/neomake'
+    Plug 'radenling/vim-dispatch-neovim'
+    Plug 'jalvesaq/Nvim-R'
 else
     Plug 'Shougo/neocomplete.vim'
     Plug 'scrooloose/syntastic'
@@ -219,7 +220,7 @@ let g:tex_flavor='latex'
 
 
 "" Vim options
-set cindent
+set smartindent
 set expandtab
 set tabstop=4
 set softtabstop=4
@@ -240,7 +241,7 @@ set smartcase
 set ignorecase
 set lazyredraw
 set hidden
-set formatoptions+=orw
+" set formatoptions+=orw
 silent! set breakindent
 let &showbreak='--> '
 set clipboard=unnamedplus

@@ -33,20 +33,20 @@
 
 " highlight group cterm=style ctermfg=foreground_color ctermbg=background_color
 
-highlight Win cterm=none ctermfg=white ctermbg=black
+highlight Win cterm=none ctermfg=default ctermbg=default
 highlight Directory cterm=bold ctermfg=cyan ctermbg=default
 highlight Link cterm=bold ctermfg=yellow ctermbg=default
-highlight BrokenLink cterm=bold ctermfg=red ctermbg=default
+highlight BrokenLink cterm=bold ctermfg=123 ctermbg=default
 highlight Socket cterm=bold ctermfg=magenta ctermbg=default
-highlight Device cterm=bold ctermfg=red ctermbg=default
+highlight Device cterm=bold ctermfg=123 ctermbg=default
 highlight Fifo cterm=bold ctermfg=cyan ctermbg=default
 highlight Executable cterm=bold ctermfg=green ctermbg=default
 highlight Selected cterm=bold ctermfg=magenta ctermbg=default
-highlight CurrLine cterm=bold ctermfg=default ctermbg=blue
-highlight TopLine cterm=none ctermfg=black ctermbg=white
+highlight CurrLine cterm=bold ctermfg=default ctermbg=147
+highlight TopLine cterm=none ctermfg=default ctermbg=123
 highlight TopLineSel cterm=bold ctermfg=black ctermbg=default
-highlight StatusLine cterm=bold ctermfg=black ctermbg=white
+highlight StatusLine cterm=bold ctermfg=black ctermbg=123
 highlight WildMenu cterm=underline,reverse ctermfg=white ctermbg=black
-highlight CmdLine cterm=none ctermfg=white ctermbg=black
-highlight ErrorMsg cterm=none ctermfg=red ctermbg=black
-highlight Border cterm=none ctermfg=black ctermbg=white
+highlight CmdLine cterm=none ctermfg=green ctermbg=default
+highlight ErrorMsg cterm=none ctermfg=123 ctermbg=black
+highlight Border cterm=none ctermfg=black ctermbg=123
