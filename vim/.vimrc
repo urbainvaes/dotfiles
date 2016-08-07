@@ -30,6 +30,7 @@ Plug 'justinmk/vim-sneak'
 Plug 'klen/python-mode'
 Plug 'lervag/vimtex'
 Plug 'majutsushi/tagbar'
+Plug 'mhinz/vim-startify'
 Plug 'mileszs/ack.vim'
 Plug 'nanotech/jellybeans.vim'
 Plug 'rdnetto/YCM-Generator', { 'branch' : 'stable' , 'on' : 'YcmGenerateConfig' }
@@ -268,6 +269,11 @@ nnoremap Y y$
 nnoremap + za
 nnoremap <BS> <C-W>h
 nnoremap <Leader>fw :%s/\s\+$//<cr>
+
+cnoremap <c-p> <up>
+cnoremap <c-n> <down>
+cnoremap <up> <c-p>
+cnoremap <down> <c-n>
 
 "" Colorscheme
 let g:seoul256_background =235
