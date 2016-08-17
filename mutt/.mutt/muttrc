@@ -24,6 +24,7 @@ set fcc_clear
 unset markers
 set sleep_time = 0
 set wait_key = no
+my_hdr Jabber-ID: urbain@vaes.uk
 
 # Encryption
 set crypt_autosign = no
