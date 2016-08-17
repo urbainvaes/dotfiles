@@ -253,7 +253,7 @@ endif
 
 
 "" Mappings
-nnoremap <Leader>w :w!<cr>
+nnoremap <Leader>w :update<cr>
 nnoremap <Leader>q :q!<cr>
 nnoremap <Leader>d :bd!<cr>
 nnoremap <Leader>n :tabnew<cr>
