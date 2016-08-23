@@ -36,12 +36,13 @@ set pgp_use_gpg_agent = yes
 set pgp_timeout = 3600
 
 # Sidebar
-set sidebar_width=26
 set sidebar_visible = yes
-set sidebar_delim='|'
-set sidebar_shortpath = yes
-set sidebar_folderindent = yes
+set sidebar_width=25
+set sidebar_short_path = yes
+set sidebar_folder_indent = yes
+set sidebar_indent_string = " "
 set sidebar_format = "%B%* %?F?[%F]?%?N?(%N)?%4S"
+set mail_check_stats
 bind index,pager \Cn sidebar-next
 bind index,pager \Cp sidebar-prev
 bind index,pager O sidebar-open
