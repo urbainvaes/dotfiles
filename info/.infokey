@@ -1,0 +1,18 @@
+#info
+j       next-line
+k       prev-line
+l       forward-char
+h       backward-char
+^f      scroll-forward
+^b      scroll-backward
+g       beginning-of-node
+G       end-of-node
+^o      history-node
+}       next-node
+{       prev-node
+u       up-node
+t       top-node
+d       dir-node
+/       search
+n       search-next
+N       search-previous
