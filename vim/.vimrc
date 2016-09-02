@@ -13,6 +13,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'beloglazov/vim-online-thesaurus'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'critiqjo/lldb.nvim'
+Plug 'embear/vim-localvimrc'
 Plug 'holomorph/vim-freefem'
 Plug 'honza/vim-snippets'
 Plug 'jamessan/vim-gnupg'
@@ -101,6 +102,7 @@ vnoremap <c-d>p :<C-U>LL print <C-R>=lldb#util#get_selection()<CR><CR>
 
 " Fugitive
 nnoremap <Leader>gs :Gstatus<cr>
+nnoremap <Leader>gc :Gcommit<cr>
 nnoremap <Leader>gr :Gread<cr>
 nnoremap <Leader>gd :Gdiff<cr>
 
@@ -161,6 +163,10 @@ let g:fzf_buffers_jump = 1
 
 " Gundo
 let g:gundo_prefer_python3 = 1
+
+" Idealvimrc
+let g:localvimrc_sandbox = 0
+let g:localvimrc_whitelist='/home/*'
 
 " NerdTree
 let g:NERDTreeHijackNetrw = 0
