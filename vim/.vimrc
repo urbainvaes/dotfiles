@@ -13,6 +13,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'beloglazov/vim-online-thesaurus'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'critiqjo/lldb.nvim'
+Plug 'embear/vim-localvimrc'
 Plug 'holomorph/vim-freefem'
 Plug 'honza/vim-snippets'
 Plug 'jamessan/vim-gnupg'
@@ -55,6 +56,7 @@ Plug 'troydm/zoomwintab.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/gmsh.vim'
+Plug 'vim-scripts/SpellCheck'
 
 if has("nvim")
     Plug 'Shougo/deoplete.nvim'
@@ -64,7 +66,6 @@ if has("nvim")
 else
     Plug 'Shougo/neocomplete.vim'
     Plug 'scrooloose/syntastic'
-    " Plug 'Valloric/YouCompleteMe', { 'do' : 'python2 install.py --clang-completer' }
 endif
 
 call plug#end()
@@ -101,6 +102,7 @@ vnoremap <c-d>p :<C-U>LL print <C-R>=lldb#util#get_selection()<CR><CR>
 
 " Fugitive
 nnoremap <Leader>gs :Gstatus<cr>
+nnoremap <Leader>gc :Gcommit<cr>
 nnoremap <Leader>gr :Gread<cr>
 nnoremap <Leader>gd :Gdiff<cr>
 
@@ -158,6 +160,13 @@ let g:deoplete#omni_patterns.tex = g:neocomplete#sources#omni#input_patterns.tex
 
 " FZF.vim
 let g:fzf_buffers_jump = 1
+
+" Gundo
+let g:gundo_prefer_python3 = 1
+
+" Idealvimrc
+let g:localvimrc_sandbox = 0
+let g:localvimrc_whitelist='/home/*'
 
 " NerdTree
 let g:NERDTreeHijackNetrw = 0
@@ -219,7 +228,6 @@ let g:netrw_bufsettings='relativenumber'
 let g:tex_conceal= 'adgm'
 let g:tex_flavor='latex'
 
-
 "" Vim options
 set smartindent
 set expandtab
@@ -227,7 +235,6 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set showcmd
-" set nofoldenable
 set foldmethod=marker
 set noswapfile
 set nowritebackup

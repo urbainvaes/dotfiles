@@ -20,7 +20,6 @@ if ! zgen saved; then
     zgen oh-my-zsh plugins/themes
 
     # Appearance
-    # zgen oh-my-zsh themes/eastwood
     zgen load mafredri/zsh-async
     zgen load sindresorhus/pure
 
@@ -49,4 +48,4 @@ fi
 }
 
 # Z
-export _Z_EXCLUDE_DIRS=("$HOME/sshfs", "$HOME/nfs")
+_Z_DADA=("$HOME/.local/share/z")
