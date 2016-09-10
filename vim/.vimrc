@@ -270,6 +270,8 @@ nnoremap cqc :cclose<cr>
 
 nnoremap got :call system('urxvt -cd '.getcwd().' &')<cr>
 nnoremap goT :call system('urxvt -cd '.expand("%:p:h").' &')<cr>
+nnoremap gof :call system('urxvt -e vifm '.expand("%:p:h").' '.expand("%:p:h").' &')<cr>
+nnoremap goF :call system('urxvt -e vifm '.expand("%:p:h").' '.expand("%:p:h").' &')<cr>
 
 nnoremap <LocalLeader>h :e %:p:s,.hpp$,.X123X,:s,.cpp$,.hpp,:s,.X123X$,.cpp,<CR>
 nnoremap Y y$
