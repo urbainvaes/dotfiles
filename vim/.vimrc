@@ -81,12 +81,17 @@ nnoremap cpt :TagbarToggle<cr>
 nnoremap cpu :GundoToggle<cr>
 
 " Fuzzy finder
+nnoremap <c-p>a  :Ag
 nnoremap <c-p>b  :Buffers<cr>
+nnoremap <c-p>c  :Commands<cr>
 nnoremap <c-p>f  :Files<cr>
-nnoremap <c-p>r  :History<cr>
 nnoremap <c-p>g  :GitFiles<cr>
-nnoremap <c-p>c  :Colors<cr>
-nnoremap <c-p>h  :History:<cr>
+nnoremap <c-p>hf :History<cr>
+nnoremap <c-p>h: :History:<cr>
+nnoremap <c-p>h/ :History/<cr>
+nnoremap <c-p>l  :BLines<cr>
+nnoremap <c-p>m  :Marks<cr>
+nnoremap <c-p>t  :Tags<cr>
 
 imap <c-x><c-l> <plug>(fzf-complete-line)
 imap <c-x><c-f> <plug>(fzf-complete-file)
@@ -271,7 +276,7 @@ nnoremap cqc :cclose<cr>
 
 nnoremap got :call system('urxvt -cd '.getcwd().' &')<cr>
 nnoremap goT :call system('urxvt -cd '.expand("%:p:h").' &')<cr>
-nnoremap gof :call system('urxvt -e vifm '.expand("%:p:h").' '.expand("%:p:h").' &')<cr>
+nnoremap gof :call system('urxvt -e vifm '.getcwd().' '.getcwd().' &')<cr>
 nnoremap goF :call system('urxvt -e vifm '.expand("%:p:h").' '.expand("%:p:h").' &')<cr>
 
 nnoremap <LocalLeader>h :e %:p:s,.hpp$,.X123X,:s,.cpp$,.hpp,:s,.X123X$,.cpp,<CR>
