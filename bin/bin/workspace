@@ -11,7 +11,7 @@ workspaces=$(i3-msg -t get_workspaces | grep -Po '"name":.*?[^\\]"' | sed 's/"na
 workspaces=$(echo $workspaces | sed '/:/!d')
 
 # Get desired workspace
-target=$(echo $workspaces | dmenu -b -i -sf green -p "Go to workspace:")
+target=$(echo $workspaces | dmenu "Go to workspace:")
 
 # Exit if empty
 [[ -z $target ]] && exit
