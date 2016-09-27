@@ -1,4 +1,4 @@
-export PATH="${PATH}:$HOME/bin"
+export PATH="${PATH}:$HOME/bin:/usr/lib/surfraw"
 export EDITOR=/usr/bin/nvim
 
 # Source configuration files
