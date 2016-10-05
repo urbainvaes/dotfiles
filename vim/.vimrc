@@ -268,7 +268,14 @@ endif
 nnoremap <Leader>w :update<cr>
 nnoremap <Leader>q :q!<cr>
 nnoremap <Leader>d :bd!<cr>
-nnoremap <Leader>n :tabnew<cr>
+
+nnoremap <Leader>tn :tabnew<cr>
+nnoremap <Leader>te :tabedit
+nnoremap <Leader>th :-tabmove<cr>
+nnoremap <Leader>tl :+tabmove<cr>
+nnoremap <Leader>tm :tabmove
+nnoremap <Leader>t0 :tabmove 0<cr>
+nnoremap <Leader>t$ :tabmove<cr>
 
 nnoremap cqo :copen<cr>
 nnoremap cqc :cclose<cr>
@@ -304,7 +311,10 @@ augroup vimrc
     au BufNewFile,Bufread /tmp/mutt-* setlocal tw=72
     au BufNewFile,BufRead *.geo setf gmsh
     au BufNewFile,BufRead *.pde setf freefem
-    au FileType gmsh set makeprg=gmsh\ %
+    au BufNewFile,BufRead *.plt setf gnuplot
+    au FileType gmsh setlocal makeprg=gmsh\ %
+    au FileType gnuplot setlocal makeprg=gnuplot\ %
+    au FileType gnuplot setlocal commentstring=#%s
     au FileType freefem comp freefem
-    au FileType dirvish set relativenumber
+    au FileType dirvish setlocal relativenumber
 augroup END
