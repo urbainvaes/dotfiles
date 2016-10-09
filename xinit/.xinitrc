@@ -28,5 +28,6 @@ eval $(ssh-agent)
 nm-applet &
 dropbox &
 dunst &
+conky
 
 exec i3
