@@ -147,7 +147,10 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
     status_command $HOME/bin/mystatus
+    mode hide
+    modifier none
 }
+bindsym $mod+m bar mode toggle
 
 # Workspaces
 bindsym $mod+Tab workspace back_and_forth
@@ -157,7 +160,7 @@ bindsym $mod+period workspace next
 # Programs shortcuts
 bindsym $mod+b exec --no-startup-id qutebrowser
 bindsym $mod+i exec $HOME/bin/vimin
-
+bindsym Print exec xfce4-screenshooter
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+
 bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%-
@@ -177,6 +180,7 @@ bindsym $mod+Shift+n exec $HOME/bin/workspace m
 bindsym $mod+semicolon exec --no-startup-id $HOME/bin/run
 bindsym $mod+z exec --no-startup-id $HOME/bin/tmux_attach
 bindsym $mod+e exec --no-startup-id $HOME/bin/rename_workspace
-bindsym $mod+m exec --no-startup-id $HOME/bin/i3-shell
+bindsym $mod+o exec rofi -show window
 
+# bindsym $mod+m exec --no-startup-id $HOME/bin/i3-shell
 for_window [class="^.*"] border pixel 2

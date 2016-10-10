@@ -36,9 +36,10 @@ iabbrev <buffer> gD \Delta
 iabbrev <buffer> gT \Theta
 iabbrev <buffer> gL \Lambda
 iabbrev <buffer> gX \Xi
-iabbrev <buffer> gF \Phi
 iabbrev <buffer> gP \Pi
+iabbrev <buffer> gS \Sigma
 iabbrev <buffer> gW \Omega
+iabbrev <buffer> gF \Phi
 
 nnoremap <buffer> <LocalLeader>i :VimtexCompile<CR>
 nnoremap <buffer> <LocalLeader>e :VimtexErrors<CR>

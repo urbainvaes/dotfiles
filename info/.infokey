@@ -1,0 +1,23 @@
+#info
+j       next-line
+k       prev-line
+l       forward-char
+h       backward-char
+g       beginning-of-node
+G       end-of-node
+u       up-node
+t       top-node
+d       dir-node
+n       search-next
+N       search-previous
+m       menu-item
+}       next-node
+{       prev-node
+/       search
+^f      scroll-forward
+^b      scroll-backward
+^c      abort-key
+^o      history-node
+
+#echo-area
+^w      echo-area-backward-kill-word

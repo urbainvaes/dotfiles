@@ -13,6 +13,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'beloglazov/vim-online-thesaurus'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'critiqjo/lldb.nvim'
+Plug 'embear/vim-localvimrc'
 Plug 'holomorph/vim-freefem'
 Plug 'honza/vim-snippets'
 Plug 'jamessan/vim-gnupg'
@@ -22,20 +23,21 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/gv.vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/vim-easy-align'
-Plug 'junegunn/vim-oblique'
 Plug 'junegunn/vim-peekaboo'
-Plug 'junegunn/vim-pseudocl'
 Plug 'justinmk/vim-dirvish'
 Plug 'justinmk/vim-sneak'
 Plug 'klen/python-mode'
 Plug 'lervag/vimtex'
 Plug 'LnL7/vim-nix'
 Plug 'majutsushi/tagbar'
-Plug 'mileszs/ack.vim'
+Plug 'mhinz/vim-startify'
+Plug 'mhinz/vim-grepper'
 Plug 'nanotech/jellybeans.vim'
+Plug 'pgdouyon/vim-evanesco'
 Plug 'rdnetto/YCM-Generator', { 'branch' : 'stable' , 'on' : 'YcmGenerateConfig' }
 Plug 'scrooloose/nerdtree'
 Plug 'sjl/Gundo.vim', { 'on' : 'GundoToggle' }
+Plug 'terryma/vim-expand-region'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tomasr/molokai'
 Plug 'tommcdo/vim-exchange'
@@ -55,6 +57,7 @@ Plug 'troydm/zoomwintab.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/gmsh.vim'
+Plug 'vim-scripts/SpellCheck'
 
 if has("nvim")
     Plug 'Shougo/deoplete.nvim'
@@ -64,7 +67,6 @@ if has("nvim")
 else
     Plug 'Shougo/neocomplete.vim'
     Plug 'scrooloose/syntastic'
-    " Plug 'Valloric/YouCompleteMe', { 'do' : 'python2 install.py --clang-completer' }
 endif
 
 call plug#end()
@@ -79,12 +81,17 @@ nnoremap cpt :TagbarToggle<cr>
 nnoremap cpu :GundoToggle<cr>
 
 " Fuzzy finder
+nnoremap <c-p>a  :Ag
 nnoremap <c-p>b  :Buffers<cr>
+nnoremap <c-p>c  :Commands<cr>
 nnoremap <c-p>f  :Files<cr>
-nnoremap <c-p>r  :History<cr>
 nnoremap <c-p>g  :GitFiles<cr>
-nnoremap <c-p>c  :Colors<cr>
-nnoremap <c-p>h  :History:<cr>
+nnoremap <c-p>hf :History<cr>
+nnoremap <c-p>h: :History:<cr>
+nnoremap <c-p>h/ :History/<cr>
+nnoremap <c-p>l  :BLines<cr>
+nnoremap <c-p>m  :Marks<cr>
+nnoremap <c-p>t  :Tags<cr>
 
 imap <c-x><c-l> <plug>(fzf-complete-line)
 imap <c-x><c-f> <plug>(fzf-complete-file)
@@ -101,6 +108,7 @@ vnoremap <c-d>p :<C-U>LL print <C-R>=lldb#util#get_selection()<CR><CR>
 
 " Fugitive
 nnoremap <Leader>gs :Gstatus<cr>
+nnoremap <Leader>gc :Gcommit<cr>
 nnoremap <Leader>gr :Gread<cr>
 nnoremap <Leader>gd :Gdiff<cr>
 
@@ -158,6 +166,13 @@ let g:deoplete#omni_patterns.tex = g:neocomplete#sources#omni#input_patterns.tex
 
 " FZF.vim
 let g:fzf_buffers_jump = 1
+
+" Gundo
+let g:gundo_prefer_python3 = 1
+
+" Idealvimrc
+let g:localvimrc_sandbox = 0
+let g:localvimrc_whitelist='/home/*'
 
 " NerdTree
 let g:NERDTreeHijackNetrw = 0
@@ -219,7 +234,6 @@ let g:netrw_bufsettings='relativenumber'
 let g:tex_conceal= 'adgm'
 let g:tex_flavor='latex'
 
-
 "" Vim options
 set smartindent
 set expandtab
@@ -227,7 +241,6 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set showcmd
-" set nofoldenable
 set foldmethod=marker
 set noswapfile
 set nowritebackup
@@ -253,22 +266,36 @@ endif
 
 
 "" Mappings
-nnoremap <Leader>w :w!<cr>
+nnoremap <Leader>w :update<cr>
 nnoremap <Leader>q :q!<cr>
 nnoremap <Leader>d :bd!<cr>
-nnoremap <Leader>n :tabnew<cr>
+
+nnoremap <Leader>tn :tabnew<cr>
+nnoremap <Leader>te :tabedit
+nnoremap <Leader>th :-tabmove<cr>
+nnoremap <Leader>tl :+tabmove<cr>
+nnoremap <Leader>tm :tabmove
+nnoremap <Leader>t0 :tabmove 0<cr>
+nnoremap <Leader>t$ :tabmove<cr>
 
 nnoremap cqo :copen<cr>
 nnoremap cqc :cclose<cr>
 
 nnoremap got :call system('urxvt -cd '.getcwd().' &')<cr>
 nnoremap goT :call system('urxvt -cd '.expand("%:p:h").' &')<cr>
+nnoremap gof :call system('urxvt -e vifm '.getcwd().' '.getcwd().' &')<cr>
+nnoremap goF :call system('urxvt -e vifm '.expand("%:p:h").' '.expand("%:p:h").' &')<cr>
 
 nnoremap <LocalLeader>h :e %:p:s,.hpp$,.X123X,:s,.cpp$,.hpp,:s,.X123X$,.cpp,<CR>
 nnoremap Y y$
 nnoremap + za
 nnoremap <BS> <C-W>h
 nnoremap <Leader>fw :%s/\s\+$//<cr>
+
+cnoremap <c-p> <up>
+cnoremap <c-n> <down>
+cnoremap <up> <c-p>
+cnoremap <down> <c-n>
 
 "" Colorscheme
 let g:seoul256_background =235
@@ -285,7 +312,10 @@ augroup vimrc
     au BufNewFile,Bufread /tmp/mutt-* setlocal tw=72
     au BufNewFile,BufRead *.geo setf gmsh
     au BufNewFile,BufRead *.pde setf freefem
-    au FileType gmsh set makeprg=gmsh\ %
+    au BufNewFile,BufRead *.plt setf gnuplot
+    au FileType gmsh setlocal makeprg=gmsh\ %
+    au FileType gnuplot setlocal makeprg=gnuplot\ %
+    au FileType gnuplot setlocal commentstring=#%s
     au FileType freefem comp freefem
-    au FileType dirvish set relativenumber
+    au FileType dirvish setlocal relativenumber
 augroup END

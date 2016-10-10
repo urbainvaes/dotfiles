@@ -1,19 +1,24 @@
 [$HOME/dotfiles]
-checkout = git clone 'git@urbainvaes.com:dotfiles.git' 'dotfiles'
+checkout = git clone 'gitolite@urbainvaes.com:dotfiles.git' dotfiles
 update = git pull origin master
 push = git push origin master
 
 [$HOME/gitolite]
-checkout = git clone 'git@urbainvaes.com:gitolite-admin.git' 'gitolite'
+checkout = git clone 'gitolite@urbainvaes.com:gitolite-admin.git' gitolite
 update = git pull origin master
 push = git push origin master
 
 [$HOME/personal]
-checkout = git clone 'git@urbainvaes.com:private/personal.git' 'personal'
+checkout = git clone 'gitolite@urbainvaes.com:private/personal.git' personal
 update = git pull origin master
 push = git push origin master
 
 [$HOME/.password-store]
-checkout = git clone 'git@urbainvaes.com:private/passwords.git' '.password-store'
+checkout = git clone 'gitolite@urbainvaes.com:private/passwords.git' .password-store
+update = git pull origin master
+push = git push origin master
+
+[$HOME/phd]
+checkout = git clone 'gitolite@urbainvaes.com:phd/base.git' phd
 update = git pull origin master
 push = git push origin master

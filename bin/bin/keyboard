@@ -30,6 +30,9 @@ xmodmap -e "keysym g = g G 7"
 xmodmap -e "keysym c = c C 8"
 xmodmap -e "keysym r = r R 9"
 
+# Special characters
+xmodmap -e "keysym XF86Eject = Insert"
+
 # Xcape settings
 killall -9 xcape
 

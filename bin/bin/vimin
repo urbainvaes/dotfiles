@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 tempfile=$(mktemp)
-urxvt -e vim ${tempfile}
+urxvt -e nvim ${tempfile} +star
 cat ${tempfile} | xclip -i
