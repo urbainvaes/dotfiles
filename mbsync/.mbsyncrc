@@ -11,7 +11,7 @@ SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
 IMAPAccount Personal
-Host box.bknguyen.org
+Host mail.gandi.net
 User urbain@vaes.uk
 PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.password-store/email/urbain@vaes.uk.gpg"
 SSLType IMAPS
