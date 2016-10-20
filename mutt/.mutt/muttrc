@@ -66,7 +66,6 @@ set include=yes
 # Macros
 macro index,pager gp "<change-folder> +Personal/Personal<enter>"
 macro index,pager gw "<change-folder> +Work/Work<enter>"
-macro index,pager gr "<change-folder> +Personal/rss<enter>"
 macro pager u "<pipe-message>urlview\n"
 
 # Key bindings
