@@ -10,18 +10,15 @@ xmodmap -e "add Control = Control_L"
 xmodmap -e "keycode 94 = Mode_switch"
 
 # Remap modifiers (Keyboard independent)
-xmodmap -e 'keysym space = Super_L'
-xmodmap -e 'keycode any = space'
+xmodmap -e "keysym space = Super_L"
+xmodmap -e "keycode any = space"
 xmodmap -e "keysym Tab = Alt_L"
-xmodmap -e 'keycode any = Tab'
+xmodmap -e "keycode any = Tab"
 
 # Numbers
 xmodmap -e "keysym d = d D 0"
-xmodmap -e "keysym o = o O 1"
 xmodmap -e "keysym m = m M 1"
-xmodmap -e "keysym e = e E 2"
 xmodmap -e "keysym w = w W 2"
-xmodmap -e "keysym u = u U 3"
 xmodmap -e "keysym v = v V 3"
 xmodmap -e "keysym h = h H 4"
 xmodmap -e "keysym t = t T 5"
@@ -36,6 +33,7 @@ xmodmap -e "keysym XF86Eject = Insert"
 # Xcape settings
 killall -9 xcape
 
+xcape -e 'Mode_switch=u'
 xcape -e 'Control_L=Escape'
 xcape -e 'Super_L=space'
 xcape -e 'Alt_L=Tab'
