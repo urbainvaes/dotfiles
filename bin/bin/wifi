@@ -1,7 +1,0 @@
-#! /bin/bash
-
-network="Imperial-WPA"
-ssid=$(nmcli -t -f NAME connection show --active)
-if [[ "${ssid}" != "${network}" ]]; then
-    nmtui connect "${network}"
-fi

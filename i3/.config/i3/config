@@ -180,7 +180,7 @@ bindsym $mod+Shift+n exec $HOME/bin/workspace m
 bindsym $mod+semicolon exec --no-startup-id $HOME/bin/run
 bindsym $mod+z exec --no-startup-id $HOME/bin/tmux_attach
 bindsym $mod+e exec --no-startup-id $HOME/bin/rename_workspace
-bindsym $mod+o exec rofi -show window
+bindsym $mod+o exec --no-startup-id $HOME/bin/references
 
 # bindsym $mod+m exec --no-startup-id $HOME/bin/i3-shell
 for_window [class="^.*"] border pixel 2
