@@ -5,7 +5,6 @@ let maplocalleader = "\\"
 "" Plugins
 call plug#begin('~/.vim/plugged')
 Plug 'arpanpal010/vim-read'
-Plug 'dhruvasagar/vim-table-mode'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter'
@@ -28,18 +27,16 @@ Plug 'junegunn/vim-peekaboo'
 Plug 'justinmk/vim-dirvish'
 Plug 'justinmk/vim-sneak'
 Plug 'klen/python-mode'
+Plug 'kshenoy/vim-signature'
 Plug 'lervag/vimtex'
 Plug 'LnL7/vim-nix'
 Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-startify'
 Plug 'mhinz/vim-grepper'
-Plug 'nanotech/jellybeans.vim'
-Plug 'rdnetto/YCM-Generator', { 'branch' : 'stable' , 'on' : 'YcmGenerateConfig' }
 Plug 'scrooloose/nerdtree'
 Plug 'sjl/Gundo.vim', { 'on' : 'GundoToggle' }
 Plug 'terryma/vim-expand-region'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'tomasr/molokai'
 Plug 'tommcdo/vim-exchange'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
@@ -185,6 +182,9 @@ let g:tagbar_width = 30
 let g:tagbar_show_linenumbers = 1
 let g:tagbar_autofocus = 1
 
+" Sneak
+let g:sneak#use_ic_scs = 1
+
 " Syntastic
 let g:syntastic_cpp_compiler = "g++"
 let g:syntastic_cpp_compiler_options = "-std=c++11 -Wall -Wextra -Wpedantic"
@@ -205,7 +205,7 @@ let g:UltiSnipsUsePythonVersion=3
 let g:vimtex_fold_enabled=0
 let g:vimtex_view_method='zathura'
 let g:vimtex_latexmk_continuous=1
-let g:vimtex_quickfix_mode=0
+let g:vimtex_quickfix_mode=2
 let g:vimtex_latexmk_build_dir='build'
 let g:vimtex_latexmk_progname='nvr'
 
@@ -310,7 +310,7 @@ endif
 augroup vimrc
     autocmd!
     au BufNewFile,Bufread /tmp/mutt-* setlocal tw=72
-    au BufNewFile,BufRead *.geo setf gmsh
+    au BufNewFile,BufRead *.geo,*.msh setf gmsh
     au BufNewFile,BufRead *.pde setf freefem
     au BufNewFile,BufRead *.plt setf gnuplot
     au FileType gmsh setlocal makeprg=gmsh\ %

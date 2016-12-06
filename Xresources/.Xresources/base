@@ -13,7 +13,7 @@ URxvt.clipboard.pastecmd: xclip -o -selection clipboard
 
 ! Perl extensions configuration
 URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select,resize
-URxvt.url-select.launcher: /usr/bin/qutebrowser
+URxvt.url-select.launcher: /usr/bin/firefox
 URxvt.url-select.underline: true
 
 ! Key bindings for extensions

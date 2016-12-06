@@ -24,7 +24,7 @@ if ! zgen saved; then
     zgen load sindresorhus/pure
 
     # Navigation plugins
-    zgen load uvaes/fzf-marks
+    zgen load urbainvaes/fzf-marks
 
     # Other plugins
     zgen load rupa/z

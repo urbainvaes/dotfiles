@@ -246,10 +246,12 @@ filetype *.asc
        \ {Check signature}
        \ !!gpg --verify %c,
 
-" GMSH file
+" GMSH files
 filetype *.geo, *.msh, *.pos
        \ {Open in gmsh}
        \ gmsh %d,
+
+filetype *.exe wine %f
 
 " Torrent
 filetype *.torrent ktorrent %f &
