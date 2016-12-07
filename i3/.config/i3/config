@@ -178,8 +178,7 @@ bindsym XF86AudioPlay exec $HOME/bin/touchpad
 bindsym $mod+n exec $HOME/bin/workspace n
 bindsym $mod+Shift+n exec $HOME/bin/workspace m
 bindsym $mod+semicolon exec --no-startup-id $HOME/bin/run
-bindsym $mod+z exec --no-startup-id $HOME/bin/tmux_attach
-bindsym $mod+e exec --no-startup-id $HOME/bin/rename_workspace
+bindsym $mod+e exec --no-startup-id $HOME/bin/tmux_attach
 bindsym $mod+o exec --no-startup-id $HOME/bin/references
 bindsym $mod+Escape exec systemctl suspend
 
