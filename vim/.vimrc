@@ -263,6 +263,9 @@ set clipboard=unnamedplus
 if !has("nvim")
   set encoding=utf-8
 endif
+if has("nvim")
+  set inccommand=split
+endif
 
 
 "" Mappings
