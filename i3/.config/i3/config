@@ -29,6 +29,10 @@ floating_modifier $mod
 # start a terminal
 bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
 
+# start a terminal in the scratchpad
+for_window [instance="scratchpad"] move window to scratchpad, scratchpad show
+bindsym $mod+Shift+Return exec --no-startup-id i3-sensible-terminal -name scratchpad
+
 # kill focused window
 bindsym $mod+d kill
 
