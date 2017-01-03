@@ -3,6 +3,9 @@
 # Key repeat rate
 xset r rate 400 50
 
+# Pulse audio
+/usr/bin/start-pulseaudio-x11
+
 # Load key bindings
 $HOME/bin/keyboard
 
@@ -11,7 +14,7 @@ source $HOME/.local/share/zsh/colors.zsh
 xrdb $HOME/.Xresources/$XRESOURCE
 
 # Background
-feh --bg-fill --randomize /usr/share/backgrounds
+feh --bg-fill /usr/share/backgrounds/Primavera_by_Vivian_Morales.jpg
 
 # Synchronise primary and clipboard
 autocutsel -fork &
