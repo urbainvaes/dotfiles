@@ -1,15 +1,12 @@
-"" Definition of leaders
 let mapleader = " "
 let maplocalleader = "\\"
 
 "" Plugins
 call plug#begin('~/.vim/plugged')
-Plug 'AndrewRadev/splitjoin.vim'
 Plug 'LnL7/vim-nix'
 Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
-Plug 'arpanpal010/vim-read'
 Plug 'beloglazov/vim-online-thesaurus'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'critiqjo/lldb.nvim'
@@ -44,7 +41,6 @@ Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
-Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-sensible'
@@ -56,6 +52,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'vim-scripts/SpellCheck'
 Plug 'vim-scripts/gmsh.vim'
+Plug 'w0rp/ale'
 
 if has("nvim")
     Plug 'Shougo/deoplete.nvim'
@@ -64,7 +61,6 @@ if has("nvim")
     Plug 'jalvesaq/Nvim-R'
 else
     Plug 'Shougo/neocomplete.vim'
-    Plug 'scrooloose/syntastic'
 endif
 
 call plug#end()
@@ -236,6 +232,7 @@ let g:tex_conceal= 'adgm'
 let g:tex_flavor='latex'
 
 "" Vim options
+set complete+=k
 set smartindent
 set expandtab
 set tabstop=4
@@ -318,6 +315,7 @@ augroup vimrc
     au BufNewFile,BufRead *.pde setf freefem
     au BufNewFile,BufRead *.plt setf gnuplot
     au FileType gmsh setlocal makeprg=gmsh\ %
+    au FileType gmsh execute 'setlocal dict+=~/.vim/words/gmsh.txt'
     au FileType gnuplot setlocal makeprg=gnuplot\ %
     au FileType gnuplot setlocal commentstring=#%s
     au FileType freefem comp freefem
