@@ -52,7 +52,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'vim-scripts/SpellCheck'
 Plug 'vim-scripts/gmsh.vim'
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
 
 if has("nvim")
     Plug 'Shougo/deoplete.nvim'
@@ -291,7 +291,9 @@ nnoremap <LocalLeader>h :e %:p:s,.hpp$,.X123X,:s,.cpp$,.hpp,:s,.X123X$,.cpp,<CR>
 nnoremap Y y$
 nnoremap + za
 nnoremap <BS> <C-W>h
+
 nnoremap <Leader>fw :%s/\s\+$//<cr>
+nnoremap <Leader>ft :%s/^	\+//g<cr>
 
 cnoremap <c-p> <up>
 cnoremap <c-n> <down>
