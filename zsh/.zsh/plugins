@@ -1,6 +1,7 @@
 #! /bin/zsh
 
 # Load zgen
+[ ! -d ~/.zsh/zgen ] && git clone https://github.com/tarjoilija/zgen.git ~/.zsh/zgen
 source "$HOME/.zsh/zgen/zgen.zsh"
 
 # Load plugins
@@ -46,6 +47,3 @@ fi
     ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=6'
     bindkey '^y' autosuggest-accept
 }
-
-# Z
-_Z_DADA=("$HOME/.local/share/z")

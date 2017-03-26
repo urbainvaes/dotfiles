@@ -1,7 +1,1 @@
-gitolite
-ledger
-passwords
-personal
-urxvt/ext/.git
-
 !*.gitkeep
