@@ -1,5 +1,0 @@
-#!/bin/bash
-BOOKS_DIR="$HOME/Dropbox/books"
-PDF=$(locate "$BOOKS_DIR/*.pdf")
-TARGET=$(echo "${PDF//"$BOOKS_DIR/"/}" | dmenu -i -p "Open File:")
-[[ -n $TARGET ]] && zathura "$BOOKS_DIR/$TARGET" &
