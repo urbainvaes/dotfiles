@@ -90,8 +90,6 @@ folder-hook 'Work*'     'source ~/.mutt/id_work'
 folder-hook 'Personal*' 'source ~/.mutt/id_personal'
 
 # Source mutt solarized
-`[[ "$COLORSCHEME" != "solarized" && "$BACKGROUND" = "dark" ]] && echo source $HOME/.mutt/colors.dark.muttrc || echo set`
-`[[ "$COLORSCHEME" != "solarized" && "$BACKGROUND" = "light" ]] && echo source $HOME/.mutt/colors.light.muttrc || echo set`
 `[[ "$COLORSCHEME" = "solarized" && "$BACKGROUND" = "light" ]] && echo source $HOME/.mutt/solarized/mutt-colors-solarized-light-16.muttrc || echo set`
 `[[ "$COLORSCHEME" = "solarized" && "$BACKGROUND" = "dark" ]] && echo source $HOME/.mutt/solarized/mutt-colors-solarized-dark-16.muttrc || echo set`
 
