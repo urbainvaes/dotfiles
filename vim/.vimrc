@@ -210,7 +210,7 @@ let g:vimtex_fold_enabled=0
 let g:vimtex_view_method='zathura'
 let g:vimtex_latexmk_continuous=1
 let g:vimtex_quickfix_mode=2
-let g:vimtex_latexmk_build_dir='build'
+" let g:vimtex_latexmk_build_dir='build'
 let g:vimtex_latexmk_progname='nvr'
 
 " YouCompleteMe
