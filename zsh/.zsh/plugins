@@ -16,10 +16,6 @@ if ! zgen saved; then
     zgen oh-my-zsh plugins/git
     zgen oh-my-zsh plugins/vi-mode
 
-    # Appearance
-    zgen load mafredri/zsh-async
-    zgen load sindresorhus/pure
-
     # Navigation plugins
     zgen load urbainvaes/fzf-marks
 
@@ -35,8 +31,6 @@ if ! zgen saved; then
     # Save all to init script
     zgen save
 fi
-
-# Plugins configuration
 
 # Autosuggestion
 {

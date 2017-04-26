@@ -60,6 +60,7 @@ Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'vim-scripts/SpellCheck'
 Plug 'vim-scripts/gmsh.vim'
 " Plug 'w0rp/ale'
+Plug 'wellle/targets.vim'
 
 if has("nvim")
     Plug 'Shougo/deoplete.nvim'
@@ -227,10 +228,12 @@ endif
 " Plugins interactions
 function! Multiple_cursors_before()
     let b:deoplete_disable_auto_complete = 1
+    exe 'NeoCompleteLock'
 endfunction
 
 function! Multiple_cursors_after()
     let b:deoplete_disable_auto_complete = 0
+    exe 'NeoCompleteUnlock'
 endfunction
 
 "" Vim variables

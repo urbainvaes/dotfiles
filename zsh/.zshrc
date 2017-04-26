@@ -19,4 +19,6 @@ if [[ -f "${HOME}/.gpg-agent-info" ]]; then
     export SSH_AUTH_SOCK
 fi
 
+PROMPT='%0~ $ '
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
