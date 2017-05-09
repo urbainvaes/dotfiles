@@ -3,7 +3,7 @@
 [[ -z ${ZSH_COLORS} ]] && ZSH_COLORS=${HOME}/.local/share/zsh/colors.zsh
 [[ -f ${ZSH_COLORS} ]] && source ${ZSH_COLORS}
 
-colorschemes=$(echo ${HOME}/.Xresources/* | sed "s#${HOME}/.Xresources/##g")
+colorschemes=$(ls ${HOME}/.Xresources)
 
 function colo {
 
@@ -15,7 +15,9 @@ function colo {
         -e 's/.*background:/\x1b]11;/p' \
         -e 's/.*foreground:/\x1b]10;/p' \
         -e 's/.*borderColor:/\x1b]708;/p' \
-        -e 's/.*color\([0-9][^:]*\):/\x1b]4;\1;/p' | tr \\n \\a
+        -e 's/.*color\([0-9][^:]*\):/\x1b]4;\1;/p' | tr \\n "\007"
+
+    [ ! -z "$TMUX" ] && printf '\033Ptmux;\033\033]11;white\007\033'
 
     # Change color for future sessions
     xrdb ${XRESOURCE_FILE}
@@ -23,11 +25,8 @@ function colo {
     # Change default environment variable for future sessions
     mkdir -p $(dirname ${ZSH_COLORS})
 
-    COLORSCHEME=$(echo ${XRESOURCE} | sed 's/\([^.]\+\)\..\+$/\1/g')
-    BACKGROUND=$(echo ${XRESOURCE} | sed 's/^.\+\(dark\|light\)/\1/')
-
-    echo "export COLORSCHEME=${COLORSCHEME}" > ${ZSH_COLORS}
-    echo "export BACKGROUND=${BACKGROUND}" >> ${ZSH_COLORS}
+    echo "export COLORSCHEME=${XRESOURCE%.*}" > ${ZSH_COLORS}
+    echo "export BACKGROUND=${XRESOURCE#*.}" >> ${ZSH_COLORS}
     echo "export XRESOURCE=${XRESOURCE}" >> ${ZSH_COLORS}
     source ${ZSH_COLORS}
 }

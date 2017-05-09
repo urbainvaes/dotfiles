@@ -2,4 +2,4 @@
 REF_DIR="$HOME/phd/references"
 PDF=$(locate "$REF_DIR/**/*.pdf")
 TARGET=$(echo "${PDF//"$REF_DIR/"/}" | dmenu -i -p "Open File:")
-[[ -n $TARGET ]] && zathura "$REF_DIR/$TARGET" &
+[[ -n $TARGET ]] && (zathura "$REF_DIR/$TARGET" &)
