@@ -11,13 +11,19 @@ function colo {
     XRESOURCE_FILE=${HOME}/.Xresources/${XRESOURCE}
 
     # Change colors for current session
-    /usr/bin/cpp ${XRESOURCE_FILE} | tr -d ' \t' | sed -n \
-        -e 's/.*background:/\x1b]11;/p' \
-        -e 's/.*foreground:/\x1b]10;/p' \
-        -e 's/.*borderColor:/\x1b]708;/p' \
-        -e 's/.*color\([0-9][^:]*\):/\x1b]4;\1;/p' | tr \\n "\007"
+    if [[ ! -z "$TMUX" ]]; then
+        printf '\x1bPtmux;'
+        esc='\x1b\x1b'
+    else
+        esc='\x1b'
+    fi
 
-    [ ! -z "$TMUX" ] && printf '\033Ptmux;\033\033]11;white\007\033'
+    /usr/bin/cpp ${XRESOURCE_FILE} | tr -d ' \t' | sed -n \
+        -e "s/.*background:/${esc}]11;/p" \
+        -e "s/.*foreground:/${esc}]10;/p" \
+        -e "s/.*borderColor:/${esc}]708;/p" \
+        -e "s/.*color\\([0-9][^:]*\\):/${esc}]4;\\1;/p" | tr \\n \\a
+
 
     # Change color for future sessions
     xrdb ${XRESOURCE_FILE}
