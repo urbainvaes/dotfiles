@@ -1,5 +1,5 @@
 #!/bin/bash
 REF_DIR="$HOME/phd/references"
-PDF=$(locate "$REF_DIR/**/*.pdf")
+PDF=$(find $REF_DIR -name "*.pdf" -printf "%P\n")
 TARGET=$(echo "${PDF//"$REF_DIR/"/}" | dmenu -i -p "Open File:")
 [[ -n $TARGET ]] && (zathura "$REF_DIR/$TARGET" &)

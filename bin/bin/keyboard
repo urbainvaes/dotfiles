@@ -33,7 +33,6 @@ xmodmap -e "keysym XF86Eject = Insert"
 # Xcape settings
 killall -9 xcape
 
-xcape -e 'Mode_switch=u'
 xcape -e 'Control_L=Escape'
 xcape -e 'Super_L=space'
 xcape -e 'Alt_L=Tab'
