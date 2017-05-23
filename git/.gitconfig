@@ -10,6 +10,4 @@
 [status]
 	submodulesummary = 1
 [alias]
-	sdiff = !git diff && git submodule foreach 'git diff'
-	spush = push --recurse-submodules=on-demand
-	supdate = submodule update --remote --merge
+    yolo = !git commit -am "Update" && git push origin master

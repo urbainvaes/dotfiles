@@ -1,0 +1,3 @@
+#!/bin/bash
+
+echo "open -t http://dictionary.cambridge.org/dictionary/english/$QUTE_SELECTED_TEXT" >> "$QUTE_FIFO"

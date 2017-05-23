@@ -22,3 +22,6 @@ fi
 PROMPT='%0~ $ '
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Options
+unsetopt histverify
