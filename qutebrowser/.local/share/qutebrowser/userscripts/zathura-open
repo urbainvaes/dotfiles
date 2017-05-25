@@ -1,0 +1,7 @@
+#!/bin/bash
+
+fname=/tmp/${RANDOM}.pdf
+
+echo ${QUTE_URL} > ~/testurl
+curl ${QUTE_URL} > ~/test.pdf
+nohup zathura ~/test.pdf
