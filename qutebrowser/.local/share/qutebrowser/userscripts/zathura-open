@@ -2,6 +2,5 @@
 
 fname=/tmp/${RANDOM}.pdf
 
-echo ${QUTE_URL} > ~/testurl
-curl ${QUTE_URL} > ~/test.pdf
+curl ${QUTE_URL%.pdf}.pdf > ~/test.pdf
 nohup zathura ~/test.pdf

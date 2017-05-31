@@ -165,6 +165,7 @@ bindsym $mod+period workspace next
 bindsym $mod+b exec --no-startup-id qutebrowser
 bindsym $mod+i exec $HOME/bin/vimin
 bindsym Print exec xfce4-screenshooter
+
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+
 bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%-
@@ -182,9 +183,13 @@ bindsym XF86AudioPlay exec $HOME/bin/touchpad
 bindsym $mod+n exec $HOME/bin/workspace n
 bindsym $mod+Shift+n exec $HOME/bin/workspace m
 bindsym $mod+semicolon exec --no-startup-id $HOME/bin/run
-bindsym $mod+e exec --no-startup-id $HOME/bin/tmux_attach
-bindsym $mod+o exec --no-startup-id $HOME/bin/references
+bindsym $mod+apostrophe exec --no-startup-id $HOME/bin/tmux_attach
+bindsym $mod+z exec --no-startup-id $HOME/bin/references
 bindsym $mod+Escape exec --no-startup-id "i3lock -c 000000 && systemctl suspend"
+bindsym $mod+x exec --no-startup-id "rofi -show window"
+# bindsym $mod+y
+# bindsym $mod+z
+# bindsym $mod+e
 
 # bindsym $mod+m exec --no-startup-id $HOME/bin/i3-shell
 for_window [class="^.*"] border pixel 2
