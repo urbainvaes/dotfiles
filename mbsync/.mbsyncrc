@@ -29,6 +29,9 @@ Path ~/.mail/Work/
 MaildirStore Personal-local
 Path ~/.mail/Personal/
 
+MaildirStore Misc-local
+Path ~/.mail/Misc/
+
 Channel Work-inbox
 Master :Work-remote:"INBOX"
 Slave  :Work-local:"Work"
@@ -60,3 +63,7 @@ Slave  :Personal-local:"Personal.sent"
 Channel Personal-bin
 Master :Personal-remote:"Trash"
 Slave  :Personal-local:"Personal.bin"
+
+Channel Personal-rss
+Master :Personal-remote:"rss"
+Slave  :Misc-local:"rss"
