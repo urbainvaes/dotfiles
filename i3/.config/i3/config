@@ -62,7 +62,7 @@ bindsym $mod+v split h
 bindsym $mod+w split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen
+bindsym $mod+z fullscreen
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+g layout stacking
@@ -70,10 +70,10 @@ bindsym $mod+t layout tabbed
 bindsym $mod+s layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+f floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+f focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -183,13 +183,13 @@ bindsym XF86AudioPlay exec $HOME/bin/touchpad
 bindsym $mod+n exec $HOME/bin/workspace n
 bindsym $mod+Shift+n exec $HOME/bin/workspace m
 bindsym $mod+semicolon exec --no-startup-id $HOME/bin/run
-bindsym $mod+apostrophe exec --no-startup-id $HOME/bin/tmux_attach
-bindsym $mod+z exec --no-startup-id $HOME/bin/references
+bindsym $mod+e exec --no-startup-id $HOME/bin/tmux_attach
+bindsym $mod+o exec --no-startup-id $HOME/bin/references
 bindsym $mod+Escape exec --no-startup-id "i3lock -c 000000 && systemctl suspend"
 bindsym $mod+x exec --no-startup-id "rofi -show window"
 # bindsym $mod+y
 # bindsym $mod+z
-# bindsym $mod+e
+# bindsym $mod+'
 
 # bindsym $mod+m exec --no-startup-id $HOME/bin/i3-shell
 for_window [class="^.*"] border pixel 2
