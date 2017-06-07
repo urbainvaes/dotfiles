@@ -30,3 +30,6 @@ URxvt.resize-font.bigger: C-plus
 URxvt*font: xft:monaco:size=11.5
 URxvt*scrollBar: false
 URxvt*internalBorder: 0
+
+rofi.kb-mode-next: Tab
+rofi.kb-mode-previous: Shift+Tab

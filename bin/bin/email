@@ -10,7 +10,7 @@ new_mails=$(find $HOME/.mail -path '*/new/*' -type f -not -path '*/rss/*')
 
 if [[ ! -z ${new_mails} ]]; then
     subjects=$(cat $(echo -e ${new_mails/'\n'/' '}) | grep "^Subject: " | sed "s/^Subject: //g")
-    /usr/bin/notify-send -t 3 "New mail(s)!" "${subjects}"
+    DISPLAY=:0 /usr/bin/notify-send -t 3 "New mail(s)!" "${subjects}"
 fi
 
 echo "Email last checked on $(date)".

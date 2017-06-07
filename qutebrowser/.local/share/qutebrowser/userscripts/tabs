@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# List of tabs
+tabs=$(i3-msg -t get_tree | grep -o '"window":[0-9]*[^{]*{[^}]*qutebrowser[^}]*}')
+
+if [ -n "$1" ]
+then
+    selected_id=$(echo "$tabs" | grep "$@" | sed 's/^.*window":\([0-9]*\).*$/\1/')
+    i3-msg "[id=$selected_id] focus" > /dev/null 2>&1
+    exit;
+fi
+
+# Sanitized List of tabs
+echo "$tabs" | sed 's/^.*title":"\(.*\) - qutebrowser.*/\1/g'

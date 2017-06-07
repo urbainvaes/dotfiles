@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-tabs=$(i3-msg -t get_tree | grep -o '"window":[0-9]*[^{]*{[^}]*qutebrowser[^}]*}')
-selected_title=$(echo "$tabs" | sed 's/^.*title":"\(.*\) - qutebrowser.*/\1/g' | dmenu)
-selected_id=$(echo "$tabs" | grep "$selected_title" | sed 's/^.*window":\([0-9]*\).*$/\1/')
-i3-msg "[id=$selected_id] focus"
