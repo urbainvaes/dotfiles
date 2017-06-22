@@ -88,9 +88,9 @@ nnoremap <c-p>b  :Buffers<cr>
 nnoremap <c-p>c  :Commands<cr>
 nnoremap <c-p>f  :Files<cr>
 nnoremap <c-p>g  :GitFiles<cr>
-nnoremap <c-p>hf :History<cr>
-nnoremap <c-p>h: :History:<cr>
-nnoremap <c-p>h/ :History/<cr>
+nnoremap <c-p>r  :History<cr>
+nnoremap <c-p>:  :History:<cr>
+nnoremap <c-p>/  :History/<cr>
 nnoremap <c-p>l  :BLines<cr>
 nnoremap <c-p>m  :Marks<cr>
 nnoremap <c-p>t  :Tags<cr>

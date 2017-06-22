@@ -1,20 +1,20 @@
 [general]
-status_path = ~/.config/vdirsyncer/status/
+status_path = "~/.config/vdirsyncer/status/"
 
 # CALDAV
 [pair calendar]
-a = calendar_local
-b = calendar_remote
+a = "calendar_local"
+b = "calendar_remote"
 collections = ["from b"]
-conflict_resolution = b wins
+conflict_resolution = "b wins"
 
 [storage calendar_local]
-type = filesystem
-path = ~/.calendars/
-fileext = .ics
+type = "filesystem"
+path = "~/.calendars/"
+fileext = ".ics"
 
 [storage calendar_remote]
-type = caldav
+type = "caldav"
 url = "https://cal.urbainvaes.com/"
-username = urbain
+username = "urbain"
 password.fetch = ["command", "pass", "show", "radicale/urbain"]
