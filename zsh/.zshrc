@@ -1,5 +1,5 @@
 export PATH="${PATH}:$HOME/bin:/usr/lib/surfraw"
-export EDITOR=/usr/bin/nvim
+export EDITOR=vim
 
 # Source configuration files
 source "$HOME/.zsh/plugins"
