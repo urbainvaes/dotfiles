@@ -47,3 +47,4 @@ nnoremap <buffer> <LocalLeader>o :VimtexView<CR>
 nnoremap <buffer> <LocalLeader>k :VimtexStop<CR>:VimtexClean<CR>
 nnoremap <buffer> <LocalLeader>t :VimtexTocToggle<CR>
 nnoremap <buffer> <LocalLeader>h :split header.sty<CR>
+nnoremap <buffer> <LocalLeader>d :!latexdiff-git main_old.tex main.tex > diff.tex<CR>

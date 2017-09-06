@@ -14,6 +14,7 @@ Plug 'LnL7/vim-nix'
 Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
+Plug 'arcticicestudio/nord-vim'
 Plug 'beloglazov/vim-online-thesaurus'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'critiqjo/lldb.nvim'
@@ -25,6 +26,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/gv.vim'
+Plug 'junegunn/heytmux'
 Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-peekaboo'
@@ -249,6 +251,7 @@ let g:tex_flavor='latex'
 
 "" Vim options
 set complete+=k
+set cursorline
 set smartindent
 set expandtab
 set tabstop=4
@@ -338,4 +341,8 @@ augroup vimrc
     au FileType gnuplot setlocal commentstring=#%s
     au FileType freefem comp freefem
     au FileType dirvish setlocal relativenumber
+    au BufWritePre *
+        \ if !isdirectory(expand('<afile>:p:h')) |
+          \ call mkdir(expand('<afile>:p:h'), 'p') |
+        \ endif
 augroup END
