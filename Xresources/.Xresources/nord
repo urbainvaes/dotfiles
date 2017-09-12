@@ -1,5 +1,7 @@
 #include "/home/urbain/.Xresources/base"
 
+URxvt.borderColor: #2E3440
+
 *.foreground:   #D8DEE9
 *.background:   #2E3440
 *.cursorColor:  #D8DEE9

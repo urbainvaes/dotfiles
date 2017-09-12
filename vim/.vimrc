@@ -286,6 +286,12 @@ endif
 
 
 "" Mappings
+nnoremap <silent> <Plug>AddWhiteSpaceAfter a <Esc>h:silent call repeat#set("\<Plug>AddWhiteSpaceAfter")<cr>
+nnoremap <silent> <Plug>AddWhiteSpaceBefore i <Esc>l:silent call repeat#set("\<Plug>AddWhiteSpaceBefore")<cr>
+
+nmap ]w <Plug>AddWhiteSpaceAfter
+nmap [w <Plug>AddWhiteSpaceBefore
+
 nnoremap <Leader>w :update<cr>
 nnoremap <Leader>q :q!<cr>
 nnoremap <Leader>d :bd!<cr>
