@@ -39,6 +39,7 @@ Plug 'lervag/vimtex'
 Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-grepper'
 Plug 'mhinz/vim-startify'
+Plug 'neomake/neomake'
 Plug 'scrooloose/nerdtree'
 Plug 'sjl/Gundo.vim', { 'on' : 'GundoToggle' }
 Plug 'terryma/vim-expand-region'
@@ -66,7 +67,6 @@ Plug 'wellle/targets.vim'
 
 if has("nvim")
     Plug 'Shougo/deoplete.nvim'
-    Plug 'benekastah/neomake'
     Plug 'radenling/vim-dispatch-neovim'
     Plug 'jalvesaq/Nvim-R'
 else
@@ -74,7 +74,6 @@ else
 endif
 
 call plug#end()
-
 
 "" Plugin mappings
 
@@ -130,15 +129,23 @@ nnoremap cps :UltiSnipsEdit<cr>
 
 " Neomake
 nnoremap gm :Neomake!<cr>
-nnoremap gr :Make run<cr>
 
+function! OnBattery()
+  return readfile('/sys/class/power_supply/AC/online') == ['0']
+endfunction
+
+if OnBattery()
+  call neomake#configure#automake('w')
+else
+  call neomake#configure#automake('nw', 1000)
+endif
 
 "" Plugin configurations
 
 " Airline
 let g:airline_left_sep=''
 let g:airline_right_sep=''
-let g:airline_theme='base16'
+let g:airline_theme='nord'
 let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing', 'mixed-indent-file' ]
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#tab_nr_type = 1
@@ -213,7 +220,6 @@ let g:vimtex_fold_enabled=0
 let g:vimtex_view_method='zathura'
 let g:vimtex_latexmk_continuous=1
 let g:vimtex_quickfix_mode=2
-" let g:vimtex_latexmk_build_dir='build'
 let g:vimtex_latexmk_progname='nvr'
 
 " YouCompleteMe
@@ -246,7 +252,7 @@ endfunction
 
 "" Vim variables
 let g:netrw_bufsettings='relativenumber'
-let g:tex_conceal= 'adgm'
+let g:tex_conceal= ''
 let g:tex_flavor='latex'
 
 "" Vim options
@@ -295,6 +301,15 @@ nmap [w <Plug>AddWhiteSpaceBefore
 nnoremap <Leader>w :update<cr>
 nnoremap <Leader>q :q!<cr>
 nnoremap <Leader>d :bd!<cr>
+
+nmap gs :set opfunc=Search<cr>g@
+xmap gs :<c-u>call Search(visualmode())<cr>
+function! Search(vt)
+    let l=getline(a:0 ? "'<" : "'[")
+    let [line1,col1] = getpos(a:0 ? "'<" : "'[")[1:2]
+    let [line2,col2] = getpos(a:0 ? "'>" : "']")[1:2]
+    call feedkeys(':Grepper -tool git -query "' . l[col1 - 1: col2 - 1] . '"')
+endfunction
 
 nnoremap <Leader>tn :tabnew<cr>
 nnoremap <Leader>te :tabedit
