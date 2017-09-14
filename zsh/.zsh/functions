@@ -24,9 +24,21 @@ function colo {
         -e "s/.*borderColor:/${esc}]708;/p" \
         -e "s/.*color\\([0-9][^:]*\\):/${esc}]4;\\1;/p" | tr \\n \\a
 
-
     # Change color for future sessions
     xrdb ${XRESOURCE_FILE}
+
+    # Update termite colorscheme
+    TERMITE_CONFIG=~/.config/termite/config
+    while read -r line || [[ -n "$line" ]]; do
+        case "$line" in
+            *background* ) sed -i "s/^background.*$/background = ${line##* }/" ${TERMITE_CONFIG} ;;
+            *foreground* ) sed -i "s/^foreground.*$/foreground = ${line##* }/" ${TERMITE_CONFIG} ;;
+            *cursorColor* ) sed -i "s/^cursor.*$/cursor = ${line##* }/" ${TERMITE_CONFIG} ;;
+            *color[0-9]* ) color=$(echo ${line/:*/} | sed 's/.*color\([0-9]\+\)/\1/');
+                sed -i "s/^color${color}\>.*$/color${color} = ${line##* }/" ${TERMITE_CONFIG} ;;
+            * ) ;;
+        esac
+    done < ${XRESOURCE_FILE}
 
     # Change default environment variable for future sessions
     mkdir -p $(dirname ${ZSH_COLORS})

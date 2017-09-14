@@ -304,10 +304,11 @@ nnoremap <Leader>d :bd!<cr>
 
 nmap gs :set opfunc=Search<cr>g@
 xmap gs :<c-u>call Search(visualmode())<cr>
-function! Search(vt)
-    let l=getline(a:0 ? "'<" : "'[")
-    let [line1,col1] = getpos(a:0 ? "'<" : "'[")[1:2]
-    let [line2,col2] = getpos(a:0 ? "'>" : "']")[1:2]
+function! Search(vm)
+    let is_visual=(a:vm == "v")
+    let l=getline(is_visual ? "'<" : "'[")
+    let [line1,col1] = getpos(is_visual ? "'<" : "'[")[1:2]
+    let [line2,col2] = getpos(is_visual ? "'>" : "']")[1:2]
     call feedkeys(':Grepper -tool git -query "' . l[col1 - 1: col2 - 1] . '"')
 endfunction
 
