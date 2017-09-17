@@ -143,8 +143,6 @@ endif
 "" Plugin configurations
 
 " Airline
-let g:airline_left_sep=''
-let g:airline_right_sep=''
 let g:airline_theme='nord'
 let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing', 'mixed-indent-file' ]
 let g:airline#extensions#tabline#enabled = 1
@@ -152,6 +150,16 @@ let g:airline#extensions#tabline#tab_nr_type = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#tabline#tab_min_count = 2
 let g:airline#extensions#tabline#show_buffers = 0
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+let g:airline_symbols.crypt = ''
+let g:airline_symbols.linenr = ''
+let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.whitespace = ''
 
 " Deoplete / neocomplete
 let g:deoplete#enable_at_startup = 1
