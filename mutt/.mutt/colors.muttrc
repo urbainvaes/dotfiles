@@ -13,6 +13,7 @@ color index brightblue      default         "~N"
 color index cyan            default         "~U"
 color index green           default         "~Q"
 color index red             default         "~D"
+color index magenta         default         "~F"
 
 color quoted        cyan            default         
 color quoted1       magenta         default         

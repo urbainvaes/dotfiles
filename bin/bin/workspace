@@ -20,7 +20,7 @@ target=$(echo $workspaces | dmenu "Go to workspace:")
 if [[ ! $target = [0-9]* ]]; then
 
     # Calculate number for new workspace
-    used_numbers=$(echo $workspaces | awk 'BEGIN { FS = ":" } ; { print $1 }')
+    used_numbers=$(echo $workspaces | awk 'BEGIN { FS = ":" } ; { print $1 }' | sort)
     max_number=$(echo $used_numbers | tail -1)
     lowest_gap=$(echo $used_numbers | awk '$1!=p+1{print p+1}{p=$1}' | head -1)
     [[ -z $lowest_gap ]] && new_number=$(($max_number +  1)) || new_number=$lowest_gap

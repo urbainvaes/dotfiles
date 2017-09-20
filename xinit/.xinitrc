@@ -14,7 +14,7 @@ source $HOME/.local/share/zsh/colors.zsh
 xrdb $HOME/.Xresources/$XRESOURCE
 
 # Background
-feh --bg-fill /usr/share/backgrounds/Primavera_by_Vivian_Morales.jpg
+feh --bg-fill /home/urbain/documents/wallpapers/pagoda.jpg
 
 # Synchronise primary and clipboard
 autocutsel -fork &
@@ -31,5 +31,6 @@ eval $(ssh-agent)
 nm-applet &
 dropbox &
 dunst &
+redshift &
 
 exec i3

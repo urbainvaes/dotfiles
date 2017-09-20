@@ -4,13 +4,13 @@ if empty(glob('~/.vim/autoload/plug.vim'))
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
-
 let mapleader = " "
 let maplocalleader = "\\"
 
 "" Plugins
 call plug#begin('~/.vim/plugged')
 Plug 'LnL7/vim-nix'
+Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter'
 Plug 'altercation/vim-colors-solarized'
@@ -21,13 +21,14 @@ Plug 'critiqjo/lldb.nvim'
 Plug 'embear/vim-localvimrc'
 Plug 'holomorph/vim-freefem'
 Plug 'honza/vim-snippets'
+Plug 'inkarkat/vim-SpellCheck'
+Plug 'inkarkat/vim-ingo-library'
 Plug 'jamessan/vim-gnupg'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/gv.vim'
 Plug 'junegunn/heytmux'
-Plug 'junegunn/seoul256.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-peekaboo'
 Plug 'junegunn/vim-slash'
@@ -36,6 +37,7 @@ Plug 'justinmk/vim-sneak'
 Plug 'klen/python-mode'
 Plug 'kshenoy/vim-signature'
 Plug 'lervag/vimtex'
+Plug 'machakann/vim-highlightedyank'
 Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-grepper'
 Plug 'mhinz/vim-startify'
@@ -60,9 +62,7 @@ Plug 'troydm/zoomwintab.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/ReplaceWithRegister'
-Plug 'vim-scripts/SpellCheck'
 Plug 'vim-scripts/gmsh.vim'
-" Plug 'w0rp/ale'
 Plug 'wellle/targets.vim'
 
 if has("nvim")
@@ -73,6 +73,11 @@ else
     Plug 'Shougo/neocomplete.vim'
 endif
 
+" Colors
+Plug 'KKPMW/moonshine-vim'
+Plug 'romainl/Apprentice'
+Plug 'junegunn/seoul256.vim'
+Plug 'noah/vim256-color'
 call plug#end()
 
 "" Plugin mappings
@@ -129,21 +134,18 @@ nnoremap cps :UltiSnipsEdit<cr>
 
 " Neomake
 nnoremap gm :Neomake!<cr>
-
-function! OnBattery()
-  return readfile('/sys/class/power_supply/AC/online') == ['0']
-endfunction
-
-if OnBattery()
-  call neomake#configure#automake('w')
-else
-  call neomake#configure#automake('nw', 1000)
+if &runtimepath =~ 'neomake'
+    call neomake#configure#automake('w')
 endif
 
 "" Plugin configurations
 
 " Airline
-let g:airline_theme='nord'
+if $COLORSCHEME=="solarized"
+    let g:airline_theme='base16'
+else
+    let g:airline_theme=$COLORSCHEME
+endif
 let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing', 'mixed-indent-file' ]
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#tab_nr_type = 1
@@ -199,19 +201,8 @@ let g:NERDTreeHijackNetrw = 0
 " Python-mode
 let g:pymode_rope=0
 
-" Tagbar
-let g:tagbar_width = 30
-let g:tagbar_show_linenumbers = 1
-let g:tagbar_autofocus = 1
-
 " Sneak
 let g:sneak#use_ic_scs = 1
-
-" Syntastic
-let g:syntastic_cpp_compiler = "g++"
-let g:syntastic_cpp_compiler_options = "-std=c++11 -Wall -Wextra -Wpedantic"
-let g:syntastic_error_symbol = "✗"
-let g:syntastic_warning_symbol = "W"
 
 " Ultisnips
 let g:UltiSnipsEditSplit="horizontal"
@@ -281,7 +272,6 @@ set diffopt=filler,vertical
 set nowrap
 set conceallevel=2
 set nojoinspaces
-set nospell
 set smartcase
 set ignorecase
 set lazyredraw
@@ -338,7 +328,6 @@ nnoremap goF :call system('urxvt -e vifm '.expand("%:p:h").' '.expand("%:p:h").'
 
 nnoremap <LocalLeader>h :e %:p:s,.hpp$,.X123X,:s,.cpp$,.hpp,:s,.X123X$,.cpp,<CR>
 nnoremap Y y$
-nnoremap + za
 nnoremap <BS> <C-W>h
 
 nnoremap <Leader>fw :%s/\s\+$//<cr>
@@ -349,8 +338,14 @@ cnoremap <c-n> <down>
 cnoremap <up> <c-p>
 cnoremap <down> <c-n>
 
+if has("nvim")
+    nnoremap <c-_> :ZoomWinTabIn<cr>:buffer term<cr>i
+    tnoremap <c-_> <c-\><c-n><c-^>:ZoomWinTabOut<cr>
+endif
+
+set t_Co=256
+
 "" Colorscheme
-let g:seoul256_background =235
 silent! colo $COLORSCHEME
 if $BACKGROUND=="dark"
     set background=dark
@@ -371,6 +366,7 @@ augroup vimrc
     au FileType gnuplot setlocal commentstring=#%s
     au FileType freefem comp freefem
     au FileType dirvish setlocal relativenumber
+    au FileType tex set spell
     au BufWritePre *
         \ if !isdirectory(expand('<afile>:p:h')) |
           \ call mkdir(expand('<afile>:p:h'), 'p') |

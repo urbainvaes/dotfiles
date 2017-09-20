@@ -90,6 +90,7 @@ folder-hook 'Work*'     'source ~/.mutt/id_work'
 folder-hook 'Personal*' 'source ~/.mutt/id_personal'
 
 macro index,pager gr "<change-folder> +Misc/rss<enter>"
+macro index,pager gl "<change-folder> +Misc/lists<enter>"
 folder-hook 'Misc/rss' 'unset trash; unset from'
 
 # Source mutt solarized

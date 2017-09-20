@@ -195,3 +195,11 @@ bindsym $mod+x exec --no-startup-id "rofi -show window"
 
 # bindsym $mod+m exec --no-startup-id $HOME/bin/i3-shell
 for_window [class="^.*"] border pixel 2
+
+# Gaps
+# workspace 1 gaps inner 5
+smart_gaps on
+gaps inner 5
+gaps outer 5
+
+# vim:filetype=i3

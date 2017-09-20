@@ -24,12 +24,16 @@ URxvt.keysym.M-y: perl:clipboard:copy
 URxvt.keysym.M-p: perl:clipboard:paste
 URxvt.resize-font.smaller: C-minus
 URxvt.resize-font.bigger: C-plus
+URxvt.fading: 35
 
 ! Appearance
 /* URxvt*font: xft:DejaVu Sans Mono:size=12 */
 URxvt*font: xft:monaco:size=11.5
 URxvt*scrollBar: false
 URxvt*internalBorder: 0
+
+! $TERM environment variable
+XTerm*termName: rxvt-256color
 
 rofi.kb-mode-next: Tab
 rofi.kb-mode-previous: Shift+Tab

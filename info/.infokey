@@ -19,5 +19,10 @@ m       menu-item
 ^c      abort-key
 ^o      history-node
 
+#var
+link-style=yellow
+active-link-style=green,bold
+match-style=underline,bold,blue
+
 #echo-area
 ^w      echo-area-backward-kill-word

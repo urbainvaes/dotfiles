@@ -67,3 +67,7 @@ Slave  :Personal-local:"Personal.bin"
 Channel Personal-rss
 Master :Personal-remote:"rss"
 Slave  :Misc-local:"rss"
+
+Channel Personal-lists
+Master :Personal-remote:"lists"
+Slave  :Misc-local:"lists"
