@@ -346,11 +346,24 @@ endif
 set t_Co=256
 
 "" Colorscheme
-silent! colo $COLORSCHEME
-if $BACKGROUND=="dark"
-    set background=dark
-elseif $BACKGROUND=="light"
-    set background=light
+let hostname = substitute(system('hostname'), '\n', '', '')
+
+if hostname == "navajo"
+    silent! colo $COLORSCHEME
+    if $BACKGROUND=="dark"
+        set background=dark
+    elseif $BACKGROUND=="light"
+        set background=light
+    endif
+
+    if $COLORSCHEME=="solarized"
+        let g:airline_theme='base16'
+    else
+        let g:airline_theme=$COLORSCHEME
+    endif
+else
+    color nord
+    let g:airline_theme="nord"
 endif
 
 "" Autocommands
