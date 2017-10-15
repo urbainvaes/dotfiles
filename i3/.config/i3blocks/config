@@ -1,0 +1,74 @@
+# i3blocks config file
+#
+# Please see man i3blocks for a complete reference!
+# The man page is also hosted at http://vivien.github.io/i3blocks
+#
+# List of valid properties:
+#
+# align
+# color
+# command
+# full_text
+# instance
+# interval
+# label
+# min_width
+# name
+# separator
+# separator_block_width
+# short_text
+# signal
+# urgent
+
+# Global properties
+#
+# The top properties below are applied to every block, but can be overridden.
+# Each block command defaults to the script name to avoid boilerplate.
+command=/usr/lib/i3blocks/$BLOCK_NAME
+separator_block_width=15
+markup=none
+
+
+# Volume indicator
+#
+# The first parameter sets the step (and units to display)
+# The second parameter overrides the mixer selection
+# See the script for details.
+[volume]
+label=♪
+instance=Master
+interval=5
+
+[email]
+label=W:
+command=~/dotfiles/i3/.config/i3blocks/bin/wifi
+separator=true
+interval=5
+
+[wifi]
+label=Mail:
+command=~/dotfiles/i3/.config/i3blocks/bin/email
+separator=true
+interval=5
+
+[disk]
+label=HOME
+interval=30
+
+[cpu_usage]
+label=CPU
+interval=10
+min_width=CPU: 100.00%
+
+[battery]
+label=BAT
+interval=30
+
+[time]
+command=date '+%Y-%m-%d %H:%M'
+interval=5
+
+[mediaplayer]
+instance=spotify
+interval=5
+signal=10

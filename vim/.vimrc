@@ -212,7 +212,7 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsListSnippets="<c-l>"
 let g:UltiSnipsSnippetDirectories=['UltiSnips', 'mySnippets']
 let g:UltiSnipsSnippetsDir="~/.vim/mySnippets"
-let g:UltiSnipsUsePythonVersion=3
+" let g:UltiSnipsUsePythonVersion=3
 
 " Vimtex
 let g:vimtex_fold_enabled=0

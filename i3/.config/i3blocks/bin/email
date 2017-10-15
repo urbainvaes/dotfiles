@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+nMails=$(find $HOME/.mail -path '*/new/*' -type f -not -path '*/rss/*' -not -path '*/lists/*' | wc -l)
+echo -e "${nMails}\n${nMails}"
+
+if [[ ${nMails} -eq 0 ]]; then
+    echo \#FFFFFF
+else
+    echo \#00FF00
+fi

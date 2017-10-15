@@ -62,10 +62,10 @@ bindsym $mod+v split h
 bindsym $mod+w split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+z fullscreen
+bindsym $mod+g fullscreen
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+g layout stacking
+bindsym $mod+Shift+t layout stacking
 bindsym $mod+t layout tabbed
 bindsym $mod+s layout toggle split
 
@@ -119,7 +119,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exit
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -147,54 +147,73 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
+for_window [class="^.*"] border pixel 2
+
+# Green
+set $color0 #112211
+set $color1 #223322
+set $color2 #225522
+set $color3 #337733
+set $color4 #11CC11
+
+# Red
+set $color0 #221111
+set $color1 #332222
+set $color2 #552222
+set $color3 #773333
+set $color4 #CC1111
+
+# class                 border  backgr. text    indicator child_border
+client.focused          $color4 $color2 #ffffff $color3  $color4
+client.background       #ffffff
+
 bar {
-    status_command $HOME/bin/mystatus
-    mode hide
+    status_command i3blocks
     modifier none
+
+    colors {
+        #                  border  bg      text
+        focused_workspace  $color3 $color2 #ffffff
+        background $color1
+    }
 }
+
 bindsym $mod+m bar mode toggle
 
 # Workspaces
-bindsym $mod+Tab workspace back_and_forth
-bindsym $mod+comma workspace prev
-bindsym $mod+period workspace next
-bindsym $mod+Shift+comma exec $HOME/bin/move_workspace p
-bindsym $mod+Shift+period exec $HOME/bin/move_workspace n
-bindsym $mod+n exec $HOME/bin/workspace n
-bindsym $mod+Shift+n exec $HOME/bin/workspace m
+bindsym $mod+Tab          workspace back_and_forth
+bindsym $mod+comma        workspace prev
+bindsym $mod+period       workspace next
+bindsym $mod+Shift+comma       exec $HOME/bin/move_workspace p
+bindsym $mod+Shift+period      exec $HOME/bin/move_workspace n
+bindsym $mod+n                 exec $HOME/bin/workspace n
+bindsym $mod+Shift+n           exec $HOME/bin/workspace m
 
 # Programs shortcuts
 bindsym $mod+b exec --no-startup-id qutebrowser
 bindsym $mod+i exec $HOME/bin/vimin
 bindsym Print exec xfce4-screenshooter
 
-# Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+
-bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%-
-bindsym XF86AudioMute exec amixer -D pulse sset Master 0%
-
-# Sreen brightness controls
-bindsym XF86MonBrightnessUp exec light -A 10
+bindsym XF86AudioRaiseVolume  exec amixer -D pulse sset Master 5%+
+bindsym XF86AudioLowerVolume  exec amixer -D pulse sset Master 5%-
+bindsym XF86AudioMute         exec amixer -D pulse sset Master 0%
+bindsym XF86MonBrightnessUp   exec light -A 10
 bindsym XF86MonBrightnessDown exec light -U 10
 
 # Change wallpaper
 bindsym F11 exec --no-startup-id feh --bg-fill --randomize /usr/share/backgrounds
 
 # Custom scripts
-bindsym XF86AudioPlay exec $HOME/bin/touchpad
+bindsym XF86AudioPlay  exec --no-startup-id $HOME/bin/touchpad
 bindsym $mod+semicolon exec --no-startup-id $HOME/bin/run
-bindsym $mod+e exec --no-startup-id $HOME/bin/tmux_attach
-bindsym $mod+o exec --no-startup-id $HOME/bin/references
-bindsym $mod+Escape exec --no-startup-id "i3lock -c 000000 && systemctl suspend"
-bindsym $mod+x exec --no-startup-id "rofi -show window"
+bindsym $mod+e         exec --no-startup-id $HOME/bin/tmux_attach
+bindsym $mod+o         exec --no-startup-id $HOME/bin/references
+bindsym $mod+Escape    exec --no-startup-id "i3lock -c 000000 && systemctl suspend"
+bindsym $mod+x         exec --no-startup-id "rofi -show window"
 # bindsym $mod+y
 # bindsym $mod+z
 # bindsym $mod+'
 
-# bindsym $mod+m exec --no-startup-id $HOME/bin/i3-shell
-for_window [class="^.*"] border pixel 2
 
 # Gaps
 # workspace 1 gaps inner 5

@@ -60,7 +60,7 @@ auto_view text/html
 alternative_order text/plain text/enriched text/html
 
 # Editor
-set editor="$EDITOR"
+set editor="nvim"
 set include=yes
 
 # Macros

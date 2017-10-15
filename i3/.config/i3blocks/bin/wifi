@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+quality=$(lspci | grep -i Wireless | sed 's/^.*(rev \(.*\))/\1/')
+ssid=$(iwconfig wlp2s0 | grep -oP '(?<=ESSID:").*(?=")')
+address=$(ip addr show wlp2s0 | grep -oP -m1 "(?<=inet ).*(?=/)")
+
+echo "(${quality}% at ${ssid}) ${address}"
