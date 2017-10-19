@@ -35,6 +35,3 @@ URxvt.fading: 35
 
 ! $TERM environment variable
 XTerm*termName: rxvt-256color
-
-rofi.kb-mode-next: Tab
-rofi.kb-mode-previous: Shift+Tab

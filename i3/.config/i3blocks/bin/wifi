@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-quality=$(lspci | grep -i Wireless | sed 's/^.*(rev \(.*\))/\1/')
+quality=$(iwconfig wlp2s0 | grep -oP 'Link Quality=\K[0-9]*/[0-9]*' | awk -F'/' '{print int(100*$1/$2)}')
 ssid=$(iwconfig wlp2s0 | grep -oP '(?<=ESSID:").*(?=")')
 address=$(ip addr show wlp2s0 | grep -oP -m1 "(?<=inet ).*(?=/)")
 

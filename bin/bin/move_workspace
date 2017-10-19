@@ -15,7 +15,7 @@ i3-msg rename workspace to ${new_number}:${focused_name}
 
 if [[ ! -z "${next// }" ]]; then
     name_next=${next#*:}
-    i3-msg workspace "${next}"
-    i3-msg rename workspace to ${focused_number}:${name_next}
-    i3-msg workspace "${new_number}:${focused_name}"
+    i3-msg "workspace ${next};\
+        rename workspace to ${focused_number}:${name_next};\
+        workspace ${new_number}:${focused_name}"
 fi

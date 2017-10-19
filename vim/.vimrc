@@ -34,7 +34,6 @@ Plug 'junegunn/vim-peekaboo'
 Plug 'junegunn/vim-slash'
 Plug 'justinmk/vim-dirvish'
 Plug 'justinmk/vim-sneak'
-Plug 'klen/python-mode'
 Plug 'kshenoy/vim-signature'
 Plug 'lervag/vimtex'
 Plug 'machakann/vim-highlightedyank'
@@ -141,11 +140,6 @@ endif
 "" Plugin configurations
 
 " Airline
-if $COLORSCHEME=="solarized"
-    let g:airline_theme='base16'
-else
-    let g:airline_theme=$COLORSCHEME
-endif
 let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing', 'mixed-indent-file' ]
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#tab_nr_type = 1
@@ -362,7 +356,7 @@ if hostname == "navajo"
         let g:airline_theme=$COLORSCHEME
     endif
 else
-    color nord
+    colorscheme nord
     let g:airline_theme="nord"
 endif
 

@@ -149,33 +149,9 @@ bindsym $mod+r mode "resize"
 
 for_window [class="^.*"] border pixel 2
 
-# Green
-set $color0 #112211
-set $color1 #223322
-set $color2 #225522
-set $color3 #337733
-set $color4 #11CC11
-
-# Red
-set $color0 #221111
-set $color1 #332222
-set $color2 #552222
-set $color3 #773333
-set $color4 #CC1111
-
-# class                 border  backgr. text    indicator child_border
-client.focused          $color4 $color2 #ffffff $color3  $color4
-client.background       #ffffff
-
 bar {
     status_command i3blocks
     modifier none
-
-    colors {
-        #                  border  bg      text
-        focused_workspace  $color3 $color2 #ffffff
-        background $color1
-    }
 }
 
 bindsym $mod+m bar mode toggle
