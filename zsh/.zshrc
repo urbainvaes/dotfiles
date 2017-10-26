@@ -2,6 +2,14 @@ export PATH="${PATH}:$HOME/bin:/usr/lib/surfraw"
 export EDITOR=vim
 export HISTSIZE=1000000
 
+
+source /home/urbain/.nix-profile/etc/profile.d/nix.sh
+
+# Guix stuff
+export PATH="/home/urbain/.guix-profile/bin${PATH:+:}$PATH"
+export GUIX_LOCPATH=$HOME/.guix-profile/lib/locale
+alias p='guix package'
+
 # Source configuration files
 source "$HOME/.zsh/plugins"
 source "$HOME/.zsh/functions"

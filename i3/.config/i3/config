@@ -160,10 +160,10 @@ bindsym $mod+m bar mode toggle
 bindsym $mod+Tab          workspace back_and_forth
 bindsym $mod+comma        workspace prev
 bindsym $mod+period       workspace next
-bindsym $mod+Shift+comma       exec $HOME/bin/move_workspace p
-bindsym $mod+Shift+period      exec $HOME/bin/move_workspace n
-bindsym $mod+n                 exec $HOME/bin/workspace n
-bindsym $mod+Shift+n           exec $HOME/bin/workspace m
+bindsym $mod+Shift+comma       exec $HOME/bin/workspace mw p
+bindsym $mod+Shift+period      exec $HOME/bin/workspace mw n
+bindsym $mod+n                 exec $HOME/bin/workspace gw
+bindsym $mod+Shift+n           exec $HOME/bin/workspace mc
 
 # Programs shortcuts
 bindsym $mod+b exec --no-startup-id qutebrowser

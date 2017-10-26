@@ -1,9 +1,0 @@
-#! /usr/bin/env bash
-
-# Touchpad status
-status=$(synclient -l | grep TouchpadOff)
-if [[ $status = *1 ]]; then
-    synclient TouchpadOff=0
-elif [[ $status = *0 ]]; then
-    synclient TouchpadOff=1
-fi

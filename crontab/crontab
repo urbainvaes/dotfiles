@@ -1,2 +1,1 @@
-*/5 * * * * /home/urbain/bin/email >> /home/urbain/.cron_email_log
-*/5 * * * * /usr/bin/vdirsyncer sync >> /home/urbain/.cron_calendar_log
+*/5 * * * * /usr/bin/env mbsync -a

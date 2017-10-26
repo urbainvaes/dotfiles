@@ -1,5 +1,3 @@
 #!/bin/bash
-SCRIPTS_DIR="$HOME/bin" && cd $SCRIPTS_DIR
-SCRIPTS=$(ls -A $SCRIPTS_DIR)
-TARGET=$(echo "${SCRIPTS//"$SCRIPTS_DIR/"/}" | dmenu -i -p "Run script:")
-[[ -n $TARGET ]] && "$TARGET"
+target=$(find $HOME/dotfiles/bin/ -type f -not -name ".*" -printf "%f\n" | dmenu -i -p "Run script:")
+[[ -n $target ]] && exec $target

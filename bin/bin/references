@@ -2,4 +2,4 @@
 REF_DIR="$HOME/phd/references"
 PDF=$(find $REF_DIR -name "*.pdf" -printf "%P\n")
 TARGET=$(echo "${PDF//"$REF_DIR/"/}" | dmenu -i -p "Open File:")
-[[ -n $TARGET ]] && (zathura "$REF_DIR/$TARGET" &)
+[[ -n $TARGET ]] && exec zathura "$REF_DIR/$TARGET"

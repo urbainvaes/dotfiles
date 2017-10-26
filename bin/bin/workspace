@@ -1,33 +1,54 @@
-#!/bin/zsh
-
-# Command to use
-[[ $1 = 'n' ]] && cmd="workspace"
-[[ $1 = 'm' ]] && cmd="move container to workspace"
+#!/usr/bin/env bash
 
 # List of workspaces
-workspaces=$(i3-msg -t get_workspaces | grep -Po '"name":.*?[^\\]"' | sed 's/"name":"\([^"]\+\)"/\1/g')
+workspaces=$(i3-msg -t get_workspaces | awk 'BEGIN {
+                                                        RS="(},{)|(\\[{)|(}\\])";
+                                                        FPAT="([^,:]+)|([^,]+{[^}]+})|(\"[^\"]+\")"
+                                             }
+                                             $0 !~ "^\\s*$" {
+                                             gsub(/"/, "", $4)
+                                             print $2, $4, $8, $11
+                                             }' | sort)
 
-# Keep only the ones containing :
-workspaces=$(echo $workspaces | sed '/:/!d')
+act_on_container() {
+    # Get desired workspace
+    target=$(echo "$workspaces" | awk '{print $2}' | dmenu -i -p "Select workspace: ")
 
-# Get desired workspace
-target=$(echo $workspaces | dmenu "Go to workspace:")
+    # Exit if empty
+    [[ -z $target ]] && exit
 
-# Exit if empty
-[[ -z $target ]] && exit
+    # If new workspace has to be created
+    if [[ ! $target = [0-9]* ]]; then
 
-# If new workspace has to be created
-if [[ ! $target = [0-9]* ]]; then
+        # Add number to workspace name
+        new_number=$(echo "$workspaces" | awk '$1!=p+1{exit;}{p=$1} END {print p+1}')
+        target=$new_number:$target
+    fi
 
-    # Calculate number for new workspace
-    used_numbers=$(echo $workspaces | awk 'BEGIN { FS = ":" } ; { print $1 }' | sort)
-    max_number=$(echo $used_numbers | tail -1)
-    lowest_gap=$(echo $used_numbers | awk '$1!=p+1{print p+1}{p=$1}' | head -1)
-    [[ -z $lowest_gap ]] && new_number=$(($max_number +  1)) || new_number=$lowest_gap
+    # Execute command
+    exec i3-msg $1 $target
+}
 
-    # Add number to workspace name
-    target=$new_number:$target
-fi
+act_on_workspace() {
+    focused_number=$(echo "$workspaces" | awk '$3 ~ "true" {print $1}')
+    focused_name=$(echo "$workspaces" | awk '$3 ~ "true" {print $2}' | cut -d":" -f2)
 
-# Execute command
-exec i3-msg $cmd $target
+    [[ $1 = 'n' ]] && new_number=$((focused_number + 1))
+    [[ $1 = 'p' ]] && new_number=$((focused_number - 1))
+
+    next=$(echo "${workspaces}" | awk '$1 ~ /'$new_number'/ {print $2}')
+
+    i3-msg rename workspace to ${new_number}:${focused_name}
+
+    if [[ ! -z "${next// }" ]]; then
+        name_next=${next#*:}
+        i3-msg "workspace ${next};\
+            rename workspace to ${focused_number}:${name_next};\
+            workspace ${new_number}:${focused_name}"
+    fi
+}
+
+# Command to use
+[[ $1 = 'gw' ]] && act_on_container "workspace"
+[[ $1 = 'mc' ]] && act_on_container "move container to workspace"
+[[ $1 = 'mw' ]] && act_on_workspace "$2"

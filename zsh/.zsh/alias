@@ -1,8 +1,6 @@
 #!/bin/zsh
 
 # Commands
-alias c='clear'
-alias ca='printf "\ec"'
 alias cdd='cd ~/dotfiles'
 
 # Programs
@@ -15,6 +13,7 @@ alias n='nvim'
 alias ns='nvim -S Session.vim'
 alias v='vim'
 alias vs="vim -S Session.vim"
+alias email="mbsync -a"
 
 # Git
 alias g='git'

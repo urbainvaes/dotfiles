@@ -123,8 +123,8 @@ nnoremap <Leader>gd :Gdiff<cr>
 " Iron
 let g:iron_map_defaults=0
 nmap yr <Plug>(iron-send-motion)
-nmap yryr Vyr
-xmap yr <Plug>(iron-send-motion)
+nmap yryr VR
+xmap R <Plug>(iron-send-motion)
 
 " Easy align
 xmap ga <Plug>(EasyAlign)
