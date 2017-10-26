@@ -62,12 +62,14 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'vim-scripts/gmsh.vim'
+Plug 'vim-scripts/paredit.vim'
 Plug 'wellle/targets.vim'
 
 if has("nvim")
+    " Plug 'roxma/nvim-completion-manager'
     Plug 'Shougo/deoplete.nvim'
-    Plug 'radenling/vim-dispatch-neovim'
-    Plug 'jalvesaq/Nvim-R'
+    Plug 'zchee/deoplete-jedi'
+    Plug 'hkupty/iron.nvim'
 else
     Plug 'Shougo/neocomplete.vim'
 endif
@@ -100,7 +102,6 @@ nnoremap <c-p>l  :BLines<cr>
 nnoremap <c-p>m  :Marks<cr>
 nnoremap <c-p>t  :Tags<cr>
 
-imap <c-x><c-l> <plug>(fzf-complete-line)
 imap <c-x><c-f> <plug>(fzf-complete-file)
 
 " LLDB
@@ -118,6 +119,12 @@ nnoremap <Leader>gs :Gstatus<cr>
 nnoremap <Leader>gc :Gcommit<cr>
 nnoremap <Leader>gr :Gread<cr>
 nnoremap <Leader>gd :Gdiff<cr>
+
+" Iron
+let g:iron_map_defaults=0
+nmap yr <Plug>(iron-send-motion)
+nmap yryr Vyr
+xmap yr <Plug>(iron-send-motion)
 
 " Easy align
 xmap ga <Plug>(EasyAlign)
@@ -178,6 +185,7 @@ let g:neocomplete#sources#omni#input_patterns.tex =
     \ . '|includestandalone%(\s*\[[^]]*\])?\s*\{[^}]*'
     \ . ')'
 let g:deoplete#omni_patterns.tex = g:neocomplete#sources#omni#input_patterns.tex.'\m'
+let g:deoplete#sources#jedi#show_docstring = 1
 
 " FZF.vim
 let g:fzf_buffers_jump = 1
@@ -185,18 +193,12 @@ let g:fzf_buffers_jump = 1
 " Gundo
 let g:gundo_prefer_python3 = 1
 
-" Idealvimrc
+" Localvimrc
 let g:localvimrc_sandbox = 0
 let g:localvimrc_whitelist='/home/*'
 
 " NerdTree
 let g:NERDTreeHijackNetrw = 0
-
-" Python-mode
-let g:pymode_rope=0
-
-" Sneak
-let g:sneak#use_ic_scs = 1
 
 " Ultisnips
 let g:UltiSnipsEditSplit="horizontal"
@@ -368,7 +370,6 @@ augroup vimrc
     au BufNewFile,BufRead *.pde setf freefem
     au BufNewFile,BufRead *.plt setf gnuplot
     au FileType gmsh setlocal makeprg=gmsh\ %
-    au FileType gmsh execute 'setlocal dict+=~/.vim/words/gmsh.txt'
     au FileType gnuplot setlocal makeprg=gnuplot\ %
     au FileType gnuplot setlocal commentstring=#%s
     au FileType freefem comp freefem
