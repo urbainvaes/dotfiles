@@ -27,6 +27,8 @@ config.bind("<Ctrl-W>", 'fake-key <Ctrl-Backspace>', mode='insert')
 config.bind("<Ctrl-E>", 'fake-key <End>', mode='insert')
 config.bind("<Ctrl-F>", 'fake-key <Right>', mode='insert')
 config.bind("<Ctrl-B>", 'fake-key <Left>', mode='insert')
+config.bind("<Ctrl-N>", 'fake-key <Down>', mode='insert')
+config.bind("<Ctrl-P>", 'fake-key <Up>', mode='insert')
 
 # Bindings for command mode
 config.bind('<Ctrl-W>', 'fake-key -g <Ctrl-Backspace>', mode='command')
