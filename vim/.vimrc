@@ -123,7 +123,7 @@ nnoremap <Leader>gd :Gdiff<cr>
 " Iron
 let g:iron_map_defaults=0
 nmap yr <Plug>(iron-send-motion)
-nmap yryr VR
+nmap yrr VR
 xmap R <Plug>(iron-send-motion)
 
 " Easy align
@@ -335,8 +335,10 @@ cnoremap <up> <c-p>
 cnoremap <down> <c-n>
 
 if has("nvim")
-    nnoremap <c-_> :ZoomWinTabIn<cr>:buffer term<cr>i
-    tnoremap <c-_> <c-\><c-n><c-^>:ZoomWinTabOut<cr>
+    nnoremap goh :lcd %:h \| terminal<cr>
+    tnoremap <c-d> <c-\><c-n><c-^>:bd! #<cr>
+    nnoremap <c-_> <c-^><cr>i
+    tnoremap <c-_> <c-\><c-n><c-^>
 endif
 
 set t_Co=256
