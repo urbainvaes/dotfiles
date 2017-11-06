@@ -3,6 +3,7 @@
 ! General settings
 URxvt.loginShell   : true
 URxvt.termName     : rxvt-256color
+URxvt.urgentOnBell : true
 
 ! Custom META key
 URxvt*modifier: alt
