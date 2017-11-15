@@ -160,6 +160,7 @@ bindsym $mod+m bar mode toggle
 bindsym $mod+Tab          workspace back_and_forth
 bindsym $mod+comma        workspace prev
 bindsym $mod+period       workspace next
+bindsym $mod+x            move workspace to output left
 bindsym $mod+Shift+comma       exec $HOME/bin/workspace mw p
 bindsym $mod+Shift+period      exec $HOME/bin/workspace mw n
 bindsym $mod+n                 exec $HOME/bin/workspace gw
@@ -170,11 +171,16 @@ bindsym $mod+b exec --no-startup-id qutebrowser
 bindsym $mod+i exec $HOME/bin/vimin
 bindsym Print exec xfce4-screenshooter
 
+# Sound
 bindsym XF86AudioRaiseVolume  exec amixer -D pulse sset Master 5%+
 bindsym XF86AudioLowerVolume  exec amixer -D pulse sset Master 5%-
 bindsym XF86AudioMute         exec amixer -D pulse sset Master 0%
+
+# Display
 bindsym XF86MonBrightnessUp   exec light -A 10
 bindsym XF86MonBrightnessDown exec light -U 10
+bindsym Shift+XF86AudioRaiseVolume  exec light -A 10
+bindsym Shift+XF86AudioLowerVolume  exec light -U 10
 
 # Change wallpaper
 bindsym F11 exec --no-startup-id feh --bg-fill --randomize /usr/share/backgrounds
@@ -185,8 +191,7 @@ bindsym $mod+semicolon exec --no-startup-id $HOME/bin/run
 bindsym $mod+e         exec --no-startup-id $HOME/bin/tmux_attach
 bindsym $mod+o         exec --no-startup-id $HOME/bin/references
 bindsym $mod+Escape    exec --no-startup-id "i3lock -c 000000 && systemctl suspend"
-bindsym $mod+x         exec --no-startup-id "rofi -show window"
-# bindsym $mod+y
+bindsym $mod+y         exec --no-startup-id "urxvt -e tmuxinator start notes"
 # bindsym $mod+z
 # bindsym $mod+'
 

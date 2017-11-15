@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 SESSIONS=$(tmux list-sessions | cut -d':' -f1)
-TMUXINATOR=$(tmuxinator list | sed '1d' | sed 's/    /\n/g')
+TMUXINATOR=$(tmuxinator list | sed '1d' | sed 's/\s\+/\n/g')
 UNION=$(cat <(echo "$SESSIONS") <(echo "$TMUXINATOR") | sort | uniq | sed "/^$/d")
 
 SESSION=$(echo "$UNION" | dmenu -i -p "Session:" | tr -d '[[:space:]]')

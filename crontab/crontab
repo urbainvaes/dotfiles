@@ -1,1 +1,1 @@
-*/5 * * * * /usr/bin/env mbsync -a
+*/5 * * * * DISPLAY=:0 /usr/bin/env mbsync -a

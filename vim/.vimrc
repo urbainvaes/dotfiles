@@ -46,6 +46,7 @@ Plug 'sjl/Gundo.vim', { 'on' : 'GundoToggle' }
 Plug 'terryma/vim-expand-region'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tommcdo/vim-exchange'
+Plug 'ton/vim-bufsurf'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
@@ -334,10 +335,15 @@ cnoremap <c-n> <down>
 cnoremap <up> <c-p>
 cnoremap <down> <c-n>
 
+nmap <silent> <b :BufSurfBack<cr>
+nmap <silent> <B :BufSurfBack<cr>:bd! #<cr>
+nmap <silent> >b :BufSurfForward<cr>
+nmap <silent> <B :BufSurfForward<cr>:bd! #<cr>
+
 if has("nvim")
     nnoremap goh :lcd %:h \| terminal<cr>
     tnoremap <c-d> <c-\><c-n><c-^>:bd! #<cr>
-    nnoremap <c-_> <c-^><cr>i
+    nnoremap <c-_> :b # \| norm A<cr>
     tnoremap <c-_> <c-\><c-n><c-^>
 endif
 

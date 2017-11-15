@@ -8,7 +8,10 @@ source /home/urbain/.nix-profile/etc/profile.d/nix.sh
 # Guix stuff
 export PATH="/home/urbain/.guix-profile/bin${PATH:+:}$PATH"
 export GUIX_LOCPATH=$HOME/.guix-profile/lib/locale
-alias p='guix package'
+export GUILE_LOAD_PATH=$HOME/.guix-profile/share/guile/site/2.2:$GUILE_LOAD_PATH
+export GUILE_LOAD_COMPILED_PATH=$HOME/.guix-profile/lib/guile/2.2/site-ccache:$GUILE_LOAD_COMPILED_PATH
+export CPATH="/home/urbain/.guix-profile/include${CPATH:+:}$CPATH"
+export LIBRARY_PATH="/home/urbain/.guix-profile/lib${LIBRARY_PATH:+:}$LIBRARY_PATH"
 
 # Source configuration files
 source "$HOME/.zsh/plugins"
