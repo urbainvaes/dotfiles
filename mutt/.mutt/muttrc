@@ -20,7 +20,6 @@ set from = "Urbain Vaes"
 set reverse_alias
 set sort = reverse-date
 set weed
-set fcc_clear
 unset markers
 set sleep_time = 0
 set wait_key = no

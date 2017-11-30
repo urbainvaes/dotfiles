@@ -23,6 +23,7 @@ Plug 'holomorph/vim-freefem'
 Plug 'honza/vim-snippets'
 Plug 'inkarkat/vim-SpellCheck'
 Plug 'inkarkat/vim-ingo-library'
+Plug 'kopischke/vim-stay'
 Plug 'jamessan/vim-gnupg'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -86,6 +87,7 @@ call plug#end()
 
 " Toggles
 nnoremap cpg :GitGutterToggle<cr>
+nnoremap cpr :IronRepl<cr>
 nnoremap cpn :NERDTreeToggle<cr>
 nnoremap cpt :TagbarToggle<cr>
 nnoremap cpu :GundoToggle<cr>
@@ -123,9 +125,10 @@ nnoremap <Leader>gd :Gdiff<cr>
 
 " Iron
 let g:iron_map_defaults=0
+let g:iron_repl_open_cmd='edit'
 nmap yr <Plug>(iron-send-motion)
-nmap yrr VR
 xmap R <Plug>(iron-send-motion)
+nmap yrr VR
 
 " Easy align
 xmap ga <Plug>(EasyAlign)
@@ -287,6 +290,9 @@ endif
 
 
 "" Mappings
+nmap n nzz
+nmap N Nzz
+
 nnoremap <silent> <Plug>AddWhiteSpaceAfter a <Esc>h:silent call repeat#set("\<Plug>AddWhiteSpaceAfter")<cr>
 nnoremap <silent> <Plug>AddWhiteSpaceBefore i <Esc>l:silent call repeat#set("\<Plug>AddWhiteSpaceBefore")<cr>
 
@@ -336,13 +342,15 @@ cnoremap <up> <c-p>
 cnoremap <down> <c-n>
 
 nmap <silent> <b :BufSurfBack<cr>
-nmap <silent> <B :BufSurfBack<cr>:bd! #<cr>
 nmap <silent> >b :BufSurfForward<cr>
-nmap <silent> <B :BufSurfForward<cr>:bd! #<cr>
+nmap <silent> <B :BufSurfBack<cr>:bd! #<cr>
+nmap <silent> >B :BufSurfForward<cr>:bd! #<cr>
+nmap <silent> [B [b:bd! #<cr>
+nmap <silent> ]B ]b:bd! #<cr>
 
 if has("nvim")
-    nnoremap goh :lcd %:h \| terminal<cr>
-    tnoremap <c-d> <c-\><c-n><c-^>:bd! #<cr>
+    nnoremap goh :let @a=getcwd() \| lcd %:h \| terminal<cr>:execute 'lcd '.@a<cr>A
+    tnoremap <c-x> <c-\><c-n><c-^>:bd! #<cr>
     nnoremap <c-_> :b # \| norm A<cr>
     tnoremap <c-_> <c-\><c-n><c-^>
 endif
@@ -387,4 +395,5 @@ augroup vimrc
         \ if !isdirectory(expand('<afile>:p:h')) |
           \ call mkdir(expand('<afile>:p:h'), 'p') |
         \ endif
+    au BufWritePost *vimrc :source %
 augroup END

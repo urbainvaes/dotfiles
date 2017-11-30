@@ -3,11 +3,12 @@ export EDITOR=vim
 export HISTSIZE=1000000
 
 
-source /home/urbain/.nix-profile/etc/profile.d/nix.sh
+# source /home/urbain/.nix-profile/etc/profile.d/nix.sh
 
 # Guix stuff
 export PATH="/home/urbain/.guix-profile/bin${PATH:+:}$PATH"
 export GUIX_LOCPATH=$HOME/.guix-profile/lib/locale
+export GUIX_PACKAGE_PATH=$HOME/Dropbox/projects/guix-packages
 export GUILE_LOAD_PATH=$HOME/.guix-profile/share/guile/site/2.2:$GUILE_LOAD_PATH
 export GUILE_LOAD_COMPILED_PATH=$HOME/.guix-profile/lib/guile/2.2/site-ccache:$GUILE_LOAD_COMPILED_PATH
 export CPATH="/home/urbain/.guix-profile/include${CPATH:+:}$CPATH"

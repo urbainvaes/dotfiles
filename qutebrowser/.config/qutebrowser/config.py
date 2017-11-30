@@ -2,24 +2,31 @@
 #   qute://help/configuring.html
 #   qute://help/settings.html
 
+c.downloads.location.prompt = False
 c.editor.command = ['urxvt', '-e', 'vim', '-f', '{}']
 c.hints.chars = 'aoeuidhtns'
 c.hints.uppercase = True
 c.tabs.favicons.show = False
-c.url.default_page = 'about:blank'
-c.url.start_pages = ['about:blank']
 c.tabs.show = 'multiple'
 c.tabs.tabs_are_windows = True
+c.url.default_page = 'about:blank'
+c.url.start_pages = ['about:blank']
 
 # Bindings for normal mode
-config.bind("o", 'set-cmd-text -s :spawn --userscript url-from-surfraw')
-config.bind("t", 'set-cmd-text -s :spawn --userscript url-from-surfraw -t')
-config.bind(",p", 'spawn --userscript explorer')
-config.bind(",t", 'spawn --userscript explorer -t')
-config.bind(",h", 'spawn --userscript explorer -h')
 config.bind(",b", 'spawn --userscript explorer -b')
 config.bind(",d", 'spawn --userscript dictionary-search')
-config.bind('f', 'hint all current')
+config.bind(",h", 'spawn --userscript explorer -h')
+config.bind(",p", 'spawn --userscript explorer')
+config.bind(",t", 'spawn --userscript explorer -t')
+config.bind(",v", 'spawn mpv {url}')
+config.bind(",V", 'hint links spawn mpv {hint-url}')
+config.bind("]d", 'set downloads.location.prompt True')
+config.bind("[d", 'set downloads.location.prompt False')
+config.unbind("d")
+config.bind("do", 'download-open')
+config.bind("o", 'set-cmd-text -s :spawn --userscript url-from-surfraw')
+config.bind("t", 'set-cmd-text -s :spawn --userscript url-from-surfraw -t')
+config.bind("f", 'hint all current')
 
 # Bindings for insert mode
 config.bind("<Ctrl-A>", 'fake-key <Home>', mode='insert')

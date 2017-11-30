@@ -156,20 +156,27 @@ bar {
 
 bindsym $mod+m bar mode toggle
 
-# Workspaces
-bindsym $mod+Tab          workspace back_and_forth
-bindsym $mod+comma        workspace prev
-bindsym $mod+period       workspace next
-bindsym $mod+x            move workspace to output left
+# Move focus
+bindsym $mod+x                 focus output left
+bindsym $mod+n                 exec $HOME/bin/workspace gw
+bindsym $mod+comma             workspace prev
+bindsym $mod+period            workspace next
+bindsym $mod+Tab               workspace back_and_forth
+
+# Move workspace
 bindsym $mod+Shift+comma       exec $HOME/bin/workspace mw p
 bindsym $mod+Shift+period      exec $HOME/bin/workspace mw n
-bindsym $mod+n                 exec $HOME/bin/workspace gw
-bindsym $mod+Shift+n           exec $HOME/bin/workspace mc
+bindsym $mod+Control+x           move workspace to output left; focus output left
 
-# Programs shortcuts
-bindsym $mod+b exec --no-startup-id qutebrowser
-bindsym $mod+i exec $HOME/bin/vimin
-bindsym Print exec xfce4-screenshooter
+# Move container
+bindsym $mod+Shift+n           exec $HOME/bin/workspace mc
+bindsym $mod+Shift+x           move to output left; focus output left
+
+# Programs and commands
+bindsym $mod+b       exec --no-startup-id qutebrowser
+bindsym Print        exec --no-startup-id xfce4-screenshooter
+bindsym $mod+Escape  exec --no-startup-id i3lock -c 000000 && systemctl suspend
+bindsym $mod+Shift+w exec --no-startup-id feh --bg-fill --randomize /usr/share/backgrounds
 
 # Sound
 bindsym XF86AudioRaiseVolume  exec amixer -D pulse sset Master 5%+
@@ -179,25 +186,21 @@ bindsym XF86AudioMute         exec amixer -D pulse sset Master 0%
 # Display
 bindsym XF86MonBrightnessUp   exec light -A 10
 bindsym XF86MonBrightnessDown exec light -U 10
-bindsym Shift+XF86AudioRaiseVolume  exec light -A 10
-bindsym Shift+XF86AudioLowerVolume  exec light -U 10
+bindsym Shift+XF86AudioRaiseVolume exec light -A 10
+bindsym Shift+XF86AudioLowerVolume exec light -U 10
 
-# Change wallpaper
-bindsym F11 exec --no-startup-id feh --bg-fill --randomize /usr/share/backgrounds
+# Tmux sessions
+bindsym $mod+Shift+m exec --no-startup-id "urxvt -e tmuxinator start email"
+bindsym $mod+y       exec --no-startup-id "urxvt -e tmuxinator start notes"
 
-# Custom scripts
-bindsym XF86AudioPlay  exec --no-startup-id $HOME/bin/touchpad
+# Launch scripts
 bindsym $mod+semicolon exec --no-startup-id $HOME/bin/run
 bindsym $mod+e         exec --no-startup-id $HOME/bin/tmux_attach
 bindsym $mod+o         exec --no-startup-id $HOME/bin/references
-bindsym $mod+Escape    exec --no-startup-id "i3lock -c 000000 && systemctl suspend"
-bindsym $mod+y         exec --no-startup-id "urxvt -e tmuxinator start notes"
 # bindsym $mod+z
 # bindsym $mod+'
 
-
 # Gaps
-# workspace 1 gaps inner 5
 smart_gaps on
 gaps inner 5
 gaps outer 5

@@ -1,4 +1,5 @@
 .init.vim-*
 .netrwhist
 plugged
-vimundo/*
+view
+vimundo

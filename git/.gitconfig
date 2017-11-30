@@ -13,3 +13,5 @@
     yolo = !git commit -am "Update" && git push origin master
 [core]
 	fileMode = false
+[http]
+	sslverify = false

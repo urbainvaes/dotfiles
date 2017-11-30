@@ -20,8 +20,8 @@ act_on_container() {
     # If new workspace has to be created
     if [[ ! $target = [0-9]* ]]; then
 
-        # Add number to workspace name
-        new_number=$(echo "$workspaces" | awk '$1!=p+1{exit;}{p=$1} END {print p+1}')
+        # Add number to workspace name (start at 1, but allow 0)
+        new_number=$(echo "$workspaces" | awk '$1!=p+1 && $1!=0 {exit;}{p=$1} END {print p+1}')
         target=$new_number:$target
     fi
 
