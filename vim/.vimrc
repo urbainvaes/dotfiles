@@ -13,11 +13,10 @@ Plug 'LnL7/vim-nix'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter'
-Plug 'altercation/vim-colors-solarized'
-Plug 'arcticicestudio/nord-vim'
 Plug 'beloglazov/vim-online-thesaurus'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'critiqjo/lldb.nvim'
+Plug 'easymotion/vim-easymotion'
 Plug 'embear/vim-localvimrc'
 Plug 'holomorph/vim-freefem'
 Plug 'honza/vim-snippets'
@@ -27,9 +26,7 @@ Plug 'kopischke/vim-stay'
 Plug 'jamessan/vim-gnupg'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/goyo.vim'
 Plug 'junegunn/gv.vim'
-Plug 'junegunn/heytmux'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-peekaboo'
 Plug 'junegunn/vim-slash'
@@ -39,7 +36,6 @@ Plug 'kshenoy/vim-signature'
 Plug 'lervag/vimtex'
 Plug 'machakann/vim-highlightedyank'
 Plug 'majutsushi/tagbar'
-Plug 'mhinz/vim-grepper'
 Plug 'mhinz/vim-startify'
 Plug 'neomake/neomake'
 Plug 'scrooloose/nerdtree'
@@ -64,7 +60,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'vim-scripts/gmsh.vim'
-Plug 'vim-scripts/paredit.vim'
 Plug 'wellle/targets.vim'
 
 if has("nvim")
@@ -77,10 +72,12 @@ else
 endif
 
 " Colors
+Plug 'altercation/vim-colors-solarized'
 Plug 'KKPMW/moonshine-vim'
-Plug 'romainl/Apprentice'
+Plug 'arcticicestudio/nord-vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'noah/vim256-color'
+Plug 'romainl/Apprentice'
 call plug#end()
 
 "" Plugin mappings
@@ -92,10 +89,14 @@ nnoremap cpn :NERDTreeToggle<cr>
 nnoremap cpt :TagbarToggle<cr>
 nnoremap cpu :GundoToggle<cr>
 
+" Easy motion
+map <Leader>s <Plug>(easymotion-prefix)
+
 " Fuzzy finder
 nnoremap <c-p>a  :Ag
 nnoremap <c-p>b  :Buffers<cr>
 nnoremap <c-p>c  :Commands<cr>
+nnoremap <c-p>C  :Colors<cr>
 nnoremap <c-p>f  :Files<cr>
 nnoremap <c-p>g  :GitFiles<cr>
 nnoremap <c-p>r  :History<cr>
@@ -256,26 +257,27 @@ let g:tex_flavor='latex'
 
 "" Vim options
 set complete+=k
-set cursorline
-set smartindent
-set expandtab
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set showcmd
-set foldmethod=marker
-set noswapfile
-set nowritebackup
-set undodir=~/.vim/vimundo/
-set undofile
-set diffopt=filler,vertical
-set nowrap
 set conceallevel=2
-set nojoinspaces
-set smartcase
+set cursorline
+set diffopt=filler,vertical
+set expandtab
+set foldmethod=marker
+set hidden
 set ignorecase
 set lazyredraw
-set hidden
+set nojoinspaces
+set noswapfile
+set nowrap
+set nowritebackup
+set shiftwidth=4
+set showcmd
+set smartcase
+set smartindent
+set softtabstop=4
+set t_Co=256
+set tabstop=4
+set undodir=~/.vim/vimundo/
+set undofile
 " set formatoptions+=orw
 silent! set breakindent
 let &showbreak='--> '
@@ -287,7 +289,6 @@ endif
 if has("nvim")
   set inccommand=split
 endif
-
 
 "" Mappings
 nmap n nzz
@@ -303,20 +304,11 @@ nnoremap <Leader>w :update<cr>
 nnoremap <Leader>q :q!<cr>
 nnoremap <Leader>d :bd!<cr>
 
-nmap gs :set opfunc=Search<cr>g@
-xmap gs :<c-u>call Search(visualmode())<cr>
-function! Search(vm)
-    let is_visual=(a:vm == "v")
-    let l=getline(is_visual ? "'<" : "'[")
-    let [line1,col1] = getpos(is_visual ? "'<" : "'[")[1:2]
-    let [line2,col2] = getpos(is_visual ? "'>" : "']")[1:2]
-    call feedkeys(':Grepper -tool git -query "' . l[col1 - 1: col2 - 1] . '"')
-endfunction
 
 nnoremap <Leader>tn :tabnew<cr>
 nnoremap <Leader>te :tabedit
-nnoremap <Leader>th :-tabmove<cr>
 nnoremap <Leader>tl :+tabmove<cr>
+nnoremap <Leader>th :-tabmove<cr>
 nnoremap <Leader>tm :tabmove
 nnoremap <Leader>t0 :tabmove 0<cr>
 nnoremap <Leader>t$ :tabmove<cr>
@@ -355,28 +347,11 @@ if has("nvim")
     tnoremap <c-_> <c-\><c-n><c-^>
 endif
 
-set t_Co=256
 
 "" Colorscheme
-let hostname = substitute(system('hostname'), '\n', '', '')
+let g:airline_theme='deus'
+colo apprentice
 
-if hostname == "navajo"
-    silent! colo $COLORSCHEME
-    if $BACKGROUND=="dark"
-        set background=dark
-    elseif $BACKGROUND=="light"
-        set background=light
-    endif
-
-    if $COLORSCHEME=="solarized"
-        let g:airline_theme='base16'
-    else
-        let g:airline_theme=$COLORSCHEME
-    endif
-else
-    colorscheme nord
-    let g:airline_theme="nord"
-endif
 
 "" Autocommands
 augroup vimrc
@@ -391,9 +366,33 @@ augroup vimrc
     au FileType freefem comp freefem
     au FileType dirvish setlocal relativenumber
     au FileType tex set spell
+    au BufWritePost *vimrc :source %
     au BufWritePre *
         \ if !isdirectory(expand('<afile>:p:h')) |
           \ call mkdir(expand('<afile>:p:h'), 'p') |
         \ endif
-    au BufWritePost *vimrc :source %
 augroup END
+
+
+"" My search
+if executable("ag")
+    set grepprg=ag\ --vimgrep
+    set grepformat^=%f:%l:%c:%m
+endif
+
+if executable("rg")
+    set grepprg=rg\ --vimgrep
+    set grepformat=%f:%l:%c:%m
+endif
+
+command! -nargs=+ -complete=file_in_path Grep execute 'silent grep!' <q-args> | cw | redraw!
+
+nmap gs :set opfunc=Search<cr>g@
+xmap gs :<c-u>call Search(visualmode())<cr>
+function! Search(vm)
+    let is_visual=(a:vm == "v")
+    let l=getline(is_visual ? "'<" : "'[")
+    let [line1,col1] = getpos(is_visual ? "'<" : "'[")[1:2]
+    let [line2,col2] = getpos(is_visual ? "'>" : "']")[1:2]
+    call feedkeys(':Grep "' . l[col1 - 1: col2 - 1] . '"')
+endfunction
