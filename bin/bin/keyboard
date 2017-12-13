@@ -1,19 +1,39 @@
+# Xcape settings
+killall -9 xcape
+
+# Compose key on left control
+# https://vi.stackexchange.com/questions/2254/what-is-the-easiest-way-to-insert-unicode-characters-into-a-document
+setxkbmap -option compose:ralt
+
 # Dvorak programer
 setxkbmap us -variant dvp
 
-# Make caps lock a Control
+# Make Control_L and 'key 94' (Mode_switch, Multi_key)
+# https://unix.stackexchange.com/questions/55076/what-is-the-mode-switch-modifier-for
+xmodmap -e "remove Control = Control_L"
+xmodmap -e "keycode 94 = Mode_switch"
+xmodmap -e "keysym Control_L = Mode_switch"
+xcape -e 'Mode_switch=Multi_key'
+
+# Make Caps_Lock (Control_L, Escape)
 xmodmap -e "clear Lock"
 xmodmap -e "keysym Caps_Lock = Control_L Caps_Lock"
 xmodmap -e "add Control = Control_L"
+xcape -e 'Control_L=Escape'
 
-# Remap modifiers (Keyboard dependent)
-xmodmap -e "keycode 94 = Mode_switch"
-
-# Remap modifiers (Keyboard independent)
-xmodmap -e "keysym space = Super_L"
-xmodmap -e "keycode any = space"
+# Make Tab (Alt_L, Tab)
 xmodmap -e "keysym Tab = Alt_L"
 xmodmap -e "keycode any = Tab"
+xcape -e 'Alt_L=Tab'
+
+# Make space (Super_L, space)
+xmodmap -e "keysym space = Super_L"
+xmodmap -e "add mod4 = Super_L"
+xmodmap -e "keycode any = space"
+xcape -e 'Super_L=space'
+
+# Make eject an Insert
+xmodmap -e "keysym XF86Eject = Insert"
 
 # Numbers
 xmodmap -e "keysym d = d D 0"
@@ -26,13 +46,3 @@ xmodmap -e "keysym n = n N 6"
 xmodmap -e "keysym g = g G 7"
 xmodmap -e "keysym c = c C 8"
 xmodmap -e "keysym r = r R 9"
-
-# Special characters
-xmodmap -e "keysym XF86Eject = Insert"
-
-# Xcape settings
-killall -9 xcape
-
-xcape -e 'Control_L=Escape'
-xcape -e 'Super_L=space'
-xcape -e 'Alt_L=Tab'

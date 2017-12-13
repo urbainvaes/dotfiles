@@ -12,4 +12,4 @@ grep -Fxq "$SESSION" <(echo "$TMUXINATOR") \
     && COMMAND="tmuxinator start $SESSION" \
     || COMMAND="tmux new-session -A -s $SESSION"
 
-urxvt -e zsh -c "source ~/.zshrc && $COMMAND"
+exec urxvt -e zsh -c "$COMMAND"
