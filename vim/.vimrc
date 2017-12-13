@@ -377,7 +377,7 @@ augroup END
 "" My search
 if executable("ag")
     set grepprg=ag\ --vimgrep
-    set grepformat^=%f:%l:%c:%m
+    set grepformat=%f:%l:%c:%m
 endif
 
 if executable("rg")
@@ -386,13 +386,31 @@ if executable("rg")
 endif
 
 command! -nargs=+ -complete=file_in_path Grep execute 'silent grep!' <q-args> | cw | redraw!
+command! -nargs=+ -complete=file_in_path GitGrep execute 'silent Ggrep!' <q-args> | cw | redraw!
 
-nmap gs :set opfunc=Search<cr>g@
-xmap gs :<c-u>call Search(visualmode())<cr>
-function! Search(vm)
+function! My_search(vm)
     let is_visual=(a:vm == "v")
     let l=getline(is_visual ? "'<" : "'[")
     let [line1,col1] = getpos(is_visual ? "'<" : "'[")[1:2]
     let [line2,col2] = getpos(is_visual ? "'>" : "']")[1:2]
-    call feedkeys(':Grep "' . l[col1 - 1: col2 - 1] . '"')
+    call feedkeys(':' . g:my_searchprg . ' "' . l[col1 - 1: col2 - 1] . '"')
 endfunction
+
+let g:my_searchprg = "Grep"
+function! Cycle_searchprg()
+    if g:my_searchprg == "Grep"
+        let g:my_searchprg = "GitGrep"
+    elseif g:my_searchprg == "GitGrep"
+        let g:my_searchprg = "Grep"
+    endif
+    echom g:my_searchprg
+endfunction
+
+nmap <silent> cog :call Cycle_searchprg()<cr>
+nmap <silent> gs :set opfunc=My_search<cr>g@
+xmap <silent> gs :call Search(visualmode())<cr>
+
+" nmap gs :let g:my_searchprg="Grep"<cr>:set opfunc=My_search<cr>g@
+" nmap g/ :let g:my_searchprg="GitGrep"<cr>:set opfunc=My_search<cr>g@
+" xmap gs :<c-u>let g:my_searchprg="Grep"<cr>:call Search(visualmode())<cr>
+" xmap g/ :<c-u>let g:my_searchprg="GitGrep"<cr>:call Search(visualmode())<cr>
