@@ -17,12 +17,10 @@ Plug 'beloglazov/vim-online-thesaurus'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'critiqjo/lldb.nvim'
 Plug 'easymotion/vim-easymotion'
-Plug 'embear/vim-localvimrc'
 Plug 'holomorph/vim-freefem'
 Plug 'honza/vim-snippets'
 Plug 'inkarkat/vim-SpellCheck'
 Plug 'inkarkat/vim-ingo-library'
-Plug 'kopischke/vim-stay'
 Plug 'jamessan/vim-gnupg'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -74,10 +72,9 @@ endif
 " Colors
 Plug 'altercation/vim-colors-solarized'
 Plug 'KKPMW/moonshine-vim'
-Plug 'arcticicestudio/nord-vim'
 Plug 'junegunn/seoul256.vim'
-Plug 'noah/vim256-color'
 Plug 'romainl/Apprentice'
+Plug 'josuegaleas/jay'
 call plug#end()
 
 "" Plugin mappings
@@ -90,7 +87,7 @@ nnoremap cpt :TagbarToggle<cr>
 nnoremap cpu :GundoToggle<cr>
 
 " Easy motion
-map <Leader>s <Plug>(easymotion-prefix)
+map gs <Plug>(easymotion-prefix)
 
 " Fuzzy finder
 nnoremap <c-p>a  :Ag
@@ -218,7 +215,6 @@ let g:UltiSnipsSnippetsDir="~/.vim/mySnippets"
 " Vimtex
 let g:vimtex_fold_enabled=0
 let g:vimtex_view_method='zathura'
-let g:vimtex_latexmk_continuous=1
 let g:vimtex_quickfix_mode=2
 let g:vimtex_compiler_progname='nvr'
 
@@ -261,6 +257,7 @@ set conceallevel=2
 set cursorline
 set diffopt=filler,vertical
 set expandtab
+set exrc
 set foldmethod=marker
 set hidden
 set ignorecase
@@ -350,7 +347,7 @@ endif
 
 "" Colorscheme
 let g:airline_theme='deus'
-colo apprentice
+colo seoul256
 
 
 "" Autocommands
@@ -406,11 +403,6 @@ function! Cycle_searchprg()
     echom g:my_searchprg
 endfunction
 
-nmap <silent> cog :call Cycle_searchprg()<cr>
-nmap <silent> gs :set opfunc=My_search<cr>g@
-xmap <silent> gs :call Search(visualmode())<cr>
-
-" nmap gs :let g:my_searchprg="Grep"<cr>:set opfunc=My_search<cr>g@
-" nmap g/ :let g:my_searchprg="GitGrep"<cr>:set opfunc=My_search<cr>g@
-" xmap gs :<c-u>let g:my_searchprg="Grep"<cr>:call Search(visualmode())<cr>
-" xmap g/ :<c-u>let g:my_searchprg="GitGrep"<cr>:call Search(visualmode())<cr>
+nmap <silent> co/ :call Cycle_searchprg()<cr>
+nmap <silent> g/ :set opfunc=My_search<cr>g@
+xmap <silent> g/ :call Search(visualmode())<cr>

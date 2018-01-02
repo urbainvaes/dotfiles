@@ -33,6 +33,5 @@ URxvt*scrollBar: false
 URxvt*internalBorder: 0
 URxvt.fading: 35
 
-
 ! $TERM environment variable
-XTerm*termName: rxvt-256color
+URxvt*.termName: rxvt-unicode-256color

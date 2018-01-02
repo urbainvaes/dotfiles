@@ -9,8 +9,8 @@ c.hints.uppercase = True
 c.tabs.favicons.show = False
 c.tabs.show = 'multiple'
 c.tabs.tabs_are_windows = True
-c.url.default_page = 'about:blank'
-c.url.start_pages = ['about:blank']
+c.url.start_pages = ['file:///home/urbain/personal/index.html']
+c.url.default_page = c.url.start_pages[0]
 
 # Bindings for normal mode
 config.bind(",b", 'spawn --userscript explorer -b')
@@ -41,12 +41,14 @@ config.bind("<Ctrl-i>", 'open-editor', mode='insert')
 
 # Bindings for command mode
 config.bind('<Ctrl-W>', 'fake-key -g <Ctrl-Backspace>', mode='command')
+config.bind('<Ctrl-P>', 'completion-item-focus prev', mode='command')
+config.bind('<Ctrl-N>', 'completion-item-focus next', mode='command')
 
 # Search engines
 c.url.searchengines = {
     'DEFAULT': 'https://startpage.com/do/search?query={}',
     'yt': 'https://www.youtube.com/results?search_query={}',
     'ddg': 'https://duckduckgo.com/?q={}',
-    'google': 'https://duckduckgo.com/?q={}',
+    'google': 'https://www.google.com/search?hl=en&q={}',
     'aw': 'https://wiki.archlinux.org/index.php?search={}',
 }
