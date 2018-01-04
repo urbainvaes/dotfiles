@@ -1,14 +1,18 @@
-"" Download vim-plug if necessary
+"" Download vim-plug if necessary {{{
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
+" }}}
+"" Leader and Localleader {{{
 let mapleader = " "
-let maplocalleader = "\\"
-
-"" Plugins
+let maplocalleader = ","
+" }}}
+"" Plugins {{{
 call plug#begin('~/.vim/plugged')
+" Plug 'kopischke/vim-stay'
+
 Plug 'LnL7/vim-nix'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'SirVer/ultisnips'
@@ -76,8 +80,8 @@ Plug 'junegunn/seoul256.vim'
 Plug 'romainl/Apprentice'
 Plug 'josuegaleas/jay'
 call plug#end()
-
-"" Plugin mappings
+" }}}
+"" Plugin mappings {{{
 
 " Toggles
 nnoremap cpg :GitGutterToggle<cr>
@@ -102,8 +106,6 @@ nnoremap <c-p>/  :History/<cr>
 nnoremap <c-p>l  :BLines<cr>
 nnoremap <c-p>m  :Marks<cr>
 nnoremap <c-p>t  :Tags<cr>
-
-imap <c-x><c-f> <plug>(fzf-complete-file)
 
 " LLDB
 nnoremap <c-d>n :LLsession new<cr>
@@ -145,26 +147,18 @@ nnoremap gm :Neomake!<cr>
 if &runtimepath =~ 'neomake'
     call neomake#configure#automake('w')
 endif
-
-"" Plugin configurations
+" }}}
+"" Plugin configurations {{{
 
 " Airline
 let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing', 'mixed-indent-file' ]
+let g:airline#extensions#tabline#show_splits = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#tab_nr_type = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#tabline#tab_min_count = 2
 let g:airline#extensions#tabline#show_buffers = 0
-
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
-
-let g:airline_symbols.crypt = ''
-let g:airline_symbols.linenr = ''
-let g:airline_symbols.maxlinenr = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.whitespace = ''
+let g:airline_symbols_ascii = 1
 
 " Deoplete / neocomplete
 let g:deoplete#enable_at_startup = 1
@@ -246,12 +240,13 @@ function! Multiple_cursors_after()
     endif
 endfunction
 
-"" Vim variables
+" }}}
+"" Vim variables {{{
 let g:netrw_bufsettings='relativenumber'
 let g:tex_conceal= ''
 let g:tex_flavor='latex'
-
-"" Vim options
+" }}}
+"" Vim options {{{
 set complete+=k
 set conceallevel=2
 set cursorline
@@ -286,8 +281,8 @@ endif
 if has("nvim")
   set inccommand=split
 endif
-
-"" Mappings
+" }}}
+"" Mappings {{{
 nmap n nzz
 nmap N Nzz
 
@@ -343,35 +338,36 @@ if has("nvim")
     nnoremap <c-_> :b # \| norm A<cr>
     tnoremap <c-_> <c-\><c-n><c-^>
 endif
-
-
-"" Colorscheme
+" }}}
+"" Colorscheme {{{
 let g:airline_theme='deus'
 colo seoul256
-
-
-"" Autocommands
+" }}}
+"" Autocommands {{{
 augroup vimrc
     autocmd!
     au BufNewFile,Bufread /tmp/mutt-* setlocal tw=72
-    au BufNewFile,BufRead *.geo,*.msh setf gmsh
-    au BufNewFile,BufRead *.pde setf freefem
-    au BufNewFile,BufRead *.plt setf gnuplot
+    au BufWritePost *vimrc :source %
+    au BufWritePre *
+        \ if !isdirectory(expand('<afile>:p:h')) |
+          \ call mkdir(expand('<afile>:p:h'), 'p') |
+        \ endif
+
+    " Detect filetypes (! 'setf freefem' does not override...)
+    au BufNewFile,BufRead *.geo,*.msh set filetype=gmsh
+    au BufNewFile,BufRead *.pde set filetype=freefem
+    au BufNewFile,BufRead *.plt set filetype=gnuplot
+
+    " Filetype specific
     au FileType gmsh setlocal makeprg=gmsh\ %
     au FileType gnuplot setlocal makeprg=gnuplot\ %
     au FileType gnuplot setlocal commentstring=#%s
     au FileType freefem comp freefem
     au FileType dirvish setlocal relativenumber
     au FileType tex set spell
-    au BufWritePost *vimrc :source %
-    au BufWritePre *
-        \ if !isdirectory(expand('<afile>:p:h')) |
-          \ call mkdir(expand('<afile>:p:h'), 'p') |
-        \ endif
 augroup END
-
-
-"" My search
+" }}}
+"" My search {{{
 if executable("ag")
     set grepprg=ag\ --vimgrep
     set grepformat=%f:%l:%c:%m
@@ -406,3 +402,4 @@ endfunction
 nmap <silent> co/ :call Cycle_searchprg()<cr>
 nmap <silent> g/ :set opfunc=My_search<cr>g@
 xmap <silent> g/ :call Search(visualmode())<cr>
+"}}}

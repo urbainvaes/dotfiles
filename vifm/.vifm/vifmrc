@@ -1,5 +1,3 @@
-colorscheme default.vifm
-
 set fastrun
 set fusehome=/tmp/vifm_FUSE
 set history=100
