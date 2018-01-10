@@ -29,6 +29,7 @@ Plug 'jamessan/vim-gnupg'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/gv.vim'
+Plug 'junegunn/heytmux'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-peekaboo'
 Plug 'junegunn/vim-slash'
@@ -160,28 +161,13 @@ let g:airline#extensions#tabline#tab_min_count = 2
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline_symbols_ascii = 1
 
-" Deoplete / neocomplete
+" Deoplete
 let g:deoplete#enable_at_startup = 1
-let g:neocomplete#enable_at_startup = 1
-if !exists('g:deoplete#omni_patterns')
-    let g:deoplete#omni_patterns = {}
-endif
-if !exists('g:neocomplete#sources#omni#input_patterns')
-    let g:neocomplete#sources#omni#input_patterns = {}
-endif
-let g:neocomplete#sources#omni#input_patterns.tex =
-    \ '\v\\%('
-    \ . '\a*cite\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-    \ . '|\a*ref%(\s*\{[^}]*|range\s*\{[^,}]*%(}\{)?)'
-    \ . '|hyperref\s*\[[^]]*'
-    \ . '|includegraphics\*?%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-    \ . '|%(include%(only)?|input)\s*\{[^}]*'
-    \ . '|\a*(gls|Gls|GLS)(pl)?\a*%(\s*\[[^]]*\]){0,2}\s*\{[^}]*'
-    \ . '|includepdf%(\s*\[[^]]*\])?\s*\{[^}]*'
-    \ . '|includestandalone%(\s*\[[^]]*\])?\s*\{[^}]*'
-    \ . ')'
-let g:deoplete#omni_patterns.tex = g:neocomplete#sources#omni#input_patterns.tex.'\m'
 let g:deoplete#sources#jedi#show_docstring = 1
+if !exists('g:deoplete#omni#input_patterns')
+    let g:deoplete#omni#input_patterns = {}
+endif
+let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
 
 " FZF.vim
 let g:fzf_buffers_jump = 1
@@ -263,6 +249,7 @@ set nowrap
 set nowritebackup
 set shiftwidth=4
 set showcmd
+set splitright
 set smartcase
 set smartindent
 set softtabstop=4
@@ -273,7 +260,7 @@ set undofile
 " set formatoptions+=orw
 silent! set breakindent
 let &showbreak='--> '
-set clipboard=unnamedplus
+set clipboard=unnamedplus,unnamed
 " set spellfile="$HOME/.vim/spell/en.utf-8.add"
 if !has("nvim")
   set encoding=utf-8
@@ -295,7 +282,6 @@ nmap [w <Plug>AddWhiteSpaceBefore
 nnoremap <Leader>w :update<cr>
 nnoremap <Leader>q :q!<cr>
 nnoremap <Leader>d :bd!<cr>
-
 
 nnoremap <Leader>tn :tabnew<cr>
 nnoremap <Leader>te :tabedit
@@ -346,8 +332,8 @@ colo seoul256
 "" Autocommands {{{
 augroup vimrc
     autocmd!
+    au BufWritePost *vimrc,*exrc :source %
     au BufNewFile,Bufread /tmp/mutt-* setlocal tw=72
-    au BufWritePost *vimrc :source %
     au BufWritePre *
         \ if !isdirectory(expand('<afile>:p:h')) |
           \ call mkdir(expand('<afile>:p:h'), 'p') |
@@ -369,17 +355,18 @@ augroup END
 " }}}
 "" My search {{{
 if executable("ag")
-    set grepprg=ag\ --vimgrep
+    set grepprg=ag\ -uu\ --vimgrep
     set grepformat=%f:%l:%c:%m
 endif
 
 if executable("rg")
-    set grepprg=rg\ --vimgrep
+    set grepprg=rg\ -uu\ --vimgrep
     set grepformat=%f:%l:%c:%m
 endif
 
 command! -nargs=+ -complete=file_in_path Grep execute 'silent grep!' <q-args> | cw | redraw!
 command! -nargs=+ -complete=file_in_path GitGrep execute 'silent Ggrep!' <q-args> | cw | redraw!
+command! -nargs=+ -complete=file_in_path VimGrep execute 'silent vimgrep!' <q-args> | cw | redraw!
 
 function! My_search(vm)
     let is_visual=(a:vm == "v")
@@ -394,6 +381,8 @@ function! Cycle_searchprg()
     if g:my_searchprg == "Grep"
         let g:my_searchprg = "GitGrep"
     elseif g:my_searchprg == "GitGrep"
+        let g:my_searchprg = "VimGrep"
+    elseif g:my_searchprg == "VimGrep"
         let g:my_searchprg = "Grep"
     endif
     echom g:my_searchprg
@@ -401,5 +390,5 @@ endfunction
 
 nmap <silent> co/ :call Cycle_searchprg()<cr>
 nmap <silent> g/ :set opfunc=My_search<cr>g@
-xmap <silent> g/ :call Search(visualmode())<cr>
+xmap <silent> g/ :call My_search(visualmode())<cr>
 "}}}
