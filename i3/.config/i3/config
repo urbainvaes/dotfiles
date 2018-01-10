@@ -42,6 +42,7 @@ bindsym $mod+d kill
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 bindsym $mod+p exec --no-startup-id i3-dmenu-desktop
+bindsym $mod+Shift+p exec --no-startup-id rofi -show window
 
 # change focus
 bindsym $mod+h focus left
@@ -155,7 +156,7 @@ bindsym $mod+Tab               workspace back_and_forth
 # Move workspace
 bindsym $mod+Shift+comma       exec $HOME/bin/workspace mw p
 bindsym $mod+Shift+period      exec $HOME/bin/workspace mw n
-bindsym $mod+Control+x           move workspace to output left; focus output left
+bindsym $mod+Control+x         move workspace to output left; focus output left
 
 # Move container
 bindsym $mod+Shift+n           exec $HOME/bin/workspace mc

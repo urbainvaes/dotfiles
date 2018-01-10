@@ -6,6 +6,7 @@ c.downloads.location.prompt = False
 c.editor.command = ['urxvt', '-e', 'nvim', '-f', '{}']
 c.hints.chars = 'aoeuidhtns'
 c.hints.uppercase = True
+c.statusbar.hide = True
 c.tabs.favicons.show = False
 c.tabs.show = 'multiple'
 c.tabs.tabs_are_windows = True
@@ -18,8 +19,8 @@ config.bind(",d", 'spawn --userscript dictionary-search')
 config.bind(",h", 'spawn --userscript explorer -h')
 config.bind(",p", 'spawn --userscript explorer')
 config.bind(",t", 'spawn --userscript explorer -t')
-config.bind(",v", 'spawn mpv {url}')
-config.bind(";v", 'hint links spawn mpv {hint-url}')
+config.bind(",v", 'spawn -d mpv {url}')
+config.bind(";v", 'hint links spawn -d mpv {hint-url}')
 config.bind("]d", 'set downloads.location.prompt True')
 config.bind("[d", 'set downloads.location.prompt False')
 config.unbind("d")
