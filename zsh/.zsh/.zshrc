@@ -124,5 +124,6 @@ alias rd='cd $(git rev-parse --show-toplevel)'
 alias mi='make install'
 alias mc='make clean'
 alias mca='make clean-all'
+alias -s pdf='xdg-open'
 
 # }}}

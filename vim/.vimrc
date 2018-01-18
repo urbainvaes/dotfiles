@@ -11,7 +11,6 @@ let maplocalleader = ","
 " }}}
 "" Plugins {{{
 call plug#begin('~/.vim/plugged')
-" Plug 'kopischke/vim-stay'
 
 Plug 'LnL7/vim-nix'
 Plug 'PotatoesMaster/i3-vim-syntax'
@@ -39,7 +38,6 @@ Plug 'kshenoy/vim-signature'
 Plug 'lervag/vimtex'
 Plug 'machakann/vim-highlightedyank'
 Plug 'majutsushi/tagbar'
-Plug 'mhinz/vim-startify'
 Plug 'neomake/neomake'
 Plug 'scrooloose/nerdtree'
 Plug 'sjl/Gundo.vim', { 'on' : 'GundoToggle' }
@@ -124,6 +122,14 @@ nnoremap <Leader>gc :Gcommit<cr>
 nnoremap <Leader>gr :Gread<cr>
 nnoremap <Leader>gd :Gdiff<cr>
 
+" Heytmux
+function! Call_heytmux(vm)
+    call feedkeys(":'[,']Heytmux")
+endfunction
+
+nmap <silent> gh :set opfunc=Call_heytmux<cr>g@
+xmap <silent> gh :'<,'>Heytmux<cr>
+
 " Iron
 let g:iron_map_defaults=0
 let g:iron_repl_open_cmd='edit'
@@ -153,13 +159,14 @@ endif
 
 " Airline
 let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing', 'mixed-indent-file' ]
-let g:airline#extensions#tabline#show_splits = 0
+let g:airline_symbols_ascii = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_splits = 0
 let g:airline#extensions#tabline#tab_nr_type = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#tabline#tab_min_count = 2
 let g:airline#extensions#tabline#show_buffers = 0
-let g:airline_symbols_ascii = 1
+
 
 " Deoplete
 let g:deoplete#enable_at_startup = 1
@@ -247,6 +254,7 @@ set nojoinspaces
 set noswapfile
 set nowrap
 set nowritebackup
+set path=$PWD/**
 set shiftwidth=4
 set showcmd
 set splitright
@@ -352,6 +360,7 @@ augroup vimrc
     au FileType dirvish setlocal relativenumber
     au FileType tex set spell
 augroup END
+
 " }}}
 "" My search {{{
 if executable("ag")
@@ -391,4 +400,5 @@ endfunction
 nmap <silent> co/ :call Cycle_searchprg()<cr>
 nmap <silent> g/ :set opfunc=My_search<cr>g@
 xmap <silent> g/ :call My_search(visualmode())<cr>
-"}}}
+
+" }}}

@@ -5,8 +5,7 @@
 c.downloads.location.prompt = False
 c.editor.command = ['urxvt', '-e', 'nvim', '-f', '{}']
 c.hints.chars = 'aoeuidhtns'
-c.hints.uppercase = True
-c.statusbar.hide = True
+# c.hints.uppercase = True
 c.tabs.favicons.show = False
 c.tabs.show = 'multiple'
 c.tabs.tabs_are_windows = True
@@ -15,7 +14,6 @@ c.url.default_page = c.url.start_pages[0]
 
 # Bindings for normal mode
 config.bind(",b", 'spawn --userscript explorer -b')
-config.bind(",d", 'spawn --userscript dictionary-search')
 config.bind(",h", 'spawn --userscript explorer -h')
 config.bind(",p", 'spawn --userscript explorer')
 config.bind(",t", 'spawn --userscript explorer -t')
@@ -23,10 +21,9 @@ config.bind(",v", 'spawn -d mpv {url}')
 config.bind(";v", 'hint links spawn -d mpv {hint-url}')
 config.bind("]d", 'set downloads.location.prompt True')
 config.bind("[d", 'set downloads.location.prompt False')
-config.unbind("d")
-config.bind("do", 'download-open')
-config.bind("o", 'set-cmd-text -s :spawn --userscript url-from-surfraw')
-config.bind("t", 'set-cmd-text -s :spawn --userscript url-from-surfraw -t')
+config.bind(",do", 'download-open')
+config.bind(",o", 'set-cmd-text -s :spawn --userscript url-from-surfraw')
+config.bind(",O", 'set-cmd-text -s :spawn --userscript url-from-surfraw -t')
 config.bind("f", 'hint all current')
 
 # Bindings for insert mode
@@ -52,4 +49,7 @@ c.url.searchengines = {
     'ddg': 'https://duckduckgo.com/?q={}',
     'google': 'https://www.google.com/search?hl=en&q={}',
     'aw': 'https://wiki.archlinux.org/index.php?search={}',
+    'dic': 'https://dictionary.cambridge.org/dictionary/english/{}',
+    'tr': 'https://translate.google.com/#en/fr/{}',
+    'scholar': 'https://scholar.google.com/scholar?q={}',
 }
