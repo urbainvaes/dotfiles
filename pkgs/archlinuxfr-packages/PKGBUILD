@@ -1,0 +1,5 @@
+pkgname=archlinuxfr-packages
+pkgver=0
+pkgrel=1
+arch=(any)
+depends=(dropbox yaourt)
