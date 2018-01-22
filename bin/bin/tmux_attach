@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 SESSIONS=$(tmux list-sessions | cut -d':' -f1)
+ATTACHED_SESSIONS=$(tmux list-sessions | grep attached | cut -d':' -f1)
 TMUXINATOR=$(tmuxinator list | sed '1d' | sed 's/\s\+/\n/g')
 UNION=$(cat <(echo "$SESSIONS") <(echo "$TMUXINATOR") | sort | uniq | sed "/^$/d")
 
@@ -8,7 +9,9 @@ SESSION=$(echo "$UNION" | dmenu -i -p "Session:" | tr -d '[[:space:]]')
 [[ -n $SESSION ]] || exit
 
 # Rename i3 workspace
-command -v i3-msg && i3-msg workspace "$SESSION"
+! grep -Fxq "$SESSION" <(echo "$ATTACHED_SESSIONS") \
+    && command -v i3-msg \
+    && i3-msg workspace "$SESSION"
 
 grep -Fxq "$SESSION" <(echo "$TMUXINATOR") \
     && COMMAND="tmuxinator start $SESSION" \

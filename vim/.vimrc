@@ -358,6 +358,7 @@ augroup vimrc
     au FileType gnuplot setlocal commentstring=#%s
     au FileType freefem comp freefem
     au FileType dirvish setlocal relativenumber
+    au FileType dirvish setlocal errorformat=%f
     au FileType tex set spell
 augroup END
 

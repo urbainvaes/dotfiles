@@ -1,3 +1,15 @@
+## My bindings {{{
+bindkey -v
+bindkey -a 'k' history-beginning-search-backward
+bindkey -a 'j' history-beginning-search-forward
+bindkey '^P' history-beginning-search-backward
+bindkey '^N' history-beginning-search-forward
+bindkey '^b' backward-char
+bindkey '^f' forward-char
+bindkey '^a' beginning-of-line
+bindkey '^e' end-of-line
+bindkey '^v' visual-mode
+# }}}
 ## zgen {{{
 
 [ ! -d ~/.zsh/zgen ] && git clone https://github.com/tarjoilija/zgen.git ~/.zsh/zgen
@@ -13,10 +25,10 @@ if ! zgen saved; then
 
     # Oh-my-zsh plugins
     zgen oh-my-zsh plugins/git
-    zgen oh-my-zsh plugins/vi-mode
 
     # Navigation plugins
     zgen load urbainvaes/fzf-marks
+    # zgen load wfxr/fzf-marks
 
     # Other plugins
     zgen load rupa/z
@@ -37,15 +49,7 @@ fi
 }
 
 # }}}
-
-# Custom key bindings for built-in widgets
-bindkey -a 'k' history-beginning-search-backward
-bindkey -a 'j' history-beginning-search-forward
-bindkey '^P' history-beginning-search-backward
-bindkey '^N' history-beginning-search-forward
-
 PROMPT='%0~ $ '
-
 
 # Options
 unsetopt histverify
@@ -124,6 +128,11 @@ alias rd='cd $(git rev-parse --show-toplevel)'
 alias mi='make install'
 alias mc='make clean'
 alias mca='make clean-all'
+
+# Applications
 alias -s pdf='xdg-open'
+
+# Global
+alias -g grep='grep --color=auto --exclude-dir={.git,.hg}'
 
 # }}}

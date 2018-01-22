@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Xcape settings
 killall -9 xcape
 

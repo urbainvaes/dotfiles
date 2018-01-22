@@ -1,3 +1,4 @@
+# yaourt -P && makepkg -i
 pkgname=local-packages
 pkgver=0
 pkgrel=1

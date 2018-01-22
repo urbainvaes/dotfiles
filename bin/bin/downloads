@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/usr/bin/env bash
+
 download_dir="$HOME/Downloads"
 target=$(find $download_dir -regex '.*\.\(pdf\|PDF\|djvu\|ps\)' -printf "%f\n" | dmenu -i -p "Open File:")
 [[ -n $target ]] && exec zathura "$download_dir/$target"

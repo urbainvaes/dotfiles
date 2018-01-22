@@ -1,3 +1,4 @@
-#!/bin/bash
-target=$(find $HOME/.password-store/ -name "*.gpg" -exec sh -c 'echo ${1#*password-store/}' _ {} \; | dmenu -i -p "Get identifier for:")
+#!/usr/bin/env bash
+
+target=$(find $HOME/.password-store/ -name "*.gpg" -printf "%P\n" | dmenu -i -p "Get identifier for:")
 basename $target .gpg | xclip -i
