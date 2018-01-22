@@ -1,15 +1,13 @@
 #!/usr/bin/env bash
 
 scripts_dir="$HOME/.local/share/qutebrowser/userscripts"
-rofi_modi="quickmarks:$scripts_dir/quickmarks,tabs:$scripts_dir/tabs,history:$scripts_dir/history"
+rofi_modi="quickmarks:$scripts_dir/quickmarks,tabs:$scripts_dir/tabs"
 rofi_comand="rofi -combi-modi $rofi_modi -modi $rofi_modi -show"
 
 if [[ "$1" = "-t" ]]; then
     $rofi_comand tabs
 elif [[ "$1" = "-b" ]]; then
     $rofi_comand quickmarks
-elif [[ "$1" = "-h" ]]; then
-    $rofi_comand history
 else
     $rofi_comand combi
 fi
