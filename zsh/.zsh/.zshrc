@@ -1,15 +1,3 @@
-## My bindings {{{
-bindkey -v
-bindkey -a 'k' history-beginning-search-backward
-bindkey -a 'j' history-beginning-search-forward
-bindkey '^P' history-beginning-search-backward
-bindkey '^N' history-beginning-search-forward
-bindkey '^b' backward-char
-bindkey '^f' forward-char
-bindkey '^a' beginning-of-line
-bindkey '^e' end-of-line
-bindkey '^v' visual-mode
-# }}}
 ## zgen {{{
 
 [ ! -d ~/.zsh/zgen ] && git clone https://github.com/tarjoilija/zgen.git ~/.zsh/zgen
@@ -45,15 +33,35 @@ fi
 # Autosuggestion
 {
     ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=6'
-    bindkey '^y' autosuggest-accept
 }
 
 # }}}
+## Overwrite default options {{{
 PROMPT='%0~ $ '
 
 # Options
 unsetopt histverify
-
+# }}}
+## My bindings {{{
+bindkey -v
+bindkey -a 'k' history-beginning-search-backward
+bindkey -a 'j' history-beginning-search-forward
+bindkey '^?' backward-delete-char # backspace
+bindkey '^N' history-beginning-search-forward
+bindkey '^P' history-beginning-search-backward
+bindkey '^a' beginning-of-line
+bindkey '^b' backward-char
+bindkey '^e' end-of-line
+bindkey '^f' forward-char
+bindkey '^g' jump
+bindkey '^h' backward-delete-char
+bindkey '^k' kill-line
+bindkey '^u' kill-whole-line
+bindkey '^v' visual-mode
+bindkey '^w' backward-kill-word
+bindkey '^y' autosuggest-accept
+bindkey '^z' z
+# }}}
 ## fzf {{{
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -66,7 +74,6 @@ z() {
   zle && zle reset-prompt
 }
 zle     -N   z
-bindkey '^z' z
 
 # }}}
 ## Colors {{{

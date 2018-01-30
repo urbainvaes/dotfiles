@@ -11,7 +11,7 @@ SESSION=$(echo "$UNION" | dmenu -i -p "Session:" | tr -d '[[:space:]]')
 # Rename i3 workspace
 ! grep -Fxq "$SESSION" <(echo "$ATTACHED_SESSIONS") \
     && command -v i3-msg \
-    && i3-msg workspace "$SESSION"
+    && $HOME/bin/workspace gw $SESSION
 
 grep -Fxq "$SESSION" <(echo "$TMUXINATOR") \
     && COMMAND="tmuxinator start $SESSION" \

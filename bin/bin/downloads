@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
 download_dir="$HOME/Downloads"
-target=$(find $download_dir -regex '.*\.\(pdf\|PDF\|djvu\|ps\)' -printf "%f\n" | dmenu -i -p "Open File:")
+target=$(find $download_dir -regex '.*\.\(pdf\|PDF\|djvu\|ps\)' -printf "%T+ %f\n" | sort -r | cut -d' ' -f2- | dmenu -i -p "Open File:")
 [[ -n $target ]] && exec zathura "$download_dir/$target"

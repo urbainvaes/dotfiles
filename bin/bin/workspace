@@ -11,8 +11,9 @@ workspaces=$(i3-msg -t get_workspaces | awk 'BEGIN {
                                              }' | sort)
 
 act_on_container() {
+
     # Get desired workspace
-    target=$(echo "$workspaces" | awk '{print $2}' | dmenu -i -p "Select workspace: ")
+    [[ -z $2 ]] && target=$(echo "$workspaces" | awk '{print $2}' | dmenu -i -p "Select workspace: ") || target=$2
 
     # Exit if empty
     [[ -z $target ]] && exit
@@ -33,13 +34,14 @@ act_on_workspace() {
     focused_number=$(echo "$workspaces" | awk '$3 ~ "true" {print $1}')
     focused_name=$(echo "$workspaces" | awk '$3 ~ "true" {print $2}' | cut -d":" -f2)
 
-    [[ $1 = 'n' ]] && new_number=$((focused_number + 1))
-    [[ $1 = 'p' ]] && new_number=$((focused_number - 1))
+    [[ $1 = 'n' ]] && new_number=$(( (11+focused_number+1) % 11 ))
+    [[ $1 = 'p' ]] && new_number=$(( (11+focused_number-1) % 11 ))
 
     next=$(echo "${workspaces}" | awk '$1 ~ /'$new_number'/ {print $2}')
 
     i3-msg rename workspace to ${new_number}:${focused_name}
 
+    # ${variable//pattern} replaces all matches of pattern with nothing
     if [[ ! -z "${next// }" ]]; then
         name_next=${next#*:}
         i3-msg "workspace ${next};\
@@ -49,6 +51,6 @@ act_on_workspace() {
 }
 
 # Command to use
-[[ $1 = 'gw' ]] && act_on_container "workspace"
-[[ $1 = 'mc' ]] && act_on_container "move container to workspace"
+[[ $1 = 'gw' ]] && act_on_container "workspace" $2
+[[ $1 = 'mc' ]] && act_on_container "move container to workspace" $2
 [[ $1 = 'mw' ]] && act_on_workspace "$2"
