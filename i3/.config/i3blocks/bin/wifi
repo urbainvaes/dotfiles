@@ -1,7 +1,15 @@
 #!/usr/bin/env bash
 
-quality=$(iwconfig wlp2s0 | grep -oP 'Link Quality=\K[0-9]*/[0-9]*' | awk -F'/' '{print int(100*$1/$2)}')
-ssid=$(iwconfig wlp2s0 | grep -oP '(?<=ESSID:").*(?=")')
-address=$(ip addr show wlp2s0 | grep -oP -m1 "(?<=inet ).*(?=/)")
+quality=$(iwconfig wlp2s0 2>/dev/null | grep -oP 'Link Quality=\K[0-9]*/[0-9]*' | awk -F'/' '{print int(100*$1/$2)}')
+ssid=$(iwconfig wlp2s0 2>/dev/null | grep -oP '(?<=ESSID:").*(?=")')
+wifi_address=$(ip addr show wlp2s0 2>/dev/null | grep -oP -m1 "(?<=inet ).*(?=/)")
+eth_address=$(ip addr show eno1 2>/dev/null | grep -oP -m1 "(?<=inet ).*(?=/)")
 
-echo "(${quality}% at ${ssid}) ${address}"
+if [[ -n $eth_address ]]; then 
+    echo "eno1: $eth_address"
+elif [[ -n $wifi_address ]]; then
+    echo "wlp2s0: (${quality}% at ${ssid}) ${address}"
+else
+    echo "No connection"
+fi
+

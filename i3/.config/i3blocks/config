@@ -39,13 +39,13 @@ label=♪
 instance=Master
 interval=5
 
-[email]
+[wifi]
 label=W:
 command=~/dotfiles/i3/.config/i3blocks/bin/wifi
 separator=true
 interval=5
 
-[wifi]
+[email]
 label=Mail:
 command=~/dotfiles/i3/.config/i3blocks/bin/email
 separator=true
