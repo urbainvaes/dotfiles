@@ -15,6 +15,7 @@ c.url.default_page = c.url.start_pages[0]
 
 # Bindings for normal mode
 config.bind(",b", 'spawn --userscript explorer -b')
+config.bind("ch", 'history-all-clear')
 config.bind(",p", 'spawn --userscript explorer')
 config.bind(",t", 'spawn --userscript explorer -t')
 config.bind(",v", 'spawn -d mpv {url}')
@@ -28,6 +29,7 @@ config.bind(",O", 'set-cmd-text -s :spawn --userscript url-from-surfraw -t')
 config.bind("f", 'hint all current')
 
 # Bindings for insert mode
+# config.unbind("<Ctrl-A>", mode='insert')
 config.bind("<Ctrl-A>", 'fake-key <Home>', mode='insert')
 config.bind("<Ctrl-E>", 'fake-key <End>', mode='insert')
 config.bind("<Ctrl-H>", 'fake-key <Backspace>', mode='insert')
@@ -55,4 +57,10 @@ c.url.searchengines = {
     'scholar': 'https://scholar.google.com/scholar?q={}',
     'tr': 'https://translate.google.com/#en/fr/{}',
     'yt': 'https://www.youtube.com/results?search_query={}',
+}
+
+# Aliases
+c.aliases = {
+    "history-all-clear": 'spawn rm /home/urbain/.local/share/qutebrowser/cmd-history ;; history-clear',
+    "wq": 'quit -s',
 }

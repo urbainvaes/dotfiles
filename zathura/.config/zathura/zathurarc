@@ -1,2 +1,3 @@
 map <C-e> scroll down
 map <C-y> scroll up
+set font "monospace normal 12"
