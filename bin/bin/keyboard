@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Key repeat rate
+xset r rate 400 50
+
 # Xcape settings
 killall -9 xcape
 

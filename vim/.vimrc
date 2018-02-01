@@ -124,11 +124,11 @@ nnoremap <Leader>gd :Gdiff<cr>
 
 " Heytmux
 function! Call_heytmux(vm)
-    call feedkeys(":'[,']Heytmux")
+    call feedkeys(":'[,']Heytmux!")
 endfunction
 
 nmap <silent> gh :set opfunc=Call_heytmux<cr>g@
-xmap <silent> gh :'<,'>Heytmux<cr>
+xmap <silent> gh :Heytmux!<cr>
 
 " Iron
 let g:iron_map_defaults=0
@@ -370,42 +370,62 @@ augroup END
 
 " }}}
 "" My search {{{
-if executable("ag")
-    set grepprg=ag\ -uu\ --vimgrep
-    set grepformat=%f:%l:%c:%m
-endif
 
-if executable("rg")
-    set grepprg=rg\ -uu\ --vimgrep
-    set grepformat=%f:%l:%c:%m
-endif
+" http://vim.wikia.com/wiki/Searching_for_files
+" 1 argument: set search program and options
+" 2 argument: do search
+function! MySearch(...)
+    let l:prevgrepprg=&grepprg
+    let l:prevgrepformat=&grepformat
+    if a:1 == "Rg"
+        set grepprg=rg\ -uu\ --vimgrep
+        set grepformat=%f:%l:%c:%m
+    elseif a:1 == "Gnufind"
+        set grepprg=find\ .\ -name
+        set grepformat=%f
+    elseif a:1 == "Gitfind"
+        set grepprg=git\ ls-files\ -i\ -x
+        set grepformat=%f
+    endif
+    execute 'silent grep!' a:2 | cwindow | redraw!
+    let &grepprg=l:prevgrepprg
+    let &grepformat=l:prevgrepformat
+endfun
 
-command! -nargs=+ -complete=file_in_path Grep execute 'silent grep!' <q-args> | cw | redraw!
+command! -nargs=+ -complete=file_in_path Rg      call MySearch("Rg", <q-args>)
+command! -nargs=+ -complete=file_in_path Gnufind call MySearch("Gnufind", <q-args>)
+command! -nargs=+ -complete=file_in_path Gitfind call MySearch("Gitfind", <q-args>)
 command! -nargs=+ -complete=file_in_path GitGrep execute 'silent Ggrep!' <q-args> | cw | redraw!
 command! -nargs=+ -complete=file_in_path VimGrep execute 'silent vimgrep!' <q-args> | cw | redraw!
 
-function! My_search(vm)
-    let is_visual=(a:vm == "v")
-    let l=getline(is_visual ? "'<" : "'[")
-    let [line1,col1] = getpos(is_visual ? "'<" : "'[")[1:2]
-    let [line2,col2] = getpos(is_visual ? "'>" : "']")[1:2]
-    call feedkeys(':' . g:my_searchprg . ' "' . l[col1 - 1: col2 - 1] . '"')
-endfunction
-
-let g:my_searchprg = "Grep"
-function! Cycle_searchprg()
-    if g:my_searchprg == "Grep"
-        let g:my_searchprg = "GitGrep"
-    elseif g:my_searchprg == "GitGrep"
-        let g:my_searchprg = "VimGrep"
-    elseif g:my_searchprg == "VimGrep"
-        let g:my_searchprg = "Grep"
+" Default search and find programs
+function! FillSearch(...)
+    if a:0 == 0
+        let l:filltext = ""
+    else
+        let l:is_visual=(a:1 == "v")
+        let l:line=getline(l:is_visual ? "'<" : "'[")
+        let [line1,col1] = getpos(l:is_visual ? "'<" : "'[")[1:2]
+        let [line2,col2] = getpos(l:is_visual ? "'>" : "']")[1:2]
+        let l:filltext =l:line[col1 - 1: col2 - 1]
     endif
-    echom g:my_searchprg
+    call feedkeys(':' . g:my_fillprg . ' "' . l:filltext . '"'."\<Left>")
 endfunction
 
-nmap <silent> co/ :call Cycle_searchprg()<cr>
-nmap <silent> g/ :set opfunc=My_search<cr>g@
-xmap <silent> g/ :call My_search(visualmode())<cr>
+cmap <Plug>setSearchMode let g:my_fillprg=g:my_searchprgs[g:my_searchprg]<cr>
+cmap <Plug>setFindMode   let g:my_fillprg=g:my_findprgs[g:my_findprg]<cr>
+nmap <silent> g/  :<Plug>setSearchMode:set opfunc=FillSearch<cr>g@
+nmap <silent> ,g  :<Plug>setSearchMode:call FillSearch()<cr>
+xmap <silent> ,g  :<c-u><Plug>setSearchMode:call FillSearch(visualmode())<cr>
+nmap <silent> ,f  :<Plug>setFindMode:call FillSearch()<cr>
+
+let g:my_searchprgs = ['Rg', 'GitGrep', 'VimGrep']
+let g:my_findprgs = ['Gnufind', 'Gitfind']
+let g:my_searchprg = 0
+let g:my_findprg = 0
+
+" Cycle search / find prgs
+nmap <silent> cog :let g:my_searchprg=(g:my_searchprg+1)%len(g:my_searchprgs)<cr>:echom g:my_searchprgs[g:my_searchprg]<cr>
+nmap <silent> cof :let g:my_findprg=(g:my_findprg+1)%len(g:my_findprgs)<cr>:echom g:my_findprgs[g:my_findprg]<cr>
 
 " }}}

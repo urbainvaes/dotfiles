@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Key repeat rate
-xset r rate 400 50
-
 # Pulse audio
 /usr/bin/start-pulseaudio-x11
 
