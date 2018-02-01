@@ -2,4 +2,9 @@
 .netrwhist
 plugged
 view
-vimundo
+
+backup/*
+swap/*
+undo/*
+
+!*.gitkeep

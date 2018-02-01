@@ -200,7 +200,7 @@ let g:UltiSnipsSnippetsDir="~/.vim/mySnippets"
 " let g:UltiSnipsUsePythonVersion=3
 
 " Vimtex
-let g:vimtex_fold_enabled=1
+let g:vimtex_fold_enabled=0
 let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=2
 let g:vimtex_compiler_progname='nvr'
@@ -240,6 +240,15 @@ let g:tex_conceal= ''
 let g:tex_flavor='latex'
 " }}}
 "" Vim options {{{
+set backup
+set swapfile
+set undofile
+set backupdir^=~/.vim/backup//
+set directory^=~/.vim/swap//
+set undodir^=~/.vim/undo//
+" ^= : prepends to list
+" // : store absolute path
+
 set complete+=k
 set conceallevel=2
 set cursorline
@@ -251,9 +260,7 @@ set hidden
 set ignorecase
 set lazyredraw
 set nojoinspaces
-set noswapfile
 set nowrap
-set nowritebackup
 set path=$PWD/**
 set shiftwidth=4
 set showcmd
@@ -263,8 +270,6 @@ set smartindent
 set softtabstop=4
 set t_Co=256
 set tabstop=4
-set undodir=~/.vim/vimundo/
-set undofile
 " set formatoptions+=orw
 silent! set breakindent
 let &showbreak='--> '
@@ -356,6 +361,7 @@ augroup vimrc
     au FileType gmsh setlocal makeprg=gmsh\ %
     au FileType gnuplot setlocal makeprg=gnuplot\ %
     au FileType gnuplot setlocal commentstring=#%s
+    au FileType cpp setlocal commentstring=//%s
     au FileType freefem comp freefem
     au FileType dirvish setlocal relativenumber
     au FileType dirvish setlocal errorformat=%f

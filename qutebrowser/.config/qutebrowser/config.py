@@ -15,7 +15,7 @@ c.url.default_page = c.url.start_pages[0]
 
 # Bindings for normal mode
 config.bind(",b", 'spawn --userscript explorer -b')
-config.bind("ch", 'history-all-clear')
+config.bind(",ch", 'history-all-clear')
 config.bind(",p", 'spawn --userscript explorer')
 config.bind(",t", 'spawn --userscript explorer -t')
 config.bind(",v", 'spawn -d mpv {url}')
@@ -24,6 +24,7 @@ config.bind(",x", 'spawn --userscript user-password')
 config.bind("]d", 'set downloads.location.prompt True')
 config.bind("[d", 'set downloads.location.prompt False')
 config.bind(",do", 'download-open')
+config.bind(",db", 'spawn -d downloads')
 config.bind(",o", 'set-cmd-text -s :spawn --userscript url-from-surfraw')
 config.bind(",O", 'set-cmd-text -s :spawn --userscript url-from-surfraw -t')
 config.bind("f", 'hint all current')
