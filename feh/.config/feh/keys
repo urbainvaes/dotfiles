@@ -10,4 +10,5 @@ scroll_right_page L
 
 zoom_in plus
 zoom_out minus
-zoom_fit s
+zoom_fill s
+zoom_fit a
