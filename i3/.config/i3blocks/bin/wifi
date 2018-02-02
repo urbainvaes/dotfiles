@@ -8,7 +8,7 @@ eth_address=$(ip addr show eno1 2>/dev/null | grep -oP -m1 "(?<=inet ).*(?=/)")
 if [[ -n $eth_address ]]; then 
     echo "eno1: $eth_address"
 elif [[ -n $wifi_address ]]; then
-    echo "wlp2s0: (${quality}% at ${ssid}) ${address}"
+    echo "wlp2s0: (${quality}% at ${ssid}) ${wifi_address}"
 else
     echo "No connection"
 fi
