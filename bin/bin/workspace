@@ -18,16 +18,20 @@ act_on_container() {
     # Exit if empty
     [[ -z $target ]] && exit
 
-    # If new workspace has to be created
-    if [[ ! $target = [0-9]* ]]; then
+    # See if target exsits
+    existing_target=$(echo "$workspaces" | awk '{print $2}' | grep -F "$target")
 
+    # If new workspace has to be created
+    if [[ -n "$existing_target" ]]; then
+        target="$existing_target"
+    else
         # Add number to workspace name (start at 1, but allow 0)
         new_number=$(echo "$workspaces" | awk '$1!=p+1 && $1!=0 {exit;}{p=$1} END {print p+1}')
         target=$new_number:$target
     fi
 
     # Execute command
-    exec i3-msg $1 $target
+    exec i3-msg "$1" "$target"
 }
 
 act_on_workspace() {
@@ -39,7 +43,7 @@ act_on_workspace() {
 
     next=$(echo "${workspaces}" | awk '$1 ~ /'$new_number'/ {print $2}')
 
-    i3-msg rename workspace to ${new_number}:${focused_name}
+    i3-msg rename workspace to "${new_number}":"${focused_name}"
 
     # ${variable//pattern} replaces all matches of pattern with nothing
     if [[ ! -z "${next// }" ]]; then
@@ -51,6 +55,6 @@ act_on_workspace() {
 }
 
 # Command to use
-[[ $1 = 'gw' ]] && act_on_container "workspace" $2
-[[ $1 = 'mc' ]] && act_on_container "move container to workspace" $2
+[[ $1 = 'gw' ]] && act_on_container "workspace" "$2"
+[[ $1 = 'mc' ]] && act_on_container "move container to workspace" "$2"
 [[ $1 = 'mw' ]] && act_on_workspace "$2"
