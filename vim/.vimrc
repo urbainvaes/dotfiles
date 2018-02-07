@@ -127,8 +127,8 @@ function! Call_heytmux(vm)
     call feedkeys(":'[,']Heytmux!")
 endfunction
 
-nmap <silent> gh :set opfunc=Call_heytmux<cr>g@
-xmap <silent> gh :Heytmux!<cr>
+nnoremap <silent> gh :set opfunc=Call_heytmux<cr>g@
+xnoremap <silent> gh :Heytmux!<cr>
 
 " Iron
 let g:iron_map_defaults=0
@@ -221,7 +221,7 @@ function! Multiple_cursors_before()
     if has("nvim")
         let b:deoplete_disable_auto_complete = 1
     else
-        exe 'NeoCompleteLock'
+        execute 'NeoCompleteLock'
     endif
 endfunction
 
@@ -229,7 +229,7 @@ function! Multiple_cursors_after()
     if has("nvim")
         let b:deoplete_disable_auto_complete = 0
     else
-        exe 'NeoCompleteUnlock'
+        execute 'NeoCompleteUnlock'
     endif
 endfunction
 
@@ -241,7 +241,6 @@ let g:tex_flavor='latex'
 " }}}
 "" Vim options {{{
 set backup
-set swapfile
 set undofile
 set backupdir^=~/.vim/backup//
 set directory^=~/.vim/swap//
@@ -267,13 +266,11 @@ set showcmd
 set splitright
 set smartcase
 set smartindent
-set softtabstop=4
-set t_Co=256
-set tabstop=4
+set softtabstop=-1 " set sotftabstop=&shiftwidth
 " set formatoptions+=orw
 silent! set breakindent
 let &showbreak='--> '
-set clipboard=unnamedplus,unnamed
+set clipboard^=unnamedplus,unnamed
 " set spellfile="$HOME/.vim/spell/en.utf-8.add"
 if !has("nvim")
   set encoding=utf-8
@@ -283,8 +280,8 @@ if has("nvim")
 endif
 " }}}
 "" Mappings {{{
-nmap n nzz
-nmap N Nzz
+nnoremap n nzz
+nnoremap N Nzz
 
 nnoremap <silent> <Plug>AddWhiteSpaceAfter a <Esc>h:silent call repeat#set("\<Plug>AddWhiteSpaceAfter")<cr>
 nnoremap <silent> <Plug>AddWhiteSpaceBefore i <Esc>l:silent call repeat#set("\<Plug>AddWhiteSpaceBefore")<cr>
@@ -293,7 +290,7 @@ nmap ]w <Plug>AddWhiteSpaceAfter
 nmap [w <Plug>AddWhiteSpaceBefore
 
 nnoremap <Leader>w :update<cr>
-nnoremap <Leader>q :q!<cr>
+nnoremap <Leader>q :q<cr>
 nnoremap <Leader>d :bd!<cr>
 
 nnoremap <Leader>tn :tabnew<cr>
@@ -303,6 +300,8 @@ nnoremap <Leader>th :-tabmove<cr>
 nnoremap <Leader>tm :tabmove
 nnoremap <Leader>t0 :tabmove 0<cr>
 nnoremap <Leader>t$ :tabmove<cr>
+
+nnoremap <Leader>c :!rm ~/.vim/swap/\%*<cr>
 
 nnoremap cqo :copen<cr>
 nnoremap cqc :cclose<cr>
@@ -314,7 +313,6 @@ nnoremap goF :call system('urxvt -e vifm '.expand("%:p:h").' '.expand("%:p:h").'
 
 nnoremap <LocalLeader>h :e %:p:s,.hpp$,.X123X,:s,.cpp$,.hpp,:s,.X123X$,.cpp,<CR>
 nnoremap Y y$
-nnoremap <BS> <C-W>h
 
 nnoremap <Leader>fw :%s/\s\+$//<cr>
 nnoremap <Leader>ft :%s/^	\+//g<cr>
@@ -324,19 +322,13 @@ cnoremap <c-n> <down>
 cnoremap <up> <c-p>
 cnoremap <down> <c-n>
 
-nmap <silent> <b :BufSurfBack<cr>
-nmap <silent> >b :BufSurfForward<cr>
-nmap <silent> <B :BufSurfBack<cr>:bd! #<cr>
-nmap <silent> >B :BufSurfForward<cr>:bd! #<cr>
-nmap <silent> [B [b:bd! #<cr>
-nmap <silent> ]B ]b:bd! #<cr>
+nnoremap <silent> <b :BufSurfBack<cr>
+nnoremap <silent> >b :BufSurfForward<cr>
+nnoremap <silent> <B :BufSurfBack<cr>:bd! #<cr>
+nnoremap <silent> >B :BufSurfForward<cr>:bd! #<cr>
+nnoremap <silent> [B [b:bd! #<cr>
+nnoremap <silent> ]B ]b:bd! #<cr>
 
-if has("nvim")
-    nnoremap goh :let @a=getcwd() \| lcd %:h \| terminal<cr>:execute 'lcd '.@a<cr>A
-    tnoremap <c-x> <c-\><c-n><c-^>:bd! #<cr>
-    nnoremap <c-_> :b # \| norm A<cr>
-    tnoremap <c-_> <c-\><c-n><c-^>
-endif
 " }}}
 "" Colorscheme {{{
 let g:airline_theme='deus'
@@ -345,35 +337,33 @@ colo seoul256
 "" Autocommands {{{
 augroup vimrc
     autocmd!
-    au BufWritePost *vimrc,*exrc :source %
-    au BufNewFile,Bufread /tmp/mutt-* setlocal tw=72
-    au BufWritePre *
+    autocmd BufWritePost *vimrc,*exrc :source %
+    autocmd BufNewFile,Bufread /tmp/mutt-* setlocal tw=72
+    autocmd BufWritePre *
         \ if !isdirectory(expand('<afile>:p:h')) |
           \ call mkdir(expand('<afile>:p:h'), 'p') |
         \ endif
 
     " Detect filetypes (! 'setf freefem' does not override...)
-    au BufNewFile,BufRead *.geo,*.msh set filetype=gmsh
-    au BufNewFile,BufRead *.pde set filetype=freefem
-    au BufNewFile,BufRead *.plt set filetype=gnuplot
+    autocmd BufNewFile,BufRead *.geo,*.msh set filetype=gmsh
+    autocmd BufNewFile,BufRead *.pde set filetype=freefem
+    autocmd BufNewFile,BufRead *.plt set filetype=gnuplot
 
     " Filetype specific
-    au FileType gmsh setlocal makeprg=gmsh\ %
-    au FileType gnuplot setlocal makeprg=gnuplot\ %
-    au FileType gnuplot setlocal commentstring=#%s
-    au FileType cpp setlocal commentstring=//%s
-    au FileType freefem comp freefem
-    au FileType dirvish setlocal relativenumber
-    au FileType dirvish setlocal errorformat=%f
-    au FileType tex set spell
+    autocmd FileType gmsh setlocal makeprg=gmsh\ %
+    autocmd FileType gnuplot setlocal makeprg=gnuplot\ %
+    autocmd FileType gnuplot setlocal commentstring=#%s
+    autocmd FileType cpp setlocal commentstring=//%s
+    autocmd FileType freefem comp freefem
+    autocmd FileType dirvish setlocal relativenumber
+    autocmd FileType dirvish setlocal errorformat=%f
+    autocmd FileType tex set spell
 augroup END
 
 " }}}
 "" My search {{{
 
 " http://vim.wikia.com/wiki/Searching_for_files
-" 1 argument: set search program and options
-" 2 argument: do search
 function! MySearch(...)
     let l:prevgrepprg=&grepprg
     let l:prevgrepformat=&grepformat
@@ -412,20 +402,26 @@ function! FillSearch(...)
     call feedkeys(':' . g:my_fillprg . ' "' . l:filltext . '"'."\<Left>")
 endfunction
 
-cmap <Plug>setSearchMode let g:my_fillprg=g:my_searchprgs[g:my_searchprg]<cr>
-cmap <Plug>setFindMode   let g:my_fillprg=g:my_findprgs[g:my_findprg]<cr>
-nmap <silent> g/  :<Plug>setSearchMode:set opfunc=FillSearch<cr>g@
-nmap <silent> ,g  :<Plug>setSearchMode:call FillSearch()<cr>
-xmap <silent> ,g  :<c-u><Plug>setSearchMode:call FillSearch(visualmode())<cr>
-nmap <silent> ,f  :<Plug>setFindMode:call FillSearch()<cr>
-
 let g:my_searchprgs = ['Rg', 'GitGrep', 'VimGrep']
 let g:my_findprgs = ['Gnufind', 'Gitfind']
 let g:my_searchprg = 0
 let g:my_findprg = 0
 
-" Cycle search / find prgs
-nmap <silent> cog :let g:my_searchprg=(g:my_searchprg+1)%len(g:my_searchprgs)<cr>:echom g:my_searchprgs[g:my_searchprg]<cr>
-nmap <silent> cof :let g:my_findprg=(g:my_findprg+1)%len(g:my_findprgs)<cr>:echom g:my_findprgs[g:my_findprg]<cr>
+nnoremap <silent> g/  :let g:my_fillprg=g:my_searchprgs[g:my_searchprg]<cr>:set opfunc=FillSearch<cr>g@
+nnoremap <silent> ,g  :let g:my_fillprg=g:my_searchprgs[g:my_searchprg]<cr>:call FillSearch()<cr>
+xnoremap <silent> ,g  :<c-u>let g:my_fillprg=g:my_searchprgs[g:my_searchprg]<cr>:call FillSearch(visualmode())<cr>
+nnoremap <silent> ,f  :let g:my_fillprg=g:my_findprgs[g:my_findprg]<cr>:call FillSearch()<cr>
 
+" Cycle search / find prgs
+nnoremap <silent> cog :let g:my_searchprg=(g:my_searchprg+1)%len(g:my_searchprgs)<cr>:echom g:my_searchprgs[g:my_searchprg]<cr>
+nnoremap <silent> cof :let g:my_findprg=(g:my_findprg+1)%len(g:my_findprgs)<cr>:echom g:my_findprgs[g:my_findprg]<cr>
+
+" }}}
+"" Neovim terminal {{{
+if has("nvim")
+    nnoremap goh :let @a=getcwd() \| lcd %:h \| terminal<cr>:execute 'lcd '.@a<cr>A
+    tnoremap <c-x> <c-\><c-n><c-^>:bd! #<cr>
+    nnoremap <c-_> :b # \| norm A<cr>
+    tnoremap <c-_> <c-\><c-n><c-^>
+endif
 " }}}

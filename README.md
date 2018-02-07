@@ -15,3 +15,5 @@ Deploy with stow:
 ```
     find . -mindepth 1 -maxdepth 1 -printf "%P\\0" | grep -zvFf .stowignore | xargs -0 stow -t $HOME --no-folding
 ```
+
+Personal files (`mutt` aliases, `vim` snippets, `tmuxinator` sessions, etc.) are located in a different git repository and stowed normally, with folding.
