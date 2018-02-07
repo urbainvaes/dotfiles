@@ -1,0 +1,7 @@
+.git
+.gitignore
+.stowignore
+LICENSE
+README.md
+crontab
+pkgs

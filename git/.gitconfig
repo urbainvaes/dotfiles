@@ -10,7 +10,7 @@
 [status]
 	submodulesummary = 1
 [alias]
-    yolo = !git commit -am "Update" && git push origin master
+    saveandsync = !git commit -am "Update" && git push origin master
 [core]
 	fileMode = false
 [http]

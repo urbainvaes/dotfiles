@@ -8,3 +8,10 @@ Being a *vim* user, I find it very convenient to use tools with *vi* keybindings
 + Browser: **uzbl**
 + PDF viewer: **zathura**
 + Email client: **mutt**
+
+# Management
+Deploy with stow:
+
+```
+    find . -mindepth 1 -maxdepth 1 -printf "%P\\0" | grep -zvFf .stowignore | xargs -0 stow -t $HOME --no-folding
+```

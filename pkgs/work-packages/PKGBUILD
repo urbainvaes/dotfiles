@@ -2,4 +2,4 @@ pkgname=work-packages
 pkgver=0
 pkgrel=1
 arch=(any)
-depends=(freefem++ gmsh)
+depends=(freefem++ gmsh armadillo python-sympy)

@@ -11,7 +11,7 @@ push = git push origin master
 [$HOME/personal]
 checkout = git clone 'gitolite@urbainvaes.com:private/personal.git' personal
 update = git pull origin master
-push = git push origin master
+push = git saveandsync
 
 [$HOME/.password-store]
 checkout = git clone 'gitolite@urbainvaes.com:private/passwords.git' .password-store
