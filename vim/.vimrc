@@ -331,8 +331,31 @@ nnoremap <silent> ]B ]b:bd! #<cr>
 
 " }}}
 "" Colorscheme {{{
-let g:airline_theme='deus'
-colo seoul256
+function! SaveColo(...)
+    if &runtimepath =~ 'airline'
+        execute 'set background='.a:1
+        execute 'AirlineTheme' a:3
+        execute 'colorscheme' a:2
+    endif
+    execute 'silent !echo "set background='.a:1.'" > ~/.color.vim'
+    execute 'silent !echo "colorscheme '.a:2.'" >> ~/.color.vim'
+    execute 'silent !echo "let g:airline_theme=\"'.a:3.'\"" >> ~/.color.vim'
+endfunction
+function! MyColo(colorscheme)
+    if a:colorscheme == "solarized"
+        call SaveColo("light","solarized","solarized")
+    elseif a:colorscheme == "seoul"
+        call SaveColo("dark","seoul256","deus")
+    endif
+endfunction
+if filereadable($HOME."/.color.vim")
+    source ~/.color.vim
+else
+    call MyColo("seoul")
+endif
+nnoremap ,c :call MyColo("")<Left><Left>
+nnoremap ,cl :call MyColo("solarized")<cr>
+nnoremap ,cs :call MyColo("seoul")<cr>
 " }}}
 "" Autocommands {{{
 augroup vimrc

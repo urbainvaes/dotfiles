@@ -99,6 +99,7 @@ function colo {
     /usr/bin/cpp ${XRESOURCE_FILE} | tr -d ' \t' | sed -n \
         -e "s/.*background:/${esc}]11;/p" \
         -e "s/.*foreground:/${esc}]10;/p" \
+        -e "s/.*cursorColor:/${esc}]12;/p" \
         -e "s/.*borderColor:/${esc}]708;/p" \
         -e "s/.*color\\([0-9][^:]*\\):/${esc}]4;\\1;/p" | tr \\n \\a
 
