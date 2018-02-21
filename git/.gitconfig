@@ -10,7 +10,7 @@
 [status]
 	submodulesummary = 1
 [alias]
-    saveandsync = !git commit -am "Update" && git push origin master
+	saveandsync = !git add . && git commit -m "Update" && git push origin master
 [core]
 	fileMode = false
 [http]

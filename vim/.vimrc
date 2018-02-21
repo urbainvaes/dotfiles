@@ -293,13 +293,15 @@ nnoremap <Leader>w :update<cr>
 nnoremap <Leader>q :q<cr>
 nnoremap <Leader>d :bd!<cr>
 
-nnoremap <Leader>tn :tabnew<cr>
-nnoremap <Leader>te :tabedit
-nnoremap <Leader>tl :+tabmove<cr>
-nnoremap <Leader>th :-tabmove<cr>
-nnoremap <Leader>tm :tabmove
-nnoremap <Leader>t0 :tabmove 0<cr>
-nnoremap <Leader>t$ :tabmove<cr>
+nnoremap ,bd :ls<cr>:bd<space>
+
+nnoremap ,tn :tabnew<cr>
+nnoremap ,te :tabedit
+nnoremap ,tl :+tabmove<cr>
+nnoremap ,th :-tabmove<cr>
+nnoremap ,tm :tabmove
+nnoremap ,t0 :tabmove 0<cr>
+nnoremap ,t$ :tabmove<cr>
 
 nnoremap <Leader>c :!rm ~/.vim/swap/\%*<cr>
 
@@ -311,7 +313,7 @@ nnoremap goT :call system('urxvt -cd '.expand("%:p:h").' &')<cr>
 nnoremap gof :call system('urxvt -e vifm '.getcwd().' '.getcwd().' &')<cr>
 nnoremap goF :call system('urxvt -e vifm '.expand("%:p:h").' '.expand("%:p:h").' &')<cr>
 
-nnoremap <LocalLeader>h :e %:p:s,.hpp$,.X123X,:s,.cpp$,.hpp,:s,.X123X$,.cpp,<CR>
+nnoremap <LocalLeader>h :e %:p:s,.hpp$,.X123X,:s,.cpp$,.hpp,:s,.X123X$,.cpp,<cr>
 nnoremap Y y$
 
 nnoremap <Leader>fw :%s/\s\+$//<cr>
@@ -322,12 +324,11 @@ cnoremap <c-n> <down>
 cnoremap <up> <c-p>
 cnoremap <down> <c-n>
 
-nnoremap <silent> <b :BufSurfBack<cr>
-nnoremap <silent> >b :BufSurfForward<cr>
-nnoremap <silent> <B :BufSurfBack<cr>:bd! #<cr>
-nnoremap <silent> >B :BufSurfForward<cr>:bd! #<cr>
-nnoremap <silent> [B [b:bd! #<cr>
-nnoremap <silent> ]B ]b:bd! #<cr>
+" Overwrite unimpaired mappings
+nnoremap <silent> [b :BufSurfBack<cr>
+nnoremap <silent> ]b :BufSurfForward<cr>
+nnoremap <silent> [B :BufSurfBack<cr>:bd! #<cr>
+nnoremap <silent> ]B :BufSurfForward<cr>:bd! #<cr>
 
 " }}}
 "" Colorscheme {{{
@@ -337,30 +338,32 @@ function! SaveColo(...)
         execute 'AirlineTheme' a:3
         execute 'colorscheme' a:2
     endif
-    execute 'silent !echo "set background='.a:1.'" > ~/.color.vim'
-    execute 'silent !echo "colorscheme '.a:2.'" >> ~/.color.vim'
-    execute 'silent !echo "let g:airline_theme=\"'.a:3.'\"" >> ~/.color.vim'
+    execute 'silent !echo "set background='.a:1.'" > ~/.local/colors.vim'
+    execute 'silent !echo "colorscheme '.a:2.'" >> ~/.local/colors.vim'
+    execute 'silent !echo "let g:airline_theme=\"'.a:3.'\"" >> ~/.local/colors.vim'
 endfunction
 function! MyColo(colorscheme)
-    if a:colorscheme == "solarized"
+    if a:colorscheme == "solarized-light"
         call SaveColo("light","solarized","solarized")
+    elseif a:colorscheme == "solarized-dark"
+        call SaveColo("dark","solarized","solarized")
     elseif a:colorscheme == "seoul"
         call SaveColo("dark","seoul256","deus")
     endif
 endfunction
-if filereadable($HOME."/.color.vim")
-    source ~/.color.vim
-else
-    call MyColo("seoul")
+if filereadable($HOME."/.local/colors.vim")
+    source ~/.local/colors.vim
 endif
 nnoremap ,c :call MyColo("")<Left><Left>
-nnoremap ,cl :call MyColo("solarized")<cr>
+nnoremap ,cl :call MyColo("solarized-light")<cr>
+nnoremap ,cd :call MyColo("solarized-dark")<cr>
 nnoremap ,cs :call MyColo("seoul")<cr>
 " }}}
 "" Autocommands {{{
 augroup vimrc
     autocmd!
-    autocmd BufWritePost *vimrc,*exrc :source %
+    autocmd BufWritePost *vimrc,*exrc :call feedkeys(":source %\<cr>")
+    " autocmd BufWritePost *vimrc,*exrc :source %
     autocmd BufNewFile,Bufread /tmp/mutt-* setlocal tw=72
     autocmd BufWritePre *
         \ if !isdirectory(expand('<afile>:p:h')) |
@@ -377,6 +380,7 @@ augroup vimrc
     autocmd FileType gnuplot setlocal makeprg=gnuplot\ %
     autocmd FileType gnuplot setlocal commentstring=#%s
     autocmd FileType cpp setlocal commentstring=//%s
+    autocmd FileType cmake setlocal commentstring=#%s
     autocmd FileType freefem comp freefem
     autocmd FileType dirvish setlocal relativenumber
     autocmd FileType dirvish setlocal errorformat=%f
@@ -440,11 +444,24 @@ nnoremap <silent> cog :let g:my_searchprg=(g:my_searchprg+1)%len(g:my_searchprgs
 nnoremap <silent> cof :let g:my_findprg=(g:my_findprg+1)%len(g:my_findprgs)<cr>:echom g:my_findprgs[g:my_findprg]<cr>
 
 " }}}
-"" Neovim terminal {{{
+"" Neovim {{{
 if has("nvim")
     nnoremap goh :let @a=getcwd() \| lcd %:h \| terminal<cr>:execute 'lcd '.@a<cr>A
     tnoremap <c-x> <c-\><c-n><c-^>:bd! #<cr>
     nnoremap <c-_> :b # \| norm A<cr>
     tnoremap <c-_> <c-\><c-n><c-^>
+
+    tnoremap <A-h> <C-\><C-N><C-w>h
+    tnoremap <A-j> <C-\><C-N><C-w>j
+    tnoremap <A-k> <C-\><C-N><C-w>k
+    tnoremap <A-l> <C-\><C-N><C-w>l
+    inoremap <A-h> <C-\><C-N><C-w>h
+    inoremap <A-j> <C-\><C-N><C-w>j
+    inoremap <A-k> <C-\><C-N><C-w>k
+    inoremap <A-l> <C-\><C-N><C-w>l
+    nnoremap <A-h> <C-w>h
+    nnoremap <A-j> <C-w>j
+    nnoremap <A-k> <C-w>k
+    nnoremap <A-l> <C-w>l
 endif
 " }}}

@@ -6,10 +6,16 @@ wifi_address=$(ip addr show wlp2s0 2>/dev/null | grep -oP -m1 "(?<=inet ).*(?=/)
 eth_address=$(ip addr show eno1 2>/dev/null | grep -oP -m1 "(?<=inet ).*(?=/)")
 
 if [[ -n $eth_address ]]; then 
-    echo "eno1: $eth_address"
+    full_text="eno1: $eth_address"
+    ip_addr="$eth_address"
 elif [[ -n $wifi_address ]]; then
-    echo "wlp2s0: (${quality}% at ${ssid}) ${wifi_address}"
+    full_text="wlp2s0: (${quality}% at ${ssid}) ${wifi_address}"
+    ip_addr="$wifi_address"
 else
     echo "No connection"
 fi
 
+case $BLOCK_BUTTON in
+    1) echo "$full_text" ;;
+    *) echo -e "$ip_addr" ;;
+esac

@@ -26,49 +26,62 @@
 # Each block command defaults to the script name to avoid boilerplate.
 command=/usr/lib/i3blocks/$BLOCK_NAME
 separator_block_width=15
-markup=none
+markup=pango
 
+[primary]
+label=<span color='gray'></span>
+command=echo "$(xclip -o | cut -c1-9)"
+min_width=15
+interval=5
 
-# Volume indicator
-#
-# The first parameter sets the step (and units to display)
-# The second parameter overrides the mixer selection
-# See the script for details.
-[volume]
-label=♪
+[clipboard]
+label=<span color='gray'></span>
+command=echo "$(xclip -o -selection "clipboard" | cut -c1-9)"
 instance=Master
 interval=5
 
-[wifi]
-label=W:
-command=~/dotfiles/i3/.config/i3blocks/bin/wifi
-separator=true
+[volume]
+label=<span color='gray'></span>
+instance=Master
 interval=5
 
+[repos]
+command=~/dotfiles/i3/.config/i3blocks/bin/repos
+instance=Phd:/home/urbain/phd Home:/home/urbain
+interval=1000
+
+[updates-arch]
+command=~/dotfiles/i3/.config/i3blocks/bin/updates
+interval=1000
+
 [email]
-label=Mail:
 command=~/dotfiles/i3/.config/i3blocks/bin/email
 separator=true
 interval=5
 
-[disk]
-label=HOME
-interval=30
-
-[cpu_usage]
-label=CPU
-interval=10
-min_width=CPU: 100.00%
+[wifi]
+label=<span color='gray'></span>
+command=~/dotfiles/i3/.config/i3blocks/bin/wifi
+separator=true
+interval=5
 
 [battery]
-label=BAT
+command=~/dotfiles/i3/.config/i3blocks/bin/battery
 interval=30
 
+[diskhome]
+label=<span color='gray'></span>
+command=/usr/lib/i3blocks/disk
+instance=/home/urbain
+interval=60
+
+[diskroot]
+label=<span color='gray'></span>
+command=/usr/lib/i3blocks/disk
+instance=/
+interval=60
+
 [time]
+label=<span color='gray'></span>
 command=date '+%Y-%m-%d %H:%M'
 interval=5
-
-[mediaplayer]
-instance=spotify
-interval=5
-signal=10

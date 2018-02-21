@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+
+if [ ! -d /sys/class/power_supply/BAT0 ]; then
+    echo "<span color='gray'></span> No battery"
+    exit
+fi
+
+output="$(acpi -b)"
+remaining_time=$(echo "$output" | grep -o "[0-9][0-9]:[0-9][0-9]")
+<<<<<<< HEAD
+
+if [ -d /sys/class/power_supply/BAT0 ]; then
+    now_charge=$(cat /sys/class/power_supply/BAT0/now_charge)
+    full_charge=$(cat /sys/class/power_supply/BAT0/full_charge)
+    charge=$(( (100*now_charge) / full_charge ))
+else
+    echo ""
+    exit
+fi
+=======
+now_charge=$(cat /sys/class/power_supply/BAT0/now_charge)
+full_charge=$(cat /sys/class/power_supply/BAT0/full_charge)
+charge=$(( (100*now_charge) / full_charge ))
+# charge=$(echo "$output" | grep -oP "..(?=%)")
+>>>>>>> de29d3a... Add minor updates
+
+if grep -q "Discharging" <(echo "$output"); then
+    remaining_time=$(echo "$output" | grep -oP "..:..(?=:.. remaining)")
+    if [[ $charge -lt 20 ]]; then
+        icon=""
+        color="#FF0000"
+    elif [[ $charge -lt 40 ]]; then
+        icon=""
+        color="#FFAE00"
+    elif [[ $charge -lt 60 ]]; then
+        icon=""
+        color="#FFF600"
+    elif [[ $charge -lt 80 ]]; then
+        icon=""
+        color="#A8FF00"
+    else
+        icon=""
+        color="#00FF00"
+    fi
+else
+    icon=
+    color="lightblue"
+fi
+
+echo "<span color='$color'>$icon</span> $charge% ($remaining_time)"
+echo "$icon $charge% ($remaining_time)"

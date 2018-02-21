@@ -1,0 +1,5 @@
+color status green white
+color normal color11 default
+color index color11  default "~R"
+
+# vim: ft=muttrc

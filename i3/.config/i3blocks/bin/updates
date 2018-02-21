@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+if command -v checkupdates > /dev/null; then
+    n_updates=$(checkupdates | wc -l)
+    if [[ n_updates -gt 50 ]]; then
+        color='red'
+    elif [[ n_updates -gt 10 ]]; then
+        color='yellow'
+    else
+        color='gray'
+    fi
+    echo "<span color='$color'></span> $n_updates"
+fi

@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+color_changes() {
+    if [[ $1 -gt 100 ]]; then
+        echo 'red'
+    elif [[ $1 -gt 10 ]]; then
+        echo 'yellow'
+    elif [[ $1 -gt 0 ]]; then
+        echo 'lightgreen'
+    else
+        echo 'gray'
+    fi
+}
+
+if command -v mr > /dev/null; then
+    total_changes=0
+    for title_dir in $BLOCK_INSTANCE; do
+        title="${title_dir%:*}"
+        cd "${title_dir##*:}" || exit
+        n_changes=$(mr status | grep -vc "^$\\|^mr")
+        [[ n_changes -gt total_changes ]] && total_changes=n_changes
+        color=$(color_changes "$n_changes")
+        output+="$sep$title:<span color='$color'>$n_changes</span>"
+        sep=" - "
+    done
+    color_label=$(color_changes $total_changes)
+    echo "<span color='$color_label'> </span> $output"
+fi

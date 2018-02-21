@@ -5,13 +5,14 @@ ATTACHED_SESSIONS=$(tmux list-sessions | grep attached | cut -d':' -f1)
 TMUXINATOR=$(tmuxinator list | sed '1d' | sed 's/\s\+/\n/g')
 UNION=$(cat <(echo "$SESSIONS") <(echo "$TMUXINATOR") | sort | uniq | sed "/^$/d")
 
-SESSION=$(echo "$UNION" | dmenu -i -p "Session:" | tr -d '[[:space:]]')
+SESSION=$(echo "$UNION" | dmenu -i -p "Session:" | tr -d '[:space:]')
 [[ -n $SESSION ]] || exit
 
 # Rename i3 workspace
+# `command -v` to check that i3-msg is a command
 ! grep -Fxq "$SESSION" <(echo "$ATTACHED_SESSIONS") \
     && command -v i3-msg \
-    && $HOME/bin/workspace gw $SESSION
+    && "$HOME"/bin/workspace gw "$SESSION"
 
 grep -Fxq "$SESSION" <(echo "$TMUXINATOR") \
     && COMMAND="tmuxinator start $SESSION" \

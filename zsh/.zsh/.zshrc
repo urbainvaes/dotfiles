@@ -78,15 +78,14 @@ zle     -N   z
 # }}}
 ## Colors {{{
 
-[[ -z ${ZSH_COLORS} ]] && ZSH_COLORS=${HOME}/.local/share/zsh/colors.zsh
-[[ -f ${ZSH_COLORS} ]] && source ${ZSH_COLORS}
+[[ -f $HOME/.local/colors.zsh ]] && source $HOME/.local/colors.zsh
 
 colorschemes=$(ls ${HOME}/.Xresources)
 
 function colo {
 
-    XRESOURCE=$1
-    XRESOURCE_FILE=${HOME}/.Xresources/${XRESOURCE}
+    COLORSCHEME=$1
+    XRESOURCE_FILE=${HOME}/.Xresources/$COLORSCHEME
 
     # Change colors for current session
     if [[ ! -z "$TMUX" ]]; then
@@ -105,10 +104,22 @@ function colo {
 
     # Change color for future sessions
     xrdb ${XRESOURCE_FILE}
+
+    echo "export COLORSCHEME=$1" > $HOME/.local/colors.zsh
+    source $HOME/.local/colors.zsh
 }
 
 # Completion for colorschemes (-M -> Case insensitive)
 compctl -k "(${colorschemes})" -M 'm:{a-z}={A-Z}' colo
+
+function show256 {
+    for i in {0..255} ; do
+        printf "\x1b[48;5;%sm%3d\e[0m " "$i" "$i"
+        if (( i == 15 )) || (( i > 15 )) && (( (i-15) % 6 == 0 )); then
+            printf "\n";
+        fi
+    done
+}
 
 # }}}
 ## Aliases {{{

@@ -7,15 +7,11 @@
 $HOME/bin/keyboard
 
 # Load Xresources to light colorscheme
-source $HOME/.local/share/zsh/colors.zsh
-xrdb $HOME/.Xresources/$XRESOURCE
+source $HOME/.local/colors.zsh
+xrdb $HOME/.Xresources/$COLORSCHEME
 
 # Background
 feh --bg-fill /home/urbain/documents/wallpapers/pagoda.jpg
-
-# Synchronise primary and clipboard
-autocutsel -fork &
-autocutsel -selection PRIMARY -fork &
 
 # Disable screen going blank
 xset -dpms
