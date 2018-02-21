@@ -1,6 +1,6 @@
 #include "/home/urbain/.Xresources/base"
 
-URxvt.borderColor: #fdf6e3
+URxvt.borderColor: #000000
 
 *background: #fdf6e3
 *foreground: #657b83

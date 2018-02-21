@@ -384,6 +384,7 @@ augroup vimrc
     autocmd FileType freefem comp freefem
     autocmd FileType dirvish setlocal relativenumber
     autocmd FileType dirvish setlocal errorformat=%f
+    autocmd FileType dirvish silent! unmap <buffer> <C-p>
     autocmd FileType tex set spell
 augroup END
 

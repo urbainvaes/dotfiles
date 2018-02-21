@@ -1,6 +1,8 @@
-color status green black
-color index color14  default "~F"
-color index color13  default "~O"
-color index color13  default "~N"
+color normal color253 default
+color status green    black
+color index  color253 default "~R"
+color index  color14  default "~F"
+color index  color13  default "~O"
+color index  color13  default "~N"
 
 # vim: ft=muttrc

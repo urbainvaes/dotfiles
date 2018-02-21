@@ -1,161 +1,39 @@
+" Command to open files
+filetype * xdg-open
+
+" Options
 set fastrun
-set fusehome=/tmp/vifm_FUSE
 set history=100
-set ignorecase
 set incsearch
-set nofollowlinks
-set nohlsearch
-set noiec
-set norunexec
-set novimhelp
-set relativenumber
-set scrolloff=4
-set smartcase
+set runexec
 set sortnumbers
-set timefmt=%m/%d\ %H:%M
-set trash
-set undolevels=100
+set scrolloff=2
+set smartcase
 set vicmd=$EDITOR
+set relativenumber
+set vimhelp
 set wildmenu
 
-set statusline="  %t%= %A %10u:%-7g %15s %20d  "
-command! df df -h %m 2> /dev/null
-command! diff vim -d %f %F
-command! zip zip -r %f.zip %f
-command! run !! ./%f
-command! make !!make %a
-command! mkcd :mkdir %a | cd %a
-command! vgrep vim "+grep %a"
-command! reload :write | restart
-command link ln -s -r %d/%f %D
-filextype *.pdf zathura %c %i &, apvlv %c, xpdf %c
-fileviewer *.pdf pdftotext -nopgbrk %c -
-filextype *.ps,*.eps,*.ps.gz
-        \ {View in zathura}
-        \ zathura %f,
-        \ {View in gv}
-        \ gv %c %i &,
-filextype *.djvu
-        \ {View in zathura}
-        \ zathura %f,
-        \ {View in apvlv}
-        \ apvlv %f,
-filetype *.wav,*.mp3,*.flac,*.ogg,*.m4a,*.wma,*.ape,*.ac3
-       \ mpv %f,
-       \ {Play using ffplay}
-       \ ffplay -nodisp %c,
-       \ {Play using MPlayer}
-       \ mplayer %f,
-       \ ffplay %c,
-fileviewer *.mp3 mp3info
-fileviewer *.flac soxi
-filextype *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.vob,*.flv,*.m2v,*.mov,*.webm,*.ts,*.m4v
-        \ {View using vlc}
-        \ vlc %c,
-        \ {View using ffplay}
-        \ ffplay -fs %c,
-        \ {View using Dragon}
-        \ dragon %f,
-        \ {View using mplayer}
-        \ mplayer %f,
-fileviewer *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.vob,*.flv,*.m2v,*.mov,*.webm,*.ts,*.m4v
-         \ ffprobe -pretty %c 2>&1
-filextype *.html,*.htm
-        \ {Open with uzbl}
-        \ qutebrowser %f %i &,
-        \ {Open with dwb}
-        \ dwb %f %i &,
-        \ {Open with firefox}
-        \ firefox %f &,
-filetype *.html,*.htm links, lynx
-filetype *.o nm %f | less
-filetype *.[1-8] man ./%c
-fileviewer *.[1-8] man ./%c | col -b
-filextype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
-        \ {View in feh}
-        \ feh %d --scale-down --start-at %d/%c 2>/dev/null &,
-        \ {View in sxiv}
-        \ sxiv,
-        \ {View in gpicview}
-        \ gpicview %c,
-        \ {View in shotwell}
-        \ shotwell,
-fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm convert -identify %f -verbose /dev/null
-filetype *.md5
-       \ {Check MD5 hash sum}
-       \ md5sum -c %f,
-filetype *.asc
-       \ {Check signature}
-       \ !!gpg --verify %c,
-filetype *.geo, *.msh, *.pos
-       \ {Open in gmsh}
-       \ gmsh %d,
-filetype *.exe wine %f
-filetype *.torrent ktorrent %f &
-fileviewer *.torrent dumptorrent -v %c
-filetype *.zip,*.jar,*.war,*.ear,*.oxt
-       \ {Mount with fuse-zip}
-       \ FUSE_MOUNT|fuse-zip %SOURCE_FILE %DESTINATION_DIR,
-       \ {View contents}
-       \ zip -sf %c | less,
-       \ {Extract here}
-       \ tar -xf %c,
-fileviewer *.zip,*.jar,*.war,*.ear,*.oxt zip -sf %c
-filetype *.tar,*.tar.bz2,*.tbz2,*.tgz,*.tar.gz,*.tar.xz,*.txz
-       \ {Mount with archivemount}
-       \ FUSE_MOUNT|archivemount %SOURCE_FILE %DESTINATION_DIR,
-fileviewer *.tgz,*.tar.gz tar -tzf %c
-fileviewer *.tar.bz2,*.tbz2 tar -tjf %c
-fileviewer *.tar.txz,*.txz xz --list %c
-filetype *.rar
-       \ {Mount with rar2fs}
-       \ FUSE_MOUNT|rar2fs %SOURCE_FILE %DESTINATION_DIR,
-fileviewer *.rar unrar v %c
-filetype *.iso
-       \ {Mount with fuseiso}
-       \ FUSE_MOUNT|fuseiso %SOURCE_FILE %DESTINATION_DIR,
-filetype *.ssh
-       \ {Mount with sshfs}
-       \ FUSE_MOUNT2|sshfs %PARAM %DESTINATION_DIR,
-filetype *.ftp
-       \ {Mount with curlftpfs}
-       \ FUSE_MOUNT2|curlftpfs -o ftp_port=-,,disable_eprt %PARAM %DESTINATION_DIR,
-filetype *.7z
-       \ {Mount with fuse-7z}
-       \ FUSE_MOUNT|fuse-7z %SOURCE_FILE %DESTINATION_DIR,
-fileviewer *.7z 7z l %c
-filextype *.odt,*.doc,*.docx,*.xls,*.xlsx,*.odp,*.pptx libreoffice %f &
-fileviewer *.doc catdoc %c
-fileviewer *.docx, docx2txt.pl %f -
-filetype *.tudu tudu -f %c
-filextype *.pro qtcreator %f &
-filextype */
-        \ {View in thunar}
-        \ Thunar %f &,
-set vifminfo=dhistory,savedirs,chistory,state,tui,shistory,
-    \phistory,fhistory,dirstack,registers,bookmarks,bmarks
-nnoremap s :shell<cr>
-nnoremap S :sort<cr>
-nnoremap w :view<cr>
-vnoremap w :view<cr>gv
-nnoremap o :!gvim --remote-tab-silent %f<cr>
-nnoremap O :!gvim %f<cr>
-nnoremap gb :file &<cr>l
-nnoremap yd :!echo %d | xclip %i<cr>
-nnoremap yf :!echo %c:p | xclip %i<cr>
-nnoremap I cw<c-a>
-nnoremap cc cw<c-u>
-nnoremap A cw
-nnoremap ,t :!xterm &<cr>
-nnoremap ,c :write | execute ':!vim $MYVIFMRC' | restart<cr>
-nnoremap ,C :!gvim --remote-tab-silent $MYVIFMRC &<cr>
-nnoremap ,w :set wrap!<cr>
-nnoremap <f3> :!less %f<cr>
-nnoremap <f4> :edit<cr>
-nnoremap <f5> :copy<cr>
-nnoremap <f6> :move<cr>
-nnoremap <f7> :mkdir<space>
-nnoremap <f8> :delete<cr>
+" Commands
+command! backup !cp -r %f %f.bak
 
-mark b ~/bin/
-mark h ~/
+" Mappings
+nnoremap s :shell<cr>
+nnoremap w :view<cr>
+nnoremap o :file<cr>
+nnoremap b :marks<cr>
+nnoremap gm :bmark<space>
+nnoremap gb :bmarks<cr>
+nnoremap r :run<cr>
+nnoremap ,b :backup<cr>
+nnoremap ,r :%rename<cr>
+nnoremap ,t :!urxvt &<cr>
+nnoremap ,l :!less %f<cr>
+
+" Colorscheme
+source /usr/share/vifm/colors/juef-zenburn.vifm
+
+" Only one pane
+only
+
+" vim: ft=vim

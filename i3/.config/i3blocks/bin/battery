@@ -7,22 +7,10 @@ fi
 
 output="$(acpi -b)"
 remaining_time=$(echo "$output" | grep -o "[0-9][0-9]:[0-9][0-9]")
-<<<<<<< HEAD
-
-if [ -d /sys/class/power_supply/BAT0 ]; then
-    now_charge=$(cat /sys/class/power_supply/BAT0/now_charge)
-    full_charge=$(cat /sys/class/power_supply/BAT0/full_charge)
-    charge=$(( (100*now_charge) / full_charge ))
-else
-    echo ""
-    exit
-fi
-=======
 now_charge=$(cat /sys/class/power_supply/BAT0/now_charge)
 full_charge=$(cat /sys/class/power_supply/BAT0/full_charge)
 charge=$(( (100*now_charge) / full_charge ))
 # charge=$(echo "$output" | grep -oP "..(?=%)")
->>>>>>> de29d3a... Add minor updates
 
 if grep -q "Discharging" <(echo "$output"); then
     remaining_time=$(echo "$output" | grep -oP "..:..(?=:.. remaining)")
