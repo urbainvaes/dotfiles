@@ -95,7 +95,6 @@ map gs <Plug>(easymotion-prefix)
 " Fuzzy finder
 nnoremap <c-p>a  :Ag
 nnoremap <c-p>b  :Buffers<cr>
-nnoremap <c-p>c  :Commands<cr>
 nnoremap <c-p>C  :Colors<cr>
 nnoremap <c-p>f  :Files<cr>
 nnoremap <c-p>g  :GitFiles<cr>
@@ -105,6 +104,11 @@ nnoremap <c-p>/  :History/<cr>
 nnoremap <c-p>l  :BLines<cr>
 nnoremap <c-p>m  :Marks<cr>
 nnoremap <c-p>t  :Tags<cr>
+nnoremap <c-p>a  :Ag
+
+nnoremap <a-b>  :Buffers<cr>
+nnoremap <a-f>  :Files<cr>
+nnoremap <a-g>  :GitFiles<cr>
 
 " LLDB
 nnoremap <c-d>n :LLsession new<cr>
