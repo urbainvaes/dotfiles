@@ -11,7 +11,6 @@ color sidebar_indicator color232  color178
 color sidebar_new       color2    default
 
 color index color248        default         "~R"
-color index color69         default         "~N"
 color index color140        default         "~U"
 color index color2          default         "~Q"
 color index color1          default         "~D"
