@@ -11,6 +11,7 @@ let maplocalleader = ","
 " }}}
 "" Plugins {{{
 call plug#begin('~/.vim/plugged')
+Plug 'arcticicestudio/nord-vim'
 
 Plug 'LnL7/vim-nix'
 Plug 'PotatoesMaster/i3-vim-syntax'
@@ -61,6 +62,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'vim-scripts/gmsh.vim'
+Plug 'vyzyv/vimpyter'
 Plug 'wellle/targets.vim'
 
 if has("nvim")
@@ -158,6 +160,13 @@ nnoremap gm :Neomake!<cr>
 if &runtimepath =~ 'neomake'
     call neomake#configure#automake('w')
 endif
+
+let g:neomake_gcc_args=[
+            \ '-Wall',
+            \ '-Wextra',
+            \ '-Wpedantic',
+            \ '-I.', '-I..', '-I../..'
+            \ ]
 " }}}
 "" Plugin configurations {{{
 
@@ -334,6 +343,8 @@ nnoremap <silent> ]b :BufSurfForward<cr>
 nnoremap <silent> [B :BufSurfBack<cr>:bd! #<cr>
 nnoremap <silent> ]B :BufSurfForward<cr>:bd! #<cr>
 
+" Alternate file
+nnoremap <bs> <c-^>
 " }}}
 "" Colorscheme {{{
 function! SaveColo(...)
@@ -353,6 +364,8 @@ function! MyColo(colorscheme)
         call SaveColo("dark","solarized","solarized")
     elseif a:colorscheme == "seoul"
         call SaveColo("dark","seoul256","deus")
+    elseif a:colorscheme == "nord"
+        call SaveColo("dark","nord","nord")
     endif
 endfunction
 if filereadable($HOME."/.local/colors.vim")
@@ -362,6 +375,7 @@ nnoremap ,c :call MyColo("")<Left><Left>
 nnoremap ,cl :call MyColo("solarized-light")<cr>
 nnoremap ,cd :call MyColo("solarized-dark")<cr>
 nnoremap ,cs :call MyColo("seoul")<cr>
+nnoremap ,cn :call MyColo("nord")<cr>
 " }}}
 "" Autocommands {{{
 augroup vimrc
