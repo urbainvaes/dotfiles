@@ -27,6 +27,7 @@
 command=/usr/lib/i3blocks/$BLOCK_NAME
 separator_block_width=15
 markup=pango
+signal=1
 
 [primary]
 label=<span color='gray'></span>
@@ -82,6 +83,6 @@ instance=/
 interval=60
 
 [time]
-label=<span color='gray'></span>
+label=<span color='gray'></span>
 command=date '+%Y-%m-%d %H:%M'
 interval=5

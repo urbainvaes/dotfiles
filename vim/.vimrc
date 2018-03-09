@@ -11,11 +11,11 @@ let maplocalleader = ","
 " }}}
 "" Plugins {{{
 call plug#begin('~/.vim/plugged')
-
 Plug 'LnL7/vim-nix'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter'
+Plug 'AndrewRadev/splitjoin.vim'
 Plug 'beloglazov/vim-online-thesaurus'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'critiqjo/lldb.nvim'
@@ -53,6 +53,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rsi'
+Plug 'tpope/vim-scriptease'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
@@ -333,6 +334,8 @@ nnoremap <silent> [b :BufSurfBack<cr>
 nnoremap <silent> ]b :BufSurfForward<cr>
 nnoremap <silent> [B :BufSurfBack<cr>:bd! #<cr>
 nnoremap <silent> ]B :BufSurfForward<cr>:bd! #<cr>
+
+nnoremap ,s :source %<cr>
 
 " }}}
 "" Colorscheme {{{
