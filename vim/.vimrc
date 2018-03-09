@@ -16,6 +16,7 @@ Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter'
 Plug 'AndrewRadev/splitjoin.vim'
+Plug 'arcticicestudio/nord-vim'
 Plug 'beloglazov/vim-online-thesaurus'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'critiqjo/lldb.nvim'
@@ -159,6 +160,13 @@ nnoremap gm :Neomake!<cr>
 if &runtimepath =~ 'neomake'
     call neomake#configure#automake('w')
 endif
+
+let g:neomake_gcc_args=[
+            \ '-Wall',
+            \ '-Wextra',
+            \ '-Wpedantic',
+            \ '-I.', '-I..', '-I../..'
+            \ ]
 " }}}
 "" Plugin configurations {{{
 
@@ -335,6 +343,10 @@ nnoremap <silent> ]b :BufSurfForward<cr>
 nnoremap <silent> [B :BufSurfBack<cr>:bd! #<cr>
 nnoremap <silent> ]B :BufSurfForward<cr>:bd! #<cr>
 
+" Alternate file
+nnoremap <bs> <c-^>
+
+" Source current file
 nnoremap ,s :source %<cr>
 
 " }}}
@@ -356,6 +368,8 @@ function! MyColo(colorscheme)
         call SaveColo("dark","solarized","solarized")
     elseif a:colorscheme == "seoul"
         call SaveColo("dark","seoul256","deus")
+    elseif a:colorscheme == "nord"
+        call SaveColo("dark","nord","nord")
     endif
 endfunction
 if filereadable($HOME."/.local/colors.vim")
@@ -365,6 +379,7 @@ nnoremap ,c :call MyColo("")<Left><Left>
 nnoremap ,cl :call MyColo("solarized-light")<cr>
 nnoremap ,cd :call MyColo("solarized-dark")<cr>
 nnoremap ,cs :call MyColo("seoul")<cr>
+nnoremap ,cn :call MyColo("nord")<cr>
 " }}}
 "" Autocommands {{{
 augroup vimrc
