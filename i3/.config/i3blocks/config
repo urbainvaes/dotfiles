@@ -82,7 +82,12 @@ command=/usr/lib/i3blocks/disk
 instance=/
 interval=60
 
-[time]
+[date]
 label=<span color='gray'></span>
-command=date '+%Y-%m-%d %H:%M'
-interval=5
+command=date '+%Y-%m-%d'
+interval=60
+
+[time]
+label=<span color='gray'></span>
+command=date '+%H:%M'
+interval=60
