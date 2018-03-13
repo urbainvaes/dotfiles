@@ -65,6 +65,7 @@ Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'vim-scripts/gmsh.vim'
 Plug 'wellle/targets.vim'
 
+Plug '~/Dropbox/projects/vim-remembrall/'
 if has("nvim")
     " Plug 'roxma/nvim-completion-manager'
     Plug 'Shougo/deoplete.nvim'
@@ -344,7 +345,7 @@ nnoremap <silent> [B :BufSurfBack<cr>:bd! #<cr>
 nnoremap <silent> ]B :BufSurfForward<cr>:bd! #<cr>
 
 " Alternate file
-nnoremap <bs> <c-^>
+nnoremap <bs> 
 
 " Source current file
 nnoremap ,s :source %<cr>
@@ -407,7 +408,7 @@ augroup vimrc
     autocmd FileType dirvish setlocal relativenumber
     autocmd FileType dirvish setlocal errorformat=%f
     autocmd FileType dirvish silent! unmap <buffer> <C-p>
-    autocmd FileType tex set spell
+    autocmd FileType tex setlocal spell
 augroup END
 
 " }}}
