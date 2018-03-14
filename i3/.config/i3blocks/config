@@ -74,13 +74,13 @@ interval=30
 label=<span color='gray'></span>
 command=/usr/lib/i3blocks/disk
 instance=/home/urbain
-interval=60
+interval=300
 
 [diskroot]
 label=<span color='gray'></span>
 command=/usr/lib/i3blocks/disk
 instance=/
-interval=60
+interval=300
 
 [date]
 label=<span color='gray'></span>

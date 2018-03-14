@@ -2,9 +2,9 @@
 
 if command -v checkupdates > /dev/null; then
     n_updates=$(checkupdates | wc -l)
-    if [[ n_updates -gt 50 ]]; then
+    if [[ n_updates -gt 150 ]]; then
         color='red'
-    elif [[ n_updates -gt 10 ]]; then
+    elif [[ n_updates -gt 50 ]]; then
         color='yellow'
     else
         color='gray'
