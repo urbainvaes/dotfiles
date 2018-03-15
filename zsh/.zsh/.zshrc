@@ -37,7 +37,11 @@ fi
 
 # }}}
 ## Overwrite default options {{{
+if [[ -n $SSH_CLIENT  ]]; then
+PROMPT='%F{red}[%M]%f %0~ $ '
+else
 PROMPT='%0~ $ '
+fi
 
 # Options
 unsetopt histverify
