@@ -118,7 +118,16 @@ for_window [class="^.*"] border pixel 2
 
 bar {
     status_command i3blocks
+    i3bar_command  i3bar -t
     modifier none
+    colors {
+        background #00000088
+        inactive_workspace #0000AA #00000088 #FFFFFF
+        focused_workspace  #4c7899 #28557788 #ffffff
+        active_workspace   #333333 #5f676a88 #ffffff
+        inactive_workspace #333333 #22222288 #888888
+        urgent_workspace   #2f343a #90000088 #ffffff
+    }
 }
 
 bindsym $mod+m bar mode toggle
@@ -171,5 +180,7 @@ bindsym $mod+o         exec --no-startup-id $HOME/bin/references
 smart_gaps on
 gaps inner 5
 gaps outer 5
+
+exec compton
 
 # vim:filetype=i3

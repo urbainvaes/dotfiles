@@ -203,6 +203,9 @@ let g:localvimrc_whitelist='/home/*'
 " NerdTree
 let g:NERDTreeHijackNetrw = 0
 
+" Remembrall
+let g:remembrall_window = 'enew'
+
 " Ultisnips
 let g:UltiSnipsEditSplit="horizontal"
 let g:UltiSnipsExpandTrigger="<tab>"
