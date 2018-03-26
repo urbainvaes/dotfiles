@@ -28,6 +28,7 @@ Plug 'inkarkat/vim-ingo-library'
 Plug 'jamessan/vim-gnupg'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/goyo.vim'
 Plug 'junegunn/gv.vim'
 Plug 'junegunn/heytmux'
 Plug 'junegunn/vim-easy-align'
@@ -153,6 +154,10 @@ nmap gl <Plug>(LiveEasyAlign)
 " Online thesaurus
 nnoremap cpd :OnlineThesaurusCurrentWord<cr>
 
+" Plug
+nnoremap ,pi :PlugInstall<cr>
+nnoremap ,pu :PlugUpdate<cr>
+
 " Ultisnips
 nnoremap cps :UltiSnipsEdit<cr>
 
@@ -275,6 +280,7 @@ set foldmethod=marker
 set hidden
 set ignorecase
 set lazyredraw
+set mouse=a
 set nojoinspaces
 set nowrap
 set path=$PWD/**

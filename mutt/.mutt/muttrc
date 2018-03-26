@@ -9,7 +9,7 @@ set tmpdir           = ~/.mutt/temp
 
 # Source crypto, aliases, mailboxes
 source ~/.mutt/colors/base.muttrc
-source ~/.mutt/colors/$COLORSCHEME.muttrc
+source `FILE=$HOME/.mutt/colors/$COLORSCHEME.muttrc; if [ ! -s "$FILE" ]; then FILE=$HOME/.mutt/colors/nord.muttrc; fi; echo "$FILE"`
 source ~/.mutt/crypto
 source ~/.mutt/alias
 source ~/.mutt/mailboxes
