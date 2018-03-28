@@ -209,7 +209,7 @@ let g:localvimrc_whitelist='/home/*'
 let g:NERDTreeHijackNetrw = 0
 
 " Remembrall
-let g:remembrall_window = 'enew'
+nnoremap <silent> ,, :call remembrall#remind('n', '')<cr>
 
 " Ultisnips
 let g:UltiSnipsEditSplit="horizontal"
@@ -355,6 +355,7 @@ nnoremap <silent> ]B :BufSurfForward<cr>:bd! #<cr>
 
 " Alternate file
 nnoremap <bs> 
+nnoremap <tab> 
 
 " Source current file
 nnoremap ,s :source %<cr>
