@@ -359,6 +359,9 @@ nnoremap <bs> 
 " Source current file
 nnoremap ,s :source %<cr>
 
+" Shebang
+inoreabbrev <expr> #!! "#!/usr/bin/env" . (empty(&filetype) ? '' : ' '.&filetype)
+
 " }}}
 "" Colorscheme {{{
 function! SaveColo(...)
