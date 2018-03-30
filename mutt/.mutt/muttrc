@@ -21,10 +21,10 @@ set from = "Urbain Vaes"
 set reverse_alias
 set sort = reverse-date
 set weed
+set abort_nosubject=no
 unset markers
 set sleep_time = 0
 set wait_key = no
-my_hdr Jabber-ID: urbain@vaes.uk
 
 # Encryption
 set crypt_autosign = no
@@ -62,6 +62,7 @@ alternative_order text/plain text/enriched text/html
 # Editor
 set editor="nvim"
 set include=yes
+
 
 # Macros
 macro index,pager gp "<change-folder> +Personal/Personal<enter>"

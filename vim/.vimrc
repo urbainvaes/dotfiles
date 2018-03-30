@@ -327,6 +327,7 @@ nnoremap ,t0 :tabmove 0<cr>
 nnoremap ,t$ :tabmove<cr>
 
 nnoremap <Leader>c :!rm ~/.vim/swap/\%*<cr>
+nnoremap <Leader>r :!%:p<cr>
 
 nnoremap cqo :copen<cr>
 nnoremap cqc :cclose<cr>
@@ -487,6 +488,7 @@ if has("nvim")
     tnoremap <c-x> <c-\><c-n><c-^>:bd! #<cr>
     nnoremap <c-_> :b # \| norm A<cr>
     tnoremap <c-_> <c-\><c-n><c-^>
+    nnoremap <Leader>t :b term \| norm A<cr>
 
     tnoremap <A-h> <C-\><C-N><C-w>h
     tnoremap <A-j> <C-\><C-N><C-w>j
