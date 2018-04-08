@@ -56,6 +56,7 @@ c.url.searchengines = {
     'dic': 'https://dictionary.cambridge.org/dictionary/english/{}',
     'google': 'https://www.google.com/search?hl=en&q={}',
     'hn': 'https://hn.algolia.com/?query={}',
+    'lit': 'https://www.littre.org/definition/{}',
     'scholar': 'https://scholar.google.com/scholar?q={}',
     'tr': 'https://translate.google.com/#en/fr/{}',
     'yt': 'https://www.youtube.com/results?search_query={}',

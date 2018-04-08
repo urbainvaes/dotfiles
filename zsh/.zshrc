@@ -1,52 +1,7 @@
-## zgen {{{
-
-[ ! -d ~/.zsh/zgen ] && git clone https://github.com/tarjoilija/zgen.git ~/.zsh/zgen
-source "$HOME/.zsh/zgen/zgen.zsh"
-
-# Load plugins
-if ! zgen saved; then
-
-    echo "Creating a zgen save"
-
-    # Load oh-my-zsh framework
-    zgen oh-my-zsh
-
-    # Oh-my-zsh plugins
-    zgen oh-my-zsh plugins/git
-
-    # Navigation plugins
-    zgen load urbainvaes/fzf-marks
-    # zgen load wfxr/fzf-marks
-
-    # Other plugins
-    zgen load rupa/z
-
-    # zsh-users plugins
-    zgen load zsh-users/zsh-completions src
-    zgen load zsh-users/zsh-syntax-highlighting
-    zgen load zsh-users/zsh-autosuggestions
-
-    # Save all to init script
-    zgen save
-fi
-
-# Autosuggestion
-{
-    ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=6'
-}
-
+## startx automatically {{{
+[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
 # }}}
-## Overwrite default options {{{
-if [[ -n $SSH_CLIENT  ]]; then
-PROMPT='%F{red}[%M]%f %0~ $ '
-else
-PROMPT='%0~ $ '
-fi
-
-# Options
-unsetopt histverify
-# }}}
-## My bindings {{{
+## Bindings {{{
 bindkey -v
 bindkey -a 'k' history-beginning-search-backward
 bindkey -a 'j' history-beginning-search-forward
@@ -57,14 +12,54 @@ bindkey '^a' beginning-of-line
 bindkey '^b' backward-char
 bindkey '^e' end-of-line
 bindkey '^f' forward-char
-bindkey '^g' jump
 bindkey '^h' backward-delete-char
 bindkey '^k' kill-line
 bindkey '^u' kill-whole-line
 bindkey '^v' visual-mode
 bindkey '^w' backward-kill-word
+# }}}
+## Options and modules {{{
+
+# History
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=1000000
+SAVEHIST=$HISTSIZE
+
+setopt append_history
+setopt extended_history
+setopt hist_ignore_space
+setopt inc_append_history
+setopt share_history
+
+# Completion
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|=*' 'l:|=* r:|=*'
+
+# Prompt
+if [[ -n $SSH_CLIENT  ]]; then
+PROMPT='%F{red}[%M]%f %0~ $ '
+else
+PROMPT='%0~ $ '
+fi
+# }}}
+## Plugins {{{
+[ ! -d ~/.zsh/zgen ] && git clone https://github.com/tarjoilija/zgen.git ~/.zsh/zgen
+source "$HOME/.zsh/zgen/zgen.zsh"
+
+if ! zgen saved; then
+    echo "Creating a zgen save"
+    zgen load rupa/z
+    zgen load urbainvaes/fzf-marks
+    zgen load zsh-users/zsh-completions src
+    zgen load zsh-users/zsh-syntax-highlighting
+    zgen load zsh-users/zsh-autosuggestions
+    zgen save
+fi
+
 bindkey '^y' autosuggest-accept
 bindkey '^z' z
+
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=6'
+
 # }}}
 ## fzf {{{
 
@@ -128,29 +123,39 @@ function show256 {
 # }}}
 ## Aliases {{{
 
-# Commands
+# Directories
 alias cdd='cd ~/dotfiles'
 
-# Programs
-alias a='vifm . .'
-alias ff='FreeFem++'
-alias m='cd ~/.mutt/attachments && mutt && cd -'
-alias e='nvim'
-alias mux='tmuxinator'
+# Vim
 alias n='nvim'
 alias ns='nvim -S Session.vim'
 alias v='vim'
 alias vs="vim -S Session.vim"
-alias email="mbsync -a"
 
 # Git
 alias g='git'
+alias ga='git add'
+alias gc='git commit'
+alias gd='git diff'
+alias gl='git pull'
+alias gp='git push'
+alias gr='git remote'
+alias gra='git remote add'
+alias gst='git status'
 alias rd='cd $(git rev-parse --show-toplevel)'
 
 # GNU Make
 alias mi='make install'
 alias mc='make clean'
 alias mca='make clean-all'
+
+# Misc
+alias a='vifm . .'
+alias ff='FreeFem++'
+alias m='cd ~/.mutt/attachments && mutt && cd -'
+alias e='nvim'
+alias mux='tmuxinator'
+alias email="mbsync -a"
 
 # Applications
 alias -s pdf='xdg-open'
