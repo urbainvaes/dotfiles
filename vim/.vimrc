@@ -17,6 +17,7 @@ Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'arcticicestudio/nord-vim'
+Plug 'autozimu/LanguageClient-neovim'
 Plug 'beloglazov/vim-online-thesaurus'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'critiqjo/lldb.nvim'
@@ -66,6 +67,7 @@ Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'vim-scripts/gmsh.vim'
 Plug 'wellle/targets.vim'
 
+" Plug 'urbainvaes/vim-remembrall'
 Plug '~/Dropbox/projects/vim-remembrall/'
 if has("nvim")
     " Plug 'roxma/nvim-completion-manager'
@@ -210,6 +212,13 @@ let g:NERDTreeHijackNetrw = 0
 
 " Remembrall
 nnoremap <silent> ,, :call remembrall#remind('n', '')<cr>
+nnoremap <silent> y :<c-u>call remembrall#remind('n', 'y')<cr>
+let g:remembrall_suffixes=['', '?']
+let g:remembrall_window='botright 10new'
+
+augroup remembrall
+    autocmd FileType tex nnoremap <buffer> <nowait> <expr> ,l Remembrall('n', ',l')
+augroup END
 
 " Ultisnips
 let g:UltiSnipsEditSplit="horizontal"
@@ -400,7 +409,6 @@ nnoremap ,cn :call MyColo("nord")<cr>
 augroup vimrc
     autocmd!
     autocmd BufWritePost *vimrc,*exrc :call feedkeys(":source %\<cr>")
-    " autocmd BufWritePost *vimrc,*exrc :source %
     autocmd BufNewFile,Bufread /tmp/mutt-* setlocal tw=72
     autocmd BufWritePre *
         \ if !isdirectory(expand('<afile>:p:h')) |

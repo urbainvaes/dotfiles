@@ -7,3 +7,5 @@ fi
 
 # FZF
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+source ~/.zgen/urbainvaes/fzf-marks-master/fzf-marks.plugin.bash

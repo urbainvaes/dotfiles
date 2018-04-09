@@ -44,6 +44,6 @@ fi
 
 time_remaining=$(printf "%02d:%02d" \
     $(( tot_minutes_remaining/60 )) \
-    $(( tot_minutes_remaining/60 )))
+    $(( tot_minutes_remaining - (tot_minutes_remaining/60)*60 )))
 
 echo "<span color='$color'>$icon</span> $charge_percent% ($time_remaining)"
