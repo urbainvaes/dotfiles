@@ -19,7 +19,6 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'arcticicestudio/nord-vim'
 Plug 'autozimu/LanguageClient-neovim'
 Plug 'beloglazov/vim-online-thesaurus'
-Plug 'christoomey/vim-tmux-navigator'
 Plug 'critiqjo/lldb.nvim'
 Plug 'easymotion/vim-easymotion'
 Plug 'holomorph/vim-freefem'
@@ -60,15 +59,14 @@ Plug 'tpope/vim-scriptease'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'troydm/zoomwintab.vim'
+Plug 'urbainvaes/vim-remembrall'
+Plug 'urbainvaes/vim-wintab'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'vim-scripts/gmsh.vim'
 Plug 'wellle/targets.vim'
 
-" Plug 'urbainvaes/vim-remembrall'
-Plug '~/Dropbox/projects/vim-remembrall/'
 if has("nvim")
     " Plug 'roxma/nvim-completion-manager'
     Plug 'Shougo/deoplete.nvim'
@@ -164,7 +162,8 @@ nnoremap ,pu :PlugUpdate<cr>
 nnoremap cps :UltiSnipsEdit<cr>
 
 " Neomake
-nnoremap gm :Neomake!<cr>
+nnoremap gm :Make<cr>
+nnoremap gM :Neomake!<cr>
 if &runtimepath =~ 'neomake'
     call neomake#configure#automake('w')
 endif
@@ -231,7 +230,7 @@ let g:UltiSnipsSnippetsDir="~/.vim/mySnippets"
 " let g:UltiSnipsUsePythonVersion=3
 
 " Vimtex
-let g:vimtex_fold_enabled=0
+let g:vimtex_fold_enabled=1
 let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=2
 let g:vimtex_compiler_progname='nvr'
@@ -336,7 +335,8 @@ nnoremap ,t0 :tabmove 0<cr>
 nnoremap ,t$ :tabmove<cr>
 
 nnoremap <Leader>c :!rm ~/.vim/swap/\%*<cr>
-nnoremap <Leader>r :!%:p<cr>
+nnoremap <Leader>r :Start %:p<cr>
+nnoremap <Leader>R :Start! %:p<cr>
 
 nnoremap cqo :copen<cr>
 nnoremap cqc :cclose<cr>
@@ -372,6 +372,9 @@ nnoremap ,s :source %<cr>
 
 " Shebang
 inoreabbrev <expr> #!! "#!/usr/bin/env" . (empty(&filetype) ? '' : ' '.&filetype)
+
+" Spell
+inoremap <c-s> <esc>1z=eA
 
 " }}}
 "" Colorscheme {{{
@@ -421,15 +424,16 @@ augroup vimrc
     autocmd BufNewFile,BufRead *.plt set filetype=gnuplot
 
     " Filetype specific
-    autocmd FileType gmsh setlocal makeprg=gmsh\ %
-    autocmd FileType gnuplot setlocal makeprg=gnuplot\ %
-    autocmd FileType gnuplot setlocal commentstring=#%s
-    autocmd FileType cpp setlocal commentstring=//%s
     autocmd FileType cmake setlocal commentstring=#%s
-    autocmd FileType freefem comp freefem
-    autocmd FileType dirvish setlocal relativenumber
+    autocmd FileType cpp setlocal commentstring=//%s
     autocmd FileType dirvish setlocal errorformat=%f
+    autocmd FileType dirvish setlocal relativenumber
     autocmd FileType dirvish silent! unmap <buffer> <C-p>
+    autocmd FileType freefem comp freefem
+    autocmd FileType gmsh setlocal makeprg=gmsh\ %
+    autocmd FileType gnuplot setlocal commentstring=#%s
+    autocmd FileType gnuplot setlocal makeprg=gnuplot\ %
+    autocmd FileType python setlocal makeprg=python\ %
     autocmd FileType tex setlocal spell
 augroup END
 
@@ -511,4 +515,19 @@ if has("nvim")
     nnoremap <A-k> <C-w>k
     nnoremap <A-l> <C-w>l
 endif
+" }}}
+"" Zoom / Restore window {{{
+function! s:ZoomToggle() abort
+    if exists('t:zoomed') && t:zoomed
+        execute t:zoom_winrestcmd
+        let t:zoomed = 0
+    else
+        let t:zoom_winrestcmd = winrestcmd()
+        resize
+        vertical resize
+        let t:zoomed = 1
+    endif
+endfunction
+command! ZoomToggle call s:ZoomToggle()
+nnoremap <silent> <c-w>o :ZoomToggle<CR>
 " }}}
