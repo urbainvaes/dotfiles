@@ -46,6 +46,7 @@ Plug 'sjl/Gundo.vim', { 'on' : 'GundoToggle' }
 Plug 'terryma/vim-expand-region'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tommcdo/vim-exchange'
+Plug 'tommcdo/vim-ninja-feet'
 Plug 'ton/vim-bufsurf'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'

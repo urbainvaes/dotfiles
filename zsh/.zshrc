@@ -6,8 +6,8 @@ bindkey -v
 bindkey -a 'k' history-beginning-search-backward
 bindkey -a 'j' history-beginning-search-forward
 bindkey '^?' backward-delete-char # backspace
-bindkey '^N' history-beginning-search-forward
-bindkey '^P' history-beginning-search-backward
+bindkey '^n' history-beginning-search-forward
+bindkey '^p' history-beginning-search-backward
 bindkey '^a' beginning-of-line
 bindkey '^b' backward-char
 bindkey '^e' end-of-line
