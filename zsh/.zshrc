@@ -20,6 +20,8 @@ bindkey '^w' backward-kill-word
 # }}}
 ## Options and modules {{{
 
+KEYTIMEOUT=1
+
 # History
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=1000000
@@ -44,6 +46,10 @@ fi
 ## Plugins {{{
 [ ! -d ~/.zsh/zgen ] && git clone https://github.com/tarjoilija/zgen.git ~/.zsh/zgen
 source "$HOME/.zsh/zgen/zgen.zsh"
+
+# export WINTAB_MODE="winonly"
+export WINTAB_ROOT=$HOME/Dropbox/projects/vim-wintab
+source $WINTAB_ROOT/wintab.plugin.zsh
 
 if ! zgen saved; then
     echo "Creating a zgen save"

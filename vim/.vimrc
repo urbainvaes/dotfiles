@@ -70,7 +70,7 @@ Plug 'wellle/targets.vim'
 
 if has("nvim")
     " Plug 'roxma/nvim-completion-manager'
-    Plug 'Shougo/deoplete.nvim'
+    Plug 'Shougo/deoplete.nvim', { 'do' : ':UpdateRemotePlugins' }
     Plug 'zchee/deoplete-jedi'
     Plug 'hkupty/iron.nvim'
 else
