@@ -59,8 +59,10 @@ Plug 'tpope/vim-scriptease'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+Plug 'troydm/zoomwintab.vim'
 Plug 'urbainvaes/vim-remembrall'
-Plug 'urbainvaes/vim-wintab'
+" Plug 'urbainvaes/vim-wintab'
+Plug '~/Dropbox/projects/vim-wintab'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/ReplaceWithRegister'
@@ -515,19 +517,4 @@ if has("nvim")
     nnoremap <A-k> <C-w>k
     nnoremap <A-l> <C-w>l
 endif
-" }}}
-"" Zoom / Restore window {{{
-function! s:ZoomToggle() abort
-    if exists('t:zoomed') && t:zoomed
-        execute t:zoom_winrestcmd
-        let t:zoomed = 0
-    else
-        let t:zoom_winrestcmd = winrestcmd()
-        resize
-        vertical resize
-        let t:zoomed = 1
-    endif
-endfunction
-command! ZoomToggle call s:ZoomToggle()
-nnoremap <silent> <c-w>o :ZoomToggle<CR>
 " }}}
