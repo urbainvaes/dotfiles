@@ -31,13 +31,13 @@ signal=1
 
 [primary]
 label=<span color='gray'></span>
-command=echo "$(xclip -o | cut -c1-9)"
+command=echo "$(xclip -o | cut -c1-9 | sed -e 's/[^a-zA-Z0-9\-]/_/g')"
 min_width=15
 interval=5
 
 [clipboard]
 label=<span color='gray'></span>
-command=echo "$(xclip -o -selection "clipboard" | cut -c1-9)"
+command=echo "$(xclip -o -selection "clipboard" | cut -c1-9 | sed -e 's/[^a-zA-Z0-9\-]/_/g')"
 instance=Master
 interval=5
 

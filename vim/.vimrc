@@ -63,11 +63,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'troydm/zoomwintab.vim'
 Plug 'urbainvaes/vim-remembrall'
 " Plug 'urbainvaes/vim-wintab'
-
 Plug '~/Dropbox/projects/vim-wintab'
-let g:wintab_mode = 'wintab'
-let g:wintab_boundary = 'create'
-
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/ReplaceWithRegister'
@@ -242,6 +238,9 @@ let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=2
 let g:vimtex_compiler_progname='nvr'
 
+let g:wintab_boundary='create'
+let g:wintab_mode='wintab'
+
 " YouCompleteMe
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
@@ -330,6 +329,7 @@ nmap [w <Plug>AddWhiteSpaceBefore
 nnoremap <Leader>w :update<cr>
 nnoremap <Leader>q :q<cr>
 nnoremap <Leader>d :bd!<cr>
+nnoremap <nowait> <c-d> :q<cr>
 
 nnoremap ,bd :ls<cr>:bd<space>
 
@@ -435,15 +435,18 @@ augroup vimrc
     " Filetype specific
     autocmd FileType cmake setlocal commentstring=#%s
     autocmd FileType cpp setlocal commentstring=//%s
-    autocmd FileType dirvish setlocal errorformat=%f
-    autocmd FileType dirvish setlocal relativenumber
-    autocmd FileType dirvish silent! unmap <buffer> <C-p>
     autocmd FileType freefem comp freefem
     autocmd FileType gmsh setlocal makeprg=gmsh\ %
     autocmd FileType gnuplot setlocal commentstring=#%s
     autocmd FileType gnuplot setlocal makeprg=gnuplot\ %
     autocmd FileType python setlocal makeprg=python\ %
     autocmd FileType tex setlocal spell
+
+    " Dirvish
+    autocmd FileType dirvish nnoremap <buffer> t :!touch %
+    autocmd FileType dirvish setlocal errorformat=%f
+    autocmd FileType dirvish setlocal relativenumber
+    autocmd FileType dirvish silent! unmap <buffer> <C-p>
 augroup END
 
 " }}}
