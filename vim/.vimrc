@@ -61,6 +61,7 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'troydm/zoomwintab.vim'
+let g:zoomwintab_hidetabbar=0
 Plug 'urbainvaes/vim-remembrall'
 " Plug 'urbainvaes/vim-wintab'
 Plug '~/Dropbox/projects/vim-wintab'
