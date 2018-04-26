@@ -41,7 +41,6 @@ config.bind("<Ctrl-N>", 'fake-key <Down>', mode='insert')
 config.bind("<Ctrl-P>", 'fake-key <Up>', mode='insert')
 config.bind("<Ctrl-I>", 'open-editor', mode='insert')
 config.bind("<Ctrl-X>", 'spawn --userscript user-password', mode='insert')
-config.unbind("<Shift-Ins>", mode="insert") # Fix bug with shift-insert
 
 # Bindings for command mode
 config.bind('<Ctrl-W>', 'fake-key -g <Ctrl-Backspace>', mode='command')

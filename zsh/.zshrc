@@ -6,8 +6,8 @@ bindkey -v
 bindkey -a 'k' history-beginning-search-backward
 bindkey -a 'j' history-beginning-search-forward
 bindkey '^?' backward-delete-char # backspace
-bindkey '^N' history-beginning-search-forward
-bindkey '^P' history-beginning-search-backward
+bindkey '^n' history-beginning-search-forward
+bindkey '^p' history-beginning-search-backward
 bindkey '^a' beginning-of-line
 bindkey '^b' backward-char
 bindkey '^e' end-of-line
@@ -19,6 +19,8 @@ bindkey '^v' visual-mode
 bindkey '^w' backward-kill-word
 # }}}
 ## Options and modules {{{
+
+KEYTIMEOUT=1
 
 # History
 HISTFILE=$HOME/.zsh_history
@@ -44,6 +46,10 @@ fi
 ## Plugins {{{
 [ ! -d ~/.zsh/zgen ] && git clone https://github.com/tarjoilija/zgen.git ~/.zsh/zgen
 source "$HOME/.zsh/zgen/zgen.zsh"
+
+if [ "$TMUX" != "" ]; then
+    source $WINTAB_ROOT/wintab.plugin.zsh
+fi
 
 if ! zgen saved; then
     echo "Creating a zgen save"

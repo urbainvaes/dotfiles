@@ -46,6 +46,7 @@ Plug 'sjl/Gundo.vim', { 'on' : 'GundoToggle' }
 Plug 'terryma/vim-expand-region'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tommcdo/vim-exchange'
+Plug 'tommcdo/vim-ninja-feet'
 Plug 'ton/vim-bufsurf'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
@@ -62,7 +63,11 @@ Plug 'tpope/vim-unimpaired'
 Plug 'troydm/zoomwintab.vim'
 Plug 'urbainvaes/vim-remembrall'
 " Plug 'urbainvaes/vim-wintab'
+
 Plug '~/Dropbox/projects/vim-wintab'
+let g:wintab_mode = 'wintab'
+let g:wintab_boundary = 'create'
+
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/ReplaceWithRegister'
@@ -71,7 +76,7 @@ Plug 'wellle/targets.vim'
 
 if has("nvim")
     " Plug 'roxma/nvim-completion-manager'
-    Plug 'Shougo/deoplete.nvim'
+    Plug 'Shougo/deoplete.nvim', { 'do' : ':UpdateRemotePlugins' }
     Plug 'zchee/deoplete-jedi'
     Plug 'hkupty/iron.nvim'
 else
@@ -377,6 +382,8 @@ inoreabbrev <expr> #!! "#!/usr/bin/env" . (empty(&filetype) ? '' : ' '.&filetype
 
 " Spell
 inoremap <c-s> <esc>1z=eA
+
+nmap co =o
 
 " }}}
 "" Colorscheme {{{
