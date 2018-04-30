@@ -366,10 +366,10 @@ cnoremap <up> <c-p>
 cnoremap <down> <c-n>
 
 " Overwrite unimpaired mappings
-nnoremap <silent> [b :BufSurfBack<cr>
-nnoremap <silent> ]b :BufSurfForward<cr>
-nnoremap <silent> [B :BufSurfBack<cr>:bd! #<cr>
-nnoremap <silent> ]B :BufSurfForward<cr>:bd! #<cr>
+nnoremap <silent> <b :BufSurfBack<cr>
+nnoremap <silent> >b :BufSurfForward<cr>
+nnoremap <silent> <B :BufSurfBack<cr>:bd! #<cr>
+nnoremap <silent> >B :BufSurfForward<cr>:bd! #<cr>
 
 " Alternate file
 nnoremap <bs> 
