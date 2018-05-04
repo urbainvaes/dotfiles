@@ -62,14 +62,14 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'troydm/zoomwintab.vim'
 let g:zoomwintab_hidetabbar=0
-Plug 'urbainvaes/vim-remembrall'
-" Plug 'urbainvaes/vim-wintab'
-Plug '~/Dropbox/projects/vim-wintab'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'vim-scripts/gmsh.vim'
 Plug 'wellle/targets.vim'
+
+Plug '~/Dropbox/projects/vim-remembrall'
+Plug '~/Dropbox/projects/vim-wintab'
 
 if has("nvim")
     " Plug 'roxma/nvim-completion-manager'

@@ -36,6 +36,10 @@ setopt share_history
 # Completion
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|=*' 'l:|=* r:|=*'
 
+# Kill word
+autoload -U select-word-style
+select-word-style bash
+
 # Prompt
 if [[ -n $SSH_CLIENT  ]]; then
 PROMPT='%F{red}[%M]%f %0~ $ '
