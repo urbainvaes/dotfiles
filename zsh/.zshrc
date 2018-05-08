@@ -51,10 +51,6 @@ fi
 [ ! -d ~/.zsh/zgen ] && git clone https://github.com/tarjoilija/zgen.git ~/.zsh/zgen
 source "$HOME/.zsh/zgen/zgen.zsh"
 
-if [ "$TMUX" != "" ]; then
-    source $WINTAB_ROOT/wintab.plugin.zsh
-fi
-
 if ! zgen saved; then
     echo "Creating a zgen save"
     zgen load rupa/z

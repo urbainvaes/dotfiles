@@ -17,7 +17,6 @@ Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'arcticicestudio/nord-vim'
-Plug 'autozimu/LanguageClient-neovim'
 Plug 'beloglazov/vim-online-thesaurus'
 Plug 'critiqjo/lldb.nvim'
 Plug 'easymotion/vim-easymotion'
@@ -33,7 +32,7 @@ Plug 'junegunn/gv.vim'
 Plug 'junegunn/heytmux'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-peekaboo'
-Plug 'junegunn/vim-slash'
+" Plug 'junegunn/vim-slash'
 Plug 'justinmk/vim-dirvish'
 Plug 'justinmk/vim-sneak'
 Plug 'kshenoy/vim-signature'
@@ -70,10 +69,12 @@ Plug 'wellle/targets.vim'
 
 Plug '~/Dropbox/projects/vim-remembrall'
 Plug '~/Dropbox/projects/vim-wintab'
+" Plug 'urbainvaes/vim-tmux-pilot'
 
 if has("nvim")
     " Plug 'roxma/nvim-completion-manager'
     Plug 'Shougo/deoplete.nvim', { 'do' : ':UpdateRemotePlugins' }
+    Plug 'autozimu/LanguageClient-neovim'
     Plug 'zchee/deoplete-jedi'
     Plug 'hkupty/iron.nvim'
 else
@@ -198,7 +199,10 @@ let g:deoplete#sources#jedi#show_docstring = 1
 if !exists('g:deoplete#omni#input_patterns')
     let g:deoplete#omni#input_patterns = {}
 endif
-let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
+
+if &runtimepath =~ 'vimtex'
+    let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
+endif
 
 " FZF.vim
 let g:fzf_buffers_jump = 1
@@ -239,8 +243,8 @@ let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=2
 let g:vimtex_compiler_progname='nvr'
 
-let g:wintab_boundary='create'
-let g:wintab_mode='wintab'
+let g:pilot_boundary='create'
+let g:pilot_mode='wintab'
 
 " YouCompleteMe
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
