@@ -32,7 +32,7 @@ Plug 'junegunn/gv.vim'
 Plug 'junegunn/heytmux'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-peekaboo'
-" Plug 'junegunn/vim-slash'
+Plug 'junegunn/vim-slash'
 Plug 'justinmk/vim-dirvish'
 Plug 'justinmk/vim-sneak'
 Plug 'kshenoy/vim-signature'
@@ -220,7 +220,6 @@ let g:NERDTreeHijackNetrw = 0
 " Remembrall
 nnoremap <silent> ,, :call remembrall#remind('n', '')<cr>
 nnoremap <silent> y :<c-u>call remembrall#remind('n', 'y')<cr>
-let g:remembrall_suffixes=['', '?']
 let g:remembrall_window='botright 10new'
 
 augroup remembrall
@@ -387,8 +386,6 @@ inoreabbrev <expr> #!! "#!/usr/bin/env" . (empty(&filetype) ? '' : ' '.&filetype
 
 " Spell
 inoremap <c-s> <esc>1z=eA
-
-nmap co =o
 
 " }}}
 "" Colorscheme {{{
