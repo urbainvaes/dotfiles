@@ -32,7 +32,7 @@ Plug 'junegunn/gv.vim'
 Plug 'junegunn/heytmux'
 Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-peekaboo'
-" Plug 'junegunn/vim-slash'
+Plug 'junegunn/vim-slash'
 Plug 'justinmk/vim-dirvish'
 Plug 'justinmk/vim-sneak'
 Plug 'kshenoy/vim-signature'
@@ -66,6 +66,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'vim-scripts/gmsh.vim'
 Plug 'wellle/targets.vim'
+" Plug 'zchee/deoplete-clang'
 
 Plug '~/Dropbox/projects/vim-remembrall'
 Plug '~/Dropbox/projects/vim-wintab'
@@ -302,7 +303,7 @@ set lazyredraw
 set mouse=a
 set nojoinspaces
 set nowrap
-set path=$PWD/**
+set path+=$PWD/**
 set shiftwidth=4
 set showcmd
 set splitright
