@@ -30,6 +30,9 @@ nnoremap ,r :%rename<cr>
 nnoremap ,t :!urxvt &<cr>
 nnoremap ,l :!less %f<cr>
 
+" To disable automatic tagging of search results
+nnoremap coh :set hlsearch!<cr>
+
 " Colorscheme
 source /usr/share/vifm/colors/juef-zenburn.vifm
 
