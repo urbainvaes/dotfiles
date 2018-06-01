@@ -6,15 +6,25 @@ export LC_ALL=en_US.utf8
 
 # Paths
 export PATH="$HOME/.guix-profile/bin:$HOME/.guix-profile/sbin${PATH:+:}$PATH"
-export CPATH="/home/urbain/.guix-profile/include${CPATH:+:}$CPATH"
-export LIBRARY_PATH="/home/urbain/.guix-profile/lib${LIBRARY_PATH:+:}$LIBRARY_PATH"
+# export CPATH="/home/urbain/.guix-profile/include${CPATH:+:}$CPATH"
+# export LIBRARY_PATH="/home/urbain/.guix-profile/lib${LIBRARY_PATH:+:}$LIBRARY_PATH"
 
 # Custom packages
 export GUIX_PACKAGE_PATH=$HOME/Dropbox/projects/guix-packages
 
-## Guile
+# Guile
 export GUILE_LOAD_PATH=$HOME/.guix-profile/share/guile/site/2.2:$GUILE_LOAD_PATH
 export GUILE_LOAD_COMPILED_PATH=$HOME/.guix-profile/lib/guile/2.2/site-ccache:$GUILE_LOAD_COMPILED_PATH
 export GUILE_WARN_DEPRECATED=detailed
+
+# Python
+# export GUIX_GTK3_PATH="/home/urbain/.guix-profile/lib/gtk-3.0${GUIX_GTK3_PATH:+:}$GUIX_GTK3_PATH"
+# export PYTHONPATH="/home/urbain/.guix-profile/lib/python3.6/site-packages${PYTHONPATH:+:}$PYTHONPATH"
+# export GI_TYPELIB_PATH="/home/urbain/.guix-profile/lib/girepository-1.0${GI_TYPELIB_PATH:+:}$GI_TYPELIB_PATH"
+# export XDG_DATA_DIRS="/home/urbain/.guix-profile/share${XDG_DATA_DIRS:+:}$XDG_DATA_DIRS"
+# export GIO_EXTRA_MODULES="/home/urbain/.guix-profile/lib/gio/modules${GIO_EXTRA_MODULES:+:}$GIO_EXTRA_MODULES"
+
+# Cmake
+export CMAKE_PREFIX_PATH="/home/urbain/.guix-profile/${CMAKE_PREFIX_PATH:+:}$CMAKE_PREFIX_PATH"
 
 # vim: set ft=sh

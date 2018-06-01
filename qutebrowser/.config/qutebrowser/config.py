@@ -7,7 +7,6 @@ c.editor.command = ['urxvt', '-e', 'nvim', '-f', '{}']
 c.fonts.hints = 'bold 12pt monospace'
 c.hints.chars = 'aoeuidhtns'
 c.hints.uppercase = True
-c.tabs.favicons.show = False
 c.tabs.show = 'multiple'
 c.tabs.tabs_are_windows = True
 c.url.start_pages = ['file:///home/urbain/personal/index.html']
@@ -58,11 +57,12 @@ c.url.searchengines = {
     'lit': 'https://www.littre.org/definition/{}',
     'scholar': 'https://scholar.google.com/scholar?q={}',
     'tr': 'https://translate.google.com/#en/fr/{}',
+    'w': 'https://en.wikipedia.org/wiki/Special:Search?search={}',
     'yt': 'https://www.youtube.com/results?search_query={}',
 }
 
 # Aliases
 c.aliases = {
     "history-all-clear": 'spawn rm /home/urbain/.local/share/qutebrowser/cmd-history ;; history-clear',
-    "wq": 'quit -s',
+    "wq": 'quit -s', "q": 'quit',
 }
