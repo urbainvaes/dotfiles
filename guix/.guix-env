@@ -5,7 +5,7 @@ export GUIX_LOCPATH=$HOME/.guix-profile/lib/locale
 export LC_ALL=en_US.utf8
 
 # Paths
-export PATH="$HOME/.guix-profile/bin:$HOME/.guix-profile/sbin${PATH:+:}$PATH"
+# export PATH="$HOME/.guix-profile/bin:$HOME/.guix-profile/sbin${PATH:+:}$PATH"
 # export CPATH="/home/urbain/.guix-profile/include${CPATH:+:}$CPATH"
 # export LIBRARY_PATH="/home/urbain/.guix-profile/lib${LIBRARY_PATH:+:}$LIBRARY_PATH"
 
@@ -25,6 +25,6 @@ export GUILE_WARN_DEPRECATED=detailed
 # export GIO_EXTRA_MODULES="/home/urbain/.guix-profile/lib/gio/modules${GIO_EXTRA_MODULES:+:}$GIO_EXTRA_MODULES"
 
 # Cmake
-export CMAKE_PREFIX_PATH="/home/urbain/.guix-profile/${CMAKE_PREFIX_PATH:+:}$CMAKE_PREFIX_PATH"
+# export CMAKE_PREFIX_PATH="/home/urbain/.guix-profile/${CMAKE_PREFIX_PATH:+:}$CMAKE_PREFIX_PATH"
 
 # vim: set ft=sh

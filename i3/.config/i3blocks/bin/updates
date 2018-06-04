@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if command -v checkupdates > /dev/null; then
+if command -v pacman -Qu > /dev/null; then
     n_updates=$(checkupdates | wc -l)
     if [[ n_updates -gt 150 ]]; then
         color='red'
