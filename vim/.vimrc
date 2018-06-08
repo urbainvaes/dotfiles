@@ -48,6 +48,7 @@ Plug 'tommcdo/vim-exchange'
 Plug 'tommcdo/vim-ninja-feet'
 Plug 'ton/vim-bufsurf'
 Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-apathy'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-eunuch'
@@ -387,6 +388,9 @@ inoreabbrev <expr> #!! "#!/usr/bin/env" . (empty(&filetype) ? '' : ' '.&filetype
 
 " Spell
 inoremap <c-s> <esc>1z=eA
+
+" Unimpaired
+nmap co =o
 
 " }}}
 "" Colorscheme {{{
