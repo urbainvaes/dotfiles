@@ -22,7 +22,7 @@ xcape -e 'Mode_switch=Multi_key'
 
 # Make Caps_Lock (Control_L, Escape)
 xmodmap -e "clear Lock"
-xmodmap -e "keysym Caps_Lock = Control_L Caps_Lock"
+xmodmap -e "keysym Caps_Lock = Control_L Control_L"
 xmodmap -e "add Control = Control_L"
 xcape -e 'Control_L=Escape'
 
