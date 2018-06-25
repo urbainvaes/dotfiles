@@ -1,4 +1,4 @@
-# yaourt -P && makepkg -i
+# makepkg -sf
 pkgname=base-packages
 pkgver=0
 pkgrel=1
@@ -8,6 +8,7 @@ depends=(alsa-utils
          cronie
          ctags
          dosfstools
+         dropbox
          dunst
          feh
          fuse2
@@ -83,4 +84,31 @@ depends=(alsa-utils
          zathura-pdf-mupdf
          zathura-ps
          zenity
-         zsh)
+         zsh
+         biber
+         cmus
+         cpulimit
+         dropbox
+         flake8
+         gnuplot
+         mencoder
+         ncmpcpp
+         nmap
+         npm
+         pandoc
+         python-matplotlib
+         python2-matplotlib
+         qemu
+         texlive-bibtexextra
+         texlive-fontsextra
+         texlive-formatsextra
+         texlive-games
+         texlive-humanities
+         texlive-latexextra
+         texlive-pictures
+         texlive-pstricks
+         texlive-publishers
+         texlive-science
+         tig
+         ttf-ubuntu-font-family
+         )
