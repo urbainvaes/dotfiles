@@ -52,6 +52,7 @@ Plug 'tpope/vim-apathy'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-flagship'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-repeat'
@@ -62,8 +63,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'troydm/zoomwintab.vim'
 let g:zoomwintab_hidetabbar=0
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'vim-scripts/gmsh.vim'
 Plug 'wellle/targets.vim'
@@ -183,17 +182,6 @@ let g:neomake_gcc_args=[
             \ ]
 " }}}
 "" Plugin configurations {{{
-
-" Airline
-let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing', 'mixed-indent-file' ]
-let g:airline_symbols_ascii = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_splits = 0
-let g:airline#extensions#tabline#tab_nr_type = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline#extensions#tabline#tab_min_count = 2
-let g:airline#extensions#tabline#show_buffers = 0
-
 
 " Deoplete
 let g:deoplete#enable_at_startup = 1
@@ -395,30 +383,26 @@ nmap co =o
 " }}}
 "" Colorscheme {{{
 function! SaveColo(...)
-    if &runtimepath =~ 'airline'
-        execute 'set background='.a:1
-        execute 'AirlineTheme' a:3
-        execute 'colorscheme' a:2
-    endif
+    execute 'set background='.a:1
+    execute 'colorscheme' a:2
     execute 'silent !echo "set background='.a:1.'" > ~/.local/colors.vim'
     execute 'silent !echo "colorscheme '.a:2.'" >> ~/.local/colors.vim'
-    execute 'silent !echo "let g:airline_theme=\"'.a:3.'\"" >> ~/.local/colors.vim'
 endfunction
 function! MyColo(colorscheme)
     if a:colorscheme == "solarized-light"
-        call SaveColo("light","solarized","solarized")
+        call SaveColo("light","solarized")
     elseif a:colorscheme == "solarized-dark"
-        call SaveColo("dark","solarized","solarized")
+        call SaveColo("dark","solarized")
     elseif a:colorscheme == "seoul"
-        call SaveColo("dark","seoul256","deus")
+        call SaveColo("dark","seoul256")
     elseif a:colorscheme == "nord"
-        call SaveColo("dark","nord","nord")
+        call SaveColo("dark","nord")
     endif
 endfunction
 if filereadable($HOME."/.local/colors.vim")
     source ~/.local/colors.vim
 endif
-nnoremap ,c :call MyColo("")<Left><Left>
+nnoremap ,c  :call MyColo("")<Left><Left>
 nnoremap ,cl :call MyColo("solarized-light")<cr>
 nnoremap ,cd :call MyColo("solarized-dark")<cr>
 nnoremap ,cs :call MyColo("seoul")<cr>
@@ -509,9 +493,29 @@ xnoremap <silent> ,g  :<c-u>let g:my_fillprg=g:my_searchprgs[g:my_searchprg]<cr>
 nnoremap <silent> ,f  :let g:my_fillprg=g:my_findprgs[g:my_findprg]<cr>:call FillSearch()<cr>
 
 " Cycle search / find prgs
-nnoremap <silent> cog :let g:my_searchprg=(g:my_searchprg+1)%len(g:my_searchprgs)<cr>:echom g:my_searchprgs[g:my_searchprg]<cr>
-nnoremap <silent> cof :let g:my_findprg=(g:my_findprg+1)%len(g:my_findprgs)<cr>:echom g:my_findprgs[g:my_findprg]<cr>
+nnoremap <silent> cog :let g:my_searchprg=(g:my_searchprg+1)%len(g:my_searchprgs)<cr>
+nnoremap <silent> cof :let g:my_findprg=(g:my_findprg+1)%len(g:my_findprgs)<cr>
 
+" }}}
+"" Status line {{{
+let g:tabprefix = ""
+let g:tablabel = "%N%{flagship#tabmodified()} %{flagship#tabcwds('shorten',',')}"
+
+function! Mixed_indent()
+    let l:spaces=search('\v(^ +)','n')
+    let l:tabs=search('\v(^\t+)','n')
+    return (l:spaces * l:tabs > 0)
+endfunction
+
+augroup myflags
+    autocmd!
+    autocmd BufEnter,BufRead,BufWritePost * let b:trailing=search('\s\+$','n')
+    autocmd BufEnter,BufRead,BufWritePost * let b:mixed=Mixed_indent()
+    autocmd User Flags call Hoist("buffer", "%{b:trailing?'[tw]':''}")
+    autocmd User Flags call Hoist("buffer", "%{b:mixed?'[mixed]':''}")
+    autocmd User Flags call Hoist("buffer", "%{&paste?'[paste]':''}")
+    autocmd User Flags call Hoist("window", "[Search: %{g:my_searchprgs[g:my_searchprg]}, Find: %{g:my_findprgs[g:my_findprg]}]")
+augroup END
 " }}}
 "" Neovim {{{
 if has("nvim")
