@@ -210,7 +210,6 @@ let g:NERDTreeHijackNetrw = 0
 " Remembrall
 nnoremap <silent> ,, :call remembrall#remind('n', '')<cr>
 nnoremap <silent> y :<c-u>call remembrall#remind('n', 'y')<cr>
-let g:remembrall_window='botright 10new'
 
 augroup remembrall
     autocmd FileType tex nnoremap <buffer> <nowait> <expr> ,l Remembrall('n', ',l')
@@ -311,6 +310,11 @@ if has("nvim")
 endif
 " }}}
 "" Mappings {{{
+
+" .rst headings
+nnoremap <leader>1 m`yypVr=``
+nnoremap <leader>2 m`yypVr-``
+
 nnoremap n nzz
 nnoremap N Nzz
 
@@ -524,18 +528,5 @@ if has("nvim")
     nnoremap <c-_> :b # \| norm A<cr>
     tnoremap <c-_> <c-\><c-n><c-^>
     nnoremap <Leader>t :b term \| norm A<cr>
-
-    tnoremap <A-h> <C-\><C-N><C-w>h
-    tnoremap <A-j> <C-\><C-N><C-w>j
-    tnoremap <A-k> <C-\><C-N><C-w>k
-    tnoremap <A-l> <C-\><C-N><C-w>l
-    inoremap <A-h> <C-\><C-N><C-w>h
-    inoremap <A-j> <C-\><C-N><C-w>j
-    inoremap <A-k> <C-\><C-N><C-w>k
-    inoremap <A-l> <C-\><C-N><C-w>l
-    nnoremap <A-h> <C-w>h
-    nnoremap <A-j> <C-w>j
-    nnoremap <A-k> <C-w>k
-    nnoremap <A-l> <C-w>l
 endif
 " }}}

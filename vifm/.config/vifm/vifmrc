@@ -1,5 +1,6 @@
 " Command to open files
 filetype * xdg-open
+filetype *.exe wine
 
 " Options
 set fastrun
