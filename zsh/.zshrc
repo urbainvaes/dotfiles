@@ -162,7 +162,8 @@ alias ff='FreeFem++'
 alias m='cd ~/.mutt/attachments && mutt && cd -'
 alias e='nvim'
 alias mux='tmuxinator'
-alias email="mbsync -a"
+alias email='mbsync -a'
+alias renet='systemctl restart NetworkManager.service'
 
 # Applications
 alias -s pdf='xdg-open'

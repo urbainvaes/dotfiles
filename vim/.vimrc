@@ -212,7 +212,7 @@ nnoremap <silent> ,, :call remembrall#remind('n', '')<cr>
 nnoremap <silent> y :<c-u>call remembrall#remind('n', 'y')<cr>
 
 augroup remembrall
-    autocmd FileType tex nnoremap <buffer> <nowait> <expr> ,l Remembrall('n', ',l')
+    autocmd FileType tex nnoremap <buffer> <nowait> <expr> ,l Remembrall(',l')
 augroup END
 
 " Ultisnips
@@ -331,11 +331,9 @@ nnoremap <nowait> <c-d> :q<cr>
 
 nnoremap ,bd :ls<cr>:bd<space>
 
-nnoremap ,tn :tabnew<cr>
 nnoremap ,te :tabedit
 nnoremap ,tl :+tabmove<cr>
 nnoremap ,th :-tabmove<cr>
-nnoremap ,tm :tabmove
 nnoremap ,t0 :tabmove 0<cr>
 nnoremap ,t$ :tabmove<cr>
 

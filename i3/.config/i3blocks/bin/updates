@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if command -v pacman -Qu > /dev/null; then
-    n_updates=$(checkupdates | wc -l)
+    n_updates=$(pacman -Qu | wc -l)
     if [[ n_updates -gt 150 ]]; then
         color='red'
     elif [[ n_updates -gt 50 ]]; then
