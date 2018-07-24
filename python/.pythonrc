@@ -1,2 +1,8 @@
 import numpy as np
 import sympy as sym
+import matplotlib.pyplot as plt
+
+try:
+    import hermipy as hm
+except ImportError:
+    pass

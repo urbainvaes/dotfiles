@@ -16,7 +16,6 @@ Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter'
 Plug 'AndrewRadev/splitjoin.vim'
-Plug 'arcticicestudio/nord-vim'
 Plug 'beloglazov/vim-online-thesaurus'
 Plug 'critiqjo/lldb.nvim'
 Plug 'easymotion/vim-easymotion'
@@ -40,6 +39,7 @@ Plug 'lervag/vimtex'
 Plug 'machakann/vim-highlightedyank'
 Plug 'majutsushi/tagbar'
 Plug 'neomake/neomake'
+Plug 'KKPMW/sacredforest-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'sjl/Gundo.vim', { 'on' : 'GundoToggle' }
 Plug 'terryma/vim-expand-region'
@@ -66,11 +66,11 @@ let g:zoomwintab_hidetabbar=0
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'vim-scripts/gmsh.vim'
 Plug 'wellle/targets.vim'
-" Plug 'zchee/deoplete-clang'
+Plug 'zchee/deoplete-clang'
 
 Plug '~/Dropbox/projects/vim-remembrall'
 Plug '~/Dropbox/projects/vim-wintab'
-" Plug 'urbainvaes/vim-tmux-pilot'
+Plug 'urbainvaes/vim-tmux-pilot'
 
 if has("nvim")
     " Plug 'roxma/nvim-completion-manager'
@@ -84,10 +84,12 @@ endif
 
 " Colors
 Plug 'altercation/vim-colors-solarized'
+Plug 'arcticicestudio/nord-vim'
 Plug 'KKPMW/moonshine-vim'
+Plug 'KKPMW/sacredforest-vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'romainl/Apprentice'
-Plug 'josuegaleas/jay'
+" Plug 'josuegaleas/jay'
 call plug#end()
 " }}}
 "" Plugin mappings {{{
@@ -231,7 +233,7 @@ let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=2
 let g:vimtex_compiler_progname='nvr'
 
-let g:pilot_boundary='create'
+let g:pilot_boundary='ignore'
 let g:pilot_mode='wintab'
 
 " YouCompleteMe
@@ -380,7 +382,7 @@ inoreabbrev <expr> #!! "#!/usr/bin/env" . (empty(&filetype) ? '' : ' '.&filetype
 inoremap <c-s> <esc>1z=eA
 
 " Unimpaired
-nmap co =o
+nmap co yo
 
 " }}}
 "" Colorscheme {{{
@@ -495,13 +497,15 @@ xnoremap <silent> ,g  :<c-u>let g:my_fillprg=g:my_searchprgs[g:my_searchprg]<cr>
 nnoremap <silent> ,f  :let g:my_fillprg=g:my_findprgs[g:my_findprg]<cr>:call FillSearch()<cr>
 
 " Cycle search / find prgs
-nnoremap <silent> cog :let g:my_searchprg=(g:my_searchprg+1)%len(g:my_searchprgs)<cr>
-nnoremap <silent> cof :let g:my_findprg=(g:my_findprg+1)%len(g:my_findprgs)<cr>
+nnoremap <silent> cog :let g:my_searchprg=(g:my_searchprg+1)%len(g:my_searchprgs)<cr>:let &ro = &ro<cr>
+nnoremap <silent> cof :let g:my_findprg=(g:my_findprg+1)%len(g:my_findprgs)<cr>:let &ro = &ro<cr>
 
 " }}}
 "" Status line {{{
+set showtabline=2
 let g:tabprefix = ""
 let g:tablabel = "%N%{flagship#tabmodified()} %{flagship#tabcwds('shorten',',')}"
+let g:flagship_skip = 'FugitiveStatusline'
 
 function! Mixed_indent()
     let l:spaces=search('\v(^ +)','n')
@@ -513,10 +517,11 @@ augroup myflags
     autocmd!
     autocmd BufEnter,BufRead,BufWritePost * let b:trailing=search('\s\+$','n')
     autocmd BufEnter,BufRead,BufWritePost * let b:mixed=Mixed_indent()
+    autocmd User Flags call Hoist("buffer", "[%{FugitiveHead('')}]")
     autocmd User Flags call Hoist("buffer", "%{b:trailing?'[tw]':''}")
     autocmd User Flags call Hoist("buffer", "%{b:mixed?'[mixed]':''}")
     autocmd User Flags call Hoist("buffer", "%{&paste?'[paste]':''}")
-    autocmd User Flags call Hoist("window", "[Search: %{g:my_searchprgs[g:my_searchprg]}, Find: %{g:my_findprgs[g:my_findprg]}]")
+    autocmd User Flags call Hoist("global", {"hl": "Statusline"}, "[%{g:my_searchprgs[g:my_searchprg]}, %{g:my_findprgs[g:my_findprg]}]")
 augroup END
 " }}}
 "" Neovim {{{
