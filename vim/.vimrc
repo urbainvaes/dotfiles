@@ -17,7 +17,7 @@ Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'beloglazov/vim-online-thesaurus'
-Plug 'critiqjo/lldb.nvim'
+" Plug 'critiqjo/lldb.nvim'
 Plug 'easymotion/vim-easymotion'
 Plug 'holomorph/vim-freefem'
 Plug 'honza/vim-snippets'
@@ -100,6 +100,7 @@ nnoremap cpr :IronRepl<cr>
 nnoremap cpn :NERDTreeToggle<cr>
 nnoremap cpt :TagbarToggle<cr>
 nnoremap cpu :GundoToggle<cr>
+nnoremap <buffer> <nowait> <expr> cp Remembrall('cp')
 
 " Easy motion
 map gs <Plug>(easymotion-prefix)
@@ -114,8 +115,6 @@ nnoremap <c-p>r  :History<cr>
 nnoremap <c-p>:  :History:<cr>
 nnoremap <c-p>/  :History/<cr>
 nnoremap <c-p>l  :BLines<cr>
-nnoremap <c-p>m  :Marks<cr>
-nnoremap <c-p>t  :Tags<cr>
 nnoremap <c-p>a  :Ag
 
 nnoremap <a-b>  :Buffers<cr>
@@ -165,6 +164,8 @@ nnoremap cpd :OnlineThesaurusCurrentWord<cr>
 " Plug
 nnoremap ,pi :PlugInstall<cr>
 nnoremap ,pu :PlugUpdate<cr>
+nnoremap ,pc :PlugClean<cr>
+nnoremap <buffer> <nowait> <expr> ,p Remembrall(',p')
 
 " Ultisnips
 nnoremap cps :UltiSnipsEdit<cr>
@@ -333,7 +334,7 @@ nnoremap <nowait> <c-d> :q<cr>
 
 nnoremap ,bd :ls<cr>:bd<space>
 
-nnoremap ,te :tabedit
+nnoremap ,te :tabedit<space>
 nnoremap ,tl :+tabmove<cr>
 nnoremap ,th :-tabmove<cr>
 nnoremap ,t0 :tabmove 0<cr>
@@ -386,31 +387,12 @@ nmap co yo
 
 " }}}
 "" Colorscheme {{{
-function! SaveColo(...)
-    execute 'set background='.a:1
-    execute 'colorscheme' a:2
-    execute 'silent !echo "set background='.a:1.'" > ~/.local/colors.vim'
-    execute 'silent !echo "colorscheme '.a:2.'" >> ~/.local/colors.vim'
-endfunction
-function! MyColo(colorscheme)
-    if a:colorscheme == "solarized-light"
-        call SaveColo("light","solarized")
-    elseif a:colorscheme == "solarized-dark"
-        call SaveColo("dark","solarized")
-    elseif a:colorscheme == "seoul"
-        call SaveColo("dark","seoul256")
-    elseif a:colorscheme == "nord"
-        call SaveColo("dark","nord")
-    endif
-endfunction
-if filereadable($HOME."/.local/colors.vim")
-    source ~/.local/colors.vim
-endif
-nnoremap ,c  :call MyColo("")<Left><Left>
-nnoremap ,cl :call MyColo("solarized-light")<cr>
-nnoremap ,cd :call MyColo("solarized-dark")<cr>
-nnoremap ,cs :call MyColo("seoul")<cr>
-nnoremap ,cn :call MyColo("nord")<cr>
+nnoremap ,c  :colorscheme<space>
+nnoremap ,cl :set background=light<cr>:colorscheme solarized<cr>
+nnoremap ,cl :set background=dark<cr>:colorscheme solarized<cr>
+nnoremap ,cs :colorscheme seoul256<cr>
+nnoremap ,cn :colorscheme nord<cr>
+colo seoul256
 " }}}
 "" Autocommands {{{
 augroup vimrc
@@ -502,26 +484,45 @@ nnoremap <silent> cof :let g:my_findprg=(g:my_findprg+1)%len(g:my_findprgs)<cr>:
 
 " }}}
 "" Status line {{{
-set showtabline=2
-let g:tabprefix = ""
-let g:tablabel = "%N%{flagship#tabmodified()} %{flagship#tabcwds('shorten',',')}"
-let g:flagship_skip = 'FugitiveStatusline'
-
 function! Mixed_indent()
     let l:spaces=search('\v(^ +)','n')
     let l:tabs=search('\v(^\t+)','n')
     return (l:spaces * l:tabs > 0)
 endfunction
 
+function! GlobalCwd()
+    return getcwd(-1, -1)
+endfunction
+
+function! TabCwd(number)
+    if haslocaldir(-1, a:number)
+        return getcwd(-1, a:number)
+    endif
+    return ""
+endfunction
+
+function! WinCwd()
+    if haslocaldir(0)
+        return getcwd()
+    endif
+    return ""
+endfunction
+
+set showtabline=2
+let g:tabprefix = ""
+let g:tablabel = "%N%{flagship#tabmodified()} %{TabCwd(v:lnum) != '' ? pathshorten(TabCwd(v:lnum)) : ''}"
+let g:flagship_skip = 'FugitiveStatusline'
+
 augroup myflags
     autocmd!
     autocmd BufEnter,BufRead,BufWritePost * let b:trailing=search('\s\+$','n')
     autocmd BufEnter,BufRead,BufWritePost * let b:mixed=Mixed_indent()
-    autocmd User Flags call Hoist("buffer", "[%{FugitiveHead('')}]")
+    autocmd User Flags call Hoist("buffer", "%{FugitiveHead('') != '' ? '['.FugitiveHead('').']' : ''}")
     autocmd User Flags call Hoist("buffer", "%{b:trailing?'[tw]':''}")
     autocmd User Flags call Hoist("buffer", "%{b:mixed?'[mixed]':''}")
     autocmd User Flags call Hoist("buffer", "%{&paste?'[paste]':''}")
-    autocmd User Flags call Hoist("global", {"hl": "Statusline"}, "[%{g:my_searchprgs[g:my_searchprg]}, %{g:my_findprgs[g:my_findprg]}]")
+    autocmd User Flags call Hoist("window", "%{WinCwd() != '' ? '['.WinCwd().']' : ''}")
+    autocmd User Flags call Hoist("global", {"hl": "Statusline"}, "[%{pathshorten(GlobalCwd())}, %{g:my_searchprgs[g:my_searchprg]}, %{g:my_findprgs[g:my_findprg]}]")
 augroup END
 " }}}
 "" Neovim {{{
