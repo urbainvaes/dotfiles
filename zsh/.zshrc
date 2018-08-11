@@ -41,7 +41,7 @@ autoload -U select-word-style
 select-word-style bash
 
 # Prompt
-if [[ -n $SSH_CLIENT  ]]; then
+if [[ -n $SSH_CONNECTION ]]; then
 PROMPT='%F{red}[%M]%f %0~ $ '
 else
 PROMPT='%0~ $ '
