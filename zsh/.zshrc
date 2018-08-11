@@ -1,5 +1,5 @@
 ## startx automatically {{{
-[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
+[[ -z $DISPLAY && -z $SSH_CONNECTION && $XDG_VTNR -eq 1 ]] && exec startx
 # }}}
 ## Bindings {{{
 bindkey -v
