@@ -1,5 +1,5 @@
 ## startx automatically {{{
-[[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
+[[ -z $DISPLAY && -z $SSH_CONNECTION && $XDG_VTNR -eq 1 ]] && exec startx
 # }}}
 ## Bindings {{{
 bindkey -v
@@ -41,7 +41,7 @@ autoload -U select-word-style
 select-word-style bash
 
 # Prompt
-if [[ -n $SSH_CLIENT  ]]; then
+if [[ -n $SSH_CONNECTION ]]; then
 PROMPT='%F{red}[%M]%f %0~ $ '
 else
 PROMPT='%0~ $ '
