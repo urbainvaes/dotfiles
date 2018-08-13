@@ -122,10 +122,10 @@ bar {
     modifier none
     colors {
         background #00000088
-        inactive_workspace #0000AA #00000088 #FFFFFF
-        focused_workspace  #4c7899 #28557788 #ffffff
+        inactive_workspace #0000aa #00000088 #ffffff
+        focused_workspace  #4c7899 #285577ff #ffffff
         active_workspace   #333333 #5f676a88 #ffffff
-        inactive_workspace #333333 #22222288 #888888
+        inactive_workspace #333333 #222222ff #888888
         urgent_workspace   #2f343a #90000088 #ffffff
     }
 }

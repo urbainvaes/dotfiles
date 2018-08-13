@@ -30,6 +30,7 @@ nnoremap ,b :backup<cr>
 nnoremap ,r :%rename<cr>
 nnoremap ,t :!urxvt &<cr>
 nnoremap ,l :!less %f<cr>
+nnoremap <c-d> :q<cr>
 
 " To disable automatic tagging of search results
 nnoremap coh :set hlsearch!<cr>

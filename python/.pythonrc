@@ -1,6 +1,6 @@
 import numpy as np
 import sympy as sym
-import matplotlib.pyplot as plt
+import matplotlib
 
 try:
     import hermipy as hm

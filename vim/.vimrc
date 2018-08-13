@@ -74,8 +74,8 @@ Plug 'urbainvaes/vim-tmux-pilot'
 
 if has("nvim")
     " Plug 'roxma/nvim-completion-manager'
-    Plug 'Shougo/deoplete.nvim', { 'do' : ':UpdateRemotePlugins' }
-    Plug 'autozimu/LanguageClient-neovim'
+    Plug 'Shougo/deoplete.nvim', { 'do' : ':UpdateRemotePlugins', 'tag' : '4.0-serial' }
+    " Plug 'autozimu/LanguageClient-neovim'
     Plug 'zchee/deoplete-jedi'
     Plug 'hkupty/iron.nvim'
 else
@@ -215,7 +215,7 @@ nnoremap <silent> ,, :call remembrall#remind('n', '')<cr>
 nnoremap <silent> y :<c-u>call remembrall#remind('n', 'y')<cr>
 
 augroup remembrall
-    autocmd FileType tex nnoremap <buffer> <nowait> <expr> ,l Remembrall(',l')
+    autocmd FileType tex nnoremap <buffer> <silent> <nowait> <expr> ,l Remembrall(',l')
 augroup END
 
 " Ultisnips
