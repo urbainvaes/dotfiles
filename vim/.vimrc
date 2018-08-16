@@ -165,7 +165,17 @@ nnoremap cpd :OnlineThesaurusCurrentWord<cr>
 nnoremap ,pi :PlugInstall<cr>
 nnoremap ,pu :PlugUpdate<cr>
 nnoremap ,pc :PlugClean<cr>
-nnoremap <buffer> <nowait> <expr> ,p Remembrall(',p')
+
+" Remembrall
+if &runtimepath =~ 'remembrall'
+    nnoremap <buffer> <nowait> <expr> ,p Remembrall(',p')
+    nnoremap <silent> ,, :call remembrall#remind('n', '')<cr>
+    nnoremap <silent> y :<c-u>call remembrall#remind('n', 'y')<cr>
+
+    augroup remembrall
+        autocmd FileType tex nnoremap <buffer> <silent> <nowait> <expr> ,l Remembrall(',l')
+    augroup END
+endif
 
 " Ultisnips
 nnoremap cps :UltiSnipsEdit<cr>
@@ -209,14 +219,6 @@ let g:localvimrc_whitelist='/home/*'
 
 " NerdTree
 let g:NERDTreeHijackNetrw = 0
-
-" Remembrall
-nnoremap <silent> ,, :call remembrall#remind('n', '')<cr>
-nnoremap <silent> y :<c-u>call remembrall#remind('n', 'y')<cr>
-
-augroup remembrall
-    autocmd FileType tex nnoremap <buffer> <silent> <nowait> <expr> ,l Remembrall(',l')
-augroup END
 
 " Ultisnips
 let g:UltiSnipsEditSplit="horizontal"
@@ -371,7 +373,7 @@ nnoremap <silent> >B :BufSurfForward<cr>:bd! #<cr>
 
 " Alternate file
 nnoremap <bs> 
-nnoremap <tab> 
+nnoremap <tab> :Buffers<cr>
 
 " Source current file
 nnoremap ,s :source %<cr>
