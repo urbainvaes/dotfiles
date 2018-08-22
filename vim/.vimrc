@@ -70,7 +70,6 @@ Plug 'zchee/deoplete-clang'
 
 Plug '~/Dropbox/projects/vim-remembrall'
 Plug '~/Dropbox/projects/vim-wintab'
-Plug 'urbainvaes/vim-tmux-pilot'
 
 if has("nvim")
     " Plug 'roxma/nvim-completion-manager'
@@ -517,8 +516,8 @@ let g:flagship_skip = 'FugitiveStatusline'
 
 augroup myflags
     autocmd!
-    autocmd BufEnter,BufRead,BufWritePost * let b:trailing=search('\s\+$','n')
-    autocmd BufEnter,BufRead,BufWritePost * let b:mixed=Mixed_indent()
+    autocmd CmdwinEnter,BufEnter,BufRead,BufWritePost * let b:trailing=search('\s\+$','n')
+    autocmd CmdwinEnter,BufEnter,BufRead,BufWritePost * let b:mixed=Mixed_indent()
     autocmd User Flags call Hoist("buffer", "%{FugitiveHead('') != '' ? '['.FugitiveHead('').']' : ''}")
     autocmd User Flags call Hoist("buffer", "%{b:trailing?'[tw]':''}")
     autocmd User Flags call Hoist("buffer", "%{b:mixed?'[mixed]':''}")

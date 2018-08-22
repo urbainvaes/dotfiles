@@ -1,7 +1,15 @@
+# pkgfile mimetype
+#
+# To get mimetype:
+#     mimetype <file>
+#
+# To set default
+#     mimeopen -d <file> 
 [Default Applications]
 text/plain=nvim.desktop;
 image/jpeg=feh.desktop;
 image/png=feh.desktop;
+image/x-eps=org.pwmt.zathura.desktop;
 inode/directory=vifm.desktop;nautilus.desktop;
 text/html=qutebrowser.desktop;firefox.desktop;
 application/pdf=org.pwmt.zathura.desktop;

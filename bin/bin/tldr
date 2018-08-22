@@ -96,7 +96,7 @@ Style(){
 		STYLES+=${color[$style]:-}${bg[$style]:-}${mode[$style]:-}
 		XSTYLES=${xmode[$style]:-}${xbg[$style]:-}${xcolor[$style]:-}$XSTYLES
 	done
-}	
+}
 
 # Sets: color xcolor bg xbg mode xmode
 Init_term(){
@@ -191,7 +191,7 @@ Config(){
 		SunOS) os='sunos' ;;
 	esac
 	Init_term
-	[[ $TLDR_LESS = 0 ]] && 
+	[[ $TLDR_LESS = 0 ]] &&
 		trap 'cat <<<"$stdout"' EXIT ||
 		trap 'less -~RXQFP"Browse up/down, press Q to exit " <<<"$stdout"' EXIT
 
@@ -327,7 +327,7 @@ Display_tldr(){
 				Out "$ENL$ESP$E$REPLY$XE" ;;
 		esac
 	done <"$1"
-	[[ $TLDR_LESS = 0 ]] && 
+	[[ $TLDR_LESS = 0 ]] &&
 		trap 'cat <<<"$stdout"' EXIT ||
 		trap 'less -Gg -~RXQFP"%pB\% tldr $I$page$XI - browse up/down, press Q to exit" <<<"$stdout"' EXIT
 }
@@ -362,7 +362,7 @@ Cache_fill(){
 		rm -- "$tmp"
 		Err "Couldn't unzip the cache archive on $tmp/pages.zip"
 		exit 8
-	}		
+	}
 	rm -rf -- "${cachedir:?}/"*
 	mv -- "$tmp/pages/"* "${cachedir:?}/"
 	rm -rf -- "$tmp"

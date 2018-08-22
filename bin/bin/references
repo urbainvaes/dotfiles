@@ -1,5 +1,5 @@
 #!/bin/bash
 REF_DIR="$HOME/phd/references"
 PDF=$(find $REF_DIR -regex ".*.\(pdf\|djvu\|PDF\|ps\)" -printf "%C@ %P\n" | sort | tac | cut -d' ' -f2-)
-TARGET=$(echo "${PDF//"$REF_DIR/"/}" | dmenu -i -p "Open File:")
+TARGET=$(echo "${PDF//"$REF_DIR/"/}" | dmenu -i -p "Open File")
 [[ -n $TARGET ]] && exec zathura "$REF_DIR/$TARGET"
