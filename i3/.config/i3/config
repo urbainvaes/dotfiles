@@ -181,6 +181,7 @@ smart_gaps on
 gaps inner 5
 gaps outer 5
 
+# Launch compositor
 exec compton
 
 # vim:filetype=i3

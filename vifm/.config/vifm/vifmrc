@@ -25,6 +25,7 @@ nnoremap o :file<cr>
 nnoremap b :marks<cr>
 nnoremap gm :bmark<space>
 nnoremap gb :bmarks<cr>
+nnoremap g<cr> :!nvim %f<cr>
 nnoremap r :run<cr>
 nnoremap ,b :backup<cr>
 nnoremap ,r :%rename<cr>

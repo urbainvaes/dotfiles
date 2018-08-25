@@ -31,7 +31,7 @@ setopt append_history
 setopt extended_history
 setopt hist_ignore_space
 setopt inc_append_history
-setopt share_history
+setopt no_share_history
 
 # Completion
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|=*' 'l:|=* r:|=*'

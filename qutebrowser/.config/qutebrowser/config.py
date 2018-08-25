@@ -55,7 +55,7 @@ c.url.searchengines = {
     'dic': 'http://www.dictionary.com/browse/{}',
     'google': 'https://www.google.com/search?hl=en&q={}',
     'hn': 'https://hn.algolia.com/?query={}',
-    'lit': 'https://www.littre.org/definition/{}',
+    'lit': 'https://www.littre.org/recherche?mot={}',
     'scholar': 'https://scholar.google.com/scholar?q={}',
     'tr': 'https://translate.google.com/#en/fr/{}',
     'w': 'https://en.wikipedia.org/wiki/Special:Search?search={}',
