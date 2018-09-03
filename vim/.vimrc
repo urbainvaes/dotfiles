@@ -68,8 +68,10 @@ Plug 'vim-scripts/gmsh.vim'
 Plug 'wellle/targets.vim'
 Plug 'zchee/deoplete-clang'
 
-Plug '~/Dropbox/projects/vim-remembrall'
-Plug '~/Dropbox/projects/vim-wintab'
+if isdirectory($HOME."/Dropbox/projects")
+    Plug '~/Dropbox/projects/vim-remembrall'
+    Plug '~/Dropbox/projects/vim-wintab'
+endif
 
 if has("nvim")
     " Plug 'roxma/nvim-completion-manager'

@@ -1,6 +1,8 @@
+import importlib
+import math
+import matplotlib
 import numpy as np
 import sympy as sym
-import matplotlib
 
 try:
     import hermipy as hm

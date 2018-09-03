@@ -1,5 +1,5 @@
 " Command to open files
-filetype * xdg-open
+filetype * xdg-open &
 filetype *.exe wine
 
 " Options
