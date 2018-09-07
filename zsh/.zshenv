@@ -9,6 +9,5 @@ export PYTHONSTARTUP="$HOME/.pythonrc"
 
 # Source guix profile
 guix_profile=$HOME/.guix-env
-
 [[ -f $guix_profile ]] && . $guix_profile
 

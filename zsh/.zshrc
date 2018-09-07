@@ -17,6 +17,10 @@ bindkey '^k' kill-line
 bindkey '^u' kill-whole-line
 bindkey '^v' visual-mode
 bindkey '^w' backward-kill-word
+
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd '^W' edit-command-line
 # }}}
 ## Options and modules {{{
 

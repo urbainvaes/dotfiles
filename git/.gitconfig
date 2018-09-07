@@ -1,17 +1,17 @@
+[core]
+	fileMode = false
 [user]
 	name = Urbain Vaes
 	email = urbain@vaes.uk
+        signingKey = 716064C0
 [init]
 	templatedir = ~/.git_template
 [alias]
 	ctags = !.git/hooks/ctags
+	saveandsync = !git add . && git commit -m "Update" && git push origin master
 [push]
 	default = simple
-[status]
-	submodulesummary = 1
-[alias]
-	saveandsync = !git add . && git commit -m "Update" && git push origin master
-[core]
-	fileMode = false
 [http]
 	sslverify = false
+[commit]
+        gpgSign = True

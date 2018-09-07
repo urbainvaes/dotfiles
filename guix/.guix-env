@@ -5,7 +5,7 @@ export GUIX_LOCPATH=$HOME/.guix-profile/lib/locale
 export LC_ALL=en_US.utf8
 
 # Paths
-export PATH="$HOME/.guix-profile/bin:$HOME/.guix-profile/sbin${PATH:+:}$PATH"
+export PATH="$PATH${PATH:+:}$HOME/.guix-profile/bin:$HOME/.guix-profile/sbin"
 # export CPATH="/home/urbain/.guix-profile/include${CPATH:+:}$CPATH"
 # export LIBRARY_PATH="/home/urbain/.guix-profile/lib${LIBRARY_PATH:+:}$LIBRARY_PATH"
 
