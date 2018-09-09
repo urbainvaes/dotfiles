@@ -9,9 +9,11 @@
 [alias]
 	ctags = !.git/hooks/ctags
 	saveandsync = !git add . && git commit -m "Update" && git push origin master
-[push]
-	default = simple
 [http]
 	sslverify = false
 [commit]
-        gpgSign = True
+        gpgSign = true
+[push]
+	default = simple
+[merge]
+	ff = true
