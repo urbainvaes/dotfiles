@@ -1,3 +1,5 @@
 map <C-e> scroll down
 map <C-y> scroll up
 set font "monospace normal 12"
+
+map H feedkeys ":exec sh -c \"cat ~/.local/share/zathura/history | grep -Po '\[\K[^\]]*' | tail -10 | dmenu | xargs zathura\""
