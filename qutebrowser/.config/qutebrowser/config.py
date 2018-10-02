@@ -53,6 +53,7 @@ c.url.searchengines = {
     'ddg': 'https://duckduckgo.com/?q={}',
     'cam': 'https://dictionary.cambridge.org/dictionary/english/{}',
     'dic': 'http://www.dictionary.com/browse/{}',
+    'th': 'http://www.thesaurus.com/browse/{}',
     'google': 'https://www.google.com/search?hl=en&q={}',
     'hn': 'https://hn.algolia.com/?query={}',
     'lit': 'https://www.littre.org/recherche?mot={}',

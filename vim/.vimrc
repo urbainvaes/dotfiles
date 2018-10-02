@@ -42,7 +42,6 @@ Plug 'neomake/neomake'
 Plug 'KKPMW/sacredforest-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'sjl/Gundo.vim', { 'on' : 'GundoToggle' }
-Plug 'terryma/vim-expand-region'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tommcdo/vim-exchange'
 Plug 'tommcdo/vim-ninja-feet'
@@ -374,7 +373,7 @@ nnoremap <silent> >B :BufSurfForward<cr>:bd! #<cr>
 
 " Alternate file
 nnoremap <bs> 
-nnoremap <tab> :Buffers<cr>
+nnoremap + :Buffers<cr>
 
 " Source current file
 nnoremap ,s :source %<cr>
