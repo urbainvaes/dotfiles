@@ -13,6 +13,9 @@ bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
 for_window [instance="scratchpad"] move window to scratchpad, scratchpad show
 bindsym $mod+Shift+Return exec --no-startup-id i3-sensible-terminal -name scratchpad
 
+# Assign applications to certain workspaces
+# assign [class="qutebrowser"] 1:qutebrowser
+
 # kill focused window
 bindsym $mod+d kill
 

@@ -50,6 +50,10 @@ PROMPT='%F{red}[%M]%f %0~ $ '
 else
 PROMPT='%0~ $ '
 fi
+
+if [[ -n $VIFM ]]; then
+PROMPT="%F{green}[VIFM]%f $PROMPT"
+fi
 # }}}
 ## Plugins {{{
 [ ! -d ~/.zsh/zgen ] && git clone https://github.com/tarjoilija/zgen.git ~/.zsh/zgen

@@ -12,3 +12,6 @@ zoom_in plus
 zoom_out minus
 zoom_fill s
 zoom_fit a
+
+orient_1 r
+reload_image R
