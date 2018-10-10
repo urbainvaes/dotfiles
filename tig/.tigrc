@@ -1,0 +1,2 @@
+bind generic R :source ~/.tigrc
+bind status - status-update
