@@ -1,15 +1,15 @@
-"" Download vim-plug if necessary {{{
+"" Download vim-plug if necessary {{{1
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
-" }}}
-"" Leader and Localleader {{{
+
+"" Leader and Localleader {{{1
 let mapleader = " "
 let maplocalleader = ","
-" }}}
-"" Plugins {{{
+
+"" Plugins {{{1
 call plug#begin('~/.vim/plugged')
 Plug 'LnL7/vim-nix'
 Plug 'PotatoesMaster/i3-vim-syntax'
@@ -91,8 +91,8 @@ Plug 'junegunn/seoul256.vim'
 Plug 'romainl/Apprentice'
 " Plug 'josuegaleas/jay'
 call plug#end()
-" }}}
-"" Plugin mappings {{{
+
+"" Plugin mappings {{{1
 
 " Toggles
 nnoremap cpg :GitGutterToggle<cr>
@@ -193,8 +193,8 @@ let g:neomake_gcc_args=[
             \ '-Wpedantic',
             \ '-I.', '-I..', '-I../..'
             \ ]
-" }}}
-"" Plugin configurations {{{
+
+"" Plugin configurations {{{1
 
 " Deoplete
 let g:deoplete#enable_at_startup = 1
@@ -267,13 +267,12 @@ function! Multiple_cursors_after()
     endif
 endfunction
 
-" }}}
-"" Vim variables {{{
+"" Vim variables {{{1
 let g:netrw_bufsettings='relativenumber'
 let g:tex_conceal= ''
 let g:tex_flavor='latex'
-" }}}
-"" Vim options {{{
+
+"" Vim options {{{1
 set backup
 set undofile
 set backupdir^=~/.vim/backup//
@@ -313,8 +312,8 @@ endif
 if has("nvim")
   set inccommand=split
 endif
-" }}}
-"" Mappings {{{
+
+"" Mappings {{{1
 
 " .rst headings
 nnoremap <leader>1 m`yypVr=``
@@ -387,16 +386,15 @@ inoremap <c-s> <esc>1z=eA
 " Unimpaired
 nmap co yo
 
-" }}}
-"" Colorscheme {{{
+"" Colorscheme {{{1
 nnoremap ,c  :colorscheme<space>
 nnoremap ,cl :set background=light<cr>:colorscheme solarized<cr>
 nnoremap ,cl :set background=dark<cr>:colorscheme solarized<cr>
 nnoremap ,cs :colorscheme seoul256<cr>
 nnoremap ,cn :colorscheme nord<cr>
 colo seoul256
-" }}}
-"" Autocommands {{{
+
+"" Autocommands {{{1
 augroup vimrc
     autocmd!
     autocmd BufWritePost *vimrc,*exrc :call feedkeys(":source %\<cr>")
@@ -428,8 +426,7 @@ augroup vimrc
     autocmd FileType dirvish silent! unmap <buffer> <C-p>
 augroup END
 
-" }}}
-"" My search {{{
+"" My search {{{1
 
 " http://vim.wikia.com/wiki/Searching_for_files
 function! MySearch(...)
@@ -484,8 +481,7 @@ nnoremap <silent> ,f  :let g:my_fillprg=g:my_findprgs[g:my_findprg]<cr>:call Fil
 nnoremap <silent> cog :let g:my_searchprg=(g:my_searchprg+1)%len(g:my_searchprgs)<cr>:let &ro = &ro<cr>
 nnoremap <silent> cof :let g:my_findprg=(g:my_findprg+1)%len(g:my_findprgs)<cr>:let &ro = &ro<cr>
 
-" }}}
-"" Status line {{{
+"" Status line {{{1
 function! Mixed_indent()
     let l:spaces=search('\v(^ +)','n')
     let l:tabs=search('\v(^\t+)','n')
@@ -526,8 +522,8 @@ augroup myflags
     autocmd User Flags call Hoist("window", "%{WinCwd() != '' ? '['.WinCwd().']' : ''}")
     autocmd User Flags call Hoist("global", {"hl": "Statusline"}, "[%{pathshorten(GlobalCwd())}, %{g:my_searchprgs[g:my_searchprg]}, %{g:my_findprgs[g:my_findprg]}]")
 augroup END
-" }}}
-"" Neovim {{{
+
+"" Neovim {{{1
 if has("nvim")
     nnoremap goh :let @a=getcwd() \| lcd %:h \| terminal<cr>:execute 'lcd '.@a<cr>A
     tnoremap <c-x> <c-\><c-n><c-^>:bd! #<cr>
@@ -535,4 +531,3 @@ if has("nvim")
     tnoremap <c-_> <c-\><c-n><c-^>
     nnoremap <Leader>t :b term \| norm A<cr>
 endif
-" }}}
