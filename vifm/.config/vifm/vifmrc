@@ -28,7 +28,6 @@ nnoremap gb :bmarks<cr>
 nnoremap g<cr> :!nvim %f<cr>
 nnoremap r :run<cr>
 nnoremap ,b :backup<cr>
-nnoremap ,r :%rename<cr>
 nnoremap ,t :!urxvt &<cr>
 nnoremap ,l :!less %f<cr>
 nnoremap <c-d> :q<cr>
@@ -37,11 +36,28 @@ nnoremap <bs> <c-w>h
 
 " To disable automatic tagging of search results
 nnoremap coh :set hlsearch!<cr>
-
-" Colorscheme
-source /usr/share/vifm/colors/juef-zenburn.vifm
+nnoremap ,r :source ~/.config/vifm/vifmrc<cr>
 
 " Only one pane
 only
+
+" Colors
+highlight Border cterm=none ctermfg=default ctermbg=235
+highlight Win cterm=none ctermfg=188 ctermbg=237
+highlight Directory cterm=none ctermfg=108 ctermbg=default
+highlight CurrLine cterm=none ctermfg=168 ctermbg=236
+highlight Selected cterm=none ctermfg=116 ctermbg=238
+highlight StatusLine cterm=bold ctermfg=187 ctermbg=95
+highlight ErrorMsg cterm=bold ctermfg=115 ctermbg=default
+highlight WildMenu cterm=bold,reverse ctermfg=144 ctermbg=235
+highlight CmdLine cterm=none ctermfg=188 ctermbg=237
+highlight TopLine cterm=none ctermfg=108 ctermbg=235
+highlight TopLineSel cterm=bold ctermfg=186 ctermbg=236
+highlight Executable cterm=none ctermfg=172 ctermbg=default
+highlight Link cterm=none ctermfg=216 ctermbg=default
+highlight BrokenLink cterm=none ctermfg=174 ctermbg=default
+highlight Device cterm=none ctermfg=228 ctermbg=default
+highlight Fifo cterm=none ctermfg=109 ctermbg=default
+highlight Socket cterm=none ctermfg=13 ctermbg=default
 
 " vim: ft=vim

@@ -17,7 +17,6 @@ Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'beloglazov/vim-online-thesaurus'
-" Plug 'critiqjo/lldb.nvim'
 Plug 'easymotion/vim-easymotion'
 Plug 'holomorph/vim-freefem'
 Plug 'honza/vim-snippets'
@@ -74,7 +73,7 @@ endif
 
 if has("nvim")
     " Plug 'roxma/nvim-completion-manager'
-    Plug 'Shougo/deoplete.nvim', { 'do' : ':UpdateRemotePlugins', 'tag' : '4.0-serial' }
+    Plug 'Shougo/deoplete.nvim', { 'do' : ':UpdateRemotePlugins', 'tag' : '4.1' }
     " Plug 'autozimu/LanguageClient-neovim'
     Plug 'zchee/deoplete-jedi'
     Plug 'hkupty/iron.nvim'
@@ -120,16 +119,6 @@ nnoremap <c-p>a  :Ag
 nnoremap <a-b>  :Buffers<cr>
 nnoremap <a-f>  :Files<cr>
 nnoremap <a-g>  :GitFiles<cr>
-
-" LLDB
-nnoremap <c-d>n :LLsession new<cr>
-nnoremap <c-d>b <Plug>LLBreakSwitch
-nnoremap <c-d>c :LL continue<cr>
-nnoremap <c-d>d :LLmode debug<cr>
-nnoremap <c-d>z :LLmode code<cr>
-nnoremap <c-d>l :LL process launch<cr>
-nnoremap <c-d>p :LL print <C-R>=expand('<cword>')<CR>
-vnoremap <c-d>p :<C-U>LL print <C-R>=lldb#util#get_selection()<CR><CR>
 
 " Fugitive
 nnoremap <Leader>gs :Gstatus<cr>

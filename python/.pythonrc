@@ -3,6 +3,7 @@ import math
 import matplotlib
 import numpy as np
 import sympy as sym
+sym.init_printing()
 
 try:
     import hermipy as hm
