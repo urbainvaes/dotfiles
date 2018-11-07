@@ -74,8 +74,8 @@ endif
 if has("nvim")
     " Plug 'roxma/nvim-completion-manager'
     Plug 'Shougo/deoplete.nvim', { 'do' : ':UpdateRemotePlugins', 'tag' : '4.1' }
-    " Plug 'autozimu/LanguageClient-neovim'
-    Plug 'zchee/deoplete-jedi'
+    Plug 'autozimu/LanguageClient-neovim', { 'do': 'bash install.sh', 'branch': 'next' }
+    " Plug 'zchee/deoplete-jedi'
     Plug 'hkupty/iron.nvim'
 else
     Plug 'Shougo/neocomplete.vim'
@@ -91,7 +91,7 @@ Plug 'romainl/Apprentice'
 " Plug 'josuegaleas/jay'
 call plug#end()
 
-"" Plugin mappings {{{1
+"" Plugin configuration {{{1
 
 " Toggles
 nnoremap cpg :GitGutterToggle<cr>
@@ -166,6 +166,15 @@ if &runtimepath =~ 'remembrall'
     augroup END
 endif
 
+" LanguageClient
+if executable('pyls')
+    let g:LanguageClient_serverCommands = { 'python': ['pyls'], }
+endif
+
+nnoremap <silent> <leader>lh :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> <leader>ld :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <leader>lr :call LanguageClient#textDocument_rename()<CR>
+
 " Ultisnips
 nnoremap cps :UltiSnipsEdit<cr>
 
@@ -182,8 +191,6 @@ let g:neomake_gcc_args=[
             \ '-Wpedantic',
             \ '-I.', '-I..', '-I../..'
             \ ]
-
-"" Plugin configurations {{{1
 
 " Deoplete
 let g:deoplete#enable_at_startup = 1
@@ -225,6 +232,7 @@ let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=2
 let g:vimtex_compiler_progname='nvr'
 
+" Pilot
 let g:pilot_boundary='ignore'
 let g:pilot_mode='wintab'
 
