@@ -70,6 +70,11 @@ interval=5
 command=~/dotfiles/i3/.config/i3blocks/bin/battery
 interval=30
 
+[ram]
+label=<span color='gray'></span>
+command=echo $(free | grep '^Mem' | awk '{ printf "%3.0f%\n", 100*$3/$2 }')
+interval=30
+
 [diskhome]
 label=<span color='gray'></span>
 command=/usr/lib/i3blocks/disk
