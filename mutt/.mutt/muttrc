@@ -96,4 +96,4 @@ folder-hook 'Misc/rss|Misc/lists' 'unset trash; unset from'
 
 # Identities
 set reverse_name
-alternates "*@urbainvaes.com"
+alternates ".*@vaes.uk"

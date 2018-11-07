@@ -29,3 +29,6 @@ tensorization
 Markovianity
 SDE
 SDEs
+coercivity
+invertibility
+hypocoercive
