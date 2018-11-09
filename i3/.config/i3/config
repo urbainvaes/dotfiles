@@ -119,17 +119,40 @@ bindsym $mod+r mode "resize"
 
 for_window [class="^.*"] border pixel 2
 
+set $background #3a3a3a
+set $foreground #d0d0d0
+set $focused_bg #4a4a4a
+set $focused_bg #875f5f
+set $focused_fg #ffd787
+set $focused_fg #ffffff
+set $active_fg  #87afd7
+set $inactive_fg #aaaaaa
+set $inactive_bg #3a3a3a
+set $urgent_bg #d7afaf
+set $border #875f5f
+
+# class                 border       backgr.      text         indic.      child_border
+client.focused          $focused_bg  $focused_bg  $focused_fg  $urgent_bg  $border
+client.focused_inactive $focused_bg  $focused_bg  $focused_fg  $urgent_bg  $background
+client.unfocused        $inactive_bg $inactive_bg $inactive_fg $urgent_bg  $background
+client.urgent           $urgent_bg   $urgent_bg   $background  $urgent_bg  $urgent_bg
+client.background       $background
+smart_borders           on
+
 bar {
     status_command i3blocks
     i3bar_command  i3bar -t
     modifier none
     colors {
-        background #00000088
-        inactive_workspace #0000aa #00000088 #ffffff
-        focused_workspace  #4c7899 #285577ff #ffffff
-        active_workspace   #333333 #5f676a88 #ffffff
-        inactive_workspace #333333 #222222ff #888888
-        urgent_workspace   #2f343a #90000088 #ffffff
+        background $background
+        statusline $foreground
+        separator $border
+
+        # class            border       backgr.      text
+        focused_workspace  $focused_bg  $focused_bg  $focused_fg
+        active_workspace   $background  $background  $active_fg
+        inactive_workspace $inactive_bg $inactive_bg $inactive_fg
+        urgent_workspace   $urgent_bg   $urgent_bg   #303030
     }
 }
 

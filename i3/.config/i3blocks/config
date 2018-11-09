@@ -32,13 +32,11 @@ signal=1
 [primary]
 label=<span color='gray'></span>
 command=echo "$(xclip -o |  grep -o '^.\{0,9\}' | sed -e 's/[^a-zA-Z0-9\-]/_/g')"
-min_width=15
 interval=5
 
 [clipboard]
 label=<span color='gray'></span>
 command=echo "$(xclip -o -selection "clipboard" | grep -o '^.\{0,9\}' | sed -e 's/[^a-zA-Z0-9\-]/_/g')"
-instance=Master
 interval=5
 
 [volume]
@@ -89,7 +87,7 @@ interval=300
 
 [date]
 label=<span color='gray'></span>
-command=date '+%Y-%m-%d'
+command=echo $([ $BLOCK_BUTTON = 1 ] && gsimplecal; date '+%Y-%m-%d')
 interval=60
 
 [time]
