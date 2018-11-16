@@ -25,6 +25,7 @@ set abort_nosubject=no
 unset markers
 set sleep_time = 0
 set wait_key = no
+set charset = utf-8
 
 # Encryption
 set crypt_autosign = no
@@ -97,3 +98,6 @@ folder-hook 'Misc/rss|Misc/lists' 'unset trash; unset from'
 # Identities
 set reverse_name
 alternates ".*@vaes.uk"
+
+# HTML email
+macro compose 5 "F pandoc -s -f markdown -t html --webtex -H $HOME/.mutt/pandoc.html \ny^T^Utext/html; charset=utf-8\n"
