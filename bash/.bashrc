@@ -11,4 +11,5 @@ fi
 # FZF
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-source ~/.zgen/urbainvaes/fzf-marks-master/fzf-marks.plugin.bash
+FZF_MARKS_PLUGIN=$HOME/Dropbox/projects/fzf-marks/fzf-marks.plugin.bash
+[ -f "$FZF_MARKS_PLUGIN" ] && source "$FZF_MARKS_PLUGIN"

@@ -13,7 +13,7 @@ workspaces=$(i3-msg -t get_workspaces | awk 'BEGIN {
 act_on_container() {
 
     # Get desired workspace
-    [[ -z $2 ]] && target=$(echo "$workspaces" | awk '{print $2}' | dmenu -i -p "Select workspace: ") || target=$2
+    [[ -z $2 ]] && target=$(echo "$workspaces" | awk '{print $2}' | dmenu -i -p "Select workspace") || target=$2
 
     # Exit if empty
     [[ -z $target ]] && exit

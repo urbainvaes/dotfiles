@@ -59,10 +59,12 @@ fi
 [ ! -d ~/.zsh/zgen ] && git clone https://github.com/tarjoilija/zgen.git ~/.zsh/zgen
 source "$HOME/.zsh/zgen/zgen.zsh"
 
+FZF_MARKS_PLUGIN_ZSH=$HOME/Dropbox/projects/fzf-marks/fzf-marks.plugin.zsh
+[ -f "$FZF_MARKS_PLUGIN_ZSH" ] && source "$FZF_MARKS_PLUGIN_ZSH"
+
 if ! zgen saved; then
     echo "Creating a zgen save"
     zgen load rupa/z
-    zgen load urbainvaes/fzf-marks
     zgen load zsh-users/zsh-completions src
     zgen load zsh-users/zsh-syntax-highlighting
     zgen load zsh-users/zsh-autosuggestions
