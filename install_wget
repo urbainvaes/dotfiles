@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+find . -type f -name "*.wget" | \
+    while read -r file; do
+        destination=$HOME/$(echo "${file%.*}"  | sed 's#\./[^/]*/##')
+        wget "$(cat  "$file")" -O "$destination"
+        if [[ "$file" == ./bin/* ]]; then
+            chmod +x "$destination"
+        fi
+    done && echo "Installation successful"

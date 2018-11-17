@@ -12,7 +12,7 @@ SESSION=$(echo "$UNION" | dmenu -i -p "Session" | tr -d '[:space:]')
 # `command -v` to check that i3-msg is a command
 ! grep -Fxq "$SESSION" <(echo "$ATTACHED_SESSIONS") \
     && command -v i3-msg \
-    && "$HOME"/bin/workspace gw "$SESSION"
+    && "$HOME"/.local/bin/workspace gw "$SESSION"
 
 grep -Fxq "$SESSION" <(echo "$TMUXINATOR") \
     && COMMAND="tmuxinator start $SESSION" \
