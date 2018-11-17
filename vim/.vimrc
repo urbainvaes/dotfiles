@@ -99,7 +99,7 @@ nnoremap cpr :IronRepl<cr>
 nnoremap cpn :NERDTreeToggle<cr>
 nnoremap cpt :TagbarToggle<cr>
 nnoremap cpu :GundoToggle<cr>
-nnoremap <buffer> <nowait> <expr> cp Remembrall('cp')
+nnoremap <nowait> <expr> cp Remembrall('cp')
 
 " Easy motion
 map gs <Plug>(easymotion-prefix)
@@ -517,7 +517,9 @@ augroup myflags
     autocmd User Flags call Hoist("buffer", "%{b:mixed?'[mixed]':''}")
     autocmd User Flags call Hoist("buffer", "%{&paste?'[paste]':''}")
     autocmd User Flags call Hoist("window", "%{WinCwd() != '' ? '['.WinCwd().']' : ''}")
-    autocmd User Flags call Hoist("global", {"hl": "Statusline"}, "[%{pathshorten(GlobalCwd())}, %{g:my_searchprgs[g:my_searchprg]}, %{g:my_findprgs[g:my_findprg]}]")
+
+    highlight MyGlobals ctermfg=255 ctermbg=65
+    autocmd User Flags call Hoist("global", {"hl": "MyGlobals"}, "[%{pathshorten(GlobalCwd())}, %{g:my_searchprgs[g:my_searchprg]}, %{g:my_findprgs[g:my_findprg]}]")
 augroup END
 
 "" Neovim {{{1

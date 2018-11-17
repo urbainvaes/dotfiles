@@ -119,13 +119,14 @@ bindsym $mod+r mode "resize"
 
 for_window [class="^.*"] border pixel 2
 
-set $background #3a3a3a
+set $background #2c2c2c
 set $foreground #d0d0d0
 set $focused_bg #4a4a4a
 set $focused_bg #875f5f
 set $focused_fg #ffd787
 set $focused_fg #ffffff
-set $active_fg  #87afd7
+set $active_bg  #5f875f
+set $active_fg  #dddddd
 set $inactive_fg #aaaaaa
 set $inactive_bg #3a3a3a
 set $urgent_bg #d7afaf
@@ -150,7 +151,7 @@ bar {
 
         # class            border       backgr.      text
         focused_workspace  $focused_bg  $focused_bg  $focused_fg
-        active_workspace   $background  $background  $active_fg
+        active_workspace   $active_bg   $active_bg   $active_fg
         inactive_workspace $inactive_bg $inactive_bg $inactive_fg
         urgent_workspace   $urgent_bg   $urgent_bg   #303030
     }
@@ -160,18 +161,18 @@ bindsym $mod+m bar mode toggle
 
 # Move focus
 bindsym $mod+x                 focus output left
-bindsym $mod+n                 exec $HOME/bin/workspace gw
+bindsym $mod+n                 exec $HOME/.local/bin/workspace gw
 bindsym $mod+comma             workspace prev
 bindsym $mod+period            workspace next
 bindsym $mod+Tab               workspace back_and_forth
 
 # Move workspace
-bindsym $mod+Shift+comma       exec $HOME/bin/workspace mw p
-bindsym $mod+Shift+period      exec $HOME/bin/workspace mw n
+bindsym $mod+Shift+comma       exec $HOME/.local/bin/workspace mw p
+bindsym $mod+Shift+period      exec $HOME/.local/bin/workspace mw n
 bindsym $mod+Control+x         move workspace to output left; focus output left
 
 # Move container
-bindsym $mod+Shift+n           exec $HOME/bin/workspace mc
+bindsym $mod+Shift+n           exec $HOME/.local/bin/workspace mc
 bindsym $mod+Shift+x           move to output left; focus output left
 
 # Programs and commands
@@ -196,9 +197,9 @@ bindsym $mod+Shift+m exec --no-startup-id "urxvt -e tmuxinator start email"
 bindsym $mod+y       exec --no-startup-id "urxvt -e tmuxinator start notes"
 
 # Launch scripts
-bindsym $mod+semicolon exec --no-startup-id $HOME/bin/run
-bindsym $mod+e         exec --no-startup-id $HOME/bin/tmux_attach
-bindsym $mod+o         exec --no-startup-id $HOME/bin/references
+bindsym $mod+semicolon exec --no-startup-id $HOME/.local/bin/run
+bindsym $mod+e         exec --no-startup-id $HOME/.local/bin/tmux_attach
+bindsym $mod+o         exec --no-startup-id $HOME/.local/bin/references
 # bindsym $mod+z
 # bindsym $mod+'
 

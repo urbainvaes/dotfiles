@@ -4,7 +4,7 @@
 /usr/bin/start-pulseaudio-x11
 
 # Load key bindings
-$HOME/bin/keyboard
+$HOME/.local/bin/keyboard
 
 # Load Xresources to light colorscheme
 source $HOME/.local/colors.zsh

@@ -32,3 +32,6 @@ SDEs
 coercivity
 invertibility
 hypocoercive
+underdamped
+Langevin
+overdamped
