@@ -68,3 +68,6 @@ c.aliases = {
     "history-all-clear": 'spawn rm /home/urbain/.local/share/qutebrowser/cmd-history ;; history-clear',
     "wq": 'quit -s', "q": 'quit',
 }
+
+# Style sheet
+c.content.user_stylesheets='/home/urbain/dotfiles/qutebrowser/.config/qutebrowser/style.css'

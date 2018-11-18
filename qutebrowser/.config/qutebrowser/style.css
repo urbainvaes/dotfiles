@@ -1,0 +1,11 @@
+div#spon_links { 
+    display: none !important;
+}
+
+div#adBlock { 
+    display: none !important;
+}
+
+section[class='promotion card search-item'] {
+    display: none !important;
+}
