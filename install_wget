@@ -2,7 +2,8 @@
 
 find . -type f -name "*.wget" | \
     while read -r file; do
-        destination=$HOME/$(echo "${file%.*}"  | sed 's#\./[^/]*/##')
+        destination=$HOME/$(echo "${file%.*}" | sed 's#\./[^/]*/##')
+        mkdir -p "$(dirname "$destination")"
         wget "$(cat  "$file")" -O "$destination"
         if [[ "$file" == ./bin/* ]]; then
             chmod +x "$destination"

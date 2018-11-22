@@ -1,8 +1,41 @@
 <style>
 body {
-  font-family: Source Sans Pro, Courier; 
+  font-family: Monaco, Source Sans Pro, Monospace;
   padding: 1em;
-  font-size: 18px;
+  font-size: 16px;
   max-width: 46em;
 }
+
+blockquote {
+  background: #ddddee;
+  font-style: italic;
+  border-left: 10px solid #ccd;
+  margin: 1em 10px;
+  padding: 0.1em 10px;
+}
+
+blockquote blockquote {
+  background: #ddeedd;
+  font-style: italic;
+  border-left: 10px solid #cdc;
+  margin: 1em 10px;
+  padding: 0.1em 10px;
+}
+
+a:link {
+    color: blue;
+    text-decoration: none;
+}
+
+a:visited {
+    color: green;
+    text-decoration: none;
+}
+
+span[class='math display'] {
+    margin-left: 2em;
+    margin-top: 1em;
+    display: block;
+}
+
 </style>
