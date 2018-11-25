@@ -200,6 +200,9 @@ bindsym $mod+y       exec --no-startup-id "urxvt -e tmuxinator start notes"
 bindsym $mod+semicolon exec --no-startup-id $HOME/.local/bin/run
 bindsym $mod+e         exec --no-startup-id $HOME/.local/bin/tmux_attach
 bindsym $mod+o         exec --no-startup-id $HOME/.local/bin/references
+bindsym $mod+F1        exec --no-startup-id $HOME/.local/bin/keyboard
+bindsym $mod+F2        exec --no-startup-id $HOME/.local/bin/keyboard-us
+
 # bindsym $mod+z
 # bindsym $mod+'
 

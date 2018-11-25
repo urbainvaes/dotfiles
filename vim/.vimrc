@@ -38,7 +38,6 @@ Plug 'lervag/vimtex'
 Plug 'machakann/vim-highlightedyank'
 Plug 'majutsushi/tagbar'
 Plug 'neomake/neomake'
-Plug 'KKPMW/sacredforest-vim'
 Plug 'scrooloose/nerdtree'
 Plug 'sjl/Gundo.vim', { 'on' : 'GundoToggle' }
 Plug 'terryma/vim-multiple-cursors'
@@ -53,6 +52,7 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-flagship'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-scriptease'
@@ -76,12 +76,13 @@ if has("nvim")
     Plug 'Shougo/deoplete.nvim', { 'do' : ':UpdateRemotePlugins', 'tag' : '4.1' }
     Plug 'autozimu/LanguageClient-neovim', { 'do': 'bash install.sh', 'branch': 'next' }
     " Plug 'zchee/deoplete-jedi'
-    Plug 'hkupty/iron.nvim'
+    Plug 'hkupty/iron.nvim', { 'branch': 'legacy' }
 else
     Plug 'Shougo/neocomplete.vim'
 endif
 
 " Colors
+Plug 'KKPMW/sacredforest-vim'
 Plug 'altercation/vim-colors-solarized'
 Plug 'arcticicestudio/nord-vim'
 Plug 'KKPMW/moonshine-vim'
