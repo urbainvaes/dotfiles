@@ -1,0 +1,5 @@
+#!/bin/bash
+
+TEXT=$(cat)
+HTML=$(pandoc -s -f markdown -t html --webtex -H "$HOME"/.mutt/pandoc.html <<< "$TEXT")
+sed 's/<br \/>\(.*\)<br \/>/<span class="math display">\1<\/span>/g' <<< "$HTML"

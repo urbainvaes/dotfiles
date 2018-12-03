@@ -100,4 +100,4 @@ set reverse_name
 alternates ".*@vaes.uk"
 
 # HTML email
-macro compose 5 "$HOME/.mutt/filter\ny^T^Utext/html; charset=utf-8\n"
+macro compose 5 "F $HOME/.mutt/filter\ny^T^Utext/html; charset=utf-8\n"

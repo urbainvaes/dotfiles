@@ -172,6 +172,7 @@ if executable('pyls')
     let g:LanguageClient_serverCommands = { 'python': ['pyls'], }
 endif
 
+let g:LanguageClient_diagnosticsEnable = 0
 nnoremap <silent> <leader>lh :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> <leader>ld :call LanguageClient#textDocument_definition()<CR>
 nnoremap <silent> <leader>lr :call LanguageClient#textDocument_rename()<CR>
@@ -380,6 +381,9 @@ inoreabbrev <expr> #!! "#!/usr/bin/env" . (empty(&filetype) ? '' : ' '.&filetype
 
 " Spell
 inoremap <c-s> <esc>1z=eA
+
+" Projectionist
+nnoremap ,e :E
 
 " Unimpaired
 nmap co yo
