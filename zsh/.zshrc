@@ -181,4 +181,14 @@ alias -s pdf='xdg-open'
 # Global
 alias -g grep='grep --color=auto --exclude-dir={.git,.hg}'
 
+# Pacman
+alias pacup='sudo pacman -Syu'
+alias pacin='sudo pacman -S'
+alias pacrm='sudo pacman -Rs'
+alias pacs='pacman -Ss'
+
+# Systemctl
+alias sysnet="systemctl restart NetworkManager.service"
+alias sysvpn="systemctl restart openvpn-client@ic.service"
+
 # }}}

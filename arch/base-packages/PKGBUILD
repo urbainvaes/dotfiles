@@ -23,6 +23,7 @@ depends=(alsa-utils
          i3lock
          i3status
          inotify-tools
+         inkscape
          ipython
          isync
          lsof

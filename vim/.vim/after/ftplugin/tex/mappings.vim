@@ -4,11 +4,6 @@ iabbrev <buffer> {{ \left\{
 iabbrev <buffer> }} \right\}
 iabbrev <buffer> [[ \left[
 iabbrev <buffer> ]] \right]
-iabbrev <buffer> == \,=\,
-iabbrev <buffer> >> \,\geq\,
-iabbrev <buffer> << \,\leq\,
-iabbrev <buffer> ++ \,+\,
-iabbrev <buffer> -- \,-\,
 
 iabbrev <buffer> ga \alpha
 iabbrev <buffer> gb \beta
@@ -45,7 +40,6 @@ iabbrev <buffer> gF \Phi
 nnoremap <buffer> <LocalLeader>i :VimtexCompile<CR>
 nnoremap <buffer> <LocalLeader>e :VimtexErrors<CR>
 nnoremap <buffer> <LocalLeader>o :VimtexView<CR>
-nnoremap <buffer> <LocalLeader>k :VimtexStop<CR>:VimtexClean<CR>
 nnoremap <buffer> <LocalLeader>t :VimtexTocToggle<CR>
 nnoremap <buffer> <LocalLeader>h :split header.sty<CR>
 nnoremap <buffer> <LocalLeader>d :!latexdiff-git main_old.tex main.tex > diff.tex<CR>

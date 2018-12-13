@@ -163,7 +163,7 @@ if &runtimepath =~ 'remembrall'
     nnoremap <silent> y :<c-u>call remembrall#remind('n', 'y')<cr>
 
     augroup remembrall
-        autocmd FileType tex nnoremap <buffer> <silent> <nowait> <expr> ,l Remembrall(',l')
+        autocmd FileType tex nnoremap <buffer> <silent> <expr> ,l Remembrall(',l')
     augroup END
 endif
 

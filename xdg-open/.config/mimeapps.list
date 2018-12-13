@@ -9,6 +9,7 @@
 text/plain=nvim.desktop;
 image/jpeg=feh.desktop;
 image/png=feh.desktop;
+image/jpg=feh.desktop;
 image/x-eps=org.pwmt.zathura.desktop;
 inode/directory=vifm.desktop;nautilus.desktop;
 text/html=qutebrowser.desktop;firefox.desktop;

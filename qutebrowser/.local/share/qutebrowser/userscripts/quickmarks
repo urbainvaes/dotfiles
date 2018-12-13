@@ -2,7 +2,7 @@
 
 if [ -n "$1" ]
 then
-    echo "open $(echo $1 | awk '{print $NF}')"  >> $QUTE_FIFO
+    echo "open $(echo "$1" | awk '{print $NF}')"  >> "$QUTE_FIFO"
     exit;
 fi
 

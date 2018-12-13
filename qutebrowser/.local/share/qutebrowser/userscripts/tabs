@@ -7,7 +7,7 @@ if [ -n "$1" ]
 then
     selected_id=$(echo "$tabs" | grep "$@" | sed 's/^.*window":\([0-9]*\).*$/\1/')
     i3-msg "[id=$selected_id] focus" > /dev/null 2>&1
-    exit;
+    exit
 fi
 
 # Sanitized List of tabs

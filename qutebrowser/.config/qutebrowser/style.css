@@ -1,8 +1,12 @@
-div#spon_links { 
+div#spon_links {
     display: none !important;
 }
 
-div#adBlock { 
+div#adBlock {
+    display: none !important;
+}
+
+div#spon-results {
     display: none !important;
 }
 

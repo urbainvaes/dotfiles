@@ -13,7 +13,7 @@ xrdb $HOME/.Xresources/$COLORSCHEME
 # Background
 feh --bg-fill /home/urbain/documents/wallpapers/pagoda.jpg
 
-# Disable screen going blank
+# Disable screen going to sleep
 xset -dpms
 xset s off
 

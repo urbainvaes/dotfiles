@@ -13,6 +13,7 @@
 	sslverify = false
 [commit]
         gpgSign = true
+        verbose = true
 [push]
 	default = simple
 [merge]

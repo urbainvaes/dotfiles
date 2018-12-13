@@ -1,7 +1,10 @@
-import importlib
 import math
+import importlib
 import matplotlib
+
 import numpy as np
+np.set_printoptions(linewidth=120)
+
 import sympy as sym
 sym.init_printing()
 
