@@ -11,7 +11,7 @@ source $HOME/.local/colors.zsh
 xrdb $HOME/.Xresources/$COLORSCHEME
 
 # Background
-feh --bg-fill /home/urbain/documents/wallpapers/pagoda.jpg
+feh --bg-fill /home/urbain/Documents/wallpapers/pagoda.jpg
 
 # Disable screen going to sleep
 xset -dpms

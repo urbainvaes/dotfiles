@@ -8,7 +8,7 @@
 	templatedir = ~/.git_template
 [alias]
 	ctags = !.git/hooks/ctags
-	saveandsync = !git add . && git commit -m "Update" && git push origin master
+	saveandsync = !git add . && git diff --cached --exit-code || git commit -m "Update" && git push origin master
 [http]
 	sslverify = false
 [commit]
