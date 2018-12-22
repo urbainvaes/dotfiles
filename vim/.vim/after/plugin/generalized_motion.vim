@@ -1,4 +1,8 @@
 "" More general ; {{{1
+" if exists('g:loaded_sneak_plugin')
+
+" endif
+
 let g:generalized_motion = "f"
 function! Generalized_motion(...)
     if a:0 > 0
@@ -20,7 +24,7 @@ function! Generalized_motion(...)
         call feedkeys(';', 'n')
     endtry
 endfunction
-for mapping in ['f', 't', ']q', '[q', ']a', '[a', ']f', '[f', ']b', '[b']
+for mapping in ['f', 't', 's', ']q', '[q', ']a', '[a', ']f', '[f', ']b', '[b']
     exe "nmap <silent>" mapping ":<c-u>call Generalized_motion('".mapping."')<cr>"
 endfor
 nnoremap <silent> ; :<c-u>call Generalized_motion()<cr>

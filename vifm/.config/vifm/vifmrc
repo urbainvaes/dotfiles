@@ -21,6 +21,7 @@ command! backup !cp -r %f %f.bak
 " Mappings
 nnoremap s :shell<cr>
 nnoremap w :view<cr>
+nnoremap x :!xdg-open %f<cr>
 nnoremap o :file<cr>
 nnoremap b :marks<cr>
 nnoremap gm :bmark<space>

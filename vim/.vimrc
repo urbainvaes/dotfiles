@@ -158,10 +158,10 @@ nnoremap ,pc :PlugClean<cr>
 
 " Remembrall
 if &runtimepath =~ 'remembrall'
+    let g:remembrall_auto_accept = 0
     nnoremap <buffer> <nowait> <expr> ,p Remembrall(',p')
     nnoremap <silent> ,, :call remembrall#remind('n', '')<cr>
     nnoremap <silent> y :<c-u>call remembrall#remind('n', 'y')<cr>
-
     augroup remembrall
         autocmd FileType tex nnoremap <buffer> <silent> <expr> ,l Remembrall(',l')
     augroup END

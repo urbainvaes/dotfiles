@@ -26,6 +26,9 @@ xmodmap -e "keysym Caps_Lock = Control_L Control_L"
 xmodmap -e "add Control = Control_L"
 xcape -e 'Control_L=Escape'
 
+# Make Shift (Shift, :)
+xcape -e 'Shift_L=Shift_L|semicolon'
+
 # Make Tab (Alt_L, Tab)
 xmodmap -e "keysym Tab = Alt_L"
 xmodmap -e "keycode any = Tab"
