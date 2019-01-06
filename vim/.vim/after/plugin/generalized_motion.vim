@@ -1,7 +1,4 @@
 "" More general ; {{{1
-" if exists('g:loaded_sneak_plugin')
-
-" endif
 
 let g:generalized_motion = "f"
 function! Generalized_motion(...)
@@ -10,9 +7,11 @@ function! Generalized_motion(...)
         echom "Generalized motion:" g:generalized_motion
         if (g:generalized_motion == "f") | call feedkeys('f', 'n') | return | endif
         if (g:generalized_motion == "t") | call feedkeys('t', 'n') | return | endif
+        if (g:generalized_motion == "s") | call feedkeys("\<Plug>Sneak_s") | return | endif
     endif
     if (g:generalized_motion == "f") | call feedkeys(';', 'n') | endif
     if (g:generalized_motion == "t") | call feedkeys(';', 'n') | endif
+    if (g:generalized_motion == "s") | call feedkeys("\<Plug>Sneak_;") | return | endif
     try
         if (g:generalized_motion == "]q") | cnext | endif
         if (g:generalized_motion == "[q") | cprevious | endif
@@ -20,6 +19,8 @@ function! Generalized_motion(...)
         if (g:generalized_motion == "[a") | previous | endif
         if (g:generalized_motion == "]b") | bnext | endif
         if (g:generalized_motion == "[b") | bprevious | endif
+        if (g:generalized_motion == "]f") | call feedkeys("\<Plug>unimpairedDirectoryPrevious") | endif
+        if (g:generalized_motion == "[f") | call feedkeys("\<Plug>unimpairedDirectoryPrevious") | endif
     catch
         call feedkeys(';', 'n')
     endtry

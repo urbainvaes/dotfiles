@@ -1,12 +1,12 @@
 " Command to open files
-filetype * xdg-open &
-filetype *.exe wine
+filetype *.JPG feh %f &
+filetype *.exe wine %f & 
+filetype * xdg-open %f &
 
 " Options
 set fastrun
 set history=100
 set incsearch
-set runexec
 set sortnumbers
 set scrolloff=2
 set smartcase
@@ -14,6 +14,9 @@ set vicmd=$EDITOR
 set relativenumber
 set vimhelp
 set wildmenu
+
+" Run executables on <cr>
+" set runexec
 
 " Commands
 command! backup !cp -r %f %f.bak

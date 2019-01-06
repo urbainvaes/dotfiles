@@ -136,8 +136,8 @@ nnoremap <silent> gh :set opfunc=Call_heytmux<cr>g@
 xnoremap <silent> gh :Heytmux!<cr>
 
 " Iron
+" let g:iron_repl_open_cmd = 'vsplit'
 let g:iron_map_defaults=0
-let g:iron_repl_open_cmd='edit'
 nmap yr <Plug>(iron-send-motion)
 xmap R <Plug>(iron-send-motion)
 nmap yrr VR
