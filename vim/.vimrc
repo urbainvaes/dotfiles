@@ -229,10 +229,11 @@ let g:UltiSnipsSnippetsDir="~/.vim/mySnippets"
 " let g:UltiSnipsUsePythonVersion=3
 
 " Vimtex
-let g:vimtex_fold_enabled=1
+let g:vimtex_fold_enabled=1  " Makes %s slow!
 let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=2
 let g:vimtex_compiler_progname='nvr'
+let g:vimtex_syntax_enabled=1
 
 " Pilot
 let g:pilot_boundary='ignore'
@@ -253,8 +254,6 @@ endif
 function! Multiple_cursors_before()
     if has("nvim")
         let b:deoplete_disable_auto_complete = 1
-    else
-        execute 'NeoCompleteLock'
     endif
 endfunction
 
@@ -262,8 +261,6 @@ function! Multiple_cursors_after()
     if has("nvim")
         let b:deoplete_disable_auto_complete = 0
     else
-        execute 'NeoCompleteUnlock'
-    endif
 endfunction
 
 "" Vim variables {{{1
@@ -419,7 +416,7 @@ augroup vimrc
     autocmd FileType gnuplot setlocal commentstring=#%s
     autocmd FileType gnuplot setlocal makeprg=gnuplot\ %
     autocmd FileType python setlocal makeprg=python\ %
-    autocmd FileType tex setlocal spell
+    autocmd FileType tex setlocal spell spelllang=en_us
 
     " Dirvish
     autocmd FileType dirvish nnoremap <buffer> t :!touch %

@@ -191,4 +191,7 @@ alias pacs='pacman -Ss'
 alias sysnet="systemctl restart NetworkManager.service"
 alias sysvpn="systemctl restart openvpn-client@ic.service"
 
+# Directories
+alias ..="cd .."
+alias ...="cd ../.."
 # }}}
