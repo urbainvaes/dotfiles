@@ -26,6 +26,10 @@ xmodmap -e "keysym Caps_Lock = Control_L Control_L"
 xmodmap -e "add Control = Control_L"
 xcape -e 'Control_L=Escape'
 
+# Set Caps_Lock on escape
+xmodmap -e "keysym Print = Print Caps_Lock"
+xmodmap -e "add Lock = Caps_Lock"
+
 # Make Shift (Shift, :)
 xcape -e 'Shift_L=Shift_L|semicolon'
 
