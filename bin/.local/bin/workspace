@@ -41,7 +41,8 @@ act_on_workspace() {
     [[ $1 = 'n' ]] && new_number=$(( (11+focused_number+1) % 11 ))
     [[ $1 = 'p' ]] && new_number=$(( (11+focused_number-1) % 11 ))
 
-    next=$(echo "${workspaces}" | awk '$1 ~ /'$new_number'/ {print $2}')
+    next=$(echo "${workspaces}" | awk '$1=='$new_number' {print $2}')
+    echo $next
 
     i3-msg rename workspace to "${new_number}":"${focused_name}"
 
