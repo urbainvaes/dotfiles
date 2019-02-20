@@ -14,7 +14,7 @@ for_window [instance="scratchpad"] move window to scratchpad, scratchpad show
 bindsym $mod+Shift+Return exec --no-startup-id i3-sensible-terminal -name scratchpad
 
 # Assign applications to certain workspaces
-# assign [class="qutebrowser"] 1:qutebrowser
+assign [class="qutebrowser"] 0:browser
 
 # kill focused window
 bindsym $mod+d kill
@@ -134,7 +134,7 @@ set $border #875f5f
 
 # class                 border       backgr.      text         indic.      child_border
 client.focused          $focused_bg  $focused_bg  $focused_fg  $urgent_bg  $border
-client.focused_inactive $focused_bg  $focused_bg  $focused_fg  $urgent_bg  $background
+client.focused_inactive $active_bg   $active_bg   $active_fg   $urgent_bg  $background
 client.unfocused        $inactive_bg $inactive_bg $inactive_fg $urgent_bg  $background
 client.urgent           $urgent_bg   $urgent_bg   $background  $urgent_bg  $urgent_bg
 client.background       $background
