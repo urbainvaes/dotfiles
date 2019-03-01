@@ -11,6 +11,7 @@ c.tabs.show = 'multiple'
 c.tabs.tabs_are_windows = True
 c.url.start_pages = ['file:///home/urbain/personal/index.html']
 c.url.default_page = c.url.start_pages[0]
+c.completion.open_categories = ['bookmarks', 'history']
 
 # Bindings for normal mode
 config.bind(",b", 'spawn --userscript explorer -b')

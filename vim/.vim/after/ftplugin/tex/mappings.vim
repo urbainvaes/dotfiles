@@ -7,6 +7,7 @@ iabbrev <buffer> ]] \right]
 
 iabbrev <buffer> ga \alpha
 iabbrev <buffer> gb \beta
+iabbrev <buffer> gc \xi
 iabbrev <buffer> gg \gamma
 iabbrev <buffer> gd \delta
 iabbrev <buffer> ge \varepsilon
@@ -18,7 +19,7 @@ iabbrev <buffer> gk \kappa
 iabbrev <buffer> gl \lambda
 iabbrev <buffer> gm \mu
 iabbrev <buffer> gn \nu
-iabbrev <buffer> gx \xi
+iabbrev <buffer> gx \chi
 iabbrev <buffer> gr \rho
 iabbrev <buffer> gs \sigma
 iabbrev <buffer> gt \tau
@@ -27,11 +28,11 @@ iabbrev <buffer> gp \pi
 iabbrev <buffer> gw \omega
 
 iabbrev <buffer> gB \Beta
+iabbrev <buffer> gC \Xi
 iabbrev <buffer> gG \Gamma
 iabbrev <buffer> gD \Delta
 iabbrev <buffer> gH \Theta
 iabbrev <buffer> gL \Lambda
-iabbrev <buffer> gX \Xi
 iabbrev <buffer> gP \Pi
 iabbrev <buffer> gS \Sigma
 iabbrev <buffer> gW \Omega
