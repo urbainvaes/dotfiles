@@ -254,12 +254,14 @@ endif
 function! Multiple_cursors_before()
     if has("nvim")
         let b:deoplete_disable_auto_complete = 1
+        call deoplete#disable()
     endif
 endfunction
 
 function! Multiple_cursors_after()
     if has("nvim")
         let b:deoplete_disable_auto_complete = 0
+        call deoplete#enable()
     else
 endfunction
 

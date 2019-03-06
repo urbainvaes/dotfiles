@@ -34,6 +34,7 @@ nnoremap r :run<cr>
 nnoremap ,b :backup<cr>
 nnoremap ,t :!urxvt &<cr>
 nnoremap ,l :!less %f<cr>
+nnoremap ,i :!inkscape %f<cr>
 nnoremap <c-d> :q<cr>
 nnoremap <c-l> <c-w>l
 nnoremap <bs> <c-w>h
