@@ -262,7 +262,7 @@ function! Multiple_cursors_after()
     if has("nvim")
         let b:deoplete_disable_auto_complete = 0
         call deoplete#enable()
-    else
+    endif
 endfunction
 
 "" Vim variables {{{1

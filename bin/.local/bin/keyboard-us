@@ -19,4 +19,4 @@ xcape -e 'Control_L=Escape'
 xmodmap -e "keysym space = Super_L"
 xmodmap -e "add mod4 = Super_L"
 xmodmap -e "keycode any = space"
-xcape -e 'Super_L=space'
+# xcape -e 'Super_L=space'

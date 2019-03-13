@@ -26,7 +26,7 @@ act_on_container() {
         target="$existing_target"
     else
         # Add number to workspace name (start at 1, but allow 0)
-        new_number=$(echo "$workspaces" | awk '$1!=p+1 && $1!=0 {exit;}{p=$1} END {print p+1}')
+        new_number=$(echo "$workspaces" | sort -n | awk '$1!=p+1 && $1!=0 {exit;}{p=$1} END {print p+1}')
         target=$new_number:$target
     fi
 
