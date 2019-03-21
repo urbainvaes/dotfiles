@@ -57,6 +57,7 @@ c.url.searchengines = {
     'th': 'http://www.thesaurus.com/browse/{}',
     'google': 'https://www.google.com/search?hl=en&q={}',
     'hn': 'https://hn.algolia.com/?query={}',
+    'lg': 'http://gen.lib.rus.ec/search.php?req={}',
     'lit': 'https://www.littre.org/recherche?mot={}',
     'scholar': 'https://scholar.google.com/scholar?q={}',
     'tr': 'https://translate.google.com/#en/fr/{}',
