@@ -1,5 +1,6 @@
 [core]
 	fileMode = false
+        whitespace = true
 [user]
 	name = Urbain Vaes
 	email = urbain@vaes.uk

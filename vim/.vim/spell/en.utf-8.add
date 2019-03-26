@@ -51,3 +51,7 @@ indices
 minima
 nondegenerate
 colinear
+periodized
+hypoelliptic
+pointwise
+nonsymmetric

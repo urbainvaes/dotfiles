@@ -2,6 +2,10 @@
 [[ -z $DISPLAY && -z $SSH_CONNECTION && $XDG_VTNR -eq 1 ]] && exec startx
 # }}}
 ## Bindings {{{
+
+# Load fzf bindings here because we will override ^r
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 bindkey -v
 bindkey -a 'k' history-beginning-search-backward
 bindkey -a 'j' history-beginning-search-forward
@@ -17,6 +21,7 @@ bindkey '^k' kill-line
 bindkey '^u' kill-whole-line
 bindkey '^v' visual-mode
 bindkey '^w' backward-kill-word
+bindkey '^r' history-incremental-search-backward
 
 autoload -z edit-command-line
 zle -N edit-command-line
@@ -77,18 +82,15 @@ bindkey '^z' z
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=6'
 
 # }}}
-## fzf {{{
+## Use fzf with z {{{
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# Use fzf with z
 unalias z 2> /dev/null
 z() {
   [ $# -gt 0 ] && _z "$*" && return
   cd "$(_z -l 2>&1 | fzf --height 40% --reverse --inline-info +s --tac --query "$*" | sed 's/^[0-9,.]* *//')"
   zle && zle reset-prompt
 }
-zle     -N   z
+zle -N z
 
 # }}}
 ## Colors {{{

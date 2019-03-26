@@ -344,6 +344,7 @@ nnoremap <Leader>r :Start %:p<cr>
 nnoremap <Leader>R :Start! %:p<cr>
 
 nnoremap cqo :copen<cr>
+nnoremap cqh :colder<cr>
 nnoremap cqc :cclose<cr>
 
 nnoremap got :call system('urxvt -cd '.getcwd().' &')<cr>
@@ -379,9 +380,10 @@ nnoremap ,s :source %<cr>
 inoreabbrev <expr> #!! "#!/usr/bin/env" . (empty(&filetype) ? '' : ' '.&filetype)
 
 " Spell
-inoremap <c-s> <esc>1z=eA
+inoremap <nowait> <c-g> <esc>h1z=ea
+nnoremap <Leader>s 1z=
 
-" Projectionist
+" Projectionist 
 nnoremap ,e :E
 
 " Unimpaired
@@ -534,3 +536,7 @@ if has("nvim")
     tnoremap <c-_> <c-\><c-n><c-^>
     nnoremap <Leader>t :b term \| norm A<cr>
 endif
+
+"" Experimental {{{1
+set wildcharm=<C-z>
+nnoremap ,e :e **/*<C-z><S-Tab>

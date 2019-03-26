@@ -141,6 +141,7 @@ client.background       $background
 smart_borders           on
 
 bar {
+    position bottom
     status_command i3blocks
     i3bar_command  i3bar -t
     modifier none

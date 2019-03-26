@@ -61,7 +61,7 @@ auto_view text/html
 alternative_order text/plain text/enriched text/html
 
 # Editor
-set editor="nvim"
+set editor="$EDITOR"
 set include=yes
 
 
