@@ -65,6 +65,7 @@ fi
 source "$HOME/.zsh/zgen/zgen.zsh"
 
 FZF_MARKS_PLUGIN_ZSH=$HOME/Dropbox/projects/fzf-marks/fzf-marks.plugin.zsh
+FZF_MARKS_COMMAND='fzf --height 40% --reverse -e'
 [ -f "$FZF_MARKS_PLUGIN_ZSH" ] && source "$FZF_MARKS_PLUGIN_ZSH"
 
 if ! zgen saved; then
@@ -180,8 +181,8 @@ alias renet='systemctl restart NetworkManager.service'
 # Applications
 alias -s pdf='xdg-open'
 
-# Global
-alias -g grep='grep --color=auto --exclude-dir={.git,.hg}'
+# Remove global because it breaks: pacman -D --asdeps grep
+alias grep='grep --color=auto --exclude-dir={.git,.hg}'
 
 # Pacman
 alias pacup='sudo pacman -Syu'

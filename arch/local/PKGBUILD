@@ -1,0 +1,16 @@
+# yaourt -P && makepkg -i
+pkgname=local-packages
+pkgver=0
+pkgrel=1
+arch=(any)
+depends=(
+    bashmount 
+    bitlbee-facebook 
+    myrepos 
+    rofi-dmenu 
+    spotify 
+    tmuxinator
+    ttf-monaco ubuntu-wallpapers 
+    ttf-computer-modern-fonts
+    yay-bin
+)

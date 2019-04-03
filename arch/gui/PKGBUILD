@@ -46,7 +46,6 @@ depends=(
     surfraw
     ttf-dejavu
     ttf-ubuntu-font-family
-    ttf-computer-modern-fonts
     ttf-font-awesome
     urxvt-perls
     vlc
