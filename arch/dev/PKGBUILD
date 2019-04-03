@@ -1,0 +1,36 @@
+# makepkg -sfi
+pkgname=my-dev
+pkgver=0
+pkgrel=1
+arch=(any)
+depends=(
+    biber
+    boost
+    cloc
+    cmake
+    flake8
+    gcc
+    gdb
+    ghostscript # For epstopdf
+    ipython
+    python-ipdb
+    python-jedi
+    python-language-server
+    python-numpy
+    python-pylint
+    python-scipy
+    python-sphinx
+    python-sympy
+    python-matplotlib
+    texlive-bibtexextra
+    texlive-core
+    texlive-fontsextra
+    texlive-formatsextra
+    texlive-games
+    texlive-humanities
+    texlive-latexextra
+    texlive-pictures
+    texlive-pstricks
+    texlive-publishers
+    texlive-science
+)

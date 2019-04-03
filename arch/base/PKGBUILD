@@ -1,0 +1,144 @@
+# makepkg -sfi
+pkgname=my-base
+pkgver=0
+pkgrel=1
+arch=(any)
+
+# Archlinux base
+depends=(
+    bash
+    bzip2
+    coreutils
+    cryptsetup
+    device-mapper
+    dhcpcd
+    diffutils
+    e2fsprogs
+    file
+    filesystem
+    findutils
+    gawk
+    gcc-libs
+    gettext
+    glibc
+    grep
+    gzip
+    inetutils
+    iproute2
+    iputils
+    jfsutils
+    less
+    licenses
+    linux
+    linux-firmware
+    logrotate
+    lvm2
+    man-db
+    man-pages
+    mdadm
+    nano
+    netctl
+    pacman
+    pciutils
+    pcmciautils
+    perl
+    procps-ng
+    psmisc
+    reiserfsprogs
+    s-nail
+    sed
+    shadow
+    sysfsutils
+    systemd-sysvcompat
+    tar
+    texinfo
+    usbutils
+    util-linux
+    vi
+    which
+    xfsprogs
+)
+
+# Archlinux base-devel
+depends+=(
+    autoconf
+    binutils
+    fakeroot
+    file
+    findutils
+    gawk
+    gcc
+    gettext
+    grep
+    groff
+    gzip
+    libtool
+    m4
+    make
+    pacman
+    patch
+    sed
+    sudo
+    systemd
+    texinfo
+    util-linux
+    which
+)
+
+# Personal additions
+depends+=(
+    alsa-utils
+    android-file-transfer
+    arch-install-scripts
+    awesome-terminal-fonts
+    bash
+    binutils
+    calc
+    cronie
+    ctags
+    dosfstools
+    devtools
+    fakeroot
+    figlet
+    fuse2
+    fzf
+    git
+    grub
+    htop
+    hub
+    isync
+    linux-headers
+    lsof
+    moreutils
+    msmtp
+    mosh
+    mutt
+    ncmpcpp
+    neofetch
+    neovim
+    network-manager-applet
+    networkmanager
+    networkmanager-openvpn
+    nmap
+    perl-file-mimeinfo
+    pkgfile
+    python
+    python-pip
+    python-neovim
+    python-unidecode
+    ripgrep
+    qemu
+    rsync
+    shellcheck
+    sshfs
+    stow
+    tig
+    tldr
+    tmux
+    unzip
+    vim-spell-fr
+    vifm
+    weechat
+    wget
+    zsh
+)

@@ -383,7 +383,7 @@ inoreabbrev <expr> #!! "#!/usr/bin/env" . (empty(&filetype) ? '' : ' '.&filetype
 inoremap <nowait> <c-g> <esc>h1z=ea
 nnoremap <Leader>s 1z=
 
-" Projectionist 
+" Projectionist
 nnoremap ,e :E
 
 " Unimpaired
@@ -524,7 +524,7 @@ augroup myflags
     autocmd User Flags call Hoist("buffer", "%{&paste?'[paste]':''}")
     autocmd User Flags call Hoist("window", "%{WinCwd() != '' ? '['.WinCwd().']' : ''}")
 
-    highlight MyGlobals ctermfg=255 ctermbg=65
+    highlight MyGlobals ctermfg=255 ctermbg=240
     autocmd User Flags call Hoist("global", {"hl": "MyGlobals"}, "[%{pathshorten(GlobalCwd())}, %{g:my_searchprgs[g:my_searchprg]}, %{g:my_findprgs[g:my_findprg]}]")
 augroup END
 

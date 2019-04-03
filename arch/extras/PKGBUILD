@@ -1,0 +1,21 @@
+# makepkg -sfi
+pkgname=my-extras
+pkgver=0
+pkgrel=1
+arch=(any)
+
+# Big apps
+depends=(
+    chromium
+    firefox
+    gparted
+    pandoc
+    rtorrent
+)
+
+#games
+depends+=(
+    teamspeak3
+    steam-native-runtime
+    wine
+)
