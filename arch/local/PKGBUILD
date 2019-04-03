@@ -1,5 +1,5 @@
 # yaourt -P && makepkg -i
-pkgname=local-packages
+pkgname=my-local
 pkgver=0
 pkgrel=1
 arch=(any)

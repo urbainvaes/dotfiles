@@ -63,6 +63,7 @@ depends+=(
     unzip
     vim-spell-fr
     vifm
+    w3m
     weechat
     wget
     zsh

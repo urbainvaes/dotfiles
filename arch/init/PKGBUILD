@@ -1,0 +1,24 @@
+# makepkg -sf
+# sudo pacman -Uv --overwrite ...
+
+pkgname=my-init
+pkgver=0
+pkgrel=1
+arch=(any)
+
+source=('vconsole.conf'
+        'sudoers'
+        'locale.gen'
+        'locale.conf'
+        'override.conf')
+
+md5sums=(SKIP SKIP SKIP SKIP SKIP)
+install=my-init.install
+
+package() {
+    install -Dm 0644 override.conf "$pkgdir/etc/systemd/system/getty@tty1.service.d/override.conf"
+    install -Dm 0644 vconsole.conf "$pkgdir/etc/vconsole.conf"
+    install -Dm 0644 locale.gen "$pkgdir/etc/locale.gen"
+    install -Dm 0644 locale.conf "$pkgdir/etc/locale.conf"
+    install -Dm 0440 sudoers "$pkgdir/etc/sudoers"
+}
