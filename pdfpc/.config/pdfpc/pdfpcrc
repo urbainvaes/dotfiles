@@ -1,0 +1,4 @@
+bind Escape switchMode normal
+bind o switchMode pointer
+bind e switchMode pen
+bind u switchMode eraser

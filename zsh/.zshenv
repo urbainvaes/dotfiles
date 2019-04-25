@@ -5,7 +5,7 @@ export VISUAL=nvim
 export -U PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:$HOME/.local/bin:$HOME/.gem/ruby/2.5.0/bin${PATH:+:}$PATH"
 
 # Python startup file
-export PYTHONSTARTUP="$HOME/.pythonrc"
+[[ -f "$HOME/.pythonrc" ]] && export PYTHONSTARTUP="$HOME/.pythonrc"
 
 # Source guix profile
 guix_profile=$HOME/.guix-env

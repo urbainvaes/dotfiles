@@ -282,7 +282,7 @@ set undodir^=~/.vim/undo//
 set complete+=k
 set conceallevel=2
 set cursorline
-set diffopt=filler,vertical
+set diffopt=filler,vertical,hiddenoff
 set expandtab
 set exrc
 set foldmethod=marker
