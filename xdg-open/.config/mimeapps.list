@@ -6,6 +6,7 @@
 # To set default
 #     mimeopen -d <file> 
 [Default Applications]
+video/webm=mpv.desktop;
 audio/mpeg=mpv.desktop;
 text/plain=nvim.desktop;
 image/jpeg=feh.desktop;

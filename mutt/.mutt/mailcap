@@ -3,4 +3,5 @@ text/html; mv %s %s.html && qutebrowser %s.html >/dev/null 2>/dev/null; needster
 text/html; w3m -I %{charset} -dump %s; nametemplate=%s.html; copiousoutput
 text/plain; more %s;
 image/*; feh %s
+video/*; xdg-open %s
 application/pdf; zathura %s
