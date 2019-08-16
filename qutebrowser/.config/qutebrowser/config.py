@@ -2,6 +2,7 @@
 #   qute://help/configuring.html
 #   qute://help/settings.html
 
+c.content.images = True
 c.downloads.location.prompt = False
 c.editor.command = ['urxvt', '-e', 'nvim', '-f', '{}']
 c.fonts.hints = 'bold 12pt monospace'
