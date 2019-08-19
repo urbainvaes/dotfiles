@@ -67,8 +67,8 @@ Plug 'wellle/targets.vim'
 Plug 'zchee/deoplete-clang'
 
 if isdirectory($HOME."/Dropbox/projects")
-    Plug '~/Dropbox/projects/vim-remembrall'
-    Plug '~/Dropbox/projects/vim-wintab'
+    Plug '~/dotfiles/plugins/vim-remembrall'
+    Plug '~/dotfiles/plugins/vim-wintab'
 endif
 
 if has("nvim")

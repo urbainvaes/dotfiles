@@ -1,0 +1,14 @@
+[$HOME/dotfiles/plugins/fzf-marks]
+checkout = git clone 'git@github.com:urbainvaes/fzf-marks'
+update = git pull origin master
+push = git push origin master
+
+[$HOME/dotfiles/plugins/vim-remembrall]
+checkout = git clone 'git@github.com:urbainvaes/vim-remembrall.git'
+update = git pull origin master
+push = git push origin master
+
+[$HOME/dotfiles/plugins/vim-wintab]
+checkout = git clone 'git@github.com:urbainvaes/vim-wintab.git'
+update = git pull origin master
+push = git saveandsync
