@@ -64,7 +64,7 @@ fi
 [ ! -d ~/.zsh/zgen ] && git clone https://github.com/tarjoilija/zgen.git ~/.zsh/zgen
 source "$HOME/.zsh/zgen/zgen.zsh"
 
-FZF_MARKS_PLUGIN_ZSH=$HOME/Dropbox/projects/fzf-marks/fzf-marks.plugin.zsh
+FZF_MARKS_PLUGIN_ZSH=$HOME/dotfiles/plugins/fzf-marks/fzf-marks.plugin.zsh
 FZF_MARKS_COMMAND='fzf --height 40% --reverse -e'
 [ -f "$FZF_MARKS_PLUGIN_ZSH" ] && source "$FZF_MARKS_PLUGIN_ZSH"
 

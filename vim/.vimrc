@@ -64,16 +64,16 @@ let g:zoomwintab_hidetabbar=0
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'vim-scripts/gmsh.vim'
 Plug 'wellle/targets.vim'
-Plug 'zchee/deoplete-clang'
+" Plug 'zchee/deoplete-clang'
 
-if isdirectory($HOME."/Dropbox/projects")
-    Plug '~/Dropbox/projects/vim-remembrall'
-    Plug '~/Dropbox/projects/vim-wintab'
+if isdirectory($HOME."/dotfiles/plugins")
+    Plug '~/dotfiles/plugins/vim-remembrall'
+    Plug '~/dotfiles/plugins/vim-wintab'
 endif
 
 if has("nvim")
     " Plug 'roxma/nvim-completion-manager'
-    Plug 'Shougo/deoplete.nvim', { 'do' : ':UpdateRemotePlugins', 'tag' : '4.1' }
+    " Plug 'Shougo/deoplete.nvim', { 'do' : ':UpdateRemotePlugins', 'tag' : '4.1' }
     Plug 'autozimu/LanguageClient-neovim', { 'do': 'bash install.sh', 'branch': 'next' }
     " Plug 'zchee/deoplete-jedi'
     Plug 'hkupty/iron.nvim', { 'branch': 'legacy' }
