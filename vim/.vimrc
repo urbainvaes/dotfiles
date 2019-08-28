@@ -252,14 +252,14 @@ endif
 
 " Plugins interactions
 function! Multiple_cursors_before()
-    if has("nvim")
+    if has("nvim") && &runtimepath =~ 'deoplete'
         let b:deoplete_disable_auto_complete = 1
         call deoplete#disable()
     endif
 endfunction
 
 function! Multiple_cursors_after()
-    if has("nvim")
+    if has("nvim") && &runtimepath =~ 'deoplete'
         let b:deoplete_disable_auto_complete = 0
         call deoplete#enable()
     endif
