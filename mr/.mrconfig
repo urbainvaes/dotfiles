@@ -22,3 +22,8 @@ push = git push origin master
 checkout = git clone 'gitolite@vaes.uk:phd/base.git' phd
 update = git pull origin master
 push = git push origin master
+
+[$HOME/postdoc]
+checkout = git clone 'gitolite@vaes.uk:postdoc/base.git' postdoc
+update = git pull origin master
+push = git push origin master
