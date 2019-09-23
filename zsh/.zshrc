@@ -144,6 +144,7 @@ function show256 {
 
 # Directories
 alias cdd='cd ~/dotfiles'
+alias cdp='cd ~/personal'
 
 # Vim
 alias n='nvim'
