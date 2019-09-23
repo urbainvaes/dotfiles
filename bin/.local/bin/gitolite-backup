@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+server="urbain@vaes.uk"
+dir_backup="$HOME/Documents/gitolite_$server"
+ssh urbain@vaes.uk 'find /var/lib/gitolite/repositories -type d -name "*.git"' | \
+    sed "s#/var/lib/gitolite/repositories/##" | sed "s/\.git$//" | \
+    while read -r repo
+    do
+        if [[ ! -d "$dir_backup/$repo" ]]
+        then
+            dir_clone="$(dirname "$dir_backup/$repo")"
+            mkdir -p "$dir_clone"
+            cd "$dir_clone" || exit
+            echo "Cloning $repo in $(pwd)"
+            git clone "gitolite@vaes.uk:$repo"
+        else
+            dir_pull="$dir_backup/$repo"
+            cd "$dir_pull" || exit
+            echo "Pulling in $(pwd)" 
+            git pull origin master
+        fi
+    done
