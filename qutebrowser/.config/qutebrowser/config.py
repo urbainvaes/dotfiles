@@ -51,6 +51,7 @@ config.bind('<Ctrl-N>', 'completion-item-focus next', mode='command')
 # Search engines
 c.url.searchengines = {
     'DEFAULT': 'https://startpage.com/do/search?query={}',
+    'amazon': 'https://www.amazon.co.uk/s?k={}',
     'aw': 'https://wiki.archlinux.org/index.php?search={}',
     'ddg': 'https://duckduckgo.com/?q={}',
     'cam': 'https://dictionary.cambridge.org/dictionary/english/{}',
