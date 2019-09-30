@@ -1,7 +1,9 @@
 .git
 .gitignore
 .stowignore
+.mrconfig
 LICENSE
 README.md
 crontab
-pkgs
+plugins
+arch
