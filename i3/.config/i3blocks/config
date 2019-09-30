@@ -46,7 +46,7 @@ interval=5
 
 [repos]
 command=~/dotfiles/i3/.config/i3blocks/bin/repos
-instance=Phd:/home/urbain/phd Home:/home/urbain
+instance=PostDoc:/home/urbain/postdoc Home:/home/urbain
 interval=1000
 
 [updates-arch]
