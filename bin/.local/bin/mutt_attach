@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+files=$(vifm "$HOME" --choose-files -)
+
+for file in $files; do
+    tmux send-keys -t email.0 "a$file"
+done
