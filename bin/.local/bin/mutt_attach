@@ -1,7 +1,19 @@
 #!/usr/bin/env bash
 
-files=$(vifm "$HOME" --choose-files -)
+# File in which to store the list of filenames to attach
+tmp=$(mktemp)
 
-for file in $files; do
-    tmux send-keys -t email.0 "a$file"
-done
+vifm "$HOME" --choose-files "$tmp"
+# ranger "$HOME" --choosefiles="$tmp"
+
+while IFS="" read -r file; do
+
+    # Workaround for filenames that contain spaces
+    if [[ "$file" = *" "* ]]; then
+        file_no_space=/tmp/$(basename "$file" | sed 's/ /_/g')
+        ln -s -f "$file" "$file_no_space"
+        file="$file_no_space"
+    fi
+
+    tmux send-keys -t email:Email.0 -l "a$file";
+done < "$tmp"

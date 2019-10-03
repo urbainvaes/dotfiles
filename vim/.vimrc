@@ -234,6 +234,13 @@ let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=2
 let g:vimtex_compiler_progname='nvr'
 let g:vimtex_syntax_enabled=1
+let  g:vimtex_fold_types = {
+       \ 'preamble' : {'enabled' : 0},
+       \ 'envs' : {
+       \   'blacklist' : ['lemma', 'proposition', 'theorem', 'equation'],
+       \   'whitelist' : ['proof'],
+       \ },
+       \}
 
 " Pilot
 let g:pilot_boundary='ignore'
