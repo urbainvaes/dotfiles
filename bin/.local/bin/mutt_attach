@@ -3,7 +3,7 @@
 # File in which to store the list of filenames to attach
 tmp=$(mktemp)
 
-vifm "$HOME" --choose-files "$tmp"
+vifm "$HOME" -c "set nohlsearch" --choose-files "$tmp"
 # ranger "$HOME" --choosefiles="$tmp"
 
 while IFS="" read -r file; do

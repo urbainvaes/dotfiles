@@ -89,6 +89,7 @@ Plug 'KKPMW/moonshine-vim'
 Plug 'KKPMW/sacredforest-vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'romainl/Apprentice'
+Plug 'joshdick/onedark.vim'
 " Plug 'josuegaleas/jay'
 call plug#end()
 
@@ -234,17 +235,22 @@ let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=2
 let g:vimtex_compiler_progname='nvr'
 let g:vimtex_syntax_enabled=1
-let  g:vimtex_fold_types = {
-       \ 'preamble' : {'enabled' : 0},
-       \ 'envs' : {
-       \   'blacklist' : ['lemma', 'proposition', 'theorem', 'equation'],
-       \   'whitelist' : ['proof'],
-       \ },
-       \}
+" let  g:vimtex_fold_types = {
+"        \ 'preamble' : {'enabled' : 0},
+"        \ 'envs' : {
+"        \   'blacklist' : ['lemma', 'proposition', 'theorem', 'equation'],
+"        \   'whitelist' : ['proof'],
+"        \ },
+"        \}
 
 " Pilot
 let g:pilot_boundary='ignore'
 let g:pilot_mode='wintab'
+" let g:pilot_key_h='<a-h>'
+" let g:pilot_key_j='<a-j>'
+" let g:pilot_key_k='<a-k>'
+" let g:pilot_key_l='<a-l>'
+" let g:pilot_key_p='<a-\>'
 
 " YouCompleteMe
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
