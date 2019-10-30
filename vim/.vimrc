@@ -68,7 +68,7 @@ Plug 'wellle/targets.vim'
 
 if isdirectory($HOME."/dotfiles/plugins")
     Plug '~/dotfiles/plugins/vim-remembrall'
-    Plug '~/dotfiles/plugins/vim-wintab'
+    Plug '~/dotfiles/plugins/vim-tmux-pilot'
 endif
 
 if has("nvim")
