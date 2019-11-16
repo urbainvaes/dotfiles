@@ -74,7 +74,7 @@ endif
 if has("nvim")
     " Plug 'roxma/nvim-completion-manager'
     " Plug 'Shougo/deoplete.nvim', { 'do' : ':UpdateRemotePlugins', 'tag' : '4.1' }
-    Plug 'autozimu/LanguageClient-neovim', { 'do': 'bash install.sh', 'branch': 'next' }
+    " Plug 'autozimu/LanguageClient-neovim', { 'do': 'bash install.sh', 'branch': 'next' }
     " Plug 'zchee/deoplete-jedi'
     Plug 'hkupty/iron.nvim', { 'branch': 'legacy' }
 else
@@ -91,6 +91,8 @@ Plug 'junegunn/seoul256.vim'
 Plug 'romainl/Apprentice'
 Plug 'joshdick/onedark.vim'
 " Plug 'josuegaleas/jay'
+
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 "" Plugin configuration {{{1
@@ -101,7 +103,7 @@ nnoremap cpr :IronRepl<cr>
 nnoremap cpn :NERDTreeToggle<cr>
 nnoremap cpt :TagbarToggle<cr>
 nnoremap cpu :GundoToggle<cr>
-nnoremap <nowait> <expr> cp Remembrall('cp')
+nnoremap <expr> cp Remembrall('cp')
 
 " Easy motion
 map gs <Plug>(easymotion-prefix)
@@ -161,8 +163,7 @@ nnoremap ,pc :PlugClean<cr>
 if &runtimepath =~ 'remembrall'
     let g:remembrall_auto_accept = 0
     nnoremap <buffer> <nowait> <expr> ,p Remembrall(',p')
-    nnoremap <silent> ,, :call remembrall#remind('n', '')<cr>
-    nnoremap <silent> y :<c-u>call remembrall#remind('n', 'y')<cr>
+    nnoremap <silent> <expr> ,, Remembrall('')
     augroup remembrall
         autocmd FileType tex nnoremap <buffer> <silent> <expr> ,l Remembrall(',l')
     augroup END
@@ -352,7 +353,7 @@ nnoremap ,th :-tabmove<cr>
 nnoremap ,t0 :tabmove 0<cr>
 nnoremap ,t$ :tabmove<cr>
 
-nnoremap <Leader>c :!rm ~/.vim/swap/\%*<cr>
+nnoremap <Leader>c :call delete($HOME."/.vim/swap/".substitute(expand('%:p'), '/', '%', 'g').".swp")<cr>
 nnoremap <Leader>r :Start %:p<cr>
 nnoremap <Leader>R :Start! %:p<cr>
 
@@ -575,3 +576,24 @@ function! FloatingFZF()
 
   call nvim_open_win(buf, v:true, opts)
 endfunction
+
+" if !exists('g:lsp_config_sourced')
+"     call lsp#add_filetype_config({
+"           \ 'filetype': 'python',
+"           \ 'name': 'pyls',
+"           \ 'cmd': 'pyls',
+"           \ 'callbacks': {}
+"           \ })
+"     autocmd Filetype python setl omnifunc=lsp#omnifunc
+"     let g:lsp_config_sourced = 1
+" endif
+
+
+" inoremap <c-g><esc>:call remembrall#remind('i', '<c-g>')<cr>
+" nnoremap <expr> <c-g> Remembrall('<c-g>')
+" nnoremap <c-g>h <esc>:call lsp#text_document_hover()<cr>
+" nnoremap <c-g>a <esc>:call lsp#text_document_declaration()<cr>
+" nnoremap <c-g>d <esc>:call lsp#text_document_definition()<cr>
+" nnoremap <c-g>i <esc>:call lsp#text_document_implementation()<cr>
+" nnoremap <c-g>s <esc>:call lsp#text_document_signature_help()<cr>
+" nnoremap <c-g>t <esc>:call lsp#text_document_type_definition()<cr>

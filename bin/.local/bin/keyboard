@@ -3,8 +3,9 @@
 # Key repeat rate
 xset r rate 400 50
 
-# Xcape settings
-killall -9 xcape
+# Kill xcape
+# ('pgrep -l xcape' can be used to list the processes)
+pkill xcape
 
 # Compose key on left control
 # https://vi.stackexchange.com/questions/2254/what-is-the-easiest-way-to-insert-unicode-characters-into-a-document
@@ -30,7 +31,7 @@ xcape -e 'Control_L=Escape'
 xmodmap -e "keysym Print = Print Caps_Lock"
 xmodmap -e "add Lock = Caps_Lock"
 
-# Make Shift (Shift, :)
+# Make Shift (Shift, :) (for vim)
 xcape -e 'Shift_L=Shift_L|semicolon'
 
 # Make Tab (Alt_L, Tab)
