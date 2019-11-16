@@ -73,15 +73,16 @@ label=<span color='gray'></span>
 command=echo $(free | grep '^Mem' | awk '{ printf "%3.0f%\n", 100*$3/$2 }')
 interval=30
 
+# Requires i3blocks-contrib (AUR)
 [diskhome]
 label=<span color='gray'></span>
-command=/usr/lib/i3blocks/disk
+command=/usr/lib/i3blocks/disk/disk
 instance=/home/urbain
 interval=300
 
 [diskroot]
 label=<span color='gray'></span>
-command=/usr/lib/i3blocks/disk
+command=/usr/lib/i3blocks/disk/disk
 instance=/
 interval=300
 
