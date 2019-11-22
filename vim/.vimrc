@@ -558,9 +558,10 @@ nnoremap ,e :e **/*<C-z><S-Tab>
 let $FZF_DEFAULT_OPTS='--layout=reverse'
 let g:fzf_layout = { 'window': 'call FloatingFZF()' }
 
+hi Pmenu ctermfg=3 ctermbg=239
 function! FloatingFZF()
   let buf = nvim_create_buf(v:false, v:true)
-  call setbufvar(buf, '&signcolumn', 'no')
+  call setbufvar(buf, '&laststatus', '1')
 
   let height = &lines - 10
   let width = float2nr(&columns - (&columns * 2 / 10))
@@ -576,6 +577,9 @@ function! FloatingFZF()
 
   call nvim_open_win(buf, v:true, opts)
 endfunction
+
+" hi Pmenu ctermfg=3 ctermbg=239
+" let g:remembrall_window = 'call FloatingFZF()'
 
 " if !exists('g:lsp_config_sourced')
 "     call lsp#add_filetype_config({

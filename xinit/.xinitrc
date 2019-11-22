@@ -17,6 +17,9 @@ feh --bg-fill /home/urbain/Documents/wallpapers/pagoda.jpg
 xset -dpms
 xset s off
 
+# Disable bell
+xset -b
+
 # SSH agent
 eval $(ssh-agent)
 
