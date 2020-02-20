@@ -104,7 +104,6 @@ call plug#end()
 
 " Toggles
 nnoremap cpg :GitGutterToggle<cr>
-nnoremap cpr :IronRepl<cr>
 nnoremap cpn :NERDTreeToggle<cr>
 nnoremap cpt :TagbarToggle<cr>
 nnoremap cpu :GundoToggle<cr>
@@ -147,6 +146,7 @@ xnoremap <silent> gh :Heytmux!<cr>
 if has("nvim")
     let g:iron_map_defaults=0
     let g:iron_map_extended=0
+    nnoremap cpr :IronRepl<cr>
     nmap yr <Plug>(iron-send-motion)
     xmap R <Plug>(iron-send-motion)
     nmap yrr VR
@@ -273,6 +273,7 @@ let g:vimtex_syntax_enabled=1
 " Pilot
 let g:pilot_boundary='ignore'
 let g:pilot_mode='wintab'
+" let g:pilot_split_or_new='new'
 " let g:pilot_key_h='<a-h>'
 " let g:pilot_key_j='<a-j>'
 " let g:pilot_key_k='<a-k>'
