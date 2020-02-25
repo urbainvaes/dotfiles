@@ -149,6 +149,7 @@ if has("nvim")
     nnoremap cpr :IronRepl<cr>
     nmap yr <Plug>(iron-send-motion)
     xmap R <Plug>(iron-send-motion)
+    nmap yp <Plug>(iron-repeat-cmd)
     nmap yrr VR
 
 lua << EOF
@@ -437,6 +438,7 @@ nnoremap ,cl :set background=light<cr>:colorscheme solarized<cr>
 nnoremap ,cl :set background=dark<cr>:colorscheme solarized<cr>
 nnoremap ,cs :colorscheme seoul256<cr>
 nnoremap ,cn :colorscheme nord<cr>
+set notermguicolors
 colo seoul256
 
 "" Autocommands {{{1
