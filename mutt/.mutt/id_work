@@ -2,10 +2,14 @@ set from = "u.vaes13@imperial.ac.uk"
 set sendmail="/usr/bin/msmtp -a imperial"
 
 set spoolfile = "+Work/Work"
-set record    = "+Work/Work.sent"
 set postponed = "+Work/Work.drafts"
 set trash     = "+Work/Work.bin"
 
-macro index,pager gs "<change-folder> $record<enter>"
+# Record not necessary because outlook saves messages
+unset record
+
+macro index,pager gs "<change-folder> +Work/Work.sent<enter>"
 macro index,pager gd "<change-folder> $postponed<enter>"
 macro index,pager gb "<change-folder> $trash<enter>"
+
+# vim: ft=muttrc

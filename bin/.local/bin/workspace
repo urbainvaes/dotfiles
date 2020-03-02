@@ -1,13 +1,14 @@
 #!/usr/bin/env bash
 
-# List of workspaces
+# List of workspaces: (id, number, name)
 workspaces=$(i3-msg -t get_workspaces | awk 'BEGIN {
                                                         RS="(},{)|(\\[{)|(}\\])";
-                                                        FPAT="([^,:]+)|([^,]+{[^}]+})|(\"[^\"]+\")"
+                                                        FPAT="([^,:\"]+)|([^,\"]+:[^,\"]+)|([^,]+{[^}]+})"
                                              }
                                              $0 !~ "^\\s*$" {
                                              gsub(/"/, "", $4)
-                                             print $2, $4, $8, $11
+                                             print $4, $6
+
                                              }' | sort)
 
 act_on_container() {

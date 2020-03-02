@@ -5,7 +5,6 @@ if [ ! -d /sys/class/power_supply/BAT0 ]; then
     exit
 fi
 
-current_now=$(cat /sys/class/power_supply/BAT0/current_now)
 charge_now=$(cat /sys/class/power_supply/BAT0/charge_now)
 charge_full=$(cat /sys/class/power_supply/BAT0/charge_full)
 bat_status=$(cat /sys/class/power_supply/BAT0/status)
@@ -16,7 +15,7 @@ if [ "$bat_status" = "Full" ]; then
 fi
 
 if [ "$bat_status" = "Discharging" ]; then
-    tot_minutes_remaining=$(( charge_now*60/current_now ))
+    # tot_minutes_remaining=$(( charge_now*60/current_now ))
 
     if [[ $charge_percent -lt 20 ]]; then
         icon=""
@@ -36,14 +35,16 @@ if [ "$bat_status" = "Discharging" ]; then
     fi
 
 elif [ "$bat_status" = "Charging" ]; then
-    tot_minutes_remaining=$(( (charge_full-charge_now)*60/current_now ))
+    # current_now=$(cat /sys/class/power_supply/BAT0/current_now)
+    # tot_minutes_remaining=$(( (charge_full-charge_now)*60/current_now ))
 
     icon=
     color="lightblue"
 fi
 
-time_remaining=$(printf "%02d:%02d" \
-    $(( tot_minutes_remaining/60 )) \
-    $(( tot_minutes_remaining - (tot_minutes_remaining/60)*60 )))
+# time_remaining=$(printf "%02d:%02d" \
+#     $(( tot_minutes_remaining/60 )) \
+#     $(( tot_minutes_remaining - (tot_minutes_remaining/60)*60 )))
 
-echo "<span color='$color'>$icon</span> $charge_percent% ($time_remaining)"
+# echo "<span color='$color'>$icon</span> $charge_percent% ($time_remaining)"
+echo "<span color='$color'>$icon</span> $charge_percent%"
