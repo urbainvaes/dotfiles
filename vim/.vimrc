@@ -66,9 +66,12 @@ Plug 'vim-scripts/gmsh.vim'
 Plug 'wellle/targets.vim'
 " Plug 'zchee/deoplete-clang'
 
+Plug 'liuchengxu/vim-which-key'
+
 if isdirectory($HOME."/dotfiles/plugins")
     Plug '~/dotfiles/plugins/vim-remembrall'
     Plug '~/dotfiles/plugins/vim-tmux-pilot'
+    Plug '~/dotfiles/plugins/darjeeling'
 endif
 
 if has("nvim")
@@ -76,7 +79,9 @@ if has("nvim")
     " Plug 'Shougo/deoplete.nvim', { 'do' : ':UpdateRemotePlugins', 'tag' : '4.1' }
     " Plug 'autozimu/LanguageClient-neovim', { 'do': 'bash install.sh', 'branch': 'next' }
     " Plug 'zchee/deoplete-jedi'
-    Plug 'hkupty/iron.nvim', { 'branch': 'legacy' }
+    " Plug 'hkupty/iron.nvim', { 'branch': 'legacy' }
+    Plug 'hkupty/iron.nvim'
+    Plug 'neovim/nvim-lsp'
 else
     Plug 'Shougo/neocomplete.vim'
 endif
@@ -99,7 +104,6 @@ call plug#end()
 
 " Toggles
 nnoremap cpg :GitGutterToggle<cr>
-nnoremap cpr :IronRepl<cr>
 nnoremap cpn :NERDTreeToggle<cr>
 nnoremap cpt :TagbarToggle<cr>
 nnoremap cpu :GundoToggle<cr>
@@ -139,11 +143,31 @@ nnoremap <silent> gh :set opfunc=Call_heytmux<cr>g@
 xnoremap <silent> gh :Heytmux!<cr>
 
 " Iron
+if has("nvim")
+    let g:iron_map_defaults=0
+    let g:iron_map_extended=0
+    nnoremap cpr :IronRepl<cr>
+    nmap yr <Plug>(iron-send-motion)
+    xmap R <Plug>(iron-send-motion)
+    nmap yp <Plug>(iron-repeat-cmd)
+    nmap yrr VR
+
+lua << EOF
+local iron = require("iron")
+
+local open_repl = function(buffer)
+  vim.api.nvim_command('vnew')
+end
+
+iron.core.set_config{
+    preferred = {
+        python = "ipython"
+    },
+    repl_open_cmd = open_repl
+}
+EOF
 " let g:iron_repl_open_cmd = 'vsplit'
-let g:iron_map_defaults=0
-nmap yr <Plug>(iron-send-motion)
-xmap R <Plug>(iron-send-motion)
-nmap yrr VR
+endif
 
 " Easy align
 xmap ga <Plug>(EasyAlign)
@@ -168,6 +192,7 @@ if &runtimepath =~ 'remembrall'
         autocmd FileType tex nnoremap <buffer> <silent> <expr> ,l Remembrall(',l')
     augroup END
 endif
+let g:remembrall_suffixes = [""]
 
 " LanguageClient
 if executable('pyls')
@@ -195,6 +220,8 @@ let g:neomake_gcc_args=[
             \ '-Wpedantic',
             \ '-I.', '-I..', '-I../..'
             \ ]
+
+let g:neomake_python_enabled_makers = ['python', 'pylint']
 
 " Deoplete
 let g:deoplete#enable_at_startup = 1
@@ -247,6 +274,7 @@ let g:vimtex_syntax_enabled=1
 " Pilot
 let g:pilot_boundary='ignore'
 let g:pilot_mode='wintab'
+" let g:pilot_split_or_new='new'
 " let g:pilot_key_h='<a-h>'
 " let g:pilot_key_j='<a-j>'
 " let g:pilot_key_k='<a-k>'
@@ -303,6 +331,7 @@ set foldmethod=marker
 set hidden
 set ignorecase
 set lazyredraw
+set laststatus=2
 set mouse=a
 set nojoinspaces
 set nowrap
@@ -409,6 +438,7 @@ nnoremap ,cl :set background=light<cr>:colorscheme solarized<cr>
 nnoremap ,cl :set background=dark<cr>:colorscheme solarized<cr>
 nnoremap ,cs :colorscheme seoul256<cr>
 nnoremap ,cn :colorscheme nord<cr>
+set notermguicolors
 colo seoul256
 
 "" Autocommands {{{1
@@ -576,10 +606,21 @@ function! FloatingFZF()
         \ }
 
   call nvim_open_win(buf, v:true, opts)
+  call setbufvar(buf, '&laststatus', '2')
 endfunction
 
-" hi Pmenu ctermfg=3 ctermbg=239
-" let g:remembrall_window = 'call FloatingFZF()'
+" highlight default link LspDiagnosticsError Delimiter
+" highlight default link LspDiagnosticsWarning Delimiter
+" lua << EOF
+" require'nvim_lsp'.pyls.setup{}
+" EOF
+
+" Default Values:
+"   cmd = { "pyls" }
+"   filetypes = { "python" }
+"   log_level = 2
+"   root_dir = vim's starting directory
+"   settings = {}
 
 " if !exists('g:lsp_config_sourced')
 "     call lsp#add_filetype_config({
@@ -592,6 +633,20 @@ endfunction
 "     let g:lsp_config_sourced = 1
 " endif
 
+" lua <<EOF
+" vim.lsp.start_client({"pyls"})
+" EOF
+" nvim_lsp = require('nvim_lsp')
+" print(nvim_lsp.skeleton)
+
+autocmd Filetype python setl omnifunc=v:lua.vim.lsp.omnifunc
+nnoremap <expr> <c-g> Remembrall('<c-g>')
+nnoremap <silent> <c-g>h <cmd>lua vim.lsp.buf.hover()<cr>
+nnoremap <silent> <c-g>a <cmd>lua vim.lsp.buf.declaration()<cr>
+nnoremap <silent> <c-g>d <cmd>lua vim.lsp.buf.definition()<cr>
+nnoremap <silent> <c-g>i <cmd>lua vim.lsp.buf.implementation()<cr>
+nnoremap <silent> <c-g>s <cmd>lua vim.lsp.buf.signature_help()<cr>
+nnoremap <silent> <c-g>t <cmd>lua vim.lsp.buf.type_definition()<cr>
 
 " inoremap <c-g><esc>:call remembrall#remind('i', '<c-g>')<cr>
 " nnoremap <expr> <c-g> Remembrall('<c-g>')
