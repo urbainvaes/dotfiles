@@ -69,7 +69,7 @@ Plug 'wellle/targets.vim'
 if isdirectory($HOME."/dotfiles/plugins")
     Plug '~/dotfiles/plugins/vim-remembrall'
     Plug '~/dotfiles/plugins/vim-tmux-pilot'
-    Plug '~/dotfiles/plugins/darjeeling'
+    Plug '~/dotfiles/plugins/vim-ripple'
 endif
 
 if has("nvim")
@@ -77,8 +77,6 @@ if has("nvim")
     " Plug 'Shougo/deoplete.nvim', { 'do' : ':UpdateRemotePlugins', 'tag' : '4.1' }
     " Plug 'autozimu/LanguageClient-neovim', { 'do': 'bash install.sh', 'branch': 'next' }
     " Plug 'zchee/deoplete-jedi'
-    " Plug 'hkupty/iron.nvim', { 'branch': 'legacy' }
-    Plug 'hkupty/iron.nvim'
     Plug 'neovim/nvim-lsp'
 else
     Plug 'Shougo/neocomplete.vim'
@@ -139,33 +137,6 @@ endfunction
 
 nnoremap <silent> gh :set opfunc=Call_heytmux<cr>g@
 xnoremap <silent> gh :Heytmux!<cr>
-
-" Iron
-if has("nvim")
-    let g:iron_map_defaults=0
-    let g:iron_map_extended=0
-    nnoremap cpr :IronRepl<cr>
-    nmap yr <Plug>(iron-send-motion)
-    xmap R <Plug>(iron-send-motion)
-    nmap yp <Plug>(iron-repeat-cmd)
-    nmap yrr VR
-
-lua << EOF
-local iron = require("iron")
-
-local open_repl = function(buffer)
-  vim.api.nvim_command('vnew')
-end
-
-iron.core.set_config{
-    preferred = {
-        python = "ipython"
-    },
-    repl_open_cmd = open_repl
-}
-EOF
-" let g:iron_repl_open_cmd = 'vsplit'
-endif
 
 " Easy align
 xmap ga <Plug>(EasyAlign)
