@@ -579,56 +579,16 @@ nnoremap <silent> <c-g>i <cmd>lua vim.lsp.buf.implementation()<cr>
 nnoremap <silent> <c-g>s <cmd>lua vim.lsp.buf.signature_help()<cr>
 nnoremap <silent> <c-g>t <cmd>lua vim.lsp.buf.type_definition()<cr>
 
-" inoremap <c-g><esc>:call remembrall#remind('i', '<c-g>')<cr>
-" nnoremap <expr> <c-g> Remembrall('<c-g>')
-" nnoremap <c-g>h <esc>:call lsp#text_document_hover()<cr>
-" nnoremap <c-g>a <esc>:call lsp#text_document_declaration()<cr>
-" nnoremap <c-g>d <esc>:call lsp#text_document_definition()<cr>
-" nnoremap <c-g>i <esc>:call lsp#text_document_implementation()<cr>
-" nnoremap <c-g>s <esc>:call lsp#text_document_signature_help()<cr>
-" nnoremap <c-g>t <esc>:call lsp#text_document_type_definition()<cr>
 
-" https://stackoverflow.com/questions/1533565/how-to-get-visually-selected-text-in-vimscript
-function! GetSelection(m1, m2)
-    let lines = getline(line_start, line_end)
-    " if len(lines) == 0
-    "     return ''
-    " endif
-    " echom len(lines)
-    " echom line_start column_start line_end column_end
-    " echom lines[-1]
-    return join(lines, "\n")
-endfunction
+" function! Autocomplete()
+"     let [l, c] = [getline("."), col(".")]
+"     if l[c-5:c-2] == "cite" || l[c-4:c-2] == "ref"
+"         return "{\<c-x>\<c-o>"
+"     endif
+"     return "{"
+" endfunction
 
-function! Send_motion_or_selection(...)
-    let is_visual = (a:1 == "v" || a:1 == "V")
-    let char_wise = (a:1 == "char" || a:1 == "v")
-    let m1 = is_visual ? "'<" : "'["
-    let m2 = is_visual ? "'>" : "']"
-
-    let [line_start, column_start] = getpos(l:m1)[1:2]
-    let [line_end, column_end] = getpos(l:m2)[1:2]
-    let lines = getline(line_start, line_end)
-    if char_wise
-        let lines[0] = lines[0][column_start - 1:]
-        let offset = (&selection == 'inclusive' ? 1 : 2)
-        let lines[-1] = lines[-1][:column_end - offset]
-    endif
-
-    noautocmd buffer term
-    norm G$
-    set paste
-    let open_bracketed_paste = "\<esc>[200~"
-    let close_bracketed_paste = "\<esc>[201~"
-    let newline = "\<cr>"
-    put =open_bracketed_paste
-    let code = join(lines, "\n")
-    put =code
-    put =close_bracketed_paste
-    put =newline
-    set nopaste
-    buffer #
-endfunction
-
-nnoremap <silent> yr :set opfunc=Send_motion_or_selection<cr>g@
-xnoremap <silent> R :<c-u>call Send_motion_or_selection(visualmode())<cr>
+" augroup autocompletion
+"     autocmd!
+"     autocmd FileType tex inoremap <expr> { Autocomplete()
+" augroup END
