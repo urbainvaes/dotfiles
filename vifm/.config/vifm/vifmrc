@@ -1,6 +1,6 @@
 " Command to open files
 filetype *.JPG feh %f &
-filetype *.exe wine %f & 
+filetype *.exe wine %f &
 filetype * xdg-open %f &
 
 " Options

@@ -11,17 +11,12 @@ let maplocalleader = ","
 
 "" Plugins {{{1
 call plug#begin('~/.vim/plugged')
-Plug 'LnL7/vim-nix'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter'
 Plug 'AndrewRadev/splitjoin.vim'
-Plug 'beloglazov/vim-online-thesaurus'
 Plug 'easymotion/vim-easymotion'
-Plug 'holomorph/vim-freefem'
 Plug 'honza/vim-snippets'
-Plug 'inkarkat/vim-SpellCheck'
-Plug 'inkarkat/vim-ingo-library'
 Plug 'jamessan/vim-gnupg'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -43,7 +38,6 @@ Plug 'sjl/Gundo.vim', { 'on' : 'GundoToggle' }
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tommcdo/vim-exchange'
 Plug 'tommcdo/vim-ninja-feet'
-Plug 'ton/vim-bufsurf'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-apathy'
 Plug 'tpope/vim-commentary'
@@ -64,36 +58,23 @@ let g:zoomwintab_hidetabbar=0
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'vim-scripts/gmsh.vim'
 Plug 'wellle/targets.vim'
-" Plug 'zchee/deoplete-clang'
 
 if isdirectory($HOME."/dotfiles/plugins")
     Plug '~/dotfiles/plugins/vim-remembrall'
     Plug '~/dotfiles/plugins/vim-tmux-pilot'
+    Plug '~/dotfiles/plugins/vim-darjeeling'
     Plug '~/dotfiles/plugins/vim-ripple'
 endif
 
 if has("nvim")
-    " Plug 'roxma/nvim-completion-manager'
-    " Plug 'Shougo/deoplete.nvim', { 'do' : ':UpdateRemotePlugins', 'tag' : '4.1' }
-    " Plug 'autozimu/LanguageClient-neovim', { 'do': 'bash install.sh', 'branch': 'next' }
-    " Plug 'zchee/deoplete-jedi'
     Plug 'neovim/nvim-lsp'
-else
-    Plug 'Shougo/neocomplete.vim'
 endif
 
 " Colors
-Plug 'KKPMW/sacredforest-vim'
 Plug 'altercation/vim-colors-solarized'
-Plug 'arcticicestudio/nord-vim'
-Plug 'KKPMW/moonshine-vim'
 Plug 'KKPMW/sacredforest-vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'romainl/Apprentice'
-Plug 'joshdick/onedark.vim'
-" Plug 'josuegaleas/jay'
-
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 "" Plugin configuration {{{1
@@ -555,28 +536,9 @@ set wildcharm=<C-z>
 nnoremap ,e :e **/*<C-z><S-Tab>
 
 let $FZF_DEFAULT_OPTS='--layout=reverse'
-let g:fzf_layout = { 'window': 'call FloatingFZF()' }
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 
 hi Pmenu ctermfg=3 ctermbg=239
-function! FloatingFZF()
-  let buf = nvim_create_buf(v:false, v:true)
-  call setbufvar(buf, '&laststatus', '1')
-
-  let height = &lines - 10
-  let width = float2nr(&columns - (&columns * 2 / 10))
-  let col = float2nr((&columns - width) / 2)
-
-  let opts = {
-        \ 'relative': 'editor',
-        \ 'row': 5,
-        \ 'col': col,
-        \ 'width': width,
-        \ 'height': height
-        \ }
-
-  call nvim_open_win(buf, v:true, opts)
-  call setbufvar(buf, '&laststatus', '2')
-endfunction
 
 " highlight default link LspDiagnosticsError Delimiter
 " highlight default link LspDiagnosticsWarning Delimiter

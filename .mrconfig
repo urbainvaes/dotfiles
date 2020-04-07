@@ -17,3 +17,8 @@ push = git push origin master
 checkout = git clone 'git@github.com:urbainvaes/vim-ripple.git'
 update = git pull origin master
 push = git push origin master
+
+[$HOME/dotfiles/plugins/vim-darjeeling]
+checkout = git clone 'git@github.com:urbainvaes/vim-darjeeling.git'
+update = git pull origin master
+push = git push origin master
