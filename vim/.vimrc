@@ -382,18 +382,11 @@ nnoremap ,e :E
 " Unimpaired
 nmap co yo
 
-"" Colorscheme {{{1
-nnoremap ,c  :colorscheme<space>
-nnoremap ,cl :set background=light<cr>:colorscheme solarized<cr>
-nnoremap ,cl :set background=dark<cr>:colorscheme solarized<cr>
-nnoremap ,cs :colorscheme seoul256<cr>
-nnoremap ,cn :colorscheme nord<cr>
-set notermguicolors
-colo seoul256
-
 "" Autocommands {{{1
 augroup vimrc
     autocmd!
+    autocmd ColorScheme * source $HOME/dotfiles/vim/.vim/after/colors/colors.vim
+
     autocmd BufWritePost *vimrc,*exrc :call feedkeys(":source %\<cr>")
     autocmd BufNewFile,Bufread /tmp/mutt-* setlocal tw=72
     autocmd BufWritePre *
@@ -422,6 +415,15 @@ augroup vimrc
     autocmd FileType dirvish setlocal relativenumber
     autocmd FileType dirvish silent! unmap <buffer> <C-p>
 augroup END
+
+"" Colorscheme {{{1
+nnoremap ,c  :colorscheme<space>
+nnoremap ,cl :set background=light<cr>:colorscheme solarized<cr>
+nnoremap ,cl :set background=dark<cr>:colorscheme solarized<cr>
+nnoremap ,cs :colorscheme seoul256<cr>
+nnoremap ,cn :colorscheme nord<cr>
+set notermguicolors
+colo seoul256
 
 "" My search {{{1
 
