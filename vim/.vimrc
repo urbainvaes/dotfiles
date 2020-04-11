@@ -62,8 +62,9 @@ Plug 'wellle/targets.vim'
 if isdirectory($HOME."/dotfiles/plugins")
     Plug '~/dotfiles/plugins/vim-remembrall'
     Plug '~/dotfiles/plugins/vim-tmux-pilot'
-    Plug '~/dotfiles/plugins/vim-darjeeling'
     Plug '~/dotfiles/plugins/vim-ripple'
+    Plug '~/dotfiles/plugins/vim-darjeeling'
+    Plug '~/dotfiles/plugins/vim-macaw'
 endif
 
 if has("nvim")
@@ -271,7 +272,7 @@ set undodir^=~/.vim/undo//
 " ^= : prepends to list
 " // : store absolute path
 
-set complete+=k
+" set complete+=k
 set conceallevel=2
 set cursorline
 set diffopt=filler,vertical,hiddenoff
@@ -283,6 +284,7 @@ set ignorecase
 set lazyredraw
 set laststatus=2
 set mouse=a
+" set noequalalways
 set nojoinspaces
 set nowrap
 set path+=$PWD/**
@@ -384,8 +386,8 @@ nmap co yo
 
 "" Autocommands {{{1
 augroup vimrc
-    autocmd!
-    autocmd ColorScheme * source $HOME/dotfiles/vim/.vim/after/colors/colors.vim
+    " autocmd!
+    " autocmd ColorScheme * source $HOME/dotfiles/vim/.vim/after/colors/colors.vim
 
     autocmd BufWritePost *vimrc,*exrc :call feedkeys(":source %\<cr>")
     autocmd BufNewFile,Bufread /tmp/mutt-* setlocal tw=72
@@ -417,13 +419,10 @@ augroup vimrc
 augroup END
 
 "" Colorscheme {{{1
-nnoremap ,c  :colorscheme<space>
-nnoremap ,cl :set background=light<cr>:colorscheme solarized<cr>
-nnoremap ,cl :set background=dark<cr>:colorscheme solarized<cr>
+nnoremap ,cd  :colorscheme darjeeling<cr>
 nnoremap ,cs :colorscheme seoul256<cr>
-nnoremap ,cn :colorscheme nord<cr>
 set notermguicolors
-colo seoul256
+colo darjeeling
 
 "" My search {{{1
 
@@ -555,17 +554,6 @@ hi Pmenu ctermfg=3 ctermbg=239
 "   root_dir = vim's starting directory
 "   settings = {}
 
-" if !exists('g:lsp_config_sourced')
-"     call lsp#add_filetype_config({
-"           \ 'filetype': 'python',
-"           \ 'name': 'pyls',
-"           \ 'cmd': 'pyls',
-"           \ 'callbacks': {}
-"           \ })
-"     autocmd Filetype python setl omnifunc=lsp#omnifunc
-"     let g:lsp_config_sourced = 1
-" endif
-
 " lua <<EOF
 " vim.lsp.start_client({"pyls"})
 " EOF
@@ -580,17 +568,3 @@ nnoremap <silent> <c-g>d <cmd>lua vim.lsp.buf.definition()<cr>
 nnoremap <silent> <c-g>i <cmd>lua vim.lsp.buf.implementation()<cr>
 nnoremap <silent> <c-g>s <cmd>lua vim.lsp.buf.signature_help()<cr>
 nnoremap <silent> <c-g>t <cmd>lua vim.lsp.buf.type_definition()<cr>
-
-
-" function! Autocomplete()
-"     let [l, c] = [getline("."), col(".")]
-"     if l[c-5:c-2] == "cite" || l[c-4:c-2] == "ref"
-"         return "{\<c-x>\<c-o>"
-"     endif
-"     return "{"
-" endfunction
-
-" augroup autocompletion
-"     autocmd!
-"     autocmd FileType tex inoremap <expr> { Autocomplete()
-" augroup END
