@@ -6,6 +6,7 @@ filetype * xdg-open %f &
 " Options
 set fastrun
 set history=100
+set ignorecase
 set incsearch
 set sortnumbers
 set scrolloff=2

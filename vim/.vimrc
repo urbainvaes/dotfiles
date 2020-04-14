@@ -1,4 +1,5 @@
 "" Download vim-plug if necessary {{{1
+
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -33,7 +34,6 @@ Plug 'lervag/vimtex'
 Plug 'machakann/vim-highlightedyank'
 Plug 'majutsushi/tagbar'
 Plug 'neomake/neomake'
-Plug 'scrooloose/nerdtree'
 Plug 'sjl/Gundo.vim', { 'on' : 'GundoToggle' }
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tommcdo/vim-exchange'
@@ -126,9 +126,6 @@ nmap ga <Plug>(EasyAlign)
 xmap gl <Plug>(LiveEasyAlign)
 nmap gl <Plug>(LiveEasyAlign)
 
-" Online thesaurus
-nnoremap cpd :OnlineThesaurusCurrentWord<cr>
-
 " Plug
 nnoremap ,pi :PlugInstall<cr>
 nnoremap ,pu :PlugUpdate<cr>
@@ -144,16 +141,6 @@ if &runtimepath =~ 'remembrall'
     augroup END
 endif
 let g:remembrall_suffixes = [""]
-
-" LanguageClient
-if executable('pyls')
-    let g:LanguageClient_serverCommands = { 'python': ['pyls'], }
-endif
-
-let g:LanguageClient_diagnosticsEnable = 0
-nnoremap <silent> <leader>lh :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> <leader>ld :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <leader>lr :call LanguageClient#textDocument_rename()<CR>
 
 " Ultisnips
 nnoremap cps :UltiSnipsEdit<cr>
@@ -174,29 +161,11 @@ let g:neomake_gcc_args=[
 
 let g:neomake_python_enabled_makers = ['python', 'pylint']
 
-" Deoplete
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources#jedi#show_docstring = 1
-if !exists('g:deoplete#omni#input_patterns')
-    let g:deoplete#omni#input_patterns = {}
-endif
-
-if &runtimepath =~ 'vimtex'
-    let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
-endif
-
 " FZF.vim
 let g:fzf_buffers_jump = 1
 
 " Gundo
 let g:gundo_prefer_python3 = 1
-
-" Localvimrc
-let g:localvimrc_sandbox = 0
-let g:localvimrc_whitelist='/home/*'
-
-" NerdTree
-let g:NERDTreeHijackNetrw = 0
 
 " Ultisnips
 let g:UltiSnipsEditSplit="horizontal"
@@ -231,32 +200,6 @@ let g:pilot_mode='wintab'
 " let g:pilot_key_k='<a-k>'
 " let g:pilot_key_l='<a-l>'
 " let g:pilot_key_p='<a-\>'
-
-" YouCompleteMe
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:ycm_add_preview_to_completeopt = 0
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_auto_trigger = 1
-if !exists('g:ycm_semantic_triggers')
-    let g:ycm_semantic_triggers = {}
-    let g:ycm_semantic_triggers.tex = ['re!\\[A-Za-z]*(ref|cite)[A-Za-z]*([^]]*])?{([^}]*, ?)*' ]
-endif
-
-" Plugins interactions
-function! Multiple_cursors_before()
-    if has("nvim") && &runtimepath =~ 'deoplete'
-        let b:deoplete_disable_auto_complete = 1
-        call deoplete#disable()
-    endif
-endfunction
-
-function! Multiple_cursors_after()
-    if has("nvim") && &runtimepath =~ 'deoplete'
-        let b:deoplete_disable_auto_complete = 0
-        call deoplete#enable()
-    endif
-endfunction
 
 "" Vim variables {{{1
 let g:netrw_bufsettings='relativenumber'
@@ -358,12 +301,6 @@ cnoremap <c-n> <down>
 cnoremap <up> <c-p>
 cnoremap <down> <c-n>
 
-" Overwrite unimpaired mappings
-nnoremap <silent> <b :BufSurfBack<cr>
-nnoremap <silent> >b :BufSurfForward<cr>
-nnoremap <silent> <B :BufSurfBack<cr>:bd! #<cr>
-nnoremap <silent> >B :BufSurfForward<cr>:bd! #<cr>
-
 " Alternate file
 nnoremap <bs> 
 nnoremap + :Buffers<cr>
@@ -386,9 +323,8 @@ nmap co yo
 
 "" Autocommands {{{1
 augroup vimrc
-    " autocmd!
-    " autocmd ColorScheme * source $HOME/dotfiles/vim/.vim/after/colors/colors.vim
-
+    autocmd!
+    autocmd ColorScheme * highlight String ctermfg=192 guifg=#d7ff87
     autocmd BufWritePost *vimrc,*exrc :call feedkeys(":source %\<cr>")
     autocmd BufNewFile,Bufread /tmp/mutt-* setlocal tw=72
     autocmd BufWritePre *
@@ -534,31 +470,8 @@ endif
 
 "" Experimental {{{1
 set wildcharm=<C-z>
-nnoremap ,e :e **/*<C-z><S-Tab>
-
 let $FZF_DEFAULT_OPTS='--layout=reverse'
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
-
-hi Pmenu ctermfg=3 ctermbg=239
-
-" highlight default link LspDiagnosticsError Delimiter
-" highlight default link LspDiagnosticsWarning Delimiter
-" lua << EOF
-" require'nvim_lsp'.pyls.setup{}
-" EOF
-
-" Default Values:
-"   cmd = { "pyls" }
-"   filetypes = { "python" }
-"   log_level = 2
-"   root_dir = vim's starting directory
-"   settings = {}
-
-" lua <<EOF
-" vim.lsp.start_client({"pyls"})
-" EOF
-" nvim_lsp = require('nvim_lsp')
-" print(nvim_lsp.skeleton)
 
 autocmd Filetype python setl omnifunc=v:lua.vim.lsp.omnifunc
 nnoremap <expr> <c-g> Remembrall('<c-g>')
