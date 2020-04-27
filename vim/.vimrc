@@ -1,5 +1,4 @@
 "" Download vim-plug if necessary {{{1
-
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -33,9 +32,10 @@ Plug 'kshenoy/vim-signature'
 Plug 'lervag/vimtex'
 Plug 'machakann/vim-highlightedyank'
 Plug 'majutsushi/tagbar'
+Plug 'mg979/vim-visual-multi'
 Plug 'neomake/neomake'
 Plug 'sjl/Gundo.vim', { 'on' : 'GundoToggle' }
-Plug 'terryma/vim-multiple-cursors'
+" Plug 'terryma/vim-multiple-cursors'
 Plug 'tommcdo/vim-exchange'
 Plug 'tommcdo/vim-ninja-feet'
 Plug 'tpope/vim-abolish'
@@ -76,6 +76,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'KKPMW/sacredforest-vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'romainl/Apprentice'
+Plug 'arcticicestudio/nord-vim'
 call plug#end()
 
 "" Plugin configuration {{{1
@@ -86,9 +87,6 @@ nnoremap cpn :NERDTreeToggle<cr>
 nnoremap cpt :TagbarToggle<cr>
 nnoremap cpu :GundoToggle<cr>
 nnoremap <expr> cp Remembrall('cp')
-
-" Easy motion
-map gs <Plug>(easymotion-prefix)
 
 " Fuzzy finder
 nnoremap <c-p>a  :Ag
@@ -111,6 +109,11 @@ nnoremap <Leader>gs :Gstatus<cr>
 nnoremap <Leader>gc :Gcommit<cr>
 nnoremap <Leader>gr :Gread<cr>
 nnoremap <Leader>gd :Gdiff<cr>
+
+" Multiple cursors
+let g:VM_maps = {}
+let g:VM_maps["Select Cursor Down"] = "<M-j>"
+let g:VM_maps["Select Cursor Up"] = "<M-k>"
 
 " Heytmux
 function! Call_heytmux(vm)
@@ -162,7 +165,9 @@ let g:neomake_gcc_args=[
 let g:neomake_python_enabled_makers = ['python', 'pylint']
 
 " FZF.vim
+let $FZF_DEFAULT_OPTS='--layout=reverse'
 let g:fzf_buffers_jump = 1
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 
 " Gundo
 let g:gundo_prefer_python3 = 1
@@ -226,6 +231,8 @@ set hidden
 set ignorecase
 set lazyredraw
 set laststatus=2
+set listchars+=eol:$
+set wildcharm=<C-z>
 set mouse=a
 " set noequalalways
 set nojoinspaces
@@ -254,6 +261,8 @@ endif
 " .rst headings
 nnoremap <leader>1 m`yypVr=``
 nnoremap <leader>2 m`yypVr-``
+
+nnoremap <leader>m :.m
 
 nnoremap n nzz
 nnoremap N Nzz
@@ -324,7 +333,8 @@ nmap co yo
 "" Autocommands {{{1
 augroup vimrc
     autocmd!
-    autocmd ColorScheme * highlight String ctermfg=192 guifg=#d7ff87
+    " autocmd ColorScheme * highlight String ctermfg=192 guifg=#d7ff87
+    " autocmd ColorScheme * highlight Folded ctermbg=23 ctermfg=185 guibg=#005f5f guifg=#d7d75f
     autocmd BufWritePost *vimrc,*exrc :call feedkeys(":source %\<cr>")
     autocmd BufNewFile,Bufread /tmp/mutt-* setlocal tw=72
     autocmd BufWritePre *
@@ -469,10 +479,6 @@ if has("nvim")
 endif
 
 "" Experimental {{{1
-set wildcharm=<C-z>
-let $FZF_DEFAULT_OPTS='--layout=reverse'
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
-
 autocmd Filetype python setl omnifunc=v:lua.vim.lsp.omnifunc
 nnoremap <expr> <c-g> Remembrall('<c-g>')
 nnoremap <silent> <c-g>h <cmd>lua vim.lsp.buf.hover()<cr>
@@ -481,3 +487,12 @@ nnoremap <silent> <c-g>d <cmd>lua vim.lsp.buf.definition()<cr>
 nnoremap <silent> <c-g>i <cmd>lua vim.lsp.buf.implementation()<cr>
 nnoremap <silent> <c-g>s <cmd>lua vim.lsp.buf.signature_help()<cr>
 nnoremap <silent> <c-g>t <cmd>lua vim.lsp.buf.type_definition()<cr>
+
+" highlight LineNr ctermbg=159 ctermfg=27 guibg=#afffff guifg=#005fff
+" highlight StatusLineNC ctermbg=22 ctermfg=121 guibg=#005f00 guifg=#87ffaf
+" highlight Comment ctermbg=159 ctermfg=195 guibg=#afffff guifg=#d7ffff
+" highlight Normal ctermbg=195 ctermfg=237 guibg=#d7ffff guifg=#3a3a3a
+" highlight Special ctermfg=96 guifg=#875f87
+" highlight StatusLine ctermbg=131 ctermfg=223 guibg=#af5f5f guifg=#ffd7af
+" highlight Statement ctermfg=65 guifg=#5f875f
+" highlight Type ctermfg=254 guifg=#e4e4e4
