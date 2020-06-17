@@ -29,13 +29,12 @@ Plug 'junegunn/vim-slash'
 Plug 'justinmk/vim-dirvish'
 Plug 'justinmk/vim-sneak'
 Plug 'kshenoy/vim-signature'
-Plug 'lervag/vimtex'
+Plug 'lervag/vimtex', {'commit': '8287981'}
 Plug 'machakann/vim-highlightedyank'
 Plug 'majutsushi/tagbar'
 Plug 'mg979/vim-visual-multi'
 Plug 'neomake/neomake'
 Plug 'sjl/Gundo.vim', { 'on' : 'GundoToggle' }
-" Plug 'terryma/vim-multiple-cursors'
 Plug 'tommcdo/vim-exchange'
 Plug 'tommcdo/vim-ninja-feet'
 Plug 'tpope/vim-abolish'
@@ -77,6 +76,7 @@ Plug 'KKPMW/sacredforest-vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'romainl/Apprentice'
 Plug 'arcticicestudio/nord-vim'
+" Plug 'axvr/zepl.vim'
 call plug#end()
 
 "" Plugin configuration {{{1
@@ -144,6 +144,8 @@ if &runtimepath =~ 'remembrall'
     augroup END
 endif
 let g:remembrall_suffixes = [""]
+let g:ripple_winpos = "vertical"
+let g:ripple_term_name = "term: ripple"
 
 " Ultisnips
 nnoremap cps :UltiSnipsEdit<cr>
@@ -479,7 +481,8 @@ if has("nvim")
 endif
 
 "" Experimental {{{1
-autocmd Filetype python setl omnifunc=v:lua.vim.lsp.omnifunc
+lua require'nvim_lsp'.pyls.setup{}
+autocmd Filetype python setlocal omnifunc=v:lua.vim.lsp.omnifunc
 nnoremap <expr> <c-g> Remembrall('<c-g>')
 nnoremap <silent> <c-g>h <cmd>lua vim.lsp.buf.hover()<cr>
 nnoremap <silent> <c-g>a <cmd>lua vim.lsp.buf.declaration()<cr>
@@ -487,6 +490,7 @@ nnoremap <silent> <c-g>d <cmd>lua vim.lsp.buf.definition()<cr>
 nnoremap <silent> <c-g>i <cmd>lua vim.lsp.buf.implementation()<cr>
 nnoremap <silent> <c-g>s <cmd>lua vim.lsp.buf.signature_help()<cr>
 nnoremap <silent> <c-g>t <cmd>lua vim.lsp.buf.type_definition()<cr>
+nnoremap <silent> <c-g><c-g> <cmd>lua vim.lsp.stop_client(vim.lsp.get_active_clients())<cr>
 
 " highlight LineNr ctermbg=159 ctermfg=27 guibg=#afffff guifg=#005fff
 " highlight StatusLineNC ctermbg=22 ctermfg=121 guibg=#005f00 guifg=#87ffaf

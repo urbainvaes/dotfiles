@@ -32,6 +32,7 @@ nnoremap gm :bmark<space>
 nnoremap gb :bmarks<cr>
 nnoremap g<cr> :!nvim %f<cr>
 nnoremap r :run<cr>
+nnoremap T :tree!<cr>
 nnoremap ,b :backup<cr>
 nnoremap ,t :!urxvt &<cr>
 nnoremap ,l :!less %f<cr>
