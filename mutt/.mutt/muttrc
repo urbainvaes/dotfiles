@@ -1,11 +1,11 @@
 # Folders
-set folder           = ~/.mail
-set alias_file       = ~/.mutt/alias
-set header_cache     = ~/.mutt/cache/headers
+set folder = ~/.mail
+set alias_file = ~/.mutt/alias
+set header_cache = ~/.mutt/cache/headers
 set message_cachedir = ~/.mutt/cache/bodies
 set certificate_file = ~/.mutt/certificates
-set mailcap_path     = ~/.mutt/mailcap
-set tmpdir           = ~/.mutt/temp
+set mailcap_path = ~/.mutt/mailcap
+set tmpdir = ~/.mutt/temp
 
 # Source crypto, aliases, mailboxes
 source ~/.mutt/colors/base.muttrc
@@ -64,6 +64,8 @@ alternative_order text/plain text/enriched text/html
 set editor="$EDITOR"
 set include=yes
 
+# Index
+set index_format="%X %Z %{%b %d} %-15.15L (%?l?%4l&%4c?) %s"
 
 # Macros
 macro index,pager gp "<change-folder> +Personal/Personal<enter>"
