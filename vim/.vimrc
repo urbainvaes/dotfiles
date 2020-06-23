@@ -29,13 +29,12 @@ Plug 'junegunn/vim-slash'
 Plug 'justinmk/vim-dirvish'
 Plug 'justinmk/vim-sneak'
 Plug 'kshenoy/vim-signature'
-Plug 'lervag/vimtex'
+Plug 'lervag/vimtex', {'commit': '8287981'}
 Plug 'machakann/vim-highlightedyank'
 Plug 'majutsushi/tagbar'
 Plug 'mg979/vim-visual-multi'
 Plug 'neomake/neomake'
 Plug 'sjl/Gundo.vim', { 'on' : 'GundoToggle' }
-" Plug 'terryma/vim-multiple-cursors'
 Plug 'tommcdo/vim-exchange'
 Plug 'tommcdo/vim-ninja-feet'
 Plug 'tpope/vim-abolish'
@@ -77,6 +76,7 @@ Plug 'KKPMW/sacredforest-vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'romainl/Apprentice'
 Plug 'arcticicestudio/nord-vim'
+" Plug 'axvr/zepl.vim'
 call plug#end()
 
 "" Plugin configuration {{{1
@@ -144,6 +144,8 @@ if &runtimepath =~ 'remembrall'
     augroup END
 endif
 let g:remembrall_suffixes = [""]
+let g:ripple_winpos = "vertical"
+let g:ripple_term_name = "term: ripple"
 
 " Ultisnips
 nnoremap cps :UltiSnipsEdit<cr>
@@ -188,13 +190,13 @@ let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=2
 let g:vimtex_compiler_progname='nvr'
 let g:vimtex_syntax_enabled=1
-" let  g:vimtex_fold_types = {
-"        \ 'preamble' : {'enabled' : 0},
-"        \ 'envs' : {
-"        \   'blacklist' : ['lemma', 'proposition', 'theorem', 'equation'],
-"        \   'whitelist' : ['proof'],
-"        \ },
-"        \}
+let g:vimtex_toc_config={
+            \ 'layer_status': {
+                \ 'content': 1,
+                \ 'label': 0,
+                \ 'todo': 1,
+                \ 'include': 1 },
+            \ 'show_help': 0}
 
 " Pilot
 let g:pilot_boundary='ignore'
@@ -479,7 +481,8 @@ if has("nvim")
 endif
 
 "" Experimental {{{1
-autocmd Filetype python setl omnifunc=v:lua.vim.lsp.omnifunc
+lua require'nvim_lsp'.pyls.setup{}
+autocmd Filetype python setlocal omnifunc=v:lua.vim.lsp.omnifunc
 nnoremap <expr> <c-g> Remembrall('<c-g>')
 nnoremap <silent> <c-g>h <cmd>lua vim.lsp.buf.hover()<cr>
 nnoremap <silent> <c-g>a <cmd>lua vim.lsp.buf.declaration()<cr>
@@ -487,12 +490,12 @@ nnoremap <silent> <c-g>d <cmd>lua vim.lsp.buf.definition()<cr>
 nnoremap <silent> <c-g>i <cmd>lua vim.lsp.buf.implementation()<cr>
 nnoremap <silent> <c-g>s <cmd>lua vim.lsp.buf.signature_help()<cr>
 nnoremap <silent> <c-g>t <cmd>lua vim.lsp.buf.type_definition()<cr>
+nnoremap <silent> <c-g><c-g> <cmd>lua vim.lsp.stop_client(vim.lsp.get_active_clients())<cr>
 
-" highlight LineNr ctermbg=159 ctermfg=27 guibg=#afffff guifg=#005fff
-" highlight StatusLineNC ctermbg=22 ctermfg=121 guibg=#005f00 guifg=#87ffaf
-" highlight Comment ctermbg=159 ctermfg=195 guibg=#afffff guifg=#d7ffff
-" highlight Normal ctermbg=195 ctermfg=237 guibg=#d7ffff guifg=#3a3a3a
-" highlight Special ctermfg=96 guifg=#875f87
-" highlight StatusLine ctermbg=131 ctermfg=223 guibg=#af5f5f guifg=#ffd7af
-" highlight Statement ctermfg=65 guifg=#5f875f
-" highlight Type ctermfg=254 guifg=#e4e4e4
+function Create_floating_buffer()
+    let buffer = nvim_create_buf(1, 0)
+    call nvim_open_win(buffer, 1, {'relative': 'editor', 'width': 100, 'height': 20, 'row': 10, 'col': 5})
+endfunction
+
+command! Fnew call Create_floating_buffer()
+" let g:ripple_winpos = "Fnew"
