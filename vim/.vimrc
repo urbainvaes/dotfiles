@@ -89,20 +89,19 @@ nnoremap cpu :GundoToggle<cr>
 nnoremap <expr> cp Remembrall('cp')
 
 " Fuzzy finder
-nnoremap <c-p>a  :Ag
-nnoremap <c-p>b  :Buffers<cr>
-nnoremap <c-p>C  :Colors<cr>
-nnoremap <c-p>f  :Files<cr>
-nnoremap <c-p>g  :GitFiles<cr>
-nnoremap <c-p>r  :History<cr>
-nnoremap <c-p>:  :History:<cr>
-nnoremap <c-p>/  :History/<cr>
-nnoremap <c-p>l  :BLines<cr>
-nnoremap <c-p>a  :Ag
+nnoremap <c-p>a :Ag
+nnoremap <c-p>b :Buffers<cr>
+nnoremap <c-p>C :Colors<cr>
+nnoremap <c-p>f :Files<cr>
+nnoremap <c-p>g :GitFiles<cr>
+nnoremap <c-p>r :History<cr>
+nnoremap <c-p>: :History:<cr>
+nnoremap <c-p>/ :History/<cr>
+nnoremap <c-p>l :BLines<cr>
 
-nnoremap <a-b>  :Buffers<cr>
-nnoremap <a-f>  :Files<cr>
-nnoremap <a-g>  :GitFiles<cr>
+nnoremap <a-b> :Buffers<cr>
+nnoremap <a-f> :Files<cr>
+nnoremap <a-g> :GitFiles<cr>
 
 " Fugitive
 nnoremap <Leader>gs :Gstatus<cr>
@@ -481,16 +480,18 @@ if has("nvim")
 endif
 
 "" Experimental {{{1
-lua require'nvim_lsp'.pyls.setup{}
-autocmd Filetype python setlocal omnifunc=v:lua.vim.lsp.omnifunc
-nnoremap <expr> <c-g> Remembrall('<c-g>')
-nnoremap <silent> <c-g>h <cmd>lua vim.lsp.buf.hover()<cr>
-nnoremap <silent> <c-g>a <cmd>lua vim.lsp.buf.declaration()<cr>
-nnoremap <silent> <c-g>d <cmd>lua vim.lsp.buf.definition()<cr>
-nnoremap <silent> <c-g>i <cmd>lua vim.lsp.buf.implementation()<cr>
-nnoremap <silent> <c-g>s <cmd>lua vim.lsp.buf.signature_help()<cr>
-nnoremap <silent> <c-g>t <cmd>lua vim.lsp.buf.type_definition()<cr>
-nnoremap <silent> <c-g><c-g> <cmd>lua vim.lsp.stop_client(vim.lsp.get_active_clients())<cr>
+if has("nvim")
+    lua require'nvim_lsp'.pyls.setup{}
+    autocmd Filetype python setlocal omnifunc=v:lua.vim.lsp.omnifunc
+    nnoremap <expr> <c-g> Remembrall('<c-g>')
+    nnoremap <silent> <c-g>h <cmd>lua vim.lsp.buf.hover()<cr>
+    nnoremap <silent> <c-g>a <cmd>lua vim.lsp.buf.declaration()<cr>
+    nnoremap <silent> <c-g>d <cmd>lua vim.lsp.buf.definition()<cr>
+    nnoremap <silent> <c-g>i <cmd>lua vim.lsp.buf.implementation()<cr>
+    nnoremap <silent> <c-g>s <cmd>lua vim.lsp.buf.signature_help()<cr>
+    nnoremap <silent> <c-g>t <cmd>lua vim.lsp.buf.type_definition()<cr>
+    nnoremap <silent> <c-g><c-g> <cmd>lua vim.lsp.stop_client(vim.lsp.get_active_clients())<cr>
+endif
 
 function Create_floating_buffer()
     let buffer = nvim_create_buf(1, 0)
