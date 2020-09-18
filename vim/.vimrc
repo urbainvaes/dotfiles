@@ -67,6 +67,7 @@ if isdirectory($HOME."/dotfiles/plugins")
 endif
 
 if has("nvim")
+    Plug '~/dotfiles/plugins/nvim-i3scratchpad'
     Plug 'neovim/nvim-lsp'
 endif
 
@@ -492,11 +493,3 @@ if has("nvim")
     nnoremap <silent> <c-g>t <cmd>lua vim.lsp.buf.type_definition()<cr>
     nnoremap <silent> <c-g><c-g> <cmd>lua vim.lsp.stop_client(vim.lsp.get_active_clients())<cr>
 endif
-
-function Create_floating_buffer()
-    let buffer = nvim_create_buf(1, 0)
-    call nvim_open_win(buffer, 1, {'relative': 'editor', 'width': 100, 'height': 20, 'row': 10, 'col': 5})
-endfunction
-
-command! Fnew call Create_floating_buffer()
-" let g:ripple_winpos = "Fnew"

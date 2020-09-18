@@ -51,8 +51,9 @@ xcape -e 'Super_L=space'
 # xmodmap -e "keycode any = Return"
 # xcape -e 'Control_R=Return'
 
-# Make eject an Insert
+# Make eject and Home an Insert
 xmodmap -e "keysym XF86Eject = Insert"
+xmodmap -e "keysym Home = Insert"
 
 # Numbers
 xmodmap -e "keysym d = d D 0"
