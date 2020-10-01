@@ -244,7 +244,7 @@ set shiftwidth=4
 set showcmd
 set splitright
 set smartcase
-set smartindent
+set nosmartindent
 set softtabstop=-1 " set sotftabstop=&shiftwidth
 " set formatoptions+=orw
 silent! set breakindent
