@@ -43,6 +43,7 @@ setopt inc_append_history
 setopt no_share_history
 
 # Completion
+autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|=*' 'l:|=* r:|=*'
 
 # Kill word
@@ -65,8 +66,8 @@ fi
 source "$HOME/.zsh/zgen/zgen.zsh"
 
 FZF_MARKS_PLUGIN_ZSH=$HOME/dotfiles/plugins/fzf-marks/fzf-marks.plugin.zsh
-FZF_MARKS_COMMAND='fzf --height 40% --reverse -e'
 [ -f "$FZF_MARKS_PLUGIN_ZSH" ] && source "$FZF_MARKS_PLUGIN_ZSH"
+FZF_MARKS_COMMAND="$FZF_MARKS_COMMAND -e -n 1 -d ' : '"
 
 if ! zgen saved; then
     echo "Creating a zgen save"

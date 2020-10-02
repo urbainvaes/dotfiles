@@ -11,5 +11,5 @@ fi
 # FZF
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-FZF_MARKS_PLUGIN=$HOME/Dropbox/projects/fzf-marks/fzf-marks.plugin.bash
+FZF_MARKS_PLUGIN=$HOME/dotfiles/plugins/fzf-marks/fzf-marks.plugin.bash
 [ -f "$FZF_MARKS_PLUGIN" ] && source "$FZF_MARKS_PLUGIN"
