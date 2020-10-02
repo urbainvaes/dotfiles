@@ -68,6 +68,9 @@ endif
 
 if has("nvim")
     Plug '~/dotfiles/plugins/nvim-i3scratchpad'
+endif
+
+if hostname() != "peuplier"
     Plug 'neovim/nvim-lsp'
 endif
 
@@ -481,7 +484,7 @@ if has("nvim")
 endif
 
 "" Experimental {{{1
-if has("nvim")
+if has("nvim") && hostname() != "peuplier"
     lua require'nvim_lsp'.pyls.setup{}
     autocmd Filetype python setlocal omnifunc=v:lua.vim.lsp.omnifunc
     nnoremap <expr> <c-g> Remembrall('<c-g>')
