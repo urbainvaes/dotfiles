@@ -172,9 +172,9 @@ alias mca='make clean-all'
 
 # Misc
 alias a='vifm . .'
-alias ff='FreeFem++'
 alias m='cd ~/.mutt/attachments && mutt && cd -'
 alias e='nvim'
+alias f='fzm'
 alias mux='tmuxinator'
 alias email='mbsync -a'
 alias renet='systemctl restart NetworkManager.service'

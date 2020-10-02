@@ -11,11 +11,14 @@ source $HOME/.local/colors.zsh
 xrdb $HOME/.Xresources/$COLORSCHEME
 
 # Background
-feh --bg-fill /home/urbain/Documents/wallpapers/pagoda.jpg
+feh --bg-fill /usr/share/backgrounds/Grand_Canyon_North_Rim_by_Rihards_Vilks.jpg
 
 # Disable screen going to sleep
 xset -dpms
 xset s off
+
+# Disable bell
+xset -b
 
 # SSH agent
 eval $(ssh-agent)

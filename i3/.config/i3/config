@@ -1,7 +1,7 @@
 # Modifier
 set $mod Mod4
 
-font pango:DejaVu Sans Mono, Awesome 8
+font pango:DejaVu Sans Mono, Awesome 9
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -190,6 +190,8 @@ bindsym XF86AudioMute         exec amixer -D pulse sset Master 0%
 # Display
 bindsym XF86MonBrightnessUp   exec light -A 10
 bindsym XF86MonBrightnessDown exec light -U 10
+bindsym Prior exec light -A 10
+bindsym Next exec light -U 10
 bindsym Shift+XF86AudioRaiseVolume exec light -A 10
 bindsym Shift+XF86AudioLowerVolume exec light -U 10
 
@@ -214,5 +216,8 @@ gaps outer 5
 
 # Launch compositor
 exec compton
+
+# Kill xcape if bug
+bindsym $mod+F3 exec --no-startup-id killall -9 xcape
 
 # vim:filetype=i3
