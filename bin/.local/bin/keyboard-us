@@ -13,10 +13,10 @@ setxkbmap us
 xmodmap -e "clear Lock"
 xmodmap -e "keysym Caps_Lock = Control_L Control_L"
 xmodmap -e "add Control = Control_L"
-xcape -e 'Control_L=Escape'
+# xcape -e 'Control_L=Escape'
 
 # Make space (Super_L, space)
-xmodmap -e "keysym space = Super_L"
-xmodmap -e "add mod4 = Super_L"
-xmodmap -e "keycode any = space"
+# xmodmap -e "keysym space = Super_L"
+# xmodmap -e "add mod4 = Super_L"
+# xmodmap -e "keycode any = space"
 # xcape -e 'Super_L=space'

@@ -11,17 +11,12 @@ let maplocalleader = ","
 
 "" Plugins {{{1
 call plug#begin('~/.vim/plugged')
-Plug 'LnL7/vim-nix'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter'
 Plug 'AndrewRadev/splitjoin.vim'
-Plug 'beloglazov/vim-online-thesaurus'
 Plug 'easymotion/vim-easymotion'
-Plug 'holomorph/vim-freefem'
 Plug 'honza/vim-snippets'
-Plug 'inkarkat/vim-SpellCheck'
-Plug 'inkarkat/vim-ingo-library'
 Plug 'jamessan/vim-gnupg'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -34,16 +29,14 @@ Plug 'junegunn/vim-slash'
 Plug 'justinmk/vim-dirvish'
 Plug 'justinmk/vim-sneak'
 Plug 'kshenoy/vim-signature'
-Plug 'lervag/vimtex'
+Plug 'lervag/vimtex', {'commit': '8287981'}
 Plug 'machakann/vim-highlightedyank'
 Plug 'majutsushi/tagbar'
+Plug 'mg979/vim-visual-multi'
 Plug 'neomake/neomake'
-Plug 'scrooloose/nerdtree'
 Plug 'sjl/Gundo.vim', { 'on' : 'GundoToggle' }
-Plug 'terryma/vim-multiple-cursors'
 Plug 'tommcdo/vim-exchange'
 Plug 'tommcdo/vim-ninja-feet'
-Plug 'ton/vim-bufsurf'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-apathy'
 Plug 'tpope/vim-commentary'
@@ -64,71 +57,66 @@ let g:zoomwintab_hidetabbar=0
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'vim-scripts/gmsh.vim'
 Plug 'wellle/targets.vim'
-" Plug 'zchee/deoplete-clang'
 
 if isdirectory($HOME."/dotfiles/plugins")
     Plug '~/dotfiles/plugins/vim-remembrall'
     Plug '~/dotfiles/plugins/vim-tmux-pilot'
+    Plug '~/dotfiles/plugins/vim-ripple'
+    Plug '~/dotfiles/plugins/vim-darjeeling'
+    Plug '~/dotfiles/plugins/vim-macaw'
 endif
 
 if has("nvim")
-    " Plug 'roxma/nvim-completion-manager'
-    " Plug 'Shougo/deoplete.nvim', { 'do' : ':UpdateRemotePlugins', 'tag' : '4.1' }
-    " Plug 'autozimu/LanguageClient-neovim', { 'do': 'bash install.sh', 'branch': 'next' }
-    " Plug 'zchee/deoplete-jedi'
-    Plug 'hkupty/iron.nvim', { 'branch': 'legacy' }
-else
-    Plug 'Shougo/neocomplete.vim'
+    Plug '~/dotfiles/plugins/nvim-i3scratchpad'
+endif
+
+if hostname() != "peuplier"
+    Plug 'neovim/nvim-lsp'
 endif
 
 " Colors
-Plug 'KKPMW/sacredforest-vim'
 Plug 'altercation/vim-colors-solarized'
-Plug 'arcticicestudio/nord-vim'
-Plug 'KKPMW/moonshine-vim'
 Plug 'KKPMW/sacredforest-vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'romainl/Apprentice'
-Plug 'joshdick/onedark.vim'
-" Plug 'josuegaleas/jay'
-
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'arcticicestudio/nord-vim'
+" Plug 'axvr/zepl.vim'
 call plug#end()
 
 "" Plugin configuration {{{1
 
 " Toggles
 nnoremap cpg :GitGutterToggle<cr>
-nnoremap cpr :IronRepl<cr>
 nnoremap cpn :NERDTreeToggle<cr>
 nnoremap cpt :TagbarToggle<cr>
 nnoremap cpu :GundoToggle<cr>
 nnoremap <expr> cp Remembrall('cp')
 
-" Easy motion
-map gs <Plug>(easymotion-prefix)
-
 " Fuzzy finder
-nnoremap <c-p>a  :Ag
-nnoremap <c-p>b  :Buffers<cr>
-nnoremap <c-p>C  :Colors<cr>
-nnoremap <c-p>f  :Files<cr>
-nnoremap <c-p>g  :GitFiles<cr>
-nnoremap <c-p>r  :History<cr>
-nnoremap <c-p>:  :History:<cr>
-nnoremap <c-p>/  :History/<cr>
-nnoremap <c-p>l  :BLines<cr>
-nnoremap <c-p>a  :Ag
+nnoremap <c-p>a :Ag
+nnoremap <c-p>b :Buffers<cr>
+nnoremap <c-p>C :Colors<cr>
+nnoremap <c-p>f :Files<cr>
+nnoremap <c-p>g :GitFiles<cr>
+nnoremap <c-p>r :History<cr>
+nnoremap <c-p>: :History:<cr>
+nnoremap <c-p>/ :History/<cr>
+nnoremap <c-p>l :BLines<cr>
 
-nnoremap <a-b>  :Buffers<cr>
-nnoremap <a-f>  :Files<cr>
-nnoremap <a-g>  :GitFiles<cr>
+nnoremap <a-b> :Buffers<cr>
+nnoremap <a-f> :Files<cr>
+nnoremap <a-g> :GitFiles<cr>
 
 " Fugitive
 nnoremap <Leader>gs :Gstatus<cr>
 nnoremap <Leader>gc :Gcommit<cr>
 nnoremap <Leader>gr :Gread<cr>
 nnoremap <Leader>gd :Gdiff<cr>
+
+" Multiple cursors
+let g:VM_maps = {}
+let g:VM_maps["Select Cursor Down"] = "<M-j>"
+let g:VM_maps["Select Cursor Up"] = "<M-k>"
 
 " Heytmux
 function! Call_heytmux(vm)
@@ -138,21 +126,11 @@ endfunction
 nnoremap <silent> gh :set opfunc=Call_heytmux<cr>g@
 xnoremap <silent> gh :Heytmux!<cr>
 
-" Iron
-" let g:iron_repl_open_cmd = 'vsplit'
-let g:iron_map_defaults=0
-nmap yr <Plug>(iron-send-motion)
-xmap R <Plug>(iron-send-motion)
-nmap yrr VR
-
 " Easy align
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 xmap gl <Plug>(LiveEasyAlign)
 nmap gl <Plug>(LiveEasyAlign)
-
-" Online thesaurus
-nnoremap cpd :OnlineThesaurusCurrentWord<cr>
 
 " Plug
 nnoremap ,pi :PlugInstall<cr>
@@ -168,16 +146,9 @@ if &runtimepath =~ 'remembrall'
         autocmd FileType tex nnoremap <buffer> <silent> <expr> ,l Remembrall(',l')
     augroup END
 endif
-
-" LanguageClient
-if executable('pyls')
-    let g:LanguageClient_serverCommands = { 'python': ['pyls'], }
-endif
-
-let g:LanguageClient_diagnosticsEnable = 0
-nnoremap <silent> <leader>lh :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> <leader>ld :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <leader>lr :call LanguageClient#textDocument_rename()<CR>
+let g:remembrall_suffixes = [""]
+let g:ripple_winpos = "vertical"
+let g:ripple_term_name = "term: ripple"
 
 " Ultisnips
 nnoremap cps :UltiSnipsEdit<cr>
@@ -196,29 +167,15 @@ let g:neomake_gcc_args=[
             \ '-I.', '-I..', '-I../..'
             \ ]
 
-" Deoplete
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources#jedi#show_docstring = 1
-if !exists('g:deoplete#omni#input_patterns')
-    let g:deoplete#omni#input_patterns = {}
-endif
-
-if &runtimepath =~ 'vimtex'
-    let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
-endif
+let g:neomake_python_enabled_makers = ['python', 'pylint']
 
 " FZF.vim
+let $FZF_DEFAULT_OPTS='--layout=reverse'
 let g:fzf_buffers_jump = 1
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 
 " Gundo
 let g:gundo_prefer_python3 = 1
-
-" Localvimrc
-let g:localvimrc_sandbox = 0
-let g:localvimrc_whitelist='/home/*'
-
-" NerdTree
-let g:NERDTreeHijackNetrw = 0
 
 " Ultisnips
 let g:UltiSnipsEditSplit="horizontal"
@@ -236,48 +193,23 @@ let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=2
 let g:vimtex_compiler_progname='nvr'
 let g:vimtex_syntax_enabled=1
-" let  g:vimtex_fold_types = {
-"        \ 'preamble' : {'enabled' : 0},
-"        \ 'envs' : {
-"        \   'blacklist' : ['lemma', 'proposition', 'theorem', 'equation'],
-"        \   'whitelist' : ['proof'],
-"        \ },
-"        \}
+let g:vimtex_toc_config={
+            \ 'layer_status': {
+                \ 'content': 1,
+                \ 'label': 0,
+                \ 'todo': 1,
+                \ 'include': 1 },
+            \ 'show_help': 0}
 
 " Pilot
 let g:pilot_boundary='ignore'
 let g:pilot_mode='wintab'
+" let g:pilot_split_or_new='new'
 " let g:pilot_key_h='<a-h>'
 " let g:pilot_key_j='<a-j>'
 " let g:pilot_key_k='<a-k>'
 " let g:pilot_key_l='<a-l>'
 " let g:pilot_key_p='<a-\>'
-
-" YouCompleteMe
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:ycm_add_preview_to_completeopt = 0
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_auto_trigger = 1
-if !exists('g:ycm_semantic_triggers')
-    let g:ycm_semantic_triggers = {}
-    let g:ycm_semantic_triggers.tex = ['re!\\[A-Za-z]*(ref|cite)[A-Za-z]*([^]]*])?{([^}]*, ?)*' ]
-endif
-
-" Plugins interactions
-function! Multiple_cursors_before()
-    if has("nvim") && &runtimepath =~ 'deoplete'
-        let b:deoplete_disable_auto_complete = 1
-        call deoplete#disable()
-    endif
-endfunction
-
-function! Multiple_cursors_after()
-    if has("nvim") && &runtimepath =~ 'deoplete'
-        let b:deoplete_disable_auto_complete = 0
-        call deoplete#enable()
-    endif
-endfunction
 
 "" Vim variables {{{1
 let g:netrw_bufsettings='relativenumber'
@@ -293,7 +225,7 @@ set undodir^=~/.vim/undo//
 " ^= : prepends to list
 " // : store absolute path
 
-set complete+=k
+" set complete+=k
 set conceallevel=2
 set cursorline
 set diffopt=filler,vertical,hiddenoff
@@ -303,7 +235,11 @@ set foldmethod=marker
 set hidden
 set ignorecase
 set lazyredraw
+set laststatus=2
+set listchars+=eol:$
+set wildcharm=<C-z>
 set mouse=a
+" set noequalalways
 set nojoinspaces
 set nowrap
 set path+=$PWD/**
@@ -311,7 +247,7 @@ set shiftwidth=4
 set showcmd
 set splitright
 set smartcase
-set smartindent
+set nosmartindent
 set softtabstop=-1 " set sotftabstop=&shiftwidth
 " set formatoptions+=orw
 silent! set breakindent
@@ -330,6 +266,8 @@ endif
 " .rst headings
 nnoremap <leader>1 m`yypVr=``
 nnoremap <leader>2 m`yypVr-``
+
+nnoremap <leader>m :.m
 
 nnoremap n nzz
 nnoremap N Nzz
@@ -377,12 +315,6 @@ cnoremap <c-n> <down>
 cnoremap <up> <c-p>
 cnoremap <down> <c-n>
 
-" Overwrite unimpaired mappings
-nnoremap <silent> <b :BufSurfBack<cr>
-nnoremap <silent> >b :BufSurfForward<cr>
-nnoremap <silent> <B :BufSurfBack<cr>:bd! #<cr>
-nnoremap <silent> >B :BufSurfForward<cr>:bd! #<cr>
-
 " Alternate file
 nnoremap <bs> 
 nnoremap + :Buffers<cr>
@@ -403,17 +335,11 @@ nnoremap ,e :E
 " Unimpaired
 nmap co yo
 
-"" Colorscheme {{{1
-nnoremap ,c  :colorscheme<space>
-nnoremap ,cl :set background=light<cr>:colorscheme solarized<cr>
-nnoremap ,cl :set background=dark<cr>:colorscheme solarized<cr>
-nnoremap ,cs :colorscheme seoul256<cr>
-nnoremap ,cn :colorscheme nord<cr>
-colo seoul256
-
 "" Autocommands {{{1
 augroup vimrc
     autocmd!
+    " autocmd ColorScheme * highlight String ctermfg=192 guifg=#d7ff87
+    " autocmd ColorScheme * highlight Folded ctermbg=23 ctermfg=185 guibg=#005f5f guifg=#d7d75f
     autocmd BufWritePost *vimrc,*exrc :call feedkeys(":source %\<cr>")
     autocmd BufNewFile,Bufread /tmp/mutt-* setlocal tw=72
     autocmd BufWritePre *
@@ -442,6 +368,12 @@ augroup vimrc
     autocmd FileType dirvish setlocal relativenumber
     autocmd FileType dirvish silent! unmap <buffer> <C-p>
 augroup END
+
+"" Colorscheme {{{1
+nnoremap ,cd  :colorscheme darjeeling<cr>
+nnoremap ,cs :colorscheme seoul256<cr>
+set notermguicolors
+colo darjeeling
 
 "" My search {{{1
 
@@ -552,52 +484,15 @@ if has("nvim")
 endif
 
 "" Experimental {{{1
-set wildcharm=<C-z>
-nnoremap ,e :e **/*<C-z><S-Tab>
-
-let $FZF_DEFAULT_OPTS='--layout=reverse'
-let g:fzf_layout = { 'window': 'call FloatingFZF()' }
-
-hi Pmenu ctermfg=3 ctermbg=239
-function! FloatingFZF()
-  let buf = nvim_create_buf(v:false, v:true)
-  call setbufvar(buf, '&laststatus', '1')
-
-  let height = &lines - 10
-  let width = float2nr(&columns - (&columns * 2 / 10))
-  let col = float2nr((&columns - width) / 2)
-
-  let opts = {
-        \ 'relative': 'editor',
-        \ 'row': 5,
-        \ 'col': col,
-        \ 'width': width,
-        \ 'height': height
-        \ }
-
-  call nvim_open_win(buf, v:true, opts)
-endfunction
-
-" hi Pmenu ctermfg=3 ctermbg=239
-" let g:remembrall_window = 'call FloatingFZF()'
-
-" if !exists('g:lsp_config_sourced')
-"     call lsp#add_filetype_config({
-"           \ 'filetype': 'python',
-"           \ 'name': 'pyls',
-"           \ 'cmd': 'pyls',
-"           \ 'callbacks': {}
-"           \ })
-"     autocmd Filetype python setl omnifunc=lsp#omnifunc
-"     let g:lsp_config_sourced = 1
-" endif
-
-
-" inoremap <c-g><esc>:call remembrall#remind('i', '<c-g>')<cr>
-" nnoremap <expr> <c-g> Remembrall('<c-g>')
-" nnoremap <c-g>h <esc>:call lsp#text_document_hover()<cr>
-" nnoremap <c-g>a <esc>:call lsp#text_document_declaration()<cr>
-" nnoremap <c-g>d <esc>:call lsp#text_document_definition()<cr>
-" nnoremap <c-g>i <esc>:call lsp#text_document_implementation()<cr>
-" nnoremap <c-g>s <esc>:call lsp#text_document_signature_help()<cr>
-" nnoremap <c-g>t <esc>:call lsp#text_document_type_definition()<cr>
+if has("nvim") && hostname() != "peuplier"
+    lua require'nvim_lsp'.pyls.setup{}
+    autocmd Filetype python setlocal omnifunc=v:lua.vim.lsp.omnifunc
+    nnoremap <expr> <c-g> Remembrall('<c-g>')
+    nnoremap <silent> <c-g>h <cmd>lua vim.lsp.buf.hover()<cr>
+    nnoremap <silent> <c-g>a <cmd>lua vim.lsp.buf.declaration()<cr>
+    nnoremap <silent> <c-g>d <cmd>lua vim.lsp.buf.definition()<cr>
+    nnoremap <silent> <c-g>i <cmd>lua vim.lsp.buf.implementation()<cr>
+    nnoremap <silent> <c-g>s <cmd>lua vim.lsp.buf.signature_help()<cr>
+    nnoremap <silent> <c-g>t <cmd>lua vim.lsp.buf.type_definition()<cr>
+    nnoremap <silent> <c-g><c-g> <cmd>lua vim.lsp.stop_client(vim.lsp.get_active_clients())<cr>
+endif

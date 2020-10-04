@@ -4,7 +4,7 @@
 [user]
 	name = Urbain Vaes
 	email = urbain@vaes.uk
-        signingKey = 716064C0
+        ; signingKey = 716064C0
 [init]
 	templatedir = ~/.git_template
 [alias]
@@ -13,9 +13,11 @@
 [http]
 	sslverify = false
 [commit]
-        gpgSign = true
+        ; gpgSign = true
         verbose = true
 [push]
 	default = simple
 [merge]
 	ff = true
+[pull]
+	rebase = false

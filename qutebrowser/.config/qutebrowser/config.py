@@ -1,6 +1,28 @@
+# pylint: disable=C0111
 # Documentation:
 #   qute://help/configuring.html
 #   qute://help/settings.html
+
+from qutebrowser.api import interceptor
+
+c = c
+config = config
+
+
+def filter_yt(info: interceptor.Request):
+    url = info.request_url
+    if (url.host() == 'www.youtube.com'
+            and url.path() == '/get_video_info'
+            and '&adformat=' in url.query()):
+        info.block()
+
+
+interceptor.register(filter_yt)
+
+
+# Colors
+c.colors.tabs.selected.odd.bg = "#875f5f"
+c.colors.tabs.selected.even.bg = "#875f5f"
 
 c.content.images = True
 c.downloads.location.prompt = False
@@ -9,7 +31,7 @@ c.fonts.hints = 'bold 12pt monospace'
 c.hints.chars = 'aoeuidhtns'
 c.hints.uppercase = True
 c.tabs.show = 'multiple'
-c.tabs.tabs_are_windows = True
+c.tabs.tabs_are_windows = False
 c.url.start_pages = ['file:///home/urbain/personal/index.html']
 c.url.default_page = c.url.start_pages[0]
 c.completion.open_categories = ['bookmarks', 'history']
@@ -29,6 +51,14 @@ config.bind(",db", 'spawn -d downloads')
 config.bind(",o", 'set-cmd-text -s :spawn --userscript url-from-surfraw')
 config.bind(",O", 'set-cmd-text -s :spawn --userscript url-from-surfraw -t')
 config.bind("f", 'hint all current')
+
+config.bind("gh", 'tab-move -')
+config.bind("gl", 'tab-move +')
+# config.bind("gt", 'tab-next')
+# config.bind("gT", 'tab-prev')
+config.bind("<Ctrl-L>", 'tab-next')
+config.bind("<Ctrl-H>", 'tab-prev')
+config.bind("<Ctrl-D>", 'tab-close')
 
 # Bindings for insert mode
 # config.unbind("<Ctrl-A>", mode='insert')
@@ -50,7 +80,7 @@ config.bind('<Ctrl-N>', 'completion-item-focus next', mode='command')
 
 # Search engines
 c.url.searchengines = {
-    'DEFAULT': 'https://startpage.com/do/search?query={}',
+    'DEFAULT': 'https://www.ecosia.org/search?q={}',
     'amazon': 'https://www.amazon.co.uk/s?k={}',
     'aw': 'https://wiki.archlinux.org/index.php?search={}',
     'ddg': 'https://duckduckgo.com/?q={}',
@@ -74,4 +104,5 @@ c.aliases = {
 }
 
 # Style sheet
-c.content.user_stylesheets='/home/urbain/dotfiles/qutebrowser/.config/qutebrowser/style.css'
+c.content.user_stylesheets = '/home/urbain/dotfiles/qutebrowser/.config/qutebrowser/style.css'
+

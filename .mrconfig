@@ -11,4 +11,24 @@ push = git push origin master
 [$HOME/dotfiles/plugins/vim-tmux-pilot]
 checkout = git clone 'git@github.com:urbainvaes/vim-tmux-pilot.git'
 update = git pull origin master
-push = git saveandsync
+push = git push origin master
+
+[$HOME/dotfiles/plugins/vim-ripple]
+checkout = git clone 'git@github.com:urbainvaes/vim-ripple.git'
+update = git pull origin master
+push = git push origin master
+
+[$HOME/dotfiles/plugins/vim-darjeeling]
+checkout = git clone 'git@github.com:urbainvaes/vim-darjeeling.git'
+update = git pull origin master
+push = git push origin master
+
+[$HOME/dotfiles/plugins/vim-macaw]
+checkout = git clone 'git@github.com:urbainvaes/vim-macaw.git'
+update = git pull origin master
+push = git push origin master
+
+[$HOME/dotfiles/plugins/nvim-i3scratchpad]
+checkout = git clone 'git@github.com:urbainvaes/nvim-i3scratchpad.git'
+update = git pull origin master
+push = git push origin master

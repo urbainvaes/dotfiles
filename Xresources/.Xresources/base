@@ -28,7 +28,7 @@ URxvt.resize-font.bigger: C-plus
 
 ! Appearance
 /* URxvt*font: xft:DejaVu Sans Mono:size=12 */
-URxvt*font: xft:monaco:size=11.5
+URxvt*font: xft:monaco:size=12
 URxvt*scrollBar: false
 URxvt*internalBorder: 0
 URxvt.fading: 35
