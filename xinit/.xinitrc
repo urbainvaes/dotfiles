@@ -11,7 +11,7 @@ source $HOME/.local/colors.zsh
 xrdb $HOME/.Xresources/$COLORSCHEME
 
 # Background
-feh --bg-fill /home/urbain/Documents/wallpapers/pagoda.jpg
+feh --bg-fill /usr/share/backgrounds/More_Kamikochi_by_mendhak.jpg
 
 # Disable screen going to sleep
 xset -dpms
@@ -22,7 +22,6 @@ eval $(ssh-agent)
 
 # Programs to start
 nm-applet &
-dropbox &
 dunst &
 redshift &
 
