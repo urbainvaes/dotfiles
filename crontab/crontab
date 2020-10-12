@@ -1,4 +1,4 @@
 */5 * * * * DISPLAY=:0 /usr/bin/env mbsync -a
-*/5 * * * * /usr/bin/env mr push
-*/5 * * * * /usr/bin/env mr update
-0 0 * * * /usr/bin/pacman -Syuw --noconfirm
+0 11 * * * /usr/bin/env mr push
+0 11 * * * /usr/bin/env mr update
+0 11 * * * /usr/bin/pacman -Syuw --noconfirm
