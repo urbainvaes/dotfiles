@@ -70,7 +70,7 @@ if has("nvim")
     Plug '~/dotfiles/plugins/nvim-i3scratchpad'
 endif
 
-if hostname() != "peuplier"
+if has("nvim") && hostname() != "peuplier"
     Plug 'neovim/nvim-lsp'
 endif
 

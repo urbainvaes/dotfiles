@@ -40,6 +40,7 @@ nnoremap ,i :!inkscape %f<cr>
 nnoremap <c-d> :q<cr>
 nnoremap <c-l> <c-w>l
 nnoremap <bs> <c-w>h
+nnoremap R :sort<cr>c
 
 " To disable automatic tagging of search results
 nnoremap coh :set hlsearch!<cr>
