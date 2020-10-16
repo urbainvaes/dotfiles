@@ -1,2 +1,2 @@
-.vim/autoload
+.vim/autoload/plug.vim
 .vim/vim-plug

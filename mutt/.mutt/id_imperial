@@ -1,14 +1,14 @@
 set from = "u.vaes13@imperial.ac.uk"
 set sendmail="/usr/bin/msmtp -a imperial"
 
-set spoolfile = "+Work/Work"
-set postponed = "+Work/Work.drafts"
-set trash     = "+Work/Work.bin"
+set spoolfile = "+Imperial/Imperial"
+set postponed = "+Imperial/Imperial.drafts"
+set trash     = "+Imperial/Imperial.bin"
 
 # Record not necessary because outlook saves messages
 unset record
 
-macro index,pager gs "<change-folder> +Work/Work.sent<enter>"
+macro index,pager gs "<change-folder> +Imperial/Imperial.sent<enter>"
 macro index,pager gd "<change-folder> $postponed<enter>"
 macro index,pager gb "<change-folder> $trash<enter>"
 

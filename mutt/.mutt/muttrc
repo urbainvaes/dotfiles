@@ -13,7 +13,7 @@ source `FILE=$HOME/.mutt/colors/$COLORSCHEME.muttrc; if [ ! -s "$FILE" ]; then F
 source ~/.mutt/crypto
 source ~/.mutt/alias
 source ~/.mutt/mailboxes
-source ~/.mutt/id_work
+source ~/.mutt/id_enpc
 
 # General
 set realname = "Urbain Vaes"
@@ -51,6 +51,7 @@ bind index,pager O sidebar-open
 # Prompts
 set delete = yes
 set quit = yes
+set confirmappend = no
 
 # Pager
 set pager_stop
@@ -69,7 +70,8 @@ set index_format="%X %Z %{%b %d} %-15.15L (%?l?%4l&%4c?) %s"
 
 # Macros
 macro index,pager gp "<change-folder> +Personal/Personal<enter>"
-macro index,pager gw "<change-folder> +Work/Work<enter>"
+macro index,pager gi "<change-folder> +Imperial/Imperial<enter>"
+macro index,pager gw "<change-folder> +Enpc/Enpc<enter>"
 macro pager u "<pipe-message>urlview\n"
 
 # Key bindings
@@ -92,7 +94,8 @@ bind pager R group-reply
 macro compose \CA "!mutt_attach\n"
 
 # Hooks
-folder-hook 'Work*'     'source ~/.mutt/id_work'
+folder-hook 'Enpc*' 'source ~/.mutt/id_enpc'
+folder-hook 'Imperial*' 'source ~/.mutt/id_imperial'
 folder-hook 'Personal*' 'source ~/.mutt/id_personal'
 
 macro index,pager gr "<change-folder> +Misc/rss<enter>"

@@ -3,7 +3,14 @@ Expunge Both
 SyncState *
 Sync All
 
-IMAPAccount Work
+IMAPAccount Enpc
+Host messagerie.enpc.fr
+User urbain.vaes@enpc.fr
+PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.password-store/email/urbain.vaes@enpc.fr.gpg"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPAccount Imperial
 Host outlook.office365.com
 User uv113@ic.ac.uk
 PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.password-store/email/u.vaes13@imperial.ac.uk.gpg"
@@ -17,14 +24,20 @@ PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.password-store/email/urbain
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
-IMAPStore Work-remote
-Account Work
+IMAPStore Enpc-remote
+Account Enpc
+
+IMAPStore Imperial-remote
+Account Imperial
 
 IMAPStore Personal-remote
 Account Personal
 
-MaildirStore Work-local
-Path ~/.mail/Work/
+MaildirStore Enpc-local
+Path ~/.mail/Enpc/
+
+MaildirStore Imperial-local
+Path ~/.mail/Imperial/
 
 MaildirStore Personal-local
 Path ~/.mail/Personal/
@@ -32,21 +45,41 @@ Path ~/.mail/Personal/
 MaildirStore Misc-local
 Path ~/.mail/Misc/
 
-Channel Work-inbox
-Master :Work-remote:"INBOX"
-Slave  :Work-local:"Work"
+Channel Enpc-inbox
+Master :Enpc-remote:"INBOX"
+Slave  :Enpc-local:"Enpc"
 
-Channel Work-draft
-Master :Work-remote:"Drafts"
-Slave  :Work-local:"Work.drafts"
+Channel Enpc-draft
+Master :Enpc-remote:"Drafts"
+Slave  :Enpc-local:"Enpc.drafts"
 
-Channel Work-sent
-Master :Work-remote:"Sent Items"
-Slave  :Work-local:"Work.sent"
+Channel Enpc-sent
+Master :Enpc-remote:"Sent"
+Slave  :Enpc-local:"Enpc.sent"
 
-Channel Work-bin
-Master :Work-remote:"Deleted Items"
-Slave  :Work-local:"Work.bin"
+Channel Enpc-bin
+Master :Enpc-remote:"Trash"
+Slave  :Enpc-local:"Enpc.bin"
+
+Channel Enpc-archive
+Master :Enpc-remote:"Archive"
+Slave  :Enpc-local:"Enpc.archive"
+
+Channel Imperial-inbox
+Master :Imperial-remote:"INBOX"
+Slave  :Imperial-local:"Imperial"
+
+Channel Imperial-draft
+Master :Imperial-remote:"Drafts"
+Slave  :Imperial-local:"Imperial.drafts"
+
+Channel Imperial-sent
+Master :Imperial-remote:"Sent Items"
+Slave  :Imperial-local:"Imperial.sent"
+
+Channel Imperial-bin
+Master :Imperial-remote:"Deleted Items"
+Slave  :Imperial-local:"Imperial.bin"
 
 Channel Personal-inbox
 Master :Personal-remote:"INBOX"
