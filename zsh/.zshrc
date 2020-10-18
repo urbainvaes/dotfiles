@@ -1,7 +1,6 @@
-## startx automatically {{{
+## startx automatically {{{1
 [[ -z $DISPLAY && -z $SSH_CONNECTION && $XDG_VTNR -eq 1 ]] && exec startx
-# }}}
-## Bindings {{{
+## Bindings {{{1
 
 # Load fzf bindings here because we will override ^r
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -26,8 +25,7 @@ bindkey '^r' history-incremental-search-backward
 autoload -z edit-command-line
 zle -N edit-command-line
 bindkey -M vicmd '^W' edit-command-line
-# }}}
-## Options and modules {{{
+## Options and modules {{{1
 
 KEYTIMEOUT=1
 
@@ -83,8 +81,7 @@ bindkey '^z' z
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=6'
 
-# }}}
-## Use fzf with z {{{
+## Use fzf with z {{{1
 
 unalias z 2> /dev/null
 z() {
@@ -94,8 +91,7 @@ z() {
 }
 zle -N z
 
-# }}}
-## Colors {{{
+## Colors {{{1
 
 [[ -f $HOME/.local/colors.zsh ]] && source $HOME/.local/colors.zsh
 
@@ -140,8 +136,7 @@ function show256 {
     done
 }
 
-# }}}
-## Aliases {{{
+## Aliases {{{1
 
 # Directories
 alias cdd='cd ~/dotfiles'
@@ -199,4 +194,3 @@ alias sysvpn="systemctl restart openvpn-client@ic.service"
 # Directories
 alias ..="cd .."
 alias ...="cd ../.."
-# }}}
