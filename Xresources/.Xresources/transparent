@@ -1,5 +1,0 @@
-#include "nord"
-
-! True transparency
-URxvt.transparent: true
-URxvt.shading: 40

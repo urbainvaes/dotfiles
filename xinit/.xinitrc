@@ -8,7 +8,7 @@ $HOME/.local/bin/keyboard
 
 # Load Xresources to light colorscheme
 source $HOME/.local/colors.zsh
-xrdb $HOME/.Xresources/$COLORSCHEME
+xrdb $HOME/.Xresources/urxvt
 
 # Background
 feh --bg-fill /usr/share/backgrounds/More_Kamikochi_by_mendhak.jpg

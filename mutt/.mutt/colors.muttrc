@@ -16,7 +16,7 @@ color index color253 default "~p"
 color index color195 default "~U"
 color index color2   default "~Q"
 color index color1   default "~D"
-color index color209 default "~F"
+color index color167 default "~F"
 
 color quoted        cyan            default
 color quoted1       magenta         default

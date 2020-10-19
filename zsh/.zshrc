@@ -91,51 +91,6 @@ z() {
 }
 zle -N z
 
-## Colors {{{1
-
-[[ -f $HOME/.local/colors.zsh ]] && source $HOME/.local/colors.zsh
-
-colorschemes=$(ls ${HOME}/.Xresources)
-
-function colo {
-
-    COLORSCHEME=$1
-    XRESOURCE_FILE=${HOME}/.Xresources/$COLORSCHEME
-
-    # Change colors for current session
-    if [[ ! -z "$TMUX" ]]; then
-        printf '\x1bPtmux;'
-        esc='\x1b\x1b'
-    else
-        esc='\x1b'
-    fi
-
-    /usr/bin/cpp ${XRESOURCE_FILE} | tr -d ' \t' | sed -n \
-        -e "s/.*background:/${esc}]11;/p" \
-        -e "s/.*foreground:/${esc}]10;/p" \
-        -e "s/.*cursorColor:/${esc}]12;/p" \
-        -e "s/.*borderColor:/${esc}]708;/p" \
-        -e "s/.*color\\([0-9][^:]*\\):/${esc}]4;\\1;/p" | tr \\n \\a
-
-    # Change color for future sessions
-    xrdb ${XRESOURCE_FILE}
-
-    echo "export COLORSCHEME=$1" > $HOME/.local/colors.zsh
-    source $HOME/.local/colors.zsh
-}
-
-# Completion for colorschemes (-M -> Case insensitive)
-compctl -k "(${colorschemes})" -M 'm:{a-z}={A-Z}' colo
-
-function show256 {
-    for i in {0..255} ; do
-        printf "\x1b[48;5;%sm%3d\e[0m " "$i" "$i"
-        if (( i == 15 )) || (( i > 15 )) && (( (i-15) % 6 == 0 )); then
-            printf "\n";
-        fi
-    done
-}
-
 ## Aliases {{{1
 
 # Directories
