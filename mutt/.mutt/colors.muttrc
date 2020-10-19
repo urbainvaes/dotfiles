@@ -1,3 +1,4 @@
+# color normal     color247      default
 color normal     color247      default
 color attachment color110      default
 color error      red           default
@@ -10,11 +11,12 @@ color sidebar_flagged   color6    default
 color sidebar_indicator color232  color178
 color sidebar_new       color2    default
 
-color index color248        default         "~R"
-color index color140        default         "~U"
-color index color2          default         "~Q"
-color index color1          default         "~D"
-color index color136        default         "~F"
+color index color248 default "~R"
+color index color253 default "~p"
+color index color195 default "~U"
+color index color2   default "~Q"
+color index color1   default "~D"
+color index color209 default "~F"
 
 color quoted        cyan            default
 color quoted1       magenta         default
@@ -25,4 +27,9 @@ color header yellow  default "^(To)"
 color header magenta default "^(Subject)"
 color header red     default "^(CC)"
 
-# vim: ft=muttrc
+color normal color253 default
+color status green    black
+# color index  color253 default "~R"
+# color index  color1   default "~F"
+# color index  color13  default "~O"
+# color index  color13  default "~N"

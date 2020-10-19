@@ -3,13 +3,11 @@ set folder = ~/.mail
 set alias_file = ~/.mutt/alias
 set header_cache = ~/.mutt/cache/headers
 set message_cachedir = ~/.mutt/cache/bodies
-set certificate_file = ~/.mutt/certificates
 set mailcap_path = ~/.mutt/mailcap
 set tmpdir = ~/.mutt/temp
 
 # Source crypto, aliases, mailboxes
-source ~/.mutt/colors/base.muttrc
-source `FILE=$HOME/.mutt/colors/$COLORSCHEME.muttrc; if [ ! -s "$FILE" ]; then FILE=$HOME/.mutt/colors/nord.muttrc; fi; echo "$FILE"`
+source ~/.mutt/colors.muttrc
 source ~/.mutt/crypto
 source ~/.mutt/alias
 source ~/.mutt/mailboxes
@@ -20,6 +18,8 @@ set realname = "Urbain Vaes"
 set from = "Urbain Vaes"
 set reverse_alias
 set sort = reverse-date
+# set sort = reverse-threads
+# set sort_aux = last-date-received
 set weed
 set abort_nosubject=no
 unset markers
@@ -66,12 +66,12 @@ set editor="$EDITOR"
 set include=yes
 
 # Index
-set index_format="%X %Z %{%b %d} %-15.15L (%?l?%4l&%4c?) %s"
+set index_format="%4C %X %Z %{%b %d} %-15.15L (%?l?%4l&%4c?) %s"
 
 # Macros
 macro index,pager gp "<change-folder> +Personal/Personal<enter>"
 macro index,pager gi "<change-folder> +Imperial/Imperial<enter>"
-macro index,pager gw "<change-folder> +Enpc/Enpc<enter>"
+macro index,pager ge "<change-folder> +Enpc/Enpc<enter>"
 macro pager u "<pipe-message>urlview\n"
 
 # Key bindings
@@ -91,7 +91,11 @@ bind pager j next-entry
 bind pager k previous-entry
 bind pager R group-reply
 
+# Attachment
 macro compose \CA "!mutt_attach\n"
+
+# Flow text
+set text_flowed
 
 # Hooks
 folder-hook 'Enpc*' 'source ~/.mutt/id_enpc'
@@ -107,4 +111,6 @@ set reverse_name
 alternates ".*@vaes.uk"
 
 # HTML email
-macro compose 5 "F $HOME/.mutt/filter\ny^T^Utext/html; charset=utf-8\n"
+macro compose 5 "F $HOME/.mutt/filter<enter>y^T^Utext/html; charset=utf-8<enter><enter>"
+
+# vim: ft=muttrc

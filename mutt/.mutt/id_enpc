@@ -2,18 +2,15 @@ set from = "urbain.vaes@enpc.fr"
 set sendmail="/usr/bin/msmtp -a enpc"
 
 set spoolfile = "+Enpc/Enpc"
+set record    = "+Enpc/Enpc.sent"
 set postponed = "+Enpc/Enpc.drafts"
 set trash     = "+Enpc/Enpc.bin"
-
-# Record not necessary because outlook saves messages
-unset record
 
 macro index,pager gs "<change-folder> +Enpc/Enpc.sent<enter>"
 macro index,pager gd "<change-folder> $postponed<enter>"
 macro index,pager gb "<change-folder> $trash<enter>"
 macro index,pager ga "<change-folder> +Enpc/Enpc.archive<enter>"
-macro index,pager s "<save-message>=Enpc/Enpc.archive<enter><sync-mailbox>"
+macro index,pager a "<save-message>=Enpc/Enpc.archive<enter><sync-mailbox>"
 
-folder-hook 'Enpc*' 'source ~/.mutt/id_enpc'
 # vim: ft=muttrc
 
