@@ -1,0 +1,17 @@
+set from = "urbain.vaes@inria.fr"
+set sendmail="/usr/bin/msmtp -a inria"
+
+set spoolfile = "+Inria/Inria"
+set record    = "+Inria/Inria.sent"
+set postponed = "+Inria/Inria.drafts"
+set trash     = "+Inria/Inria.bin"
+
+macro index,pager gs "<change-folder> +Inria/Inria.sent<enter>"
+macro index,pager gd "<change-folder> $postponed<enter>"
+macro index,pager gb "<change-folder> $trash<enter>"
+macro index,pager ga "<change-folder> +Inria/Inria.archive<enter>"
+macro index,pager a "<save-message>=Inria/Inria.archive<enter><sync-mailbox>"
+
+# vim: ft=muttrc
+
+

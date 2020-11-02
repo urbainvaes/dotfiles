@@ -11,7 +11,7 @@ source ~/.mutt/colors.muttrc
 source ~/.mutt/crypto
 source ~/.mutt/alias
 source ~/.mutt/mailboxes
-source ~/.mutt/id_enpc
+source ~/.mutt/id_inria
 
 # General
 set realname = "Urbain Vaes"
@@ -70,8 +70,9 @@ set index_format="%4C %X %Z %{%b %d} %-15.15L (%?l?%4l&%4c?) %s"
 
 # Macros
 macro index,pager gp "<change-folder> +Personal/Personal<enter>"
-macro index,pager gi "<change-folder> +Imperial/Imperial<enter>"
 macro index,pager ge "<change-folder> +Enpc/Enpc<enter>"
+macro index,pager gi "<change-folder> +Inria/Inria<enter>"
+macro index,pager go "<change-folder> +Imperial/Imperial<enter>"
 macro pager u "<pipe-message>urlview\n"
 
 # Key bindings
@@ -95,10 +96,11 @@ bind pager R group-reply
 macro compose \CA "!mutt_attach\n"
 
 # Flow text
-set text_flowed
+# set text_flowed # Bug with this setting '>' instead of '> '
 
 # Hooks
 folder-hook 'Enpc*' 'source ~/.mutt/id_enpc'
+folder-hook 'Inria*' 'source ~/.mutt/id_inria'
 folder-hook 'Imperial*' 'source ~/.mutt/id_imperial'
 folder-hook 'Personal*' 'source ~/.mutt/id_personal'
 

@@ -3,17 +3,17 @@ Expunge Both
 SyncState *
 Sync All
 
+IMAPAccount Inria
+Host zimbra.inria.fr
+User urbain.vaes@inria.fr
+PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.password-store/email/urbain.vaes@inria.fr.gpg"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
 IMAPAccount Enpc
 Host messagerie.enpc.fr
 User urbain.vaes@enpc.fr
 PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.password-store/email/urbain.vaes@enpc.fr.gpg"
-SSLType IMAPS
-CertificateFile /etc/ssl/certs/ca-certificates.crt
-
-IMAPAccount Imperial
-Host outlook.office365.com
-User uv113@ic.ac.uk
-PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.password-store/email/u.vaes13@imperial.ac.uk.gpg"
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
@@ -24,26 +24,46 @@ PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.password-store/email/urbain
 SSLType IMAPS
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
+IMAPStore Inria-remote
+Account Inria
+
 IMAPStore Enpc-remote
 Account Enpc
-
-IMAPStore Imperial-remote
-Account Imperial
 
 IMAPStore Personal-remote
 Account Personal
 
+MaildirStore Inria-local
+Path ~/.mail/Inria/
+
 MaildirStore Enpc-local
 Path ~/.mail/Enpc/
-
-MaildirStore Imperial-local
-Path ~/.mail/Imperial/
 
 MaildirStore Personal-local
 Path ~/.mail/Personal/
 
 MaildirStore Misc-local
 Path ~/.mail/Misc/
+
+Channel Inria-inbox
+Master :Inria-remote:"INBOX"
+Slave  :Inria-local:"Inria"
+
+Channel Inria-draft
+Master :Inria-remote:"Drafts"
+Slave  :Inria-local:"Inria.drafts"
+
+Channel Inria-sent
+Master :Inria-remote:"Sent"
+Slave  :Inria-local:"Inria.sent"
+
+Channel Inria-bin
+Master :Inria-remote:"Trash"
+Slave  :Inria-local:"Inria.bin"
+
+Channel Inria-archive
+Master :Inria-remote:"Archive"
+Slave  :Inria-local:"Inria.archive"
 
 Channel Enpc-inbox
 Master :Enpc-remote:"INBOX"
@@ -64,22 +84,6 @@ Slave  :Enpc-local:"Enpc.bin"
 Channel Enpc-archive
 Master :Enpc-remote:"Archive"
 Slave  :Enpc-local:"Enpc.archive"
-
-Channel Imperial-inbox
-Master :Imperial-remote:"INBOX"
-Slave  :Imperial-local:"Imperial"
-
-Channel Imperial-draft
-Master :Imperial-remote:"Drafts"
-Slave  :Imperial-local:"Imperial.drafts"
-
-Channel Imperial-sent
-Master :Imperial-remote:"Sent Items"
-Slave  :Imperial-local:"Imperial.sent"
-
-Channel Imperial-bin
-Master :Imperial-remote:"Deleted Items"
-Slave  :Imperial-local:"Imperial.bin"
 
 Channel Personal-inbox
 Master :Personal-remote:"INBOX"
