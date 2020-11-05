@@ -82,6 +82,7 @@ bind index,pager \Cf next-page
 bind index,pager \Cb previous-page
 bind index,pager \Cu next-unread-mailbox
 
+bind index A create-alias
 bind index gg first-entry
 bind index G last-entry
 bind index i flag-message
