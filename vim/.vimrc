@@ -80,6 +80,7 @@ Plug 'KKPMW/sacredforest-vim'
 Plug 'junegunn/seoul256.vim'
 Plug 'romainl/Apprentice'
 Plug 'arcticicestudio/nord-vim'
+Plug 'JuliaEditorSupport/julia-vim'
 " Plug 'axvr/zepl.vim'
 call plug#end()
 
