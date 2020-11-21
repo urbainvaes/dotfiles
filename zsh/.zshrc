@@ -39,6 +39,7 @@ setopt extended_history
 setopt hist_ignore_space
 setopt inc_append_history
 setopt no_share_history
+setopt interactivecomments
 
 # Completion
 autoload -Uz compinit && compinit

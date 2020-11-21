@@ -5,6 +5,7 @@
 
 from qutebrowser.api import interceptor
 
+# Avoid linter errors
 c = c
 config = config
 
@@ -17,8 +18,8 @@ def filter_yt(info: interceptor.Request):
         info.block()
 
 
+# Remove youtube adds
 interceptor.register(filter_yt)
-
 
 # Colors
 c.colors.tabs.selected.odd.bg = "#875f5f"
@@ -105,4 +106,3 @@ c.aliases = {
 
 # Style sheet
 c.content.user_stylesheets = '/home/urbain/dotfiles/qutebrowser/.config/qutebrowser/style.css'
-
