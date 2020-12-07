@@ -24,7 +24,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/gv.vim'
 Plug 'junegunn/heytmux'
 Plug 'junegunn/vim-easy-align'
-" Plug 'junegunn/vim-peekaboo'
+Plug 'junegunn/vim-peekaboo'
 Plug 'junegunn/vim-slash'
 Plug 'justinmk/vim-dirvish'
 Plug 'justinmk/vim-sneak'
@@ -319,6 +319,9 @@ cnoremap <down> <c-n>
 " Alternate file
 nnoremap <bs> 
 nnoremap + :Buffers<cr>
+
+" Align
+nnoremap <F2> vip:EasyAlign * <bar><cr>:w<cr>
 
 " Source current file
 nnoremap ,s :source %<cr>
