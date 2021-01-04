@@ -146,6 +146,7 @@ alias pacs='pacman -Ss'
 # Systemctl
 alias sysnet="systemctl restart NetworkManager.service"
 alias sysvpn="systemctl restart openvpn-client@ic.service"
+alias wacom="xsetwacom --set 'Wacom One by Wacom S Pen stylus' mode relative"
 
 # Directories
 alias ..="cd .."
