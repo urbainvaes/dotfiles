@@ -60,6 +60,7 @@ config.bind("gl", 'tab-move +')
 config.bind("<Ctrl-L>", 'tab-next')
 config.bind("<Ctrl-H>", 'tab-prev')
 config.bind("<Ctrl-D>", 'tab-close')
+config.bind("<Ctrl-W>", 'do-nothing')
 
 # Bindings for insert mode
 # config.unbind("<Ctrl-A>", mode='insert')

@@ -227,7 +227,7 @@ set undodir^=~/.vim/undo//
 " // : store absolute path
 
 " set complete+=k
-set conceallevel=2
+set conceallevel=0
 set cursorline
 set diffopt=filler,vertical,hiddenoff
 set expandtab
@@ -488,15 +488,15 @@ if has("nvim")
 endif
 
 "" Experimental {{{1
-if has("nvim") && hostname() != "peuplier"
-    lua require'nvim_lsp'.pyls.setup{}
-    autocmd Filetype python setlocal omnifunc=v:lua.vim.lsp.omnifunc
-    nnoremap <expr> <c-g> Remembrall('<c-g>')
-    nnoremap <silent> <c-g>h <cmd>lua vim.lsp.buf.hover()<cr>
-    nnoremap <silent> <c-g>a <cmd>lua vim.lsp.buf.declaration()<cr>
-    nnoremap <silent> <c-g>d <cmd>lua vim.lsp.buf.definition()<cr>
-    nnoremap <silent> <c-g>i <cmd>lua vim.lsp.buf.implementation()<cr>
-    nnoremap <silent> <c-g>s <cmd>lua vim.lsp.buf.signature_help()<cr>
-    nnoremap <silent> <c-g>t <cmd>lua vim.lsp.buf.type_definition()<cr>
-    nnoremap <silent> <c-g><c-g> <cmd>lua vim.lsp.stop_client(vim.lsp.get_active_clients())<cr>
-endif
+" if has("nvim") && hostname() != "peuplier"
+"     lua require'nvim_lsp'.pyls.setup{}
+"     autocmd Filetype python setlocal omnifunc=v:lua.vim.lsp.omnifunc
+"     nnoremap <expr> <c-g> Remembrall('<c-g>')
+"     nnoremap <silent> <c-g>h <cmd>lua vim.lsp.buf.hover()<cr>
+"     nnoremap <silent> <c-g>a <cmd>lua vim.lsp.buf.declaration()<cr>
+"     nnoremap <silent> <c-g>d <cmd>lua vim.lsp.buf.definition()<cr>
+"     nnoremap <silent> <c-g>i <cmd>lua vim.lsp.buf.implementation()<cr>
+"     nnoremap <silent> <c-g>s <cmd>lua vim.lsp.buf.signature_help()<cr>
+"     nnoremap <silent> <c-g>t <cmd>lua vim.lsp.buf.type_definition()<cr>
+"     nnoremap <silent> <c-g><c-g> <cmd>lua vim.lsp.stop_client(vim.lsp.get_active_clients())<cr>
+" endif
