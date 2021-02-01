@@ -202,6 +202,14 @@ let g:vimtex_toc_config={
                 \ 'include': 1 },
             \ 'show_help': 0}
 
+let g:vimtex_delim_toggle_mod_list = [
+  \ ['\left', '\right'],
+  \ ['\bigl', '\bigr'],
+  \ ['\Bigl', '\Bigr'],
+  \ ['\biggl', '\biggr'],
+  \ ['\Biggl', '\Biggr'],
+  \]
+
 " Pilot
 let g:pilot_boundary='ignore'
 let g:pilot_mode='wintab'
