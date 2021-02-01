@@ -32,3 +32,8 @@ push = git push origin master
 checkout = git clone 'git@github.com:urbainvaes/nvim-i3scratchpad.git'
 update = git pull origin master
 push = git push origin master
+
+[$HOME/dotfiles/plugins/urbainvaes]
+checkout = git clone 'git@github.com:urbainvaes/urbainvaes.git'
+update = git pull origin main
+push = git push origin main

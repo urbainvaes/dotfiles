@@ -54,6 +54,7 @@ xcape -e 'Super_L=space'
 # Make eject and Home an Insert
 xmodmap -e "keysym XF86Eject = Insert"
 xmodmap -e "keysym Home = Insert"
+xmodmap -e "keysym End = Caps_Lock"
 
 # Numbers
 xmodmap -e "keysym d = d D 0"
