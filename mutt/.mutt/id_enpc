@@ -1,5 +1,5 @@
-set from = "urbain.vaes@enpc.fr"
-set sendmail="/usr/bin/msmtp -a enpc"
+set from = "urbain.vaes@inria.fr"
+set sendmail="/usr/bin/msmtp -a inria"
 
 set spoolfile = "+Enpc/Enpc"
 set record    = "+Enpc/Enpc.sent"

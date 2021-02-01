@@ -1,10 +1,10 @@
-set from = "urbain.vaes@enpc.fr"
-set sendmail="/usr/bin/msmtp -a enpc"
+set from = "urbain.vaes@inria.fr"
+set sendmail="/usr/bin/msmtp -a inria"
 
-set spoolfile = "+Enpc/Enpc"
-set record    = "+Enpc/Enpc.sent"
-set postponed = "+Enpc/Enpc.drafts"
-set trash     = "+Enpc/Enpc.bin"
+set spoolfile = "+Inria/Inria"
+set record    = "+Inria/Inria.sent"
+set postponed = "+Inria/Inria.drafts"
+set trash     = "+Inria/Inria.bin"
 
 macro index,pager gs "<change-folder> +Imperial/Imperial.sent<enter>"
 macro index,pager gd "<change-folder> +Imperial/Imperial.drafts<enter>"
