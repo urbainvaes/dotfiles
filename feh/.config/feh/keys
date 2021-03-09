@@ -15,3 +15,6 @@ zoom_fit a
 
 orient_1 r
 reload_image R
+
+next_img n
+prev_img p

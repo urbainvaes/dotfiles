@@ -8,6 +8,7 @@ from qutebrowser.api import interceptor
 # Avoid linter errors
 c = c
 config = config
+config.load_autoconfig(False)
 
 
 def filter_yt(info: interceptor.Request):

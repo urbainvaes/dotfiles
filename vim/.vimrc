@@ -59,7 +59,7 @@ Plug 'vim-scripts/gmsh.vim'
 Plug 'wellle/targets.vim'
 
 if isdirectory($HOME."/dotfiles/plugins")
-    Plug '~/dotfiles/plugins/vim-remembrall'
+    " Plug '~/dotfiles/plugins/vim-remembrall'
     Plug '~/dotfiles/plugins/vim-tmux-pilot'
     Plug '~/dotfiles/plugins/vim-ripple'
     Plug '~/dotfiles/plugins/vim-darjeeling'
@@ -71,7 +71,7 @@ if has("nvim")
 endif
 
 if has("nvim") && hostname() != "peuplier"
-    Plug 'neovim/nvim-lsp'
+    " Plug 'neovim/nvim-lsp'
 endif
 
 " Colors
@@ -313,7 +313,7 @@ nnoremap goT :call system('urxvt -cd '.expand("%:p:h").' &')<cr>
 nnoremap gof :call system('urxvt -e vifm '.getcwd().' '.getcwd().' &')<cr>
 nnoremap goF :call system('urxvt -e vifm '.expand("%:p:h").' '.expand("%:p:h").' &')<cr>
 
-nnoremap <LocalLeader>h :e %:p:s,.hpp$,.X123X,:s,.cpp$,.hpp,:s,.X123X$,.cpp,<cr>
+nnoremap \h :e %:p:s,.hpp$,.X123X,:s,.cpp$,.hpp,:s,.X123X$,.cpp,<cr>
 nnoremap Y y$
 
 nnoremap <Leader>fw :%s/\s\+$//<cr>
@@ -372,6 +372,7 @@ augroup vimrc
     autocmd FileType gnuplot setlocal commentstring=#%s
     autocmd FileType gnuplot setlocal makeprg=gnuplot\ %
     autocmd FileType python setlocal makeprg=python\ %
+    autocmd FileType julia setlocal makeprg=julia\ %
     autocmd FileType tex setlocal spell spelllang=en_us
 
     " Dirvish

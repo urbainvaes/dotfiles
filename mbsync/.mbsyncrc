@@ -46,65 +46,65 @@ MaildirStore Misc-local
 Path ~/.mail/Misc/
 
 Channel Inria-inbox
-Master :Inria-remote:"INBOX"
-Slave  :Inria-local:"Inria"
+Far :Inria-remote:"INBOX"
+Near  :Inria-local:"Inria"
 
 Channel Inria-draft
-Master :Inria-remote:"Drafts"
-Slave  :Inria-local:"Inria.drafts"
+Far :Inria-remote:"Drafts"
+Near  :Inria-local:"Inria.drafts"
 
 Channel Inria-sent
-Master :Inria-remote:"Sent"
-Slave  :Inria-local:"Inria.sent"
+Far :Inria-remote:"Sent"
+Near  :Inria-local:"Inria.sent"
 
 Channel Inria-bin
-Master :Inria-remote:"Trash"
-Slave  :Inria-local:"Inria.bin"
+Far :Inria-remote:"Trash"
+Near  :Inria-local:"Inria.bin"
 
 Channel Inria-archive
-Master :Inria-remote:"Archive"
-Slave  :Inria-local:"Inria.archive"
+Far :Inria-remote:"Archive"
+Near  :Inria-local:"Inria.archive"
 
 Channel Enpc-inbox
-Master :Enpc-remote:"INBOX"
-Slave  :Enpc-local:"Enpc"
+Far :Enpc-remote:"INBOX"
+Near  :Enpc-local:"Enpc"
 
 Channel Enpc-draft
-Master :Enpc-remote:"Drafts"
-Slave  :Enpc-local:"Enpc.drafts"
+Far :Enpc-remote:"Drafts"
+Near  :Enpc-local:"Enpc.drafts"
 
 Channel Enpc-sent
-Master :Enpc-remote:"Sent"
-Slave  :Enpc-local:"Enpc.sent"
+Far :Enpc-remote:"Sent"
+Near  :Enpc-local:"Enpc.sent"
 
 Channel Enpc-bin
-Master :Enpc-remote:"Trash"
-Slave  :Enpc-local:"Enpc.bin"
+Far :Enpc-remote:"Trash"
+Near  :Enpc-local:"Enpc.bin"
 
 Channel Enpc-archive
-Master :Enpc-remote:"Archive"
-Slave  :Enpc-local:"Enpc.archive"
+Far :Enpc-remote:"Archive"
+Near  :Enpc-local:"Enpc.archive"
 
 Channel Personal-inbox
-Master :Personal-remote:"INBOX"
-Slave  :Personal-local:"Personal"
+Far :Personal-remote:"INBOX"
+Near  :Personal-local:"Personal"
 
 Channel Personal-draft
-Master :Personal-remote:"Drafts"
-Slave  :Personal-local:"Personal.drafts"
+Far :Personal-remote:"Drafts"
+Near  :Personal-local:"Personal.drafts"
 
 Channel Personal-sent
-Master :Personal-remote:"Sent"
-Slave  :Personal-local:"Personal.sent"
+Far :Personal-remote:"Sent"
+Near  :Personal-local:"Personal.sent"
 
 Channel Personal-bin
-Master :Personal-remote:"Trash"
-Slave  :Personal-local:"Personal.bin"
+Far :Personal-remote:"Trash"
+Near  :Personal-local:"Personal.bin"
 
 Channel Personal-rss
-Master :Personal-remote:"rss"
-Slave  :Misc-local:"rss"
+Far :Personal-remote:"rss"
+Near  :Misc-local:"rss"
 
 Channel Personal-lists
-Master :Personal-remote:"lists"
-Slave  :Misc-local:"lists"
+Far :Personal-remote:"lists"
+Near  :Misc-local:"lists"
