@@ -78,6 +78,8 @@ macro pager u "<pipe-message>urlview\n"
 # Key bindings
 bind attach <return> view-mailcap
 
+bind index,pager j next-entry
+bind index,pager k previous-entry
 bind index,pager \Cf next-page
 bind index,pager \Cb previous-page
 bind index,pager \Cu next-unread-mailbox
@@ -116,4 +118,5 @@ alternates ".*@vaes.uk"
 # HTML email
 macro compose 5 "F $HOME/.mutt/filter<enter>y^T^Utext/html; charset=utf-8<enter><enter>"
 
+set signature="$HOME/.mutt/signature"
 # vim: ft=muttrc

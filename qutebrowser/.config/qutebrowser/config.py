@@ -73,7 +73,7 @@ config.bind("<Ctrl-F>", 'fake-key <Right>', mode='insert')
 config.bind("<Ctrl-B>", 'fake-key <Left>', mode='insert')
 config.bind("<Ctrl-N>", 'fake-key <Down>', mode='insert')
 config.bind("<Ctrl-P>", 'fake-key <Up>', mode='insert')
-config.bind("<Ctrl-I>", 'open-editor', mode='insert')
+config.bind("<Ctrl-I>", 'edit-text', mode='insert')
 config.bind("<Ctrl-X>", 'spawn --userscript user-password', mode='insert')
 
 # Bindings for command mode
@@ -104,6 +104,8 @@ c.url.searchengines = {
 c.aliases = {
     "history-all-clear": 'spawn rm /home/urbain/.local/share/qutebrowser/cmd-history ;; history-clear',
     "wq": 'quit -s', "q": 'quit',
+    "paywall": "open https://www.google.com/search?q=cache:{url}",
+    # "paywall": "open open https://12ft.io/proxy?q={url}",
 }
 
 # Style sheet

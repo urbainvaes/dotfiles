@@ -151,3 +151,4 @@ alias wacom="xsetwacom --set 'Wacom One by Wacom S Pen stylus' mode relative"
 # Directories
 alias ..="cd .."
 alias ...="cd ../.."
+alias ls="ls --color=auto"
